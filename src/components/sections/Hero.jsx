@@ -27,9 +27,9 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  const line1 = "We build".split(' ')
-  const line2 = "digital futures".split(' ')
-  const line3 = "that matter.".split(' ')
+  const line1 = "Secure".split(' ')
+  const line2 = "critical systems".split(' ')
+  const line3 = "with confidence.".split(' ')
   
   let wordIndex = 0
 
@@ -72,7 +72,7 @@ export default function Hero() {
           className="bg-ink-800 border border-white/10 text-mist-900 font-mono text-xs px-4 py-2 rounded-full mb-12 flex items-center gap-2"
         >
           <div className="w-1.5 h-1.5 bg-signal rounded-full animate-pulse-slow"></div>
-          Available for projects in 2025 &rarr;
+          Enterprise technology capability, built for operations &rarr;
         </motion.div>
 
         {/* Headlines */}
@@ -89,7 +89,7 @@ export default function Hero() {
           className="font-body text-mist-900 text-lg md:text-xl max-w-lg mb-12 leading-relaxed"
           data-cursor="text"
         >
-          We are an award-winning studio pushing the boundaries of strategy, design, and engineering to build digital products people love.
+          Gyanshu Technology helps enterprises design, secure, automate, monitor, and operate critical technology environments through integrated cybersecurity, infrastructure, software, AI, IoT, and managed operations capability.
         </motion.p>
 
         {/* Buttons */}
@@ -100,10 +100,10 @@ export default function Hero() {
           className="flex flex-wrap items-center gap-6"
         >
           <MagneticButton className="bg-signal text-ink-950 font-display font-medium px-8 py-4 rounded-full text-lg hover:shadow-[0_0_30px_rgba(232,255,71,0.3)] transition-all">
-            See Our Work
+            Explore Our Capabilities
           </MagneticButton>
           <button className="border border-white/20 text-mist-900 hover:text-white hover:border-white/40 hover:bg-white/5 font-display font-medium px-8 py-4 rounded-full text-lg transition-all" data-cursor="hover">
-            How We Work
+            How We Deliver
           </button>
         </motion.div>
 
@@ -118,15 +118,15 @@ export default function Hero() {
         <svg viewBox="0 0 100 100" width="100" height="100">
           <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
           <text className="font-mono text-[9.5px] fill-white tracking-widest uppercase">
-            <textPath href="#circlePath">Premium · Studio · 2025 · Premium · Studio · 2025 · </textPath>
+            <textPath href="#circlePath">Cybersecurity · Infrastructure · AI · Cybersecurity · Infrastructure · AI · </textPath>
           </text>
         </svg>
       </motion.div>
 
       <div className="absolute bottom-8 left-6 md:left-12 z-20 hidden sm:block">
         <div className="font-display flex flex-col gap-1 items-start text-white/80">
-          <span className="text-3xl text-signal"><AnimatedCounter end={48} suffix="+" /></span>
-          <span className="font-mono text-xs text-mist-900 tracking-wider">Projects Delivered</span>
+          <span className="text-3xl text-signal"><AnimatedCounter end={6} /></span>
+          <span className="font-mono text-xs text-mist-900 tracking-wider">Core Service Lines</span>
         </div>
       </div>
 

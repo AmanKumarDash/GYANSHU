@@ -5,33 +5,33 @@ import ScrollReveal from '../ui/ScrollReveal'
 export default function PricingSection() {
   const plans = [
     {
-      name: 'Starter',
-      price: '₹1.5L',
-      desc: 'Perfect for: Startups & MVPs',
-      features: ['Brand Identity', '5-page website', 'Responsive Design', 'Basic SEO Setup', '3 months support'],
-      timeline: '3 weeks',
-      btnText: 'Get Started',
+      name: 'Assess',
+      price: 'Pilot',
+      desc: 'For: Assessment & discovery',
+      features: ['Current-state assessment', 'Risk and gap review', 'Architecture direction', 'Security priorities', 'Executive summary'],
+      timeline: 'Scoped',
+      btnText: 'Discuss Scope',
       btnClass: 'bg-signal text-ink-950 hover:shadow-[0_0_20px_rgba(232,255,71,0.2)]',
       borderClass: 'border-white/10'
     },
     {
-      name: 'Growth',
-      price: '₹4L',
-      desc: 'Perfect for: Scaling companies',
-      features: ['Full design system', 'Custom Web App', 'Advanced Animations', 'Technical SEO', 'Analytics Integration', '6 months support'],
-      timeline: '6 weeks',
-      btnText: 'Get Started',
+      name: 'Deliver',
+      price: 'Project',
+      desc: 'For: Implementation & integration',
+      features: ['Architecture and BoM', 'Deployment and hardening', 'Integration and migration', 'Testing and evidence', 'Documentation and training'],
+      timeline: 'Phased',
+      btnText: 'Plan Delivery',
       btnClass: 'bg-signal text-ink-950 hover:shadow-[0_0_20px_rgba(232,255,71,0.2)]',
       borderClass: 'border-signal/50',
       popular: true
     },
     {
-      name: 'Enterprise',
-      price: 'Custom',
-      desc: 'Perfect for: Series A+ companies',
-      features: ['Everything in Growth', 'Dedicated Team', 'AI Features Integration', 'Custom Backend', 'Scalability Audits', 'Priority Support'],
-      timeline: 'Custom',
-      btnText: 'Talk to Us',
+      name: 'Operate',
+      price: 'Managed',
+      desc: 'For: Long-term operations',
+      features: ['NOC / SOC support', 'Infrastructure monitoring', 'ITSM and AMC', 'SLA reporting', 'Automation and optimization'],
+      timeline: 'Ongoing',
+      btnText: 'Start a Conversation',
       btnClass: 'border border-ember text-ember hover:bg-ember hover:text-ink-950',
       borderClass: 'border-ember/30'
     }
@@ -41,9 +41,9 @@ export default function PricingSection() {
     <section className="bg-ink-950 py-32" id="pricing">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <ScrollReveal className="text-center mb-20 md:mb-24">
-          <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Investment</p>
-          <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6">Honest pricing.<br/>No surprises.</h2>
-          <p className="text-mist-900 max-w-lg mx-auto">We don't believe in hidden fees or bloated retainers. Just clear deliverables and predictable timelines.</p>
+          <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Engagement Models</p>
+          <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6">Built around your<br/>business priorities.</h2>
+          <p className="text-mist-900 max-w-lg mx-auto">Choose a focused assessment, a structured delivery project, or an ongoing managed operations partnership. Scope is defined around outcomes.</p>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -56,7 +56,7 @@ export default function PricingSection() {
                 {plan.popular && (
                   <div className="absolute top-0 right-8 -translate-y-1/2">
                     <span className="bg-signal/10 text-signal border border-signal/30 font-mono text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
-                      Most Popular
+                      Recommended
                     </span>
                   </div>
                 )}
@@ -83,7 +83,7 @@ export default function PricingSection() {
                 </MagneticButton>
                 
                 <p className="font-mono text-[10px] text-mist-900 text-center mt-6">
-                  No hidden fees. Cancel anytime.
+                  Clear scope. Measurable outcomes.
                 </p>
               </div>
             </ScrollReveal>

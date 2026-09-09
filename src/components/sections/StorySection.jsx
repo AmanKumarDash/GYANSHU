@@ -4,23 +4,23 @@ export default function StorySection() {
   const chapters = [
     {
       num: '01',
-      title: 'The world drowns in mediocre digital products.',
-      p1: 'Look at the tools you use every day. Most are clunky, slow, or just plain boring. The baseline for digital experiences has settled somewhere between "barely functional" and "forgettable."',
-      p2: 'Companies bleed revenue not because their idea is flawed, but because their execution lacks soul. In a sea of templates, average is the most dangerous place a brand can be.',
+      title: 'Critical technology deserves more than disconnected tools.',
+      p1: 'Enterprise environments become difficult to secure and operate when infrastructure, cybersecurity, software, data, and field systems work in isolation.',
+      p2: 'The result is limited visibility, slow response, compliance pressure, and operational risk. We bring the right capabilities together around measurable business outcomes.',
       align: 'left'
     },
     {
       num: '02',
-      title: 'We believe every company deserves a world-class digital presence.',
-      p1: 'Your product is your absolute best salesperson. It doesn\'t sleep, it doesn\'t take days off. It should feel intuitive, look striking, and function flawlessly.',
-      p2: 'We reject the compromise between aesthetic beauty and technical performance. The best digital products do both beautifully.',
+      title: 'We make technology measurable, secure, and supportable.',
+      p1: 'We map technology investments to availability, compliance, security posture, operational visibility, automation, and service quality.',
+      p2: 'Our engineering-led delivery combines architecture, implementation, integration, testing, documentation, training, and handover with clear accountability.',
       align: 'right'
     },
     {
       num: '03',
-      title: 'So we built a studio that does it differently.',
-      p1: 'No fluff. No bloated agency retainers. Just a ruthless focus on building what matters with the best craft possible.',
-      p2: 'From deep strategic foundations to pixel-perfect execution, our process is designed to push your brand from where it is to where it simply must be.',
+      title: 'One partner from advisory to operations.',
+      p1: 'Our productized capability converts domain experience into repeatable solutions for monitoring, visibility, vulnerability assessment, IPDR analytics, and water quality intelligence.',
+      p2: 'We help teams assess, design, implement, integrate, operate, and improve the environments their business depends on.',
       align: 'center'
     }
   ]
@@ -75,7 +75,7 @@ export default function StorySection() {
                 {chapter.align === 'center' && (
                   <div className="mt-12">
                     <a href="#team" className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-signal hover:text-white transition-colors" data-cursor="hover">
-                      Meet the team →
+                      Explore our capability areas →
                     </a>
                   </div>
                 )}

@@ -2,9 +2,9 @@ import ScrollReveal from '../ui/ScrollReveal'
 
 export default function BlogPreview() {
   const posts = [
-    { title: 'Why 90% of SaaS products fail at onboarding (and how to fix it)', cat: 'UX Strategy', readTime: '7 min', date: 'Jan 2025' },
-    { title: 'The Indian startup design deficit: a ₹500Cr opportunity', cat: 'Industry', readTime: '5 min', date: 'Feb 2025' },
-    { title: 'AI won\'t replace designers. But it will replace bad designers.', cat: 'AI & Design', readTime: '9 min', date: 'Mar 2025' }
+    { title: 'Building a practical cyber exposure management program', cat: 'Cybersecurity', readTime: '7 min', date: 'Capability' },
+    { title: 'From NOC visibility to measurable service quality', cat: 'Operations', readTime: '5 min', date: 'Capability' },
+    { title: 'Where AI and IoT create useful operational intelligence', cat: 'IoT & AI', readTime: '9 min', date: 'Capability' }
   ]
 
   return (
@@ -14,10 +14,10 @@ export default function BlogPreview() {
         <ScrollReveal className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
           <div>
             <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Insights</p>
-            <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight">We share what we know.</h2>
+            <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight">Practical technology insight.</h2>
           </div>
           <a href="#" className="font-mono text-sm text-mist-900 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1 group" data-cursor="hover">
-            View All Articles <span className="text-signal inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
+            Explore Capability <span className="text-signal inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
           </a>
         </ScrollReveal>
 
@@ -45,7 +45,7 @@ export default function BlogPreview() {
                     </div>
                     
                     <span className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-signal">
-                      Read Article &rarr;
+                      Explore &rarr;
                     </span>
                   </div>
                 </div>

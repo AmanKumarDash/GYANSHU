@@ -2,8 +2,8 @@ import MarqueeText from '../ui/MarqueeText'
 
 export default function LogoCloud() {
   const companies1 = [
-    'Vercel', 'Stripe', 'Linear', 'Notion', 'Figma', 
-    'Shopify', 'Loom', 'Arc', 'Raycast', 'Pitch'
+    'Cybersecurity', 'Infrastructure', 'Software', 'AI', 'IoT',
+    'Managed Services', 'SOC / SIEM', 'VAPT', 'NOC', 'GRC'
   ]
   const companies2 = [...companies1].reverse() // the reversed list
 
@@ -20,7 +20,7 @@ export default function LogoCloud() {
     <section className="bg-ink-900 py-24 pb-32 border-b border-white/5 relative overflow-hidden group">
       <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
         <p className="text-center font-mono text-xs text-mist-900 uppercase tracking-widest">
-          Trusted by forward-thinking companies
+          Integrated capability across the digital stack
         </p>
       </div>
       

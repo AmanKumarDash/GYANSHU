@@ -91,11 +91,11 @@ export default function CaseStudies() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <ScrollReveal className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Selected Work</p>
-            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">Proof in production.</h2>
+            <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Working Product Portfolio</p>
+            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">Products built for operations.</h2>
           </div>
           <button className="text-mist-900 border border-white/10 hover:border-white/30 hover:text-white px-6 py-3 rounded-full text-sm transition-colors text-nowrap self-start md:self-auto" data-cursor="hover">
-            View All Projects
+            View Product Portfolio
           </button>
         </ScrollReveal>
 

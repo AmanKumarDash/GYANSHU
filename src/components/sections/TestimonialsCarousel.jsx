@@ -5,11 +5,11 @@ import MagneticButton from '../ui/MagneticButton'
 
 export default function TestimonialsCarousel() {
   const testimonials = [
-    { quote: "NEXUS transformed our entire digital presence. We went from embarrassed to proud in 12 weeks.", author: "CEO", company: "Vanta Finance" },
-    { quote: "The strategy session alone was worth the entire engagement cost.", author: "Founder", company: "Bloom Health" },
-    { quote: "They think like founders, not vendors. Rare.", author: "CTO", company: "Orbit SaaS" },
-    { quote: "Delivered 3 weeks early. Never happens with agencies.", author: "Product Lead", company: "Crest Retail" },
-    { quote: "Our Clutch review says 5 stars. Honestly, we'd give 6.", author: "CMO", company: "Frameshift" }
+    { quote: "A single partner for security, infrastructure, and operations gave our transformation program clear accountability.", author: "Enterprise Technology", company: "Integrated Delivery" },
+    { quote: "The value is in the evidence: visibility, reporting, controls, and a team that can operate the environment.", author: "Security Leadership", company: "Cybersecurity Capability" },
+    { quote: "Their productized platforms turn complex operational data into decisions our teams can act on.", author: "Operations Leadership", company: "Monitoring & Analytics" },
+    { quote: "The delivery model connected architecture, implementation, training, and handover without losing momentum.", author: "Transformation Office", company: "Engineering-Led Delivery" },
+    { quote: "The right mix of practical products and managed services for long-term operational continuity.", author: "IT Leadership", company: "Managed Operations" }
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
