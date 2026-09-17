@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           
           <div className="flex items-center gap-2 cursor-pointer z-50">
-            <span className="font-display text-2xl font-bold tracking-tight text-white">NEXUS</span>
+            <span className="font-display text-2xl font-bold tracking-tight text-white">GYANSHU TECHNOLOGY</span>
             <div className="w-2 h-2 rounded-full bg-signal animate-pulse-slow"></div>
           </div>
 
@@ -48,7 +48,7 @@ export default function Navbar() {
               className="px-6 py-2.5 rounded-full border border-ember text-ember text-sm hover:bg-ember hover:text-white transition-colors"
               data-cursor="hover"
             >
-              Start a Project
+              Start an Engagement
             </MagneticButton>
           </div>
 

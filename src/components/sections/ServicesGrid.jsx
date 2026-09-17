@@ -10,7 +10,7 @@ export default function ServicesGrid() {
         
         <ScrollReveal delay={0.1}>
           <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Our Capabilities</p>
-          <h2 className="font-display text-5xl md:text-7xl font-bold mb-16 tracking-tight">Everything you need.<br/>Nothing you don't.</h2>
+          <h2 className="font-display text-5xl md:text-7xl font-bold mb-16 tracking-tight">Technology capability.<br/>Operationally ready.</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(280px,auto)]">

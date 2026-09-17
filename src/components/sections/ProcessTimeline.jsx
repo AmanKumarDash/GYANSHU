@@ -14,12 +14,11 @@ export default function ProcessTimeline() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   const steps = [
-    { title: "Discovery Call", tagline: "15 minutes that change everything", desc: "A brief alignment on your goals, timeline, constraints, and budget. No pressure, just clarity.", duration: "Day 0" },
-    { title: "Deep Dive Workshop", tagline: "We become obsessed with your problem", desc: "We map user journeys, run competitive analysis, and unearth the technical constraints before writing a single line of code.", duration: "Week 1" },
-    { title: "Strategy Blueprint", tagline: "Your roadmap to digital dominance", desc: "We deliver a comprehensive architecture, proposed design system foundations, and technical stack choices.", duration: "Week 2" },
-    { title: "Design Sprints", tagline: "Pixels become possibilities", desc: "Weekly agile sprints. You get access to live Figma files and daily async updates. Feedback loops are tight and fast.", duration: "Weeks 3-5" },
-    { title: "Build & Iterate", tagline: "We ship. You approve. We refine.", desc: "Engineering happens transparently. We push to staging environments continuously so you can test as we build.", duration: "Weeks 4-7" },
-    { title: "Launch & Grow", tagline: "The beginning, not the end", desc: "Go-live is orchestrated meticulously. We set up analytics, monitor performance, and hand over the keys (or stay on for support).", duration: "Week 8+" }
+    { title: "Discover", tagline: "Business goals before technology choices", desc: "We assess the current state, business goals, risks, constraints, and operational priorities.", duration: "01" },
+    { title: "Design", tagline: "Architecture with controls built in", desc: "We define the architecture, roadmap, scope, bill of materials, security controls, and success criteria.", duration: "02" },
+    { title: "Deliver", tagline: "Build, integrate, test, and document", desc: "We deploy, integrate, harden, migrate, test, and document the solution with evidence and acceptance criteria.", duration: "03" },
+    { title: "Operate", tagline: "NOC, SOC, support, AMC, and SLA", desc: "We monitor, troubleshoot, respond to incidents, manage service workflows, and report against agreed outcomes.", duration: "04" },
+    { title: "Optimize", tagline: "Make the environment stronger over time", desc: "We automate, train teams, plan capacity, improve maturity, and continuously optimize operational performance.", duration: "05" }
   ]
 
   const StepItem = ({ step, index }) => {
@@ -75,7 +74,7 @@ export default function ProcessTimeline() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-16">
         <ScrollReveal>
           <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Process</p>
-          <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">How we get there.</h2>
+          <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">How we create value.</h2>
         </ScrollReveal>
       </div>
 

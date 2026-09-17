@@ -31,7 +31,7 @@ export default function CTASection() {
           viewport={{ once: true }}
           className="font-mono text-xs text-mist-900 uppercase tracking-widest mb-8"
         >
-          Ready to build something great?
+          Ready to strengthen your technology environment?
         </motion.p>
 
         <motion.h2 
@@ -42,8 +42,8 @@ export default function CTASection() {
           className="font-display text-7xl md:text-[8rem] lg:text-[10rem] tracking-tighter leading-[0.85] mb-12 flex flex-col"
           data-cursor="hover"
         >
-          <span className="text-white">Let's make</span>
-          <span className="text-stroke">it happen.</span>
+          <span className="text-white">Secure.</span>
+          <span className="text-stroke">Operate.</span>
         </motion.h2>
 
         <motion.p 
@@ -53,7 +53,7 @@ export default function CTASection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-mist-500 font-body text-xl md:text-2xl mb-16 max-w-xl"
         >
-          We're now accepting a limited number of new projects for Q3. Book a discovery call to secure your spot.
+          We are ready to support assessment, solution design, pilot execution, and phased deployment based on your business priorities.
         </motion.p>
 
         <motion.div
@@ -65,14 +65,14 @@ export default function CTASection() {
         >
           <MagneticButton className="px-12 py-6 text-xl md:text-2xl font-display font-medium bg-signal text-ink-950 rounded-full hover:shadow-[0_0_40px_rgba(232,255,71,0.3)] transition-all group overflow-hidden relative">
             <span className="relative z-10 flex items-center gap-3">
-              Book a Free Call
+              Start an Engagement
               <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>&rarr;</motion.span>
             </span>
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity z-0"></div>
           </MagneticButton>
 
-          <a href="mailto:hello@nexus.studio" className="font-mono text-sm text-mist-700 hover:text-white transition-colors pb-1 border-b border-white/20 hover:border-white mt-4" data-cursor="text">
-            Or email us at hello@nexus.studio
+          <a href="mailto:Support.gyanshu@gmail.com" className="font-mono text-sm text-mist-700 hover:text-white transition-colors pb-1 border-b border-white/20 hover:border-white mt-4" data-cursor="text">
+            Or email us at Support.gyanshu@gmail.com
           </a>
         </motion.div>
 
@@ -88,7 +88,7 @@ export default function CTASection() {
               <div key={i} className={`w-10 h-10 rounded-full border-2 border-ink-950 bg-gradient-to-br ${i%2===0 ? 'from-ink-700 to-ink-900' : 'from-signal/20 to-ink-800'}`}></div>
             ))}
           </div>
-          <p className="font-mono text-xs text-mist-900">Join 48+ companies who chose us.</p>
+          <p className="font-mono text-xs text-mist-900">Consult. Build. Run. Improve.</p>
         </motion.div>
 
       </div>

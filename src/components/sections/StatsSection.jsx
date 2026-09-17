@@ -3,12 +3,12 @@ import ScrollReveal from '../ui/ScrollReveal'
 
 export default function StatsSection() {
   const stats = [
-    { num: 48, label: 'Projects Delivered', suffix: '+' },
-    { num: 12, label: 'Revenue Generated', prefix: '$', suffix: 'M' },
-    { num: 98, label: 'Satisfaction Rate', suffix: '%' },
-    { num: 4.9, label: 'Avg Clutch Rating', suffix: '★', decimals: 1 },
-    { num: 6, label: 'Years in Business' },
-    { num: 3, label: 'Countries Served' }
+    { num: 6, label: 'Core service lines' },
+    { num: 5, label: 'Working product platforms', suffix: '+' },
+    { num: 24, label: 'Operations-ready mindset', suffix: 'x7' },
+    { num: 6, label: 'Delivery stages' },
+    { num: 5, label: 'Productized capabilities' },
+    { num: 1, label: 'End-to-end partner' }
   ]
 
   return (

@@ -3,18 +3,18 @@ import ScrollReveal from '../ui/ScrollReveal'
 
 export default function TechStack() {
   const stack = [
-    { cat: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Framer Motion', 'Three.js'] },
-    { cat: 'Backend', items: ['Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'Redis'] },
-    { cat: 'Cloud', items: ['AWS', 'Vercel', 'Docker', 'Kubernetes'] },
-    { cat: 'Design', items: ['Figma', 'Adobe Suite', 'Spline', 'Rive'] },
-    { cat: 'AI/ML', items: ['OpenAI', 'Langchain', 'Pinecone', 'HuggingFace'] }
+    { cat: 'Cybersecurity', items: ['VAPT', 'SOC / SIEM', 'GRC', 'Threat Intel', 'MISP'] },
+    { cat: 'Infrastructure', items: ['Network', 'Servers', 'Storage', 'Virtualization', 'Cloud'] },
+    { cat: 'Operations', items: ['NOC', 'ITSM', 'AMC', 'Monitoring', 'SLA'] },
+    { cat: 'Software & AI', items: ['Enterprise Apps', 'Automation', 'Analytics', 'AI Integration'] },
+    { cat: 'IoT Monitoring', items: ['Edge Devices', 'Sensors', 'Water Quality', 'Anomaly Detection'] }
   ]
 
   return (
     <section className="bg-ink-900 py-32 border-t border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <ScrollReveal className="mb-20">
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight">Our Arsenal.</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight">Technology capability.</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-8">
