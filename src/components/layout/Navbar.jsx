@@ -34,7 +34,7 @@ export default function Navbar() {
               <a 
                 key={link} 
                 href={`#${link.toLowerCase()}`}
-                className="font-body text-sm text-mist-900 hover:text-white transition-colors relative group"
+                className="font-body text-sm text-white/80 hover:text-white transition-colors relative group"
                 data-cursor="hover"
               >
                 {link}
@@ -67,7 +67,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-ink-900 z-40 flex flex-col justify-center px-6"
+            className="fixed inset-0 bg-ink-950 z-40 flex flex-col justify-center px-6"
           >
             <nav className="flex flex-col gap-6 mt-20">
               {navLinks.map((link, i) => (

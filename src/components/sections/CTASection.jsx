@@ -5,7 +5,7 @@ export default function CTASection() {
   return (
     <section className="relative min-h-screen bg-ink-950 flex flex-col justify-center items-center overflow-hidden py-32" id="cta">
       {/* Dramatic Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-ink-700 via-ink-900 to-ink-950 opacity-50 z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(212,242,61,0.12),transparent_24%),radial-gradient(circle_at_82%_78%,rgba(255,107,53,0.1),transparent_24%)] z-0"></div>
       <div className="grain absolute inset-0 z-0 mix-blend-overlay opacity-30"></div>
       
       {/* Spotlight */}

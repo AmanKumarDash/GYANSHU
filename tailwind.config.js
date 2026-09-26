@@ -6,11 +6,11 @@ module.exports = {
     extend: {
       colors: {
         ink: {
-          950: '#04040a',
-          900: '#080812',
-          800: '#0d0d1f',
-          700: '#12122e',
-          600: '#1a1a3e',
+          950: '#0a0a0a',
+          900: '#ffffff',
+          800: '#f5f5f2',
+          700: '#e7e7e2',
+          600: '#d4d4ce',
         },
         signal: {
           DEFAULT: '#e8ff47',   // electric lime — primary accent
@@ -21,10 +21,10 @@ module.exports = {
           dim: '#cc5529',
         },
         mist: {
-          900: '#9898b8',
-          700: '#c4c4d8',
-          500: '#dcdcec',
-          100: '#f0f0f8',
+          900: '#525252',
+          700: '#737373',
+          500: '#a3a3a3',
+          100: '#f5f5f5',
         },
       },
       fontFamily: {

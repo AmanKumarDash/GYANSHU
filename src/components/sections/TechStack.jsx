@@ -3,11 +3,11 @@ import ScrollReveal from '../ui/ScrollReveal'
 
 export default function TechStack() {
   const stack = [
-    { cat: 'Cybersecurity', items: ['VAPT', 'SOC / SIEM', 'GRC', 'Threat Intel', 'MISP'] },
-    { cat: 'Infrastructure', items: ['Network', 'Servers', 'Storage', 'Virtualization', 'Cloud'] },
-    { cat: 'Operations', items: ['NOC', 'ITSM', 'AMC', 'Monitoring', 'SLA'] },
-    { cat: 'Software & AI', items: ['Enterprise Apps', 'Automation', 'Analytics', 'AI Integration'] },
-    { cat: 'IoT Monitoring', items: ['Edge Devices', 'Sensors', 'Water Quality', 'Anomaly Detection'] }
+    { cat: 'Cybersecurity', items: ['VAPT', 'SOC / SIEM', 'GRC', 'Threat Intel', 'Attack Surface Mgmt'] },
+    { cat: 'Infrastructure', items: ['Network', 'Servers', 'Storage', 'Virtualization', 'Cloud', 'NMS'] },
+    { cat: 'Operations', items: ['NOC', 'ITSM', 'AMC', 'Monitoring', 'SLA', 'Incident Response'] },
+    { cat: 'Software & AI', items: ['Enterprise Apps', 'Private AI', 'Automation', 'Analytics', 'AI Agents'] },
+    { cat: 'IoT Monitoring', items: ['Edge Devices', 'Sensors', 'Water Quality', 'Anomaly Detection', 'IIoT Security'] }
   ]
 
   return (

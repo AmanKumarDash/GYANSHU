@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function StorySection() {
   const chapters = [
@@ -25,14 +25,61 @@ export default function StorySection() {
     }
   ]
 
-  const Art01 = () => (
-    <div className="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center pointer-events-none">
-      <div className="absolute w-64 h-64 bg-signal mix-blend-difference rounded-full blur-2xl opacity-40 animate-pulse-slow"></div>
-      <div className="absolute w-40 h-40 bg-ember rounded-tr-full rounded-bl-full rotate-45 transform mix-blend-overlay"></div>
-      <div className="absolute w-48 h-48 bg-ink-600 rounded-sm clip-diagonal"></div>
-      <div className="absolute inset-0 border-[1px] border-white/10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px'}}></div>
-    </div>
-  )
+  const Art01 = () => {
+    const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 18 })
+    const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 18 })
+
+    const handleMouseMove = (event) => {
+      const bounds = event.currentTarget.getBoundingClientRect()
+      rotateX.set(((event.clientY - bounds.top) / bounds.height - 0.5) * -14)
+      rotateY.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 14)
+    }
+
+    return (
+      <div
+        className="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center cursor-crosshair"
+        style={{ perspective: 1200 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => { rotateX.set(0); rotateY.set(0) }}
+      >
+        <div className="absolute inset-0 border border-white/10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '42px 42px' }} />
+        <div className="absolute w-64 h-64 bg-signal rounded-full blur-3xl opacity-20 animate-pulse-slow" />
+
+        <motion.div style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }} className="relative w-[290px] h-[240px] md:w-[350px] md:h-[290px]">
+          <motion.div
+            animate={{ rotateZ: [0, 2, 0, -2, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute inset-2 border border-signal/50 bg-signal/[0.04]"
+            style={{ transform: 'translateZ(-55px) rotateX(58deg)' }}
+          />
+          <div className="absolute inset-6 border border-white/15 bg-ink-950/90 shadow-[0_20px_70px_rgba(0,0,0,0.6)]" style={{ transform: 'translateZ(10px)' }}>
+            <div className="absolute inset-4 border border-white/10" />
+            <div className="absolute left-1/2 top-1/2 w-24 h-24 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-signal text-ink-950 flex items-center justify-center font-display font-bold text-3xl shadow-[0_0_40px_rgba(232,255,71,0.45)]" style={{ transform: 'translate(-50%, -50%) translateZ(45px)' }}>G</div>
+            <div className="absolute top-7 left-7 font-mono text-[10px] tracking-[0.24em] text-mist-700" style={{ transform: 'translateZ(30px)' }}>SYSTEM CORE</div>
+            <div className="absolute bottom-7 left-7 flex gap-2" style={{ transform: 'translateZ(30px)' }}>
+              {[0, 1, 2].map((node) => <span key={node} className="w-2 h-2 rounded-full bg-signal animate-pulse-slow" style={{ animationDelay: `${node * 0.35}s` }} />)}
+            </div>
+          </div>
+
+          {[
+            ['-left-10 -top-4', 'SECURE'],
+            ['-right-12 top-10', 'OBSERVE'],
+            ['left-5 -bottom-6', 'OPERATE'],
+          ].map(([position, label], index) => (
+            <motion.div
+              key={label}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3 + index, repeat: Infinity, ease: 'easeInOut', delay: index * 0.3 }}
+              className={`absolute ${position} px-3 py-2 border border-white/20 bg-ink-950/95 font-mono text-[9px] tracking-wider text-mist-100 shadow-xl`}
+              style={{ transform: `translateZ(${70 + index * 14}px)` }}
+            >
+              <span className="inline-block w-1.5 h-1.5 bg-signal rounded-full mr-2" />{label}
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    )
+  }
 
   const Art02 = () => (
     <div className="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center pointer-events-none group">

@@ -39,7 +39,7 @@ const CaseStudyCard = ({ data }) => {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative overflow-hidden bg-ink-800 border border-white/5 aspect-[4/3] group rounded-sm"
+        className="relative overflow-hidden bg-[#0d0d1f] border border-white/5 aspect-[4/3] group rounded-sm"
         data-cursor="view"
       >
         {/* Background gradient art */}

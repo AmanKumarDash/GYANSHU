@@ -50,9 +50,10 @@ export default function PricingSection() {
           {plans.map((plan, i) => (
             <ScrollReveal key={plan.name} delay={i * 0.1}>
               <div 
-                className={`relative bg-ink-900 border ${plan.borderClass} p-8 md:p-10 rounded-sm flex flex-col h-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] ${plan.popular ? 'scale-100 md:scale-105 z-10 shadow-2xl' : 'z-0'}`}
+                className={`relative overflow-hidden bg-ink-900 border ${plan.borderClass} p-8 md:p-10 rounded-sm flex flex-col h-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.22)] hover:border-signal/70 ${plan.popular ? 'scale-100 md:scale-105 z-10 shadow-2xl' : 'z-0'}`}
                 data-cursor="hover"
               >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-signal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 {plan.popular && (
                   <div className="absolute top-0 right-8 -translate-y-1/2">
                     <span className="bg-signal/10 text-signal border border-signal/30 font-mono text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
@@ -61,20 +62,20 @@ export default function PricingSection() {
                   </div>
                 )}
                 
-                <h3 className="font-display text-2xl font-semibold mb-2">{plan.name}</h3>
-                <div className="font-display text-5xl font-bold mb-4">{plan.price}</div>
-                <p className="font-mono text-xs text-mist-700 mb-8 pb-8 border-b border-white/5">{plan.desc}</p>
+                <h3 className="font-display text-2xl font-semibold mb-2 text-ink-950">{plan.name}</h3>
+                <div className="font-display text-5xl font-bold mb-4 text-ink-950">{plan.price}</div>
+                <p className="font-mono text-xs text-[#525252] mb-8 pb-8 border-b border-black/10">{plan.desc}</p>
                 
                 <ul className="flex flex-col gap-4 mb-10 flex-grow">
                   {plan.features.map(feat => (
                     <li key={feat} className="flex items-start gap-3">
                       <Check className="text-signal mt-1 shrink-0" size={16} strokeWidth={3} />
-                      <span className="text-sm text-mist-500">{feat}</span>
+                      <span className="text-sm text-[#333333]">{feat}</span>
                     </li>
                   ))}
-                  <li className="flex items-start gap-3 mt-4 pt-4 border-t border-white/5 border-dashed">
+                  <li className="flex items-start gap-3 mt-4 pt-4 border-t border-black/10 border-dashed">
                     <span className="text-signal mt-1 shrink-0 font-mono text-[10px]">&rarr;</span>
-                    <span className="text-xs font-mono text-mist-700">Timeline: {plan.timeline}</span>
+                    <span className="text-xs font-mono text-[#525252]">Timeline: {plan.timeline}</span>
                   </li>
                 </ul>
 
@@ -82,7 +83,7 @@ export default function PricingSection() {
                   {plan.btnText}
                 </MagneticButton>
                 
-                <p className="font-mono text-[10px] text-mist-900 text-center mt-6">
+                <p className="font-mono text-[10px] text-[#737373] text-center mt-6">
                   Clear scope. Measurable outcomes.
                 </p>
               </div>

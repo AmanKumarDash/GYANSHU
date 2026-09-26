@@ -8,16 +8,12 @@
     --cursor-y: 0px;
   }
 
-  * {
-    cursor: none !important;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-ink-950 text-mist-100 font-body overflow-x-hidden;
+    @apply bg-white text-ink-950 font-body overflow-x-hidden;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -33,6 +29,41 @@
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
+
+  [class~="bg-ink-900"],
+  [class~="bg-ink-800"] {
+    color: #0a0a0a;
+  }
+
+  [class~="bg-ink-900"] .text-white,
+  [class~="bg-ink-800"] .text-white,
+  [class~="bg-ink-900"] .text-mist-100,
+  [class~="bg-ink-800"] .text-mist-100 {
+    color: #0a0a0a;
+  }
+
+  [class~="bg-ink-900"] .text-signal,
+  [class~="bg-ink-800"] .text-signal {
+    color: #617500;
+  }
+
+  [class~="bg-ink-900"] [class*="text-white/"],
+  [class~="bg-ink-800"] [class*="text-white/"] {
+    color: rgba(10, 10, 10, 0.42);
+  }
+
+  [class~="bg-ink-900"] [class*="border-white/"],
+  [class~="bg-ink-800"] [class*="border-white/"] {
+    border-color: rgba(10, 10, 10, 0.14);
+  }
+
+  [class~="bg-ink-950"] {
+    color: #f5f5f5;
+  }
+
+  [class~="bg-ink-950"] .text-mist-900 { color: #d4d4d4; }
+  [class~="bg-ink-950"] .text-mist-700 { color: #a3a3a3; }
+  [class~="bg-ink-950"] .text-mist-500 { color: #d4d4d4; }
   
   .grain {
     position: relative;
@@ -51,7 +82,7 @@
   }
 
   .text-stroke {
-    -webkit-text-stroke: 1px currentColor;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.75);
     color: transparent;
   }
 }

@@ -52,7 +52,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={containerRef} className="relative min-h-screen bg-ink-950 overflow-hidden flex flex-col justify-center pt-20 pb-20">
+    <section ref={containerRef} className="relative min-h-screen bg-ink-950 overflow-hidden flex flex-col justify-center pt-20 pb-6">
       
       {/* Dynamic Backgrounds */}
       <div 
@@ -62,31 +62,37 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"></div>
       <div className="grain absolute inset-0 z-[1]"></div>
 
-      <motion.div style={{ opacity, scale, y }} className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-start mt-4 sm:mt-10">
+      <motion.div style={{ opacity, scale, y }} className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-start mt-0 sm:mt-2">
         
         {/* Top Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-ink-800 border border-white/10 text-mist-900 font-mono text-xs px-4 py-2 rounded-full mb-12 flex items-center gap-2"
+          className="relative overflow-hidden bg-black/45 backdrop-blur-md border border-signal/35 text-white/90 font-mono text-xs px-5 py-3 rounded-md mb-6 flex items-center gap-3 shadow-[0_0_28px_rgba(232,255,71,0.1)]"
         >
-          <div className="w-1.5 h-1.5 bg-signal rounded-full animate-pulse-slow"></div>
-          Enterprise technology capability, built for operations &rarr;
+          <motion.div
+            animate={{ x: ['-120%', '220%'] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
+            className="absolute inset-y-0 w-16 bg-gradient-to-r from-transparent via-signal/20 to-transparent -skew-x-12"
+          />
+          <div className="relative w-2 h-2 bg-signal rounded-full animate-pulse-slow shadow-[0_0_12px_rgba(232,255,71,0.9)]"></div>
+          <span className="relative tracking-wide">Enterprise technology capability, built for operations</span>
+          <span className="relative text-signal text-base leading-none">&rarr;</span>
         </motion.div>
 
         {/* Headlines */}
-        <h1 className="font-display text-7xl sm:text-8xl md:text-[8rem] lg:text-[10rem] leading-[0.9] tracking-tight mb-8 w-full perspective-1000" data-cursor="hover">
-          <div className="overflow-visible pb-1 sm:pb-2">{renderWords(line1)}</div>
-          <div className="overflow-visible pb-1 sm:pb-2">{renderWords(line2, true)}</div>
-          <div className="overflow-visible pb-1 sm:pb-2">{renderWords(line3)}</div>
+        <h1 className="font-display text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] leading-[0.76] tracking-tight mb-5 w-full perspective-1000" data-cursor="hover">
+          <div className="overflow-visible">{renderWords(line1)}</div>
+          <div className="overflow-visible">{renderWords(line2, true)}</div>
+          <div className="overflow-visible">{renderWords(line3)}</div>
         </h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}
-          className="font-body text-mist-900 text-lg md:text-xl max-w-lg mb-12 leading-relaxed"
+          className="font-body text-mist-900 text-base md:text-lg max-w-2xl mb-6 leading-relaxed"
           data-cursor="text"
         >
           Gyanshu Technology helps enterprises design, secure, automate, monitor, and operate critical technology environments through integrated cybersecurity, infrastructure, software, AI, IoT, and managed operations capability.

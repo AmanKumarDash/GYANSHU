@@ -14,18 +14,18 @@ export default function ProcessTimeline() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   const steps = [
-    { title: "Discover", tagline: "Business goals before technology choices", desc: "We assess the current state, business goals, risks, constraints, and operational priorities.", duration: "01" },
-    { title: "Design", tagline: "Architecture with controls built in", desc: "We define the architecture, roadmap, scope, bill of materials, security controls, and success criteria.", duration: "02" },
-    { title: "Deliver", tagline: "Build, integrate, test, and document", desc: "We deploy, integrate, harden, migrate, test, and document the solution with evidence and acceptance criteria.", duration: "03" },
-    { title: "Operate", tagline: "NOC, SOC, support, AMC, and SLA", desc: "We monitor, troubleshoot, respond to incidents, manage service workflows, and report against agreed outcomes.", duration: "04" },
-    { title: "Optimize", tagline: "Make the environment stronger over time", desc: "We automate, train teams, plan capacity, improve maturity, and continuously optimize operational performance.", duration: "05" }
+    { title: "Discover", tagline: "Business goals before technology choices", desc: "We assess the current state, business goals, risks, constraints, and operational priorities. This gives every decision a shared operational and commercial context before solution design begins.", outcomes: ['Current-state assessment', 'Risk and gap register', 'Prioritized roadmap'], duration: "01" },
+    { title: "Design", tagline: "Architecture with controls built in", desc: "We define the architecture, roadmap, scope, bill of materials, security controls, and success criteria. The design balances resilience, integration, compliance, and future scale from the outset.", outcomes: ['Solution architecture', 'Control framework', 'Delivery plan'], duration: "02" },
+    { title: "Deliver", tagline: "Build, integrate, test, and document", desc: "We deploy, integrate, harden, migrate, test, and document the solution with evidence and acceptance criteria. Teams receive a verified implementation that is ready for governed handover.", outcomes: ['Configured platform', 'Test evidence', 'Handover documentation'], duration: "03" },
+    { title: "Operate", tagline: "NOC, SOC, support, AMC, and SLA", desc: "We monitor, troubleshoot, respond to incidents, manage service workflows, and report against agreed outcomes. Clear escalation paths and measurable service levels keep critical environments dependable.", outcomes: ['24/7 monitoring', 'Incident response', 'Service reporting'], duration: "04" },
+    { title: "Optimize", tagline: "Make the environment stronger over time", desc: "We automate, train teams, plan capacity, improve maturity, and continuously optimize operational performance. Regular reviews turn service data into practical improvements and long-term resilience.", outcomes: ['Automation backlog', 'Capacity planning', 'Continuous improvement'], duration: "05" }
   ]
 
   const StepItem = ({ step, index }) => {
     const { ref, inView } = useInView({ threshold: 0.5 })
     
     return (
-      <div ref={ref} className="min-h-screen flex items-center relative py-32" id={`process-step-${index}`}>
+      <div ref={ref} className="min-h-[65vh] flex items-center relative py-16 md:py-20" id={`process-step-${index}`}>
         {/* Animated Dot indicator */}
         <div className="absolute left-0 w-8 h-8 -translate-x-1/2 flex items-center justify-center z-10 group cursor-pointer" onClick={() => window.scrollTo({top: document.getElementById(`process-step-${index}`).offsetTop, behavior: 'smooth'})}>
           <motion.div 
@@ -63,6 +63,13 @@ export default function ProcessTimeline() {
             <p className="text-mist-900 text-base md:text-lg leading-relaxed max-w-lg">
               {step.desc}
             </p>
+            <div className="flex flex-wrap gap-2 mt-6">
+              {step.outcomes.map((outcome) => (
+                <span key={outcome} className="font-mono text-[10px] md:text-xs text-mist-700 border border-white/10 bg-ink-800 px-3 py-1.5 rounded-full">
+                  {outcome}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
