@@ -12,7 +12,7 @@ export default function StatsSection() {
   ]
 
   return (
-    <section className="bg-signal py-24 md:py-32 w-full text-ink-950 relative z-10">
+    <section className="brand-contrast bg-signal py-24 md:py-32 w-full text-ink-950 relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-y-20 whitespace-nowrap">
           {stats.map((stat, i) => (

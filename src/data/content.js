@@ -10,17 +10,17 @@ export const services = [
 ]
 
 export const caseStudies = [
-  { id: 1, company: 'AI IPDR / NetIntel', industry: 'Cybersecurity Product', result: 'Investigation Ready', desc: 'High-volume IPDR analytics with IP and subscriber correlation, CGNAT awareness, session reconstruction, metadata retention, and compliance-ready investigation reporting.', services: ['IPDR', 'CGNAT', 'Analytics', 'Compliance'], accentColor: 'from-ember/20 to-transparent' },
-  { id: 2, company: 'AI ENMS', industry: 'Network Operations', result: 'Full Visibility', desc: 'Enterprise network observability with device health, topology, performance analytics, correlated events, incidents, and proactive service visibility.', services: ['Monitoring', 'Topology', 'Analytics', 'Incidents'], accentColor: 'from-green-900/40 to-transparent' },
-  { id: 3, company: 'AI NestedVA', industry: 'Vulnerability Management', result: 'Risk to Report', desc: 'On-prem vulnerability and compliance assessment with scheduled scans, audit checklists, device evidence capture, risk scoring, and professional reporting.', services: ['VAPT', 'Scanning', 'Risk Scoring', 'Reporting'], accentColor: 'from-signal/10 to-transparent' },
-  { id: 4, company: 'AI NeetIQ', industry: 'IoT & Water Quality', result: 'Real-Time Insight', desc: 'AI-IoT water quality monitoring for food, utilities, hospitals, and industrial facilities.', services: ['IoT', 'AI', 'Water Quality'], accentColor: 'from-purple-900/40 to-transparent' },
+  { id: 1, company: 'AI IPDR / NetIntel', industry: 'Cybersecurity Product', result: 'Investigation Ready', desc: 'High-volume IPDR analytics with IP and subscriber correlation, CGNAT awareness, session reconstruction, metadata retention, and compliance-ready investigation reporting.', services: ['IPDR', 'CGNAT', 'Analytics', 'Compliance'], accentColor: 'from-signal/20 to-transparent' },
+  { id: 2, company: 'AI ENMS', industry: 'Network Operations', result: 'Full Visibility', desc: 'Enterprise network observability with device health, topology, performance analytics, correlated events, incidents, and proactive service visibility.', services: ['Monitoring', 'Topology', 'Analytics', 'Incidents'], accentColor: 'from-signal/15 to-transparent' },
+  { id: 3, company: 'AI NestedVA', industry: 'Vulnerability Management', result: 'Risk to Report', desc: 'On-prem vulnerability and compliance assessment with scheduled scans, audit checklists, device evidence capture, risk scoring, and professional reporting.', services: ['VAPT', 'Scanning', 'Risk Scoring', 'Reporting'], accentColor: 'from-ink-600/20 to-transparent' },
+  { id: 4, company: 'AI NeetIQ', industry: 'IoT & Water Quality', result: 'Real-Time Insight', desc: 'AI-IoT water quality monitoring for food, utilities, hospitals, and industrial facilities.', services: ['IoT', 'AI', 'Water Quality'], accentColor: 'from-signal/20 to-transparent' },
 ]
 
 export const team = [
-  { name: 'Security Engineering', role: 'Cybersecurity & Risk', quote: 'Security improves when visibility, evidence, and action work together.', colors: ['#e8ff47', '#080812'] },
-  { name: 'Infrastructure Operations', role: 'Network & Cloud', quote: 'Reliable technology is designed to remain supportable after go-live.', colors: ['#ff6b35', '#080812'] },
-  { name: 'Software & AI', role: 'Platforms & Automation', quote: 'Productized capability turns hard-won experience into repeatable outcomes.', colors: ['#a78bfa', '#080812'] },
-  { name: 'IoT Monitoring', role: 'Smart Operations', quote: 'The right signal at the right time makes operations measurable.', colors: ['#34d399', '#080812'] },
+  { name: 'Security Engineering', role: 'Cybersecurity & Risk', quote: 'Security improves when visibility, evidence, and action work together.', colors: ['#005564', '#e5ebec'] },
+  { name: 'Infrastructure Operations', role: 'Network & Cloud', quote: 'Reliable technology is designed to remain supportable after go-live.', colors: ['#176d79', '#e5ebec'] },
+  { name: 'Software & AI', role: 'Platforms & Automation', quote: 'Productized capability turns hard-won experience into repeatable outcomes.', colors: ['#36444b', '#e5ebec'] },
+  { name: 'IoT Monitoring', role: 'Smart Operations', quote: 'The right signal at the right time makes operations measurable.', colors: ['#267f83', '#e5ebec'] },
 ]
 
 export const faqs = [

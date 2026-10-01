@@ -43,7 +43,7 @@ export default function TeamSection() {
                   </div>
 
                   {/* Back Face */}
-                  <div className="absolute inset-0 bg-signal border border-signal p-8 flex flex-col justify-center text-ink-950 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="brand-contrast absolute inset-0 bg-signal border border-signal p-8 flex flex-col justify-center text-ink-950 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <p className="font-body text-xl lg:text-3xl italic leading-tight mb-8">
                       "{member.quote}"
                     </p>

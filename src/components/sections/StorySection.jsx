@@ -54,7 +54,7 @@ export default function StorySection() {
           />
           <div className="absolute inset-6 border border-white/15 bg-ink-950/90 shadow-[0_20px_70px_rgba(0,0,0,0.6)]" style={{ transform: 'translateZ(10px)' }}>
             <div className="absolute inset-4 border border-white/10" />
-            <div className="absolute left-1/2 top-1/2 w-24 h-24 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-signal text-ink-950 flex items-center justify-center font-display font-bold text-3xl shadow-[0_0_40px_rgba(232,255,71,0.45)]" style={{ transform: 'translate(-50%, -50%) translateZ(45px)' }}>G</div>
+            <div className="brand-contrast absolute left-1/2 top-1/2 w-24 h-24 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-signal text-ink-950 flex items-center justify-center font-display font-bold text-3xl shadow-[0_0_40px_rgba(0,85,100,0.25)]" style={{ transform: 'translate(-50%, -50%) translateZ(45px)' }}>G</div>
             <div className="absolute top-7 left-7 font-mono text-[10px] tracking-[0.24em] text-mist-700" style={{ transform: 'translateZ(30px)' }}>SYSTEM CORE</div>
             <div className="absolute bottom-7 left-7 flex gap-2" style={{ transform: 'translateZ(30px)' }}>
               {[0, 1, 2].map((node) => <span key={node} className="w-2 h-2 rounded-full bg-signal animate-pulse-slow" style={{ animationDelay: `${node * 0.35}s` }} />)}

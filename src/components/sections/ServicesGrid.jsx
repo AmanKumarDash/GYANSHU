@@ -6,14 +6,14 @@ import heroImage from '../../assets/hero.png'
 import ScrollReveal from '../ui/ScrollReveal'
 
 const serviceAccents = {
-  1: '#c6f13d',
-  2: '#4da3ff',
-  3: '#a78bfa',
-  4: '#2dd4bf',
-  5: '#fb923c',
-  6: '#f472b6',
-  7: '#60a5fa',
-  8: '#facc15',
+  1: '#005564',
+  2: '#176d79',
+  3: '#36444b',
+  4: '#267f83',
+  5: '#68777d',
+  6: '#005564',
+  7: '#176d79',
+  8: '#36444b',
 }
 
 export default function ServicesGrid() {

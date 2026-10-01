@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import MagneticButton from '../ui/MagneticButton'
 import AnimatedCounter from '../ui/AnimatedCounter'
+import VisualBanner from '../ui/VisualBanner'
 
 export default function Hero() {
   const containerRef = useRef(null)
@@ -59,30 +60,31 @@ export default function Hero() {
         ref={blobRef} 
         className="absolute top-0 left-0 w-[800px] h-[800px] bg-signal/10 rounded-full blur-[120px] pointer-events-none transition-transform duration-1000 ease-out z-0"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,85,100,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,85,100,0.035)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"></div>
       <div className="grain absolute inset-0 z-[1]"></div>
 
-      <motion.div style={{ opacity, scale, y }} className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-start mt-0 sm:mt-2">
+      <motion.div style={{ opacity, scale, y }} className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[1.15fr_.85fr] items-center gap-8 mt-0 sm:mt-2">
+        <div>
         
         {/* Top Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative overflow-hidden bg-black/45 backdrop-blur-md border border-signal/35 text-white/90 font-mono text-xs px-5 py-3 rounded-md mb-6 flex items-center gap-3 shadow-[0_0_28px_rgba(232,255,71,0.1)]"
+          className="relative overflow-hidden bg-white/85 backdrop-blur-md border border-signal/25 text-ink-950 font-mono text-xs px-5 py-3 rounded-md mb-6 flex items-center gap-3 shadow-[0_8px_28px_rgba(54,68,75,0.08)]"
         >
           <motion.div
             animate={{ x: ['-120%', '220%'] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
             className="absolute inset-y-0 w-16 bg-gradient-to-r from-transparent via-signal/20 to-transparent -skew-x-12"
           />
-          <div className="relative w-2 h-2 bg-signal rounded-full animate-pulse-slow shadow-[0_0_12px_rgba(232,255,71,0.9)]"></div>
+          <div className="relative w-2 h-2 bg-signal rounded-full animate-pulse-slow shadow-[0_0_12px_rgba(0,85,100,0.35)]"></div>
           <span className="relative tracking-wide">Enterprise technology capability, built for operations</span>
           <span className="relative text-signal text-base leading-none">&rarr;</span>
         </motion.div>
 
         {/* Headlines */}
-        <h1 className="font-display text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] leading-[0.76] tracking-tight mb-5 w-full perspective-1000" data-cursor="hover">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[4.75rem] xl:text-[5.5rem] leading-[0.82] tracking-tight mb-5 w-full perspective-1000" data-cursor="hover">
           <div className="overflow-visible">{renderWords(line1)}</div>
           <div className="overflow-visible">{renderWords(line2, true)}</div>
           <div className="overflow-visible">{renderWords(line3)}</div>
@@ -105,13 +107,15 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="flex flex-wrap items-center gap-6"
         >
-          <MagneticButton className="bg-signal text-ink-950 font-display font-medium px-8 py-4 rounded-full text-lg hover:shadow-[0_0_30px_rgba(232,255,71,0.3)] transition-all">
+          <MagneticButton className="brand-contrast bg-signal text-ink-950 font-display font-medium px-8 py-4 rounded-full text-lg hover:shadow-[0_0_30px_rgba(0,85,100,0.24)] transition-all">
             Explore Our Capabilities
           </MagneticButton>
           <button className="border border-white/20 text-mist-900 hover:text-white hover:border-white/40 hover:bg-white/5 font-display font-medium px-8 py-4 rounded-full text-lg transition-all" data-cursor="hover">
             How We Deliver
           </button>
         </motion.div>
+        </div>
+        <div className="w-full max-w-xl mx-auto lg:max-w-none mt-2 lg:mt-0"><VisualBanner page={{ path: '/', title: 'Gyanshu Technology' }} /></div>
 
       </motion.div>
 
@@ -119,7 +123,7 @@ export default function Hero() {
       <motion.div 
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-32 right-12 md:right-32 w-32 h-32 hidden md:flex items-center justify-center opacity-60 z-10"
+        className="hidden"
       >
         <svg viewBox="0 0 100 100" width="100" height="100">
           <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
@@ -145,10 +149,10 @@ export default function Hero() {
       </motion.div>
 
       {/* Abstract floating shapes behind content */}
-      <div className="absolute top-1/2 right-1/4 z-0 opacity-20 pointer-events-none">
+      <div className="hidden">
         <motion.div animate={{ y: [0, -30, 0], rotate: [0, 10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="w-64 h-64 border border-signal rounded-full" />
       </div>
-      <div className="absolute bottom-1/4 right-[10%] z-0 text-white/5 pointer-events-none">
+      <div className="hidden">
         <motion.div animate={{ y: [0, 40, 0], rotate: [0, -15, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}>
           <svg width="200" height="200" viewBox="0 0 100 100" fill="currentColor"><rect width="100" height="100" className="clip-diagonal"/></svg>
         </motion.div>

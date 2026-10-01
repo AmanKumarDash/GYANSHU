@@ -1,81 +1,20 @@
-import { Briefcase as Linkedin, MessageCircle as Twitter, Camera as Instagram, Palette as Dribbble } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Briefcase as Linkedin, Camera as Instagram, Users as Facebook, Mail, Phone, MapPin } from 'lucide-react'
+
+const footerGroups = [
+  { title: 'Services', links: [['Cybersecurity', '/services/cybersecurity'], ['Network Infrastructure', '/services/network'], ['IoT Solutions', '/services/iot'], ['Application Development', '/services/application'], ['Regulatory Compliance', '/services/regulatory'], ['Training', '/training']] },
+  { title: 'Company', links: [['About Gyanshu', '/about'], ['Why Choose Us', '/why-choose-us'], ['Our Mission', '/mission'], ['Core Values', '/core-values'], ['Careers', '/careers'], ['Contact', '/contact']] },
+  { title: 'Explore', links: [['Products', '/products'], ['Industries', '/industries'], ['Our Work', '/our-work'], ['Support', '/support'], ['Help & FAQ', '/help']] },
+]
 
 export default function Footer() {
-  return (
-    <footer className="bg-ink-950 border-t border-white/5 pt-24 pb-8" id="contact">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-24">
-          
-          {/* Col 1 */}
-          <div className="col-span-1 border-r-0 md:border-r md:border-white/5 pr-8">
-            <div className="group inline-block mb-6 relative" data-cursor="hover">
-              <span className="font-display text-3xl font-bold tracking-tight text-white group-hover:text-signal transition-colors duration-500">GYANSHU TECHNOLOGY</span>
-              <div className="absolute top-1/2 left-full ml-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 text-mist-900 text-xs text-nowrap">
-                Technology & Operations
-              </div>
-            </div>
-            <p className="text-mist-900 text-sm mb-8 leading-relaxed max-w-xs">
-              Secure, automate, monitor, and operate critical technology environments.
-            </p>
-            <div className="flex gap-4 text-mist-900">
-              <a href="#" className="hover:text-white transition-colors p-2 -ml-2 rounded-full hover:bg-white/5"><Linkedin size={20} /></a>
-              <a href="#" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"><Twitter size={20} /></a>
-              <a href="#" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"><Instagram size={20} /></a>
-              <a href="#" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"><Dribbble size={20} /></a>
-            </div>
-          </div>
-
-          {/* Col 2 */}
-          <div className="col-span-1">
-            <h4 className="font-mono text-xs text-signal uppercase tracking-widest mb-6">Services</h4>
-            <ul className="flex flex-col gap-4 text-sm text-mist-500">
-              <li><a href="#services" className="hover:text-white transition-colors" data-cursor="text">Cybersecurity</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors" data-cursor="text">IT Infrastructure</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors" data-cursor="text">Software & AI</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors" data-cursor="text">IoT Monitoring</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors" data-cursor="text">Managed IT Services</a></li>
-            </ul>
-          </div>
-
-          {/* Col 3 */}
-          <div className="col-span-1">
-            <h4 className="font-mono text-xs text-signal uppercase tracking-widest mb-6">Company</h4>
-            <ul className="flex flex-col gap-4 text-sm text-mist-500">
-              <li><a href="#about" className="hover:text-white transition-colors" data-cursor="text">About Gyanshu</a></li>
-              <li><a href="#process" className="hover:text-white transition-colors" data-cursor="text">Delivery Model</a></li>
-              <li><a href="#team" className="hover:text-white transition-colors" data-cursor="text">Capability Areas</a></li>
-              <li><a href="#blog" className="hover:text-white transition-colors" data-cursor="text">Insights</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors" data-cursor="text">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Col 4 */}
-          <div className="col-span-1">
-            <h4 className="font-mono text-xs text-signal uppercase tracking-widest mb-6">Contact</h4>
-            <div className="flex flex-col gap-4 text-sm text-mist-500">
-              <a href="mailto:Support.gyanshu@gmail.com" className="hover:text-white transition-colors" data-cursor="hover">Support.gyanshu@gmail.com</a>
-              <p className="mt-4 text-mist-700 leading-relaxed">
-                Enterprise technology, cybersecurity,<br/>
-                infrastructure and managed operations
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-mist-900">
-          <p>© <span title="Gyanshu Technology" className="cursor-help hover:text-signal transition-colors">2026</span> Gyanshu Technology. All rights reserved.</p>
-          <p>Technology that keeps business moving.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <span>·</span>
-            <a href="#" className="hover:text-white">Terms</a>
-            <span>·</span>
-            <a href="#" className="hover:text-white">Sitemap</a>
-          </div>
-        </div>
+  return <footer className="corporate-footer bg-[#36444b] text-white border-t border-white/10 pt-16 pb-8">
+    <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
+        <div className="col-span-2 lg:col-span-2 lg:pr-10"><Link to="/" className="inline-block mb-5"><img src="/gyanshu-logo.svg" alt="Gyanshu Technologies Pvt. Ltd." className="w-[220px] h-auto brightness-0 invert" /></Link><p className="text-mist-900 text-sm mb-7 leading-relaxed max-w-sm">Secure, automate, monitor, and operate critical technology environments with confidence.</p><div className="flex flex-col gap-3 text-sm text-mist-900"><a href="mailto:Support.gyanshu@gmail.com" className="inline-flex items-center gap-3 hover:text-white"><Mail size={16} />Support.gyanshu@gmail.com</a><a href="tel:+919040961361" className="inline-flex items-center gap-3 hover:text-white"><Phone size={16} />+91 90409 61361</a><p className="inline-flex items-center gap-3"><MapPin size={16} />India</p></div><div className="flex gap-3 mt-6 text-mist-900"><a aria-label="LinkedIn" href="https://linkedin.com" className="p-2 rounded-full hover:bg-white/5 hover:text-white"><Linkedin size={18} /></a><a aria-label="Instagram" href="https://instagram.com" className="p-2 rounded-full hover:bg-white/5 hover:text-white"><Instagram size={18} /></a><a aria-label="Facebook" href="https://facebook.com" className="p-2 rounded-full hover:bg-white/5 hover:text-white"><Facebook size={18} /></a></div></div>
+        {footerGroups.map((group) => <div key={group.title}><h4 className="font-mono text-xs text-signal uppercase tracking-widest mb-5">{group.title}</h4><ul className="flex flex-col gap-3 text-sm text-mist-500">{group.links.map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white transition-colors">{label}</Link></li>)}</ul></div>)}
       </div>
-    </footer>
-  )
+      <div className="border-t border-white/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-mist-900"><p>© 2026 Gyanshu Technology. All rights reserved.</p><div className="flex gap-4"><Link to="/privacy" className="hover:text-white">Privacy</Link><Link to="/terms" className="hover:text-white">Terms</Link><Link to="/compliance" className="hover:text-white">Compliance</Link><Link to="/cookies" className="hover:text-white">Cookies</Link></div></div>
+    </div>
+  </footer>
 }

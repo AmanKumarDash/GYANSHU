@@ -11,7 +11,7 @@ export default function PricingSection() {
       features: ['Current-state assessment', 'Risk and gap review', 'Architecture direction', 'Security priorities', 'Executive summary'],
       timeline: 'Scoped',
       btnText: 'Discuss Scope',
-      btnClass: 'bg-signal text-ink-950 hover:shadow-[0_0_20px_rgba(232,255,71,0.2)]',
+      btnClass: 'brand-contrast bg-signal text-ink-950 hover:shadow-[0_0_20px_rgba(0,85,100,0.2)]',
       borderClass: 'border-white/10'
     },
     {
@@ -21,7 +21,7 @@ export default function PricingSection() {
       features: ['Architecture and BoM', 'Deployment and hardening', 'Integration and migration', 'Testing and evidence', 'Documentation and training'],
       timeline: 'Phased',
       btnText: 'Plan Delivery',
-      btnClass: 'bg-signal text-ink-950 hover:shadow-[0_0_20px_rgba(232,255,71,0.2)]',
+      btnClass: 'brand-contrast bg-signal text-ink-950 hover:shadow-[0_0_20px_rgba(0,85,100,0.2)]',
       borderClass: 'border-signal/50',
       popular: true
     },

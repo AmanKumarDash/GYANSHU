@@ -6,31 +6,31 @@ module.exports = {
     extend: {
       colors: {
         ink: {
-          950: '#0a0a0a',
-          900: '#ffffff',
-          800: '#f5f5f2',
-          700: '#e7e7e2',
-          600: '#d4d4ce',
+          950: '#36444b',
+          900: '#f3f6f6',
+          800: '#ffffff',
+          700: '#e5ebec',
+          600: '#a7a9ac',
         },
         signal: {
-          DEFAULT: '#e8ff47',   // electric lime — primary accent
-          dim: '#b8cc38',
+          DEFAULT: '#005564',
+          dim: '#003e49',
         },
         ember: {
-          DEFAULT: '#ff6b35',   // warm orange — secondary accent
-          dim: '#cc5529',
+          DEFAULT: '#36444b',
+          dim: '#28343a',
         },
         mist: {
-          900: '#525252',
-          700: '#737373',
-          500: '#a3a3a3',
-          100: '#f5f5f5',
+          900: '#36444b',
+          700: '#68777d',
+          500: '#7a858a',
+          100: '#f0f3f4',
         },
       },
       fontFamily: {
-        display: ['"Clash Display"', 'sans-serif'],
-        body: ['"Cabinet Grotesk"', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['"Roboto"', 'Arial', 'sans-serif'],
+        body: ['"Roboto"', 'Arial', 'sans-serif'],
+        mono: ['"Roboto"', 'Arial', 'sans-serif'],
       },
       fontSize: {
         '10xl': ['10rem', { lineHeight: '0.9', letterSpacing: '-0.04em' }],

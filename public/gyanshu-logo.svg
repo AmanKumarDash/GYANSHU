@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 96" role="img" aria-labelledby="title">
+  <title id="title">Gyanshu Technologies Pvt. Ltd.</title>
+  <defs><linearGradient id="teal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#26c8b2"/><stop offset="1" stop-color="#005564"/></linearGradient></defs>
+  <g fill="url(#teal)">
+    <path d="M4 31 43 8v36L15 60v21L4 75z"/>
+    <path d="M24 66 43 55v19L67 60v27L43 101 24 90z" transform="translate(0 -8)"/>
+    <path d="M52 40 66 32v32l-14 8zm20-12 12-7v47L72 76zm19-11 11-6v61L91 78z"/>
+    <path d="m20 63 18-11 39 23-17 10z" fill="#82e3d7"/>
+    <rect x="73" y="1" width="8" height="8" rx="1"/><rect x="87" y="13" width="8" height="8" rx="1"/><rect x="101" y="1" width="8" height="8" rx="1"/>
+  </g>
+  <text x="126" y="51" fill="#005564" font-family="Roboto,Arial,sans-serif" font-size="39" font-weight="800" letter-spacing="-1.6">GYANSHU</text>
+  <text x="128" y="76" fill="#36444B" font-family="Roboto,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4.1">TECHNOLOGIES PVT. LTD.</text>
+</svg>
