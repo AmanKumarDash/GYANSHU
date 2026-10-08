@@ -168,9 +168,9 @@
     isolation: isolate;
   }
   .experience-home .experience-link-card:hover {
-    border-color: #42aebe;
-    background: linear-gradient(110deg, rgba(230,244,246,.72), transparent 74%);
-    box-shadow: inset 3px 0 0 #42aebe;
+    border-color: #008c83;
+    background: linear-gradient(110deg, rgba(0,140,131,.2), rgba(66,174,190,.09) 72%, rgba(0,140,131,.03));
+    box-shadow: inset 5px 0 0 #008c83, 0 14px 34px rgba(0,85,100,.16);
   }
   .experience-home #capabilities button:hover {
     background: linear-gradient(100deg, rgba(66,174,190,.12), transparent 85%);
@@ -186,7 +186,38 @@
     pointer-events: none;
     background: linear-gradient(110deg, rgba(0,85,100,.18), rgba(66,174,190,.2) 72%, transparent);
   }
-  .product-experience.product-detail #capabilities article:hover {
+  .product-experience.product-detail .capability-flip-card {
+    transition: transform .3s ease, filter .3s ease;
+  }
+  .product-experience.product-detail .capability-flip-card:hover,
+  .product-experience.product-detail .capability-flip-card:focus-visible {
+    filter: drop-shadow(0 8px 12px rgba(54,68,75,.12));
+    transform: translateY(-2px);
+  }
+  .product-experience.product-detail .capability-flip-front::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, rgba(0,85,100,.07), transparent 48%);
+    pointer-events: none;
+  }
+  .product-experience.product-detail .capability-flip-front::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: linear-gradient(90deg, #9bbab7, #bfd3d1, #d7e3e2);
+  }
+  .product-experience.product-detail .capability-flip-front > * {
+    position: relative;
+    z-index: 1;
+  }
+  .product-experience.product-detail .capability-flip-front > span:first-child { color: #005564 !important; }
+  .product-experience.product-detail .capability-flip-front > h3 { color: #36444b !important; }
+  .product-experience.product-detail .capability-flip-front > span:last-child { color: #718087 !important; }
+  .product-experience.product-detail .capability-flip-back > h3 { color: #005564 !important; }
+  .product-experience.product-detail .capability-flip-back > p { color: #52636a !important; }
+  .product-experience.product-detail #capabilities article:hover:not(.capability-flip-card) {
     border-color: #42aebe;
     background: linear-gradient(145deg, white, #e6f4f6);
     box-shadow: 0 14px 38px rgba(0,85,100,.12);
