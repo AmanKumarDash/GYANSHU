@@ -1,20 +1,54 @@
 import { Link } from 'react-router-dom'
-import { Briefcase as Linkedin, Camera as Instagram, Users as Facebook, Mail, Phone, MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowUp, ArrowUpRight, Briefcase as Linkedin, Camera as Instagram, Users as Facebook } from 'lucide-react'
+import { EASE } from '../../utils/intro'
+import Logo from '../ui/Logo'
 
 const footerGroups = [
   { title: 'Services', links: [['Cybersecurity', '/services/cybersecurity'], ['Network Infrastructure', '/services/network'], ['IoT Solutions', '/services/iot'], ['Application Development', '/services/application'], ['Regulatory Compliance', '/services/regulatory'], ['Training', '/training']] },
   { title: 'Company', links: [['About Gyanshu', '/about'], ['Why Choose Us', '/why-choose-us'], ['Our Mission', '/mission'], ['Core Values', '/core-values'], ['Careers', '/careers'], ['Contact', '/contact']] },
   { title: 'Explore', links: [['Products', '/products'], ['Industries', '/industries'], ['Our Work', '/our-work'], ['Support', '/support'], ['Help & FAQ', '/help']] },
 ]
+const socials = [['LinkedIn', 'https://linkedin.com', Linkedin], ['Instagram', 'https://instagram.com', Instagram], ['Facebook', 'https://facebook.com', Facebook]]
 
 export default function Footer() {
-  return <footer className="corporate-footer bg-[#36444b] text-white border-t border-white/10 pt-16 pb-8">
-    <div className="max-w-7xl mx-auto px-6 md:px-12">
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
-        <div className="col-span-2 lg:col-span-2 lg:pr-10"><Link to="/" className="inline-block mb-5"><img src="/gyanshu-logo.svg" alt="Gyanshu Technologies Pvt. Ltd." className="w-[220px] h-auto brightness-0 invert" /></Link><p className="text-mist-900 text-sm mb-7 leading-relaxed max-w-sm">Secure, automate, monitor, and operate critical technology environments with confidence.</p><div className="flex flex-col gap-3 text-sm text-mist-900"><a href="mailto:Support.gyanshu@gmail.com" className="inline-flex items-center gap-3 hover:text-white"><Mail size={16} />Support.gyanshu@gmail.com</a><a href="tel:+919040961361" className="inline-flex items-center gap-3 hover:text-white"><Phone size={16} />+91 90409 61361</a><p className="inline-flex items-center gap-3"><MapPin size={16} />India</p></div><div className="flex gap-3 mt-6 text-mist-900"><a aria-label="LinkedIn" href="https://linkedin.com" className="p-2 rounded-full hover:bg-white/5 hover:text-white"><Linkedin size={18} /></a><a aria-label="Instagram" href="https://instagram.com" className="p-2 rounded-full hover:bg-white/5 hover:text-white"><Instagram size={18} /></a><a aria-label="Facebook" href="https://facebook.com" className="p-2 rounded-full hover:bg-white/5 hover:text-white"><Facebook size={18} /></a></div></div>
-        {footerGroups.map((group) => <div key={group.title}><h4 className="font-mono text-xs text-signal uppercase tracking-widest mb-5">{group.title}</h4><ul className="flex flex-col gap-3 text-sm text-mist-500">{group.links.map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white transition-colors">{label}</Link></li>)}</ul></div>)}
+  return <footer className="relative overflow-hidden bg-ink-950 text-white">
+    <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent_60%)]" />
+    <div className="shell relative pt-20 md:pt-28">
+      <div className="grid gap-14 lg:grid-cols-[1.25fr_2fr]">
+        <div>
+          <Link to="/" aria-label="Gyanshu Technologies home"><Logo tone="light" className="h-11 w-auto" /></Link>
+          <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/55">Secure, automate, monitor, and operate critical technology environments with confidence.</p>
+          <div className="mt-8 flex flex-col gap-2">
+            <a href="mailto:Support.gyanshu@gmail.com" className="group inline-flex w-fit items-center gap-2 font-display text-xl tracking-tight text-white transition-colors hover:text-brand-300 md:text-2xl">Support.gyanshu@gmail.com<ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
+            <a href="tel:+919040961361" className="w-fit text-white/55 transition-colors hover:text-white">+91 90409 61361</a>
+            <p className="text-white/35">India</p>
+          </div>
+          <div className="mt-8 flex gap-2">
+            {socials.map(([label, href, Icon]) => <a key={label} aria-label={label} href={href} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:border-brand-400 hover:bg-brand-400 hover:text-ink"><Icon size={16} /></a>)}
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+          {footerGroups.map((group) => <div key={group.title}>
+            <h4 className="font-mono text-[10.5px] uppercase tracking-[.2em] text-white/35">{group.title}</h4>
+            <ul className="mt-5 flex flex-col gap-3">
+              {group.links.map(([label, to]) => <li key={to}><Link to={to} className="group relative inline-block text-[14.5px] text-white/70 transition-colors hover:text-white">{label}<span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-brand-400 transition-transform duration-500 ease-expo group-hover:scale-x-100" /></Link></li>)}
+            </ul>
+          </div>)}
+        </div>
       </div>
-      <div className="border-t border-white/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-mist-900"><p>© 2026 Gyanshu Technology. All rights reserved.</p><div className="flex gap-4"><Link to="/privacy" className="hover:text-white">Privacy</Link><Link to="/terms" className="hover:text-white">Terms</Link><Link to="/compliance" className="hover:text-white">Compliance</Link><Link to="/cookies" className="hover:text-white">Cookies</Link></div></div>
+
+      <div className="mt-20 flex flex-col-reverse items-start justify-between gap-5 border-t border-white/10 py-7 text-xs text-white/40 md:flex-row md:items-center">
+        <p>© 2026 Gyanshu Technology. All rights reserved.</p>
+        <div className="flex flex-wrap items-center gap-5">
+          {[['Privacy', '/privacy'], ['Terms', '/terms'], ['Compliance', '/compliance'], ['Cookies', '/cookies']].map(([l, to]) => <Link key={to} to={to} className="transition-colors hover:text-white">{l}</Link>)}
+          <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="ml-2 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-white/40 hover:text-white" aria-label="Back to top"><ArrowUp size={15} /></button>
+        </div>
+      </div>
+    </div>
+
+    <div aria-hidden="true" className="relative -mb-[3.2vw] flex select-none justify-center overflow-hidden px-2">
+      {'GYANSHU'.split('').map((ch, i) => <motion.span key={i} className="inline-block bg-gradient-to-b from-white/[.16] to-white/0 bg-clip-text font-poster text-[29vw] leading-[.8] text-transparent" initial={{ y: '40%', opacity: 0 }} whileInView={{ y: '0%', opacity: 1 }} viewport={{ once: true, margin: '0px 0px -5% 0px' }} transition={{ duration: 1.2, delay: i * 0.06, ease: EASE }}>{ch}</motion.span>)}
     </div>
   </footer>
 }
