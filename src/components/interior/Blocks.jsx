@@ -501,13 +501,13 @@ function FaqRow({ item, open, onToggle }) {
   </div>
 }
 
-export function FaqDark({ eyebrow = 'FAQ', title = 'Questions, answered.', lede, items, id }) {
+export function FaqDark({ eyebrow = 'FAQ', title = 'Questions, answered.', lede, items, id, image, imageAlt = '' }) {
   const [open, setOpen] = useState(0)
   return <section id={id} className="px-3 py-6 sm:px-5">
     <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-20 text-white md:py-28">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_left,black,transparent_60%)]" />
       <div className="shell relative grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-center">
-        <Reveal><Shield3D /></Reveal>
+        <Reveal>{image?<div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-white/10 shadow-lift"><img src={photo(image,1200)} alt={imageAlt} loading="lazy" className="h-full w-full object-cover"/></div>:<Shield3D />}</Reveal>
         <div>
           <Reveal><Eyebrow dark>{eyebrow}</Eyebrow></Reveal>
           <Reveal delay={0.05}><h2 className="h-section mt-5 text-white">{title}</h2></Reveal>

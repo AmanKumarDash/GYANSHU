@@ -11,7 +11,7 @@ const groups = [
   { label: 'Services', to: '/solutions', links: serviceLinks, blurb: 'Cybersecurity, infrastructure, IoT, applications, and compliance expertise.' },
   { label: 'Industries', to: '/industries', links: industryLinks, blurb: 'Secure technology shaped for high-stakes environments.' },
 ]
-const pages = [['About', '/about'], ['Our Work', '/our-work'], ['Training', '/training'], ['Careers', '/careers']]
+const pages = [['About', '/about'], ['Our Work', '/our-work'], ['Training', '/training'], ['Blog', '/blog'], ['Careers', '/careers']]
 
 export default function Navbar() {
   const ready = useIntroReady()

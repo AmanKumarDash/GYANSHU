@@ -7,4 +7,4 @@ export const useIntroReady = () => useContext(IntroContext)
 export const EASE = [0.16, 1, 0.3, 1]
 export const EASE_IN_OUT = [0.76, 0, 0.24, 1]
 
-export const photo = (id, w = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
+export const photo = (id, w = 1200) => id.startsWith('/') ? id : `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`

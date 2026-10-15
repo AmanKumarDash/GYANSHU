@@ -162,7 +162,7 @@ export function CompanyPage({ page }) {
     quotes: <Quotes key="q" eyebrow="Voices from our teams" title="The people behind" accent="the work." lede="Principles our practice teams bring to every engagement." items={voices} image="photo-1600880292203-757bb62b4baf" />,
     bento: <Bento key="b" eyebrow="Capabilities" title="Capabilities that work" accent="together." lede="Cybersecurity, infrastructure, software, AI, and connected operations." items={serviceCards} />,
     steps: <StepsBanner key="st" eyebrow="How we deliver" title="From understanding to" accent="improvement." steps={delivery} image="photo-1639322537228-f710d846310a" note="A considered sequence that keeps priorities visible and ownership clear." />,
-    learning: <StepsBanner key="l" eyebrow="The journey" title="Learn, practice," accent="grow." steps={[['Learn', 'Structured, instructor-led sessions.'], ['Practice', 'Hands-on labs with real tools and scenarios.'], ['Grow', 'Confidence you can apply on the job.']]} image="photo-1552664730-d307ca884978" note="Looking for a platform? Explore Gyanshu LMS for structured digital learning." />,
+    learning: <StepsBanner key="l" eyebrow="The journey" title="Learn, practice," accent="grow." steps={[['Learn', 'Structured, instructor-led sessions.'], ['Practice', 'Hands-on labs with real tools and scenarios.'], ['Grow', 'Confidence you can apply on the job.']]} image="photo-1552664730-d307ca884978" note="Looking for a school operations platform? Explore SMMS for connected administration." />,
     cases: <CaseGrid key="c" eyebrow="Case studies" title="See all our work" muted={2} items={workItems} pageSize={6} />,
   }
   return <main>

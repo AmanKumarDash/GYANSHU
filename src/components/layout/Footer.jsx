@@ -7,7 +7,7 @@ import Logo from '../ui/Logo'
 const footerGroups = [
   { title: 'Services', links: [['Cybersecurity', '/services/cybersecurity'], ['Network Infrastructure', '/services/network'], ['IoT Solutions', '/services/iot'], ['Application Development', '/services/application'], ['Regulatory Compliance', '/services/regulatory'], ['Training', '/training']] },
   { title: 'Company', links: [['About Gyanshu', '/about'], ['Why Choose Us', '/why-choose-us'], ['Our Mission', '/mission'], ['Core Values', '/core-values'], ['Careers', '/careers'], ['Contact', '/contact']] },
-  { title: 'Explore', links: [['Products', '/products'], ['Industries', '/industries'], ['Our Work', '/our-work'], ['Support', '/support'], ['Help & FAQ', '/help']] },
+  { title: 'Explore', links: [['Products', '/products'], ['Industries', '/industries'], ['Our Work', '/our-work'], ['Blog & Updates', '/blog'], ['Support', '/support'], ['Help & FAQ', '/help']] },
 ]
 const socials = [['LinkedIn', 'https://linkedin.com', Linkedin], ['Instagram', 'https://instagram.com', Instagram], ['Facebook', 'https://facebook.com', Facebook]]
 

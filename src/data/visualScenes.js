@@ -13,8 +13,8 @@ const routeScenes = {
   '/products/argos-enms':['Live network operations','NODES / UPTIME / CAPACITY','network','photo-1597733336794-12d05021d510',35402241],
   '/products/panoptix':['External asset discovery','ASSETS / EXPOSURE / RESPONSE','security','photo-1516321318423-f06f85e504b3',32336446],
   '/products/vapt':['Vulnerability scan cycle','SCAN / VALIDATE / REPORT','security','photo-1516321318423-f06f85e504b3',5377646],
-  '/products/hms':['Connected residence operations','ROOMS / PEOPLE / SERVICES','company','photo-1521737711867-e3b97375f902',8102889],
-  '/products/lms':['Digital learning progress','CONTENT / PRACTICE / MASTERY','learning','photo-1509062522246-3755977927d7',8102889],
+  '/products/smms':['Connected school operations','STUDENTS / OPERATIONS / COMMUNITY','learning','photo-1509062522246-3755977927d7',8102889],
+  '/products/gyanshu-ai-office-assistance':['AI office assistance','ASK / DRAFT / SUMMARISE','application','photo-1498050108023-c5249f4df085',5925286],
   '/services/cybersecurity':['Security operations','ASSESS / PROTECT / RESPOND','security','photo-1516321318423-f06f85e504b3',35402241],
   '/services/network':['Resilient network design','CONNECT / MONITOR / OPTIMIZE','network','photo-1597733336794-12d05021d510',35402241],
   '/services/iot':['Industrial IoT systems','SENSE / AUTOMATE / IMPROVE','iot','photo-1581091226825-a6a2a5aee158',32386581],
@@ -36,8 +36,8 @@ export function getScene(page = {}) {
     if (/cybersecurity|vapt|panoptix|privacy|compliance|regulatory|support|help/.test(path)) family = 'security'
     else if (/network|ipdr|argos|telecom|datacenter/.test(path)) family = 'network'
     else if (/iot|manufacturing/.test(path)) family = 'iot'
-    else if (/application|hms/.test(path)) family = 'application'
-    else if (/training|education|lms/.test(path)) family = 'learning'
+    else if (/application|office-assistance/.test(path)) family = 'application'
+    else if (/training|education|smms/.test(path)) family = 'learning'
     else if (/industries|government|finance|enterprise|healthcare|startup/.test(path)) family = 'industry'
     else if (/products/.test(path)) family = 'product'
     else if (/work|careers|about|mission|values|choose/.test(path)) family = 'company'

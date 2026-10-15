@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, Building2, GraduationCap, Radar, ScanEye, ShieldCheck, Waypoints } from 'lucide-react'
+import { ArrowUpRight, Building2, Radar, ScanEye, ShieldCheck, Sparkles, Waypoints } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { productLinks } from '../../data/sitePages'
 import { ArrowButton, Eyebrow, MaskLines, Reveal } from '../ui/Motion'
@@ -10,8 +10,8 @@ const meta = {
   'argos-enms': [Radar, 'The all-seeing network intelligence platform.'],
   panoptix: [ScanEye, 'Real-time attack surface detection.'],
   vapt: [ShieldCheck, 'Periodic vulnerability assessment & compliance scanning.'],
-  hms: [Building2, 'Smart hostel administration.'],
-  lms: [GraduationCap, 'Engaging learning experiences.'],
+  smms: [Building2, 'Connected school operations.'],
+  'gyanshu-ai-office-assistance': [Sparkles, 'AI assistance for everyday office work.'],
 }
 
 // Deterministic constellation of nodes for the backdrop.

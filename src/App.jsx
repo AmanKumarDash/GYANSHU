@@ -7,6 +7,7 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import ExperienceHome from './components/sections/ExperienceHome'
 import InteriorPage from './components/sections/InteriorPage'
+import { BlogArticle, BlogIndex } from './components/sections/BlogPages'
 import SplashScreen from './components/ui/SplashScreen'
 import { IntroContext } from './utils/intro'
 
@@ -52,6 +53,8 @@ function SiteShell() {
         <Navbar />
         <Routes>
           <Route path="/" element={<ExperienceHome />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="*" element={<InteriorPage key={pathname} />} />
         </Routes>
         <Footer />
