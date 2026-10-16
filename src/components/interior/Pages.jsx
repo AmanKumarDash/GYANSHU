@@ -8,7 +8,7 @@ import { getScene } from '../../data/visualScenes'
 import { defaultNeeds, faqPicks, imagePools, industryIcons, industryImages, operatingNeeds, serviceImages } from '../../data/pageMedia'
 import { ArrowButton, Eyebrow, Reveal } from '../ui/Motion'
 import { Bento, CaseGrid, CtaPhotos, FaqDark, FeatureCards, HeroCentered, KeyFeatures, NeedsSplit, Orbit, Quotes, Statement, StatsBand, StepsBanner } from './Blocks'
-import { EASE } from '../../utils/intro'
+import { EASE, photo } from '../../utils/intro'
 
 /* ---------- shared copy & helpers ---------- */
 
@@ -71,21 +71,261 @@ export function IndustriesListing({ page }) {
 /* ---------- service detail ---------- */
 
 export function ServiceDetail({ page }) {
+  if (page.path === '/services/cybersecurity') return <CybersecurityServiceContent page={page} />
+  const isNetwork = page.path === '/services/network'
+  const isIot = page.path === '/services/iot'
+  const isApplication = page.path === '/services/application'
+  const isRegulatory = page.path === '/services/regulatory'
   const hero = serviceImages[page.path]
   const images = [hero, ...pool(page).filter((id) => id !== hero)].slice(0, 4)
-  const related = serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c, i) => ({ ...c, tag: `Service ${String(i + 1).padStart(2, '0')}` }))
+  const related = isIot
+    ? [
+        { title: 'FlowBits IPDR Analytics', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Related solution' },
+      ]
+    : isNetwork
+    ? [
+        { title: 'FlowBits IPDR Analytics', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Network solution' },
+        { title: 'NYTT VAPT', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: imagePools.security[0], to: '/products/vapt', tag: 'Security solution' },
+      ]
+    : serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c, i) => ({ ...c, tag: `Service ${String(i + 1).padStart(2, '0')}` }))
+  const process = isIot
+    ? [['Discovery & Strategy', ''], ['Prototype Development', ''], ['Pilot Implementation', ''], ['Full-scale Deployment', ''], ['Monitoring & Optimization', '']]
+    : isNetwork
+    ? [['Current Infrastructure Audit', ''], ['Performance Analysis', ''], ['Security Assessment', ''], ['Design & Planning', ''], ['Implementation & Support', '']]
+    : engagement
+  const networkOfferings = [
+    ['Network Design', 'Strategic network architecture design for optimal performance, scalability, and security.'],
+    ['IT Setup', 'Complete IT infrastructure setup and configuration for new installations and upgrades.'],
+    ['IT Infra AMC', 'Annual maintenance contracts for proactive monitoring and preventive maintenance.'],
+    ['IT Operations', '24/7 IT operations support ensuring continuous system availability and performance.'],
+    ['Micro Data Center', 'Compact, secure data center solutions for edge computing and local data processing.'],
+    ['Open Source Solutions', 'Cost-effective open source networking solutions with enterprise-grade reliability.'],
+    ['Cloud Networking', 'Hybrid and multi-cloud networking solutions for seamless cloud integration.'],
+    ['NMS & NOC Services', 'Network monitoring and operations center services for proactive network management.'],
+  ]
+  const networkStrengths = [
+    'Certified Network Engineers: CCNA, CCNP, and other industry-certified professionals with years of experience.',
+    'Proactive Monitoring: 24/7 network monitoring with automated alerts and rapid response capabilities.',
+    'Scalable Solutions: Network designs that grow with your business and adapt to changing requirements.',
+    'Redundant Systems: High-availability network designs with built-in redundancy and failover mechanisms.',
+  ]
+  const iotOfferings = [
+    ['Rapid Prototyping', 'Fast, iterative prototyping for IoT and industrial applications to accelerate product development.'],
+    ['Industrial Automation', 'Smart automation systems that enhance productivity, precision, and operational safety in manufacturing.'],
+    ['Smart Manufacturing', 'Transform traditional factories into intelligent, data-driven manufacturing hubs with IoT integration.'],
+    ['Embedded Solutions', 'Custom embedded systems that seamlessly integrate with hardware for real-time control and monitoring.'],
+    ['Platform & Cloud Migration', 'Seamless migration of legacy systems and applications to secure, scalable cloud infrastructure.'],
+    ['Infrastructure Automation', 'Automated infrastructure provisioning, scaling, and management with cutting-edge DevOps tools.'],
+    ['IoT Security', 'Advanced end-to-end IoT cybersecurity solutions to protect connected devices and networks.'],
+    ['IoT Consulting', 'Expert guidance on IoT strategy, architecture, and implementation for successful digital transformation.'],
+  ]
+  const iotApplications = [
+    ['Manufacturing', 'Predictive maintenance, quality control, and production optimization through IoT sensors and analytics.', ['Equipment monitoring', 'Quality assurance', 'Energy optimization']],
+    ['Healthcare', 'Remote patient monitoring, asset tracking, and automated inventory management in healthcare facilities.', ['Patient monitoring', 'Asset tracking', 'Medication management']],
+    ['Retail', 'Inventory management, customer behavior analytics, and smart shelving solutions for retail environments.', ['Smart inventory', 'Customer analytics', 'Loss prevention']],
+    ['Smart Buildings', 'Energy management, occupancy tracking, and automated facility operations for intelligent buildings.', ['Energy efficiency', 'Space optimization', 'Security integration']],
+    ['Agriculture', 'Precision farming, crop monitoring, and automated irrigation systems for modern agriculture.', ['Crop monitoring', 'Soil analysis', 'Automated irrigation']],
+    ['Smart Cities', 'Urban infrastructure monitoring, traffic management, and environmental sensing for smart city initiatives.', ['Traffic management', 'Environmental monitoring', 'Infrastructure monitoring']],
+  ]
+  const iotImplementation = [
+    ['Requirements Analysis', 'Understanding your specific needs and defining the IoT solution scope and objectives.'],
+    ['Hardware Selection', 'Choosing the right sensors, devices, and connectivity solutions for your application.'],
+    ['Platform Development', 'Building the IoT platform for data collection, processing, and visualization.'],
+    ['Integration & Testing', 'Seamless integration with existing systems and comprehensive testing for reliability.'],
+  ]
+  const applicationServices = [
+    ['Custom Application Development', 'Tailored software solutions designed specifically for your business processes and requirements.'],
+    ['Web Application Development', 'Scalable, responsive web applications with seamless API integrations and modern architectures.'],
+    ['Mobile App Development', 'Native and cross-platform mobile applications for iOS and Android with intuitive user experiences.'],
+    ['Business Process Automation', 'Streamline workflows and automate repetitive tasks to improve efficiency and reduce errors.'],
+    ['Application Modernization', 'Upgrade legacy systems to modern frameworks, improving performance and maintainability.'],
+    ['App Maintenance & Support', 'Ongoing maintenance, updates, and technical support to keep your applications running smoothly.'],
+    ['UX/UI Design Services', 'Creating intuitive, user-friendly interfaces that enhance user satisfaction and engagement.'],
+    ['Application Security Services', 'Built-in security features and regular security audits to protect your applications and data.'],
+  ]
+  const applicationApproach = [
+    ['Requirements Analysis', 'Thorough analysis of business requirements and user needs to define project scope.'],
+    ['Agile Development', 'Iterative development with regular sprints, reviews, and continuous feedback loops.'],
+    ['Quality Assurance', 'Comprehensive testing including unit tests, integration tests, and user acceptance testing.'],
+    ['Deployment & Support', 'Smooth deployment and ongoing support to ensure optimal application performance.'],
+  ]
+  const appLifecycle = [['Discovery & Planning', ''], ['Design & Prototyping', ''], ['Development & Testing', ''], ['Deployment & Launch', ''], ['Maintenance & Support', '']]
+  const applicationStack = [
+    ['React', 'Frontend'], ['React Native', 'Mobile'], ['Python', 'Backend'], ['Java', 'Enterprise'], ['PostgreSQL', 'Database'], ['AWS/Azure', 'Cloud'],
+  ]
+  const applicationSolutions = [
+    { title: 'NYTT HMS', text: 'Hostel Management System. A comprehensive solution for modern student housing, streamlining operations from allocation to billing with automated efficiency.', tags: ['View Details'] },
+    { title: 'NYTT LMS', text: 'Learning Management System. An intuitive platform for educational institutions and corporate training, facilitating course delivery, tracking, and assessment with ease.', tags: ['View Details'] },
+  ]
+  const regulatoryServices = [
+    ['Compliance Management', 'Legal and regulatory requirements including ISO, GRC, GDPR, HIPAA, PCI DSS, FISMA, and SOC standards.'],
+    ['Governance Framework', 'Designing frameworks and tools for accountability, decision-making, and ethical business practices.'],
+    ['Internal Audit & Control', 'Evaluating the effectiveness of internal controls, governance, and risk management processes.'],
+    ['Risk Management', 'Comprehensive risk identification, assessment, and mitigation strategies to protect your organization.'],
+    ['Incident & Crisis Management', 'Rapid response, continuity planning, and crisis communication to ensure operational resilience.'],
+    ['Cybersecurity & Data Privacy', 'Advanced data protection frameworks and management practices for regulatory compliance.'],
+    ['Regulatory Change Management', 'Monitoring, evaluating, and adapting to regulatory changes affecting your organization.'],
+    ['Training & Awareness Programs', 'Comprehensive training and workshops on governance, risk, and compliance for your team.'],
+  ]
+  const complianceStandards = [
+    ['GDPR', 'General Data Protection Regulation compliance for EU data protection and privacy requirements.', ['Data protection impact assessments', 'Privacy by design implementation', 'Data subject rights management']],
+    ['HIPAA', 'Health Insurance Portability and Accountability Act compliance for healthcare data protection.', ['PHI protection and handling', 'Security risk assessments', 'Breach notification procedures']],
+    ['PCI DSS', 'Payment Card Industry Data Security Standard compliance for payment processing security.', ['Cardholder data protection', 'Network segmentation', 'Regular security testing']],
+    ['FISMA', 'Federal Information Security Management Act compliance for U.S. government agencies.', ['Security controls implementation', 'Continuous monitoring', 'Federal compliance reporting']],
+    ['SOC 2', 'System and Organization Controls 2 compliance for service organization security and privacy.', ['Trust principles assessment', 'Control environment evaluation', 'Compliance auditing']],
+    ['ISO Standards', 'International Organization for Standardization compliance including ISO 27001, 27002, and others.', ['Information security management', 'Risk management frameworks', 'International standards alignment']],
+  ]
+  const complianceProcess = [
+    ['Gap Analysis', 'Comprehensive assessment of current compliance status and identification of gaps.'],
+    ['Framework Development', 'Design and implementation of governance, risk, and compliance frameworks.'],
+    ['Policy & Procedure Creation', 'Development of comprehensive policies, procedures, and controls for compliance.'],
+    ['Training & Awareness', 'Employee training programs and awareness campaigns for compliance culture.'],
+  ]
+  const complianceRoadmap = [['Assessment & Planning', ''], ['Framework Design', ''], ['Policy Implementation', ''], ['Testing & Validation', ''], ['Monitoring & Maintenance', '']]
+  const complianceBenefits = [
+    ['Risk Mitigation', 'Reduce legal and financial risks through proactive compliance measures and robust risk management.'],
+    ['Stakeholder Trust', 'Build confidence with customers, partners, and regulators through demonstrated compliance commitment.'],
+    ['Business Opportunities', 'Access new markets and partnerships that require specific compliance certifications and standards.'],
+    ['Operational Excellence', 'Improve processes, reduce inefficiencies, and enhance overall business performance through compliance frameworks.'],
+  ]
+  const complianceTools = [
+    { title: 'FlowBits IPDR Analytics', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['View Details'] },
+    { title: 'NYTT VAPT', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', tags: ['View Details'] },
+  ]
   return <main>
-    <HeroCentered eyebrow="Services / Expertise" crumbs={[['Services', '/solutions'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
-      images={images} mediaLabel={getScene(page).label} captions={[getScene(page).subtitle]} chips={page.features.slice(0, 3)} />
-    <Statement eyebrow="Overview" text={page.intro} />
-    <NeedsSplit eyebrow="Business challenges" title="Where focused expertise can help." items={operatingNeeds[page.path] || defaultNeeds} />
-    <FeatureCards eyebrow="What we bring" title="Expertise that moves" accent="work forward." lede="A focused team helps you make progress from the first assessment through implementation and continuous improvement." items={page.features.map((f) => ({ title: f }))} />
-    <StepsBanner eyebrow="How engagements move" title="From first conversation to" accent="ongoing support." steps={engagement} image={images[1] || hero} note="Practical expertise. Clear communication. Dependable outcomes." />
-    <FaqDark lede={`Common questions about ${page.title.toLowerCase()}.`} items={pickFaqs(page.path, 4)} />
-    <CaseGrid eyebrow="Related services" title="Explore related services" muted={2} items={related} link={{ label: 'All solutions', to: '/solutions' }} />
-    <CtaPhotos images={images.concat(imagePools.company.slice(0, 2))} />
+    <HeroCentered eyebrow={isRegulatory ? 'REGULATORY COMPLIANCE' : isApplication ? 'INITIALIZING APPLICATION SERVICES' : isIot ? 'INTERNET OF THINGS' : isNetwork ? 'Network Services' : 'Services / Expertise'} crumbs={[["Services", '/solutions'], [page.title]]} title={isRegulatory ? 'Navigate Regulations Confidently with Our Tailored GRC Services' : isApplication ? 'Empowering Businesses: Through Agile Development Smarter Solutions for Digital World' : isIot ? 'Driving Innovation with IoT' : page.title} pill={images}
+      subtitle={isRegulatory ? 'Comprehensive Regulatory Compliance Services' : isApplication ? 'Custom Application Development' : isIot ? 'Smart Solutions That Connect Devices, Transform Industries' : isNetwork ? 'Optimizing Connectivity: Enhancing Performance with Reliable IT Infrastructure' : page.subtitle}
+      intro={isRegulatory ? 'Gyanshu provides comprehensive regulatory compliance services designed to help businesses navigate complex regulatory landscapes.' : isApplication ? 'Gyanshu provides innovative application development services with custom software solutions that enhance operational efficiency and drive business growth.' : isIot ? 'Gyanshu provides truly network services with IoT integration for real-time data, automation, and enhanced decision-making across various industries.' : isNetwork ? 'Gyanshu provides truly network services with design, implementation, and management solutions that optimize connectivity and enhance performance for your business.' : undefined}
+      images={images} mediaLabel={getScene(page).label} captions={[getScene(page).subtitle]} chips={isRegulatory ? ['GRC Services', 'Compliance Management', 'Risk Management'] : isApplication ? ['Web Applications', 'Mobile Apps', 'Business Automation'] : isIot ? ['IoT Solutions', 'Industrial Automation', 'Smart Manufacturing'] : isNetwork ? ['Network Design', 'IT Operations', 'NMS & NOC Services'] : page.features.slice(0, 3)} />
+    <Statement eyebrow={isRegulatory ? 'Comprehensive GRC Solutions' : isApplication ? 'Comprehensive Application Development Services' : isIot ? 'Comprehensive IoT Solutions' : isNetwork ? 'Complete Network Infrastructure Solutions' : 'Overview'} text={isRegulatory ? 'From risk assessment to compliance auditing, we help you meet all regulatory requirements and industry standards.' : isApplication ? 'From concept to deployment, we deliver robust, scalable applications that meet your unique business requirements.' : isIot ? 'From rapid prototyping to industrial automation, we deliver end-to-end IoT solutions that drive digital transformation.' : isNetwork ? 'Gyanshu delivers end-to-end network services from design and implementation to ongoing management and support.' : page.intro} />
+    {!isIot && !isApplication && !isRegulatory && <NeedsSplit eyebrow={isNetwork ? 'Why Gyanshu Network Services' : 'Business challenges'} title={isNetwork ? 'Enterprise-Grade Network Infrastructure' : 'Where focused expertise can help.'} items={isNetwork ? networkStrengths : (operatingNeeds[page.path] || defaultNeeds)} />}
+    <FeatureCards eyebrow={isRegulatory ? 'GRC Services' : isApplication ? 'Application Development Services' : isNetwork ? 'Network Services' : 'What we bring'} title={isRegulatory ? 'Comprehensive GRC Solutions' : isApplication ? 'Comprehensive Application Development Services' : isNetwork ? 'Complete Network Infrastructure Solutions' : 'Expertise that moves'} accent={isNetwork || isApplication || isRegulatory ? '' : 'work forward.'}
+      lede={isApplication || isRegulatory ? undefined : isNetwork ? 'Gyanshu delivers end-to-end network services from design and implementation to ongoing management and support.' : 'A focused team helps you make progress from the first assessment through implementation and continuous improvement.'}
+      items={isRegulatory ? regulatoryServices.map(([title, text]) => ({ title, text })) : isApplication ? applicationServices.map(([title, text]) => ({ title, text })) : isIot ? iotOfferings.map(([title, text]) => ({ title, text })) : isNetwork ? networkOfferings.map(([title, text]) => ({ title, text })) : page.features.map((f) => ({ title: f }))} />
+    {isRegulatory && <FeatureCards eyebrow="Compliance Standards" title="Industry Compliance Frameworks" lede="We help organizations navigate complex compliance frameworks and industry standards across various sectors." items={complianceStandards.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
+    {isRegulatory && <FeatureCards eyebrow="Compliance Process" title="Structured Approach to Regulatory Compliance" items={complianceProcess.map(([title, text]) => ({ title, text }))} />}
+    {isApplication && <FeatureCards eyebrow="Our Development Approach" title="Agile Development Methodology" items={applicationApproach.map(([title, text]) => ({ title, text }))} />}
+    {isApplication && <FeatureCards eyebrow="Technology Stack" title="Technology Stack" lede="We leverage cutting-edge technologies to build robust, scalable applications." items={applicationStack.map(([title, text]) => ({ title, tags: [text] }))} cols={3} />}
+    {isApplication && <FeatureCards eyebrow="Software Solutions" title="Software Solutions" items={applicationSolutions} cols={2} />}
+    {isApplication && <FeatureCards eyebrow="Development Training" title="Development Training" items={['Web App Audit', 'Cloud'].map((title) => ({ title }))} cols={2} />}
+    {isRegulatory && <StepsBanner eyebrow="Compliance Process" title="Compliance Implementation Roadmap" steps={complianceRoadmap} image={images[1] || hero} />}
+    {isRegulatory && <FeatureCards eyebrow="Benefits of Compliance" title="Benefits of Compliance" lede="Regulatory compliance isn't just about avoiding penalties—it's about building trust and competitive advantage." items={complianceBenefits.map(([title, text]) => ({ title, text }))} />}
+    {isRegulatory && <FeatureCards eyebrow="Compliance & Auditing Tools" title="Compliance & Auditing Tools" items={complianceTools} cols={2} />}
+    {isRegulatory && <FeatureCards eyebrow="Compliance Training" title="Compliance Training" items={['VAPT', 'Web App Audit'].map((title) => ({ title }))} cols={2} />}
+    {isIot && <FeatureCards eyebrow="IOT APPLICATIONS" title="Industry Solutions" lede="Our IoT solutions are tailored for specific industries, delivering measurable results and competitive advantages." items={iotApplications.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
+    {isIot && <FeatureCards eyebrow="IMPLEMENTATION PROCESS" title="End-to-End IoT Solution Development" items={iotImplementation.map(([title, text]) => ({ title, text }))} />}
+    {isNetwork && <FeatureCards eyebrow="Network Certification Training" title="Network Certification Training" items={['CCNA', 'CCNP', 'Firewall', 'Linux'].map((title) => ({ title }))} cols={4} />}
+    {isIot && <FeatureCards eyebrow="IoT Training" title="IoT Training" items={['Cyber Security', 'IoT'].map((title) => ({ title }))} cols={2} />}
+    {!isRegulatory && <StepsBanner eyebrow={isApplication ? 'Development Lifecycle' : isIot ? 'IMPLEMENTATION PROCESS' : isNetwork ? 'Network Assessment Process' : 'How engagements move'} title={isApplication ? 'Development Lifecycle' : isIot ? 'IoT Development Roadmap' : isNetwork ? 'Network Assessment Process' : 'From first conversation to'} accent={isApplication || isIot || isNetwork ? '' : 'ongoing support.'} steps={isApplication ? appLifecycle : process} image={images[1] || hero} note={isApplication || isIot || isNetwork ? undefined : 'Practical expertise. Clear communication. Dependable outcomes.'} />}
+    {!isNetwork && !isIot && !isApplication && !isRegulatory && <FaqDark lede={`Common questions about ${page.title.toLowerCase()}.`} items={pickFaqs(page.path, 4)} />}
+    {!isApplication && !isRegulatory && <CaseGrid eyebrow={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Related services'} title={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Explore related services'} muted={isNetwork || isIot ? 0 : 2} items={related} pageSize={isNetwork ? 2 : isIot ? 1 : 6} link={{ label: 'All solutions', to: '/solutions' }} />}
+    <CtaPhotos eyebrow={isRegulatory ? 'Compliance & Auditing' : isApplication ? 'Application Development' : isIot ? 'IoT' : isNetwork ? 'Network Infrastructure' : undefined} title={isRegulatory ? 'Ensure Compliance, Protect Your Business' : isApplication ? 'Transform Your Business with Custom Applications' : isIot ? 'Transform Your Business with IoT' : isNetwork ? 'Secure Your Network Infrastructure' : undefined}
+      text={isRegulatory ? "Let's discuss your compliance requirements and build a comprehensive regulatory strategy." : isApplication ? "Let's discuss your project requirements and build the perfect solution for your business needs. Call: +91 9938883028" : isIot ? "Unlock the power of connected devices and real-time data insights. Let’s build your IoT solution today." : isNetwork ? "Don't let network issues slow down your business. Contact us for a comprehensive network assessment." : undefined}
+      cta={isRegulatory ? 'Compliance Assessment' : isApplication ? 'Start Your Project' : isIot ? 'Start IoT Project' : isNetwork ? 'Get Network Assessment' : undefined} images={images.concat(imagePools.company.slice(0, 2))} />
+    {isNetwork && <section className="bg-ink px-5 py-4 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919938883028">+91 9938883028</a></section>}
   </main>
 }
+
+const cyberServices = [
+  ['VAPT Services', 'Vulnerability Assessment and Penetration Testing to identify and remediate security weaknesses.', 'photo-1550751827-4bd374c3f58b'],
+  ['Source Code Review', 'Comprehensive code analysis to identify security vulnerabilities in your applications.', 'photo-1515879218367-8466d910aaa4'],
+  ['Mobile Security', 'Protect mobile applications and devices with advanced security measures and best practices.', 'photo-1516321318423-f06f85e504b3'],
+  ['Cloud Security', 'Secure cloud infrastructure with next-gen security tools and compliance measures.', 'photo-1451187580459-43490279c0fa'],
+  ['Threat Management', 'Continuous monitoring and rapid response to security incidents, ensuring your business stays protected 24/7.', 'photo-1526374965328-7f61d4dc18c5'],
+  ['Incident Management', 'Rapid incident response and management to minimize downtime and damage.', 'photo-1551808525-51a94da548ce'],
+  ['Red Teaming', 'Simulated attacks to test your defense strategies against real-world cyber threats.', 'photo-1563986768609-322da13575f3'],
+  ['Security Solutions', 'Comprehensive security frameworks and solutions tailored to your business needs.', 'photo-1552664730-d307ca884978'],
+]
+
+const cyberStrengths = [
+  ['Certified Security Professionals', 'Our team holds industry-recognized certifications and stays updated with the latest security trends.', 'photo-1521737711867-e3b97375f902'],
+  ['Proactive Security Approach', 'We don’t just react to threats—we prevent them with continuous monitoring and threat intelligence.', 'photo-1516321318423-f06f85e504b3'],
+  ['Compliance-Focused Solutions', 'Our services ensure compliance with industry standards and regulatory requirements.', 'photo-1454165804606-c3d57bc86b40'],
+  ['24/7 Security Monitoring', 'Round-the-clock monitoring and incident response to protect your business at all times.', 'photo-1550751827-4bd374c3f58b'],
+]
+
+function CybersecurityServiceContent({ page }) {
+  const hero = serviceImages[page.path]
+  const securityImages = imagePools.security
+  const steps = [
+    ['Initial Security Assessment', ''],
+    ['Vulnerability Scanning', ''],
+    ['Penetration Testing', ''],
+    ['Risk Analysis & Reporting', ''],
+    ['Implementation & Monitoring', ''],
+  ]
+
+  return <main>
+    <HeroCentered eyebrow="Cybersecurity Services" crumbs={[["Services", '/solutions'], [page.title]]} title="Cybersecurity Services"
+      subtitle="Empower Your Business with Robust Cyber Defense"
+      intro="Preparing for your success, Gyanshu provides cybersecurity solutions to protect your critical infrastructure."
+      pill={[hero, ...securityImages.slice(0, 3)]} images={[hero, ...securityImages.slice(0, 3)]}
+      captions={['Cybersecurity operations', 'Security monitoring', 'Threat analysis', 'Incident response']}
+      mediaLabel="Cybersecurity services" chips={['VAPT Services', 'Threat Management', 'Incident Management']} />
+
+    <section id="cybersecurity-solutions" className="bg-paper py-24 md:py-32">
+      <div className="shell">
+        <div className="mx-auto max-w-3xl text-center">
+          <Eyebrow>Cybersecurity Solutions</Eyebrow>
+          <h2 className="h-section mt-5">Comprehensive Cybersecurity Solutions</h2>
+          <p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p>
+        </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {cyberServices.map(([title, text, image], i) => <article key={title} className="group relative isolate flex min-h-[330px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-6 text-white shadow-card">
+            <img src={photo(image, 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
+            <span className="mb-auto font-mono text-xs text-white/70">{String(i + 1).padStart(2, '0')}</span>
+            <h3 className="font-display text-xl font-medium">{title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/80">{text}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-24 md:py-32">
+      <div className="shell">
+        <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+          <div><Eyebrow>Why Gyanshu Cybersecurity</Eyebrow><h2 className="h-section mt-5">Advanced Protection for Modern Businesses</h2></div>
+          <img src={photo(securityImages[1], 1400)} alt="Cybersecurity professionals monitoring digital threats" loading="lazy" className="h-64 w-full rounded-[24px] object-cover md:h-80" />
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {cyberStrengths.map(([title, text, image]) => <article key={title} className="grid overflow-hidden rounded-[22px] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
+            <img src={photo(image, 700)} alt="" loading="lazy" className="h-44 w-full object-cover md:h-full" />
+            <div className="p-5 sm:p-6"><h3 className="font-display text-xl font-medium">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <StepsBanner eyebrow="Assessment" title="Security Assessment Process" accent="" steps={steps} image={securityImages[2]} />
+
+    <section className="bg-paper py-24 md:py-32">
+      <div className="shell">
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(securityImages[3], 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-48 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {[
+            ['FlowBits IPDR Analytics', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/ipdr', 'photo-1597733336794-12d05021d510'],
+            ['NYTT VAPT', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/vapt', 'photo-1550751827-4bd374c3f58b'],
+          ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
+            <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+            <div className="p-6"><span className="font-mono text-xs uppercase tracking-wider text-brand-600">{subtitle}</span><h3 className="mt-2 font-display text-2xl font-medium">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-24 md:py-32">
+      <div className="shell grid gap-8 lg:grid-cols-2 lg:items-center">
+        <div><Eyebrow>Security Training</Eyebrow><h2 className="h-section mt-5">Security Training</h2><div className="mt-6 flex flex-wrap gap-2">{['Cyber Security', 'Ethical Hacking', 'VAPT', 'SOC'].map((item) => <span key={item} className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium">{item}</span>)}</div></div>
+        <img src={photo(imagePools.learning[0], 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[24px] object-cover md:h-96" />
+      </div>
+    </section>
+
+    <CtaPhotos eyebrow="Cybersecurity" title="Secure Your Business Today" text="Let’s discuss your security requirements and build a comprehensive protection strategy." cta="Get Security Assessment" images={[hero, ...securityImages, ...imagePools.learning.slice(0, 2)]} />
+    <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919938883028">+91 9938883028</a></section>
+  </main>
+}
+
 
 /* ---------- industry detail ---------- */
 
