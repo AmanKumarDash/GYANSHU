@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, BadgeCheck, Boxes, Building2, Compass, Layers, Mail, MapPin, Phone, Search, Send, Target } from 'lucide-react'
+import { Activity, ArrowUpRight, BadgeCheck, Boxes, Building2, Compass, Eye, Layers, Mail, MapPin, Phone, Search, Send, ShieldCheck, Target, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { caseStudies, faqs, services, team } from '../../data/content'
 import { getPage, industryLinks, productLinks, serviceLinks } from '../../data/sitePages'
@@ -342,6 +342,194 @@ export function IndustryDetail({ page }) {
   const images = [hero, ...imagePools.industry.filter((id) => id !== hero)].slice(0, 4)
   const idx = industryLinks.findIndex((l) => l.to === page.path)
   const others = [1, 2, 3].map((k) => industryCards[(idx + k) % industryCards.length])
+  if (page.path === '/industries/government') return <main>
+    <HeroCentered eyebrow="National Security & Cyber Forensics" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Government & Law Enforcement" title="National Security" muted={1} items={[
+      { title: '90%', text: 'Faster Investigations', icon: Target },
+      { title: 'LEA Compliant', icon: BadgeCheck },
+      { title: 'National Grade Security', icon: Layers },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Government & Law Enforcement." items={[
+      { title: 'Cybercrime Investigation Delays', text: 'Time-consuming digital forensics processes slowing down case resolution.' },
+      { title: 'IP Attribution & Subscriber Tracing', text: 'Difficulty correlating IP addresses with real subscribers across multiple data sources.' },
+      { title: 'Multiple Data Sources', text: 'CGNAT, DHCP, and NetFlow data not correlated effectively.' },
+      { title: 'Manual Compliance Reporting', text: 'Labor-intensive processes for generating legally admissible evidence reports.' },
+    ]} />
+    <KeyFeatures eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." muted={3} items={[
+      { title: 'IPDR / AI-IPDR Platform', text: 'CGNAT correlation, session reconstruction, and evidence-ready LEA-compliant reports.', icon: Search },
+      { title: 'Attack Surface Detection', text: 'Government portal exposure detection and continuous monitoring.', icon: Eye },
+      { title: 'SOC & VAPT', text: '24/7 monitoring of government networks and infrastructure.', icon: ShieldCheck },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/telecom') return <main>
+    <HeroCentered eyebrow="Carrier-Grade Network Intelligence" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Telecom Operators & ISPs" title="Carrier-Grade Network Intelligence" muted={1} items={[
+      { title: 'Billion+', text: 'Sessions/Day', icon: Activity },
+      { title: '100%', text: 'TRAI Compliant', icon: BadgeCheck },
+      { title: '<5ms', text: 'Processing', icon: Zap },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Telecom Operators & ISPs." items={[
+      { title: 'Lawful Interception Compliance', text: 'Meeting regulatory requirements for lawful interception of communications.' },
+      { title: 'Massive CGNAT Data Volumes', text: 'Handling billions of sessions from carrier-grade NAT implementations.' },
+      { title: 'Latency & Packet Visibility', text: 'Gaps in network visibility affecting performance and security monitoring.' },
+      { title: 'Regulatory Penalties', text: 'TRAI/DoT compliance requirements and potential penalties for violations.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'Rust-Based IPDR Collection', text: 'High-performance packet processing at carrier scale.' },
+      { title: 'CGNAT + RADIUS + DHCP Correlation', text: 'Unified subscriber identification across all network layers.' },
+      { title: 'ClickHouse-Scale Storage', text: 'Petabyte-scale storage for billions of session records.' },
+      { title: 'TRAI/DoT Compliant Reporting', text: 'Automated regulatory reporting and audit trails.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/finance') return <main>
+    <HeroCentered eyebrow="Financial Cyber Defense" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Banking, NBFCs & FinTech" title="Financial Cyber Defense" muted={1} items={[
+      { title: '70%', text: 'Fraud Reduction', icon: Activity },
+      { title: 'RBI', text: 'Compliant', icon: BadgeCheck },
+      { title: '24/7', text: 'SOC Coverage', icon: ShieldCheck },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Banking, NBFCs & FinTech." items={[
+      { title: 'Fraud & Mule Accounts', text: 'Sophisticated fraud schemes and money mule account detection.' },
+      { title: 'Account Takeover & Phishing', text: 'Increasing attacks targeting customer accounts and credentials.' },
+      { title: 'Regulatory Compliance', text: 'RBI guidelines, ISO 27001, and PCI-DSS requirements.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'Network & Transaction Risk Intelligence', text: 'Correlating network behavior with transaction patterns.' },
+      { title: 'Fraud Pattern Detection', text: 'AI-driven anomaly detection across financial transactions.' },
+      { title: 'SOC + SIEM Integration', text: 'Centralized security monitoring and incident response.' },
+      { title: 'VAPT & Red-Team Assessments', text: 'Proactive security testing and vulnerability assessment.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/enterprise') return <main>
+    <HeroCentered eyebrow="Secure Digital Transformation" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Enterprises & Large Corporates" title="Secure Digital Transformation" muted={1} items={[
+      { title: 'Unified', text: 'Security', icon: ShieldCheck },
+      { title: '100%', text: 'Compliance', icon: BadgeCheck },
+      { title: '24/7', text: 'Monitoring', icon: Activity },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Enterprises & Large Corporates." items={[
+      { title: 'Complex Hybrid Networks', text: 'Managing security across on-prem, cloud, and hybrid environments.' },
+      { title: 'Internal Threat Visibility', text: 'Detecting insider threats and lateral movement within the network.' },
+      { title: 'Compliance Fatigue', text: 'Meeting multiple regulatory and industry compliance requirements.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'End-to-End IT Infra Services', text: 'Campus networking, firewall management, and data center design.' },
+      { title: 'Cybersecurity Stack', text: 'SOC, DLP, and EDR integration for comprehensive protection.' },
+      { title: 'Attack Surface Detection', text: 'Continuous discovery and monitoring of external vulnerabilities.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/datacenter') return <main>
+    <HeroCentered eyebrow="Cloud Security Intelligence" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Data Centers & Cloud Providers" title="Cloud Security Intelligence" muted={1} items={[
+      { title: '99.99%', text: 'Uptime', icon: Activity },
+      { title: 'Zero', text: 'Breaches', icon: ShieldCheck },
+      { title: '100%', text: 'Isolation', icon: BadgeCheck },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Data Centers & Cloud Providers." items={[
+      { title: 'East-West Traffic Blind Spots', text: 'Limited visibility into traffic between virtual machines and containers.' },
+      { title: 'SLA Violations', text: 'Network performance issues affecting service level commitments.' },
+      { title: 'Customer Isolation', text: 'Ensuring proper isolation between multi-tenant environments.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'Flow-Based Network Intelligence', text: 'Deep packet inspection and flow analysis at scale.' },
+      { title: 'Micro-Segmentation Visibility', text: 'Granular control and monitoring of network segments.' },
+      { title: 'AI-Assisted Anomaly Detection', text: 'ML-powered threat detection without performance impact.' },
+      { title: 'Compliance & Audit Reporting', text: 'Automated reporting for regulatory and customer audits.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/healthcare') return <main>
+    <HeroCentered eyebrow="Healthcare Cyber Resilience" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Healthcare & Hospitals" title="Healthcare Cyber Resilience" muted={1} items={[
+      { title: 'Zero', text: 'Ransomware', icon: ShieldCheck },
+      { title: '100%', text: 'HIPAA Ready', icon: BadgeCheck },
+      { title: '24/7', text: 'Protection', icon: Activity },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Healthcare & Hospitals." items={[
+      { title: 'Ransomware Risk', text: 'Critical systems targeted by sophisticated ransomware attacks.' },
+      { title: 'Patient Data Leakage', text: 'Protecting sensitive health information from breaches.' },
+      { title: 'Legacy Medical Devices', text: 'Securing unpatchable and outdated medical IoT devices.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'Network Segmentation', text: 'Isolating medical devices and critical hospital systems.' },
+      { title: 'Attack Surface Monitoring', text: 'Continuous discovery and assessment of vulnerabilities.' },
+      { title: '24/7 SOC', text: 'Round-the-clock monitoring and incident response.' },
+      { title: 'Compliance Support', text: 'HIPAA-aligned controls and documentation.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/education') return <main>
+    <HeroCentered eyebrow="Smart Campus Security" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Education & Smart Campuses" title="Smart Campus Security" muted={1} items={[
+      { title: 'Safe', text: 'Digital Learning', icon: BadgeCheck },
+      { title: '100%', text: 'Policy Compliance', icon: ShieldCheck },
+      { title: 'Campus Wide', text: 'Security', icon: Activity },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Education & Smart Campuses." items={[
+      { title: 'Student Misuse & Cyber Abuse', text: 'Addressing inappropriate use of campus network resources.' },
+      { title: 'Bandwidth Abuse', text: 'Managing limited bandwidth across thousands of concurrent users.' },
+      { title: 'IT Policy Compliance', text: 'Ensuring students and staff adhere to acceptable use policies.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'Campus Network Design', text: 'Scalable, secure infrastructure for educational institutions.' },
+      { title: 'User-Level Traffic Visibility', text: 'Granular monitoring of individual user activity.' },
+      { title: 'Content Abuse & Anomaly Detection', text: 'Automated detection of policy violations and threats.' },
+      { title: 'SOC-Lite for Campuses', text: 'Affordable security operations for educational environments.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/manufacturing') return <main>
+    <HeroCentered eyebrow="Industrial Cyber Defense" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Manufacturing & Critical Infrastructure" title="Industrial Cyber Defense" muted={1} items={[
+      { title: '100%', text: 'Production Uptime', icon: Activity },
+      { title: 'Zero', text: 'Disruption', icon: ShieldCheck },
+      { title: 'OT/IT', text: 'Secured', icon: BadgeCheck },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Manufacturing & Critical Infrastructure." items={[
+      { title: 'OT/IT Convergence Risks', text: 'Security gaps between operational technology and enterprise IT.' },
+      { title: 'Legacy PLC Exposure', text: 'Unpatchable programmable logic controllers and industrial equipment.' },
+      { title: 'Downtime Impact', text: 'Production halts due to cyber incidents affecting operations.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'OT Network Visibility', text: 'Deep monitoring of industrial protocols without disruption.' },
+      { title: 'Non-Intrusive Threat Detection', text: "Passive monitoring that doesn't affect industrial systems." },
+      { title: 'Perimeter Hardening', text: 'Securing the boundary between IT and OT networks.' },
+      { title: 'Risk-Based Monitoring', text: 'Prioritized security based on criticality of assets.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
+  if (page.path === '/industries/startup') return <main>
+    <HeroCentered eyebrow="Cybersecurity for Growing Businesses" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
+      images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features} />
+    <KeyFeatures eyebrow="Startups & MSMEs" title="Cybersecurity for Growing Businesses" muted={1} items={[
+      { title: 'Enterprise', text: 'Grade Security', icon: ShieldCheck },
+      { title: 'Startup', text: 'Friendly Pricing', icon: BadgeCheck },
+      { title: 'Zero', text: 'Headcount', icon: Activity },
+    ]} />
+    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Startups & MSMEs." items={[
+      { title: 'Limited Cybersecurity Budget', text: 'Lack of resources for enterprise-grade security solutions.' },
+      { title: 'Lack of In-House Expertise', text: 'No dedicated security team or specialists on staff.' },
+    ]} />
+    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+      { title: 'Cybersecurity as a Service', text: 'Managed security without the cost of internal team.' },
+      { title: 'Cloud-Based SOC', text: '24/7 monitoring delivered from the cloud.' },
+      { title: 'Affordable VAPT', text: 'Budget-friendly vulnerability assessments and penetration testing.' },
+      { title: 'Compliance Starter Kits', text: 'Quick-start compliance packages for common regulations.' },
+    ]} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+  </main>
   return <main>
     <HeroCentered eyebrow="Industry perspective" crumbs={[['Industries', '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
       images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features.slice(0, 3)} />
