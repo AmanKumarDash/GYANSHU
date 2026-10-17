@@ -16,7 +16,7 @@ export default function Process() {
   const imageY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
   useMotionValueEvent(scrollYProgress, 'change', (v) => setCurrent(Math.min(4, Math.max(0, Math.floor(v * 5.2)))))
 
-  return <section className="pb-24 pt-12 md:pb-28 md:pt-16">
+  return <section className="pb-9 pt-8 md:pb-10 md:pt-9">
     <div className="shell">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
@@ -30,8 +30,8 @@ export default function Process() {
       </div>
     </div>
 
-    <div className="mt-14 px-3 sm:px-5">
-      <div ref={ref} className="relative mx-auto min-h-[560px] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink text-white">
+    <div className="mt-7 px-3 sm:px-5">
+      <div ref={ref} className="relative mx-auto min-h-[420px] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink text-white md:min-h-[min(460px,58svh)]">
         <motion.img src={photo('photo-1639322537228-f710d846310a', 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-[-8%_0] h-[116%] w-full object-cover opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/50 to-ink-950/90" />
         <div className="grain absolute inset-0" />
@@ -78,3 +78,4 @@ export default function Process() {
     </div>
   </section>
 }
+

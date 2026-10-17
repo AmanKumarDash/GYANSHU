@@ -12,7 +12,7 @@ const images = ['photo-1550751827-4bd374c3f58b', 'photo-1544197150-b99a580bb7a8'
 
 export default function Capabilities() {
   const [active, setActive] = useState(0)
-  return <section id="capabilities" className="relative bg-white py-24 md:py-36">
+  return <section id="capabilities" className="relative bg-white py-8 md:py-10 lg:py-12">
     <div className="shell">
       <SectionHead
         eyebrow="Industries and services"
@@ -20,14 +20,14 @@ export default function Capabilities() {
         lede="Cybersecurity, infrastructure, software, AI, and connected operations—brought together around your environment and priorities."
       />
 
-      <Reveal className="mt-14 flex flex-col gap-2 md:mt-20 lg:h-[600px] lg:flex-row">
+      <Reveal className="mt-6 flex flex-col gap-2 md:mt-8 lg:h-[min(48svh,390px)] lg:min-h-[340px] lg:flex-row">
         {items.map((item, i) => {
           const on = i === active
           return <div
             key={item.id}
             onMouseEnter={() => setActive(i)}
             onFocus={() => setActive(i)}
-            className={`group relative isolate cursor-pointer overflow-hidden rounded-[24px] bg-ink transition-[flex-grow,height] duration-700 ease-expo ${on ? 'h-[460px] lg:h-auto lg:flex-[5]' : 'h-[76px] lg:h-auto lg:flex-[1]'}`}
+            className={`group relative isolate cursor-pointer overflow-hidden rounded-[24px] bg-ink transition-[flex-grow,height] duration-700 ease-expo ${on ? 'h-[280px] sm:h-[320px] lg:h-auto lg:flex-[5]' : 'h-[52px] lg:h-auto lg:flex-[1]'}`}
             onClick={() => setActive(i)}
           >
             <img src={photo(images[i], 1400)} alt="" loading="lazy" className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-expo ${on ? 'scale-100 opacity-100' : 'scale-110 opacity-45 grayscale'}`} />
@@ -64,7 +64,7 @@ export default function Capabilities() {
         })}
       </Reveal>
 
-      <div className="mt-8 flex justify-center">
+      <div className="mt-5 flex justify-center">
         <Link to="/solutions" className="link-arrow">View all capabilities <ArrowUpRight size={16} /></Link>
       </div>
     </div>

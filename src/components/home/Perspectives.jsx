@@ -16,7 +16,7 @@ const tags = [...new Set(services.flatMap((s) => s.tags))]
 
 function Marquee() {
   const row = [...tags, ...tags]
-  return <div className="mask-fade-x relative mt-16 overflow-hidden border-y border-line py-5 md:mt-24" aria-hidden="true">
+  return <div className="mask-fade-x relative mt-6 overflow-hidden border-y border-line py-3 md:mt-8" aria-hidden="true">
     <div className="flex w-max animate-marquee items-center gap-10">
       {row.map((t, i) => <span key={i} className="flex items-center gap-10 whitespace-nowrap font-display text-xl tracking-tight text-ink/70 md:text-2xl">{t}<span className="h-1.5 w-1.5 rotate-45 bg-brand-400" /></span>)}
     </div>
@@ -36,9 +36,9 @@ export default function Perspectives() {
     return () => window.clearTimeout(t)
   }, [active, reduce, paused])
 
-  return <section id="stories" className="relative py-24 md:py-36">
+  return <section id="stories" className="relative py-8 md:py-9 lg:py-10">
     <div className="shell">
-      <div className="grid gap-8 lg:grid-cols-[220px_1fr]">
+      <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
         <Reveal><Eyebrow>Featured perspectives</Eyebrow></Reveal>
         <ScrollWords
           className="font-display text-[1.9rem] font-medium leading-[1.12] tracking-[-.035em] text-ink sm:text-[2.6rem] lg:text-[3.4rem]"
@@ -49,9 +49,9 @@ export default function Perspectives() {
     </div>
     <Marquee />
 
-    <div className="shell mt-16 md:mt-24">
+    <div className="shell mt-5 md:mt-6">
       <div className="grid gap-4 lg:grid-cols-[1.65fr_1fr]" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-        <Reveal className="relative isolate h-[440px] overflow-hidden rounded-[28px] bg-ink md:h-[560px]" aria-roledescription="carousel" aria-label="Featured perspectives">
+        <Reveal className="relative isolate h-[260px] overflow-hidden rounded-[28px] bg-ink sm:h-[300px] md:h-[min(46svh,380px)]" aria-roledescription="carousel" aria-label="Featured perspectives">
           <AnimatePresence initial={false}>
             <motion.div key={story.n} className="absolute inset-0" initial={{ clipPath: 'inset(0 0 0 100%)' }} animate={{ clipPath: 'inset(0 0 0 0%)' }} exit={{ opacity: 0.4 }} transition={{ duration: reduce ? 0.01 : 1.1, ease: [0.76, 0, 0.24, 1] }}>
               <motion.img src={photo(story.image, 1800)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={{ scale: reduce ? 1 : 1.18 }} animate={{ scale: 1.02 }} transition={{ duration: STORY_SECONDS + 1.5, ease: 'linear' }} />
@@ -74,14 +74,14 @@ export default function Perspectives() {
           </div>
         </Reveal>
 
-        <div className="flex flex-col gap-3">
-          {storyCards.map((item, i) => <Reveal key={item.n} delay={0.1 + i * 0.08} className="flex-1">
-            <button onClick={() => setActive(i)} aria-label={`Show featured story ${i + 1}: ${item.tag}`} aria-current={active === i ? 'true' : undefined} className={`group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-[22px] border p-6 text-left transition-all duration-500 ${active === i ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink hover:border-ink/25'}`}>
+        <div className="flex flex-row gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-3">
+          {storyCards.map((item, i) => <Reveal key={item.n} delay={0.1 + i * 0.08} className="flex-none lg:flex-1">
+            <button onClick={() => setActive(i)} aria-label={`Show featured story ${i + 1}: ${item.tag}`} aria-current={active === i ? 'true' : undefined} className={`group relative flex h-full min-h-[108px] w-[13rem] flex-col justify-between overflow-hidden rounded-[18px] border p-4 text-left transition-all duration-500 sm:w-[15rem] sm:p-5 lg:min-h-0 lg:w-full lg:rounded-[22px] lg:p-4 ${active === i ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink hover:border-ink/25'}`}>
               <div className="flex items-center justify-between">
                 <span className={`font-mono text-[11px] ${active === i ? 'text-brand-300' : 'text-muted-soft'}`}>{item.n} / {item.tag}</span>
                 <ArrowUpRight size={16} className={`transition-transform duration-500 ${active === i ? 'rotate-45 text-brand-300' : 'text-muted-soft group-hover:-translate-y-0.5 group-hover:translate-x-0.5'}`} />
               </div>
-              <p className="mt-6 font-display text-lg font-medium leading-snug tracking-[-.02em] md:text-xl">{item.title}</p>
+              <p className="mt-3 font-display text-base font-medium leading-snug tracking-[-.02em] sm:mt-4 sm:text-lg md:text-xl">{item.title}</p>
               <span className={`absolute inset-x-6 bottom-0 h-[2px] overflow-hidden rounded-full ${active === i ? 'bg-white/10' : 'bg-transparent'}`}>
                 {active === i && <motion.span key={`${active}-${paused}`} className="absolute inset-0 origin-left bg-brand-400" initial={{ scaleX: 0 }} animate={{ scaleX: paused || reduce ? 0 : 1 }} transition={{ duration: paused ? 0.3 : STORY_SECONDS, ease: 'linear' }} />}
               </span>
@@ -92,3 +92,4 @@ export default function Perspectives() {
     </div>
   </section>
 }
+

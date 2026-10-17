@@ -6,7 +6,7 @@ import { ArrowButton, Eyebrow, MaskLines, Reveal } from '../ui/Motion'
 const icons = [Landmark, RadioTower, Banknote, Building2, Server, HeartPulse]
 
 export default function Industries() {
-  return <section className="pb-12 pt-24 md:pb-16 md:pt-36">
+  return <section className="pb-7 pt-8 md:pb-8 md:pt-9">
     <div className="shell">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
@@ -18,16 +18,16 @@ export default function Industries() {
         </Reveal>
       </div>
 
-      <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-5 grid grid-cols-1 gap-2 min-[360px]:grid-cols-2 sm:gap-3 lg:grid-cols-3">
         {industryLinks.slice(0, 6).map((item, i) => {
           const Icon = icons[i]
           return <Reveal key={item.to} delay={(i % 3) * 0.08} className="h-full">
-            <Link to={item.to} className="group relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden rounded-[24px] border border-line bg-white p-7 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:shadow-lift">
+            <Link to={item.to} className="group relative flex h-full min-h-[140px] flex-col justify-between overflow-hidden rounded-[24px] border border-line bg-white p-4 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift sm:min-h-[155px] sm:p-5">
               <div className="flex items-start justify-between">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:bg-ink group-hover:text-brand-300"><Icon size={21} strokeWidth={1.7} /></span>
                 <ArrowUpRight size={18} className="text-muted-faint transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-500" />
               </div>
-              <div className="mt-10">
+              <div className="mt-3 sm:mt-4">
                 <span className="font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">0{i + 1} / Context</span>
                 <h3 className="mt-2 font-display text-xl font-medium tracking-[-.02em] text-ink md:text-[1.4rem]">{item.label}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{getPage(item.to).subtitle}</p>
@@ -38,7 +38,8 @@ export default function Industries() {
         })}
       </div>
 
-      <Reveal className="mt-10 flex justify-center"><ArrowButton to="/industries" variant="dark">Explore industry contexts</ArrowButton></Reveal>
+      <Reveal className="mt-5 flex justify-center"><ArrowButton to="/industries" variant="dark">Explore industry contexts</ArrowButton></Reveal>
     </div>
   </section>
 }
+

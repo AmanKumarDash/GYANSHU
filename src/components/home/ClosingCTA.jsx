@@ -41,15 +41,15 @@ export default function ClosingCTA() {
   const scale = useTransform(scrollYProgress, [0, 1], [1.25, 1])
 
   return <section className="bg-white px-3 pb-3 sm:px-5 sm:pb-5">
-    <div ref={ref} className="relative isolate mx-auto flex min-h-[86svh] max-w-[1600px] items-center justify-center overflow-hidden rounded-[2.5rem] bg-ink-950 py-24 text-center text-white">
+    <div ref={ref} className="relative isolate mx-auto flex min-h-[76svh] max-w-[1600px] items-center justify-center overflow-hidden rounded-[2.5rem] bg-ink-950 py-14 text-center text-white sm:min-h-[82svh] sm:py-16 lg:min-h-[min(86svh,760px)] lg:py-20">
       <motion.img src={photo('photo-1446776811953-b23d57bd21aa', 2200)} alt="" loading="lazy" style={{ scale: reduce ? 1 : scale }} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-70" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(7,13,15,.35),rgba(7,13,15,.9)_75%)]" />
       <div className="grain absolute inset-0 -z-10" />
       <div className="shell flex flex-col items-center">
         <Reveal><Eyebrow dark>Start a conversation</Eyebrow></Reveal>
-        <h2 className="h-poster mt-7 text-[clamp(3.8rem,11vw,11rem)]"><MaskLines lines={['Let’s build what', <span className="text-brand-300">comes next.</span>]} /></h2>
-        <Reveal delay={0.2}><p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">Bring us your cybersecurity, infrastructure, software, AI, or IoT requirement.</p></Reveal>
-        <Reveal delay={0.3} className="mt-9 flex flex-wrap justify-center gap-3">
+        <h2 className="h-poster mt-5 text-[clamp(3.4rem,9vw,9rem)]"><MaskLines lines={['Let’s build what', <span className="text-brand-300">comes next.</span>]} /></h2>
+        <Reveal delay={0.2}><p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">Bring us your cybersecurity, infrastructure, software, AI, or IoT requirement.</p></Reveal>
+        <Reveal delay={0.3} className="mt-6 flex flex-wrap justify-center gap-3">
           <ArrowButton variant="brand" icon={Mail} onClick={() => setOpen(true)}>Send us a message</ArrowButton>
           <a href="mailto:Support.gyanshu@gmail.com" className="btn btn-outline-dark">Support.gyanshu@gmail.com</a>
         </Reveal>

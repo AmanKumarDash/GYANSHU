@@ -69,6 +69,9 @@ export function getPage(pathname) {
   return { title: 'Page not found', eyebrow: '404', subtitle: 'We couldn’t find that page.', intro: 'The address may have changed. Head back to the home page or explore our services.', type: 'missing', path: '/' }
 }
 
-export const productLinks = Object.keys(products).map((slug) => ({ label: products[slug][0], to: `/products/${slug}` }))
+export const productLinks = Object.keys(products).map((slug) => ({
+  label: ({ ipdr: 'FLOWBITS NEXORA', 'argos-enms': 'NetSight360', vapt: 'Nested VA' })[slug] || products[slug][0],
+  to: `/products/${slug}`,
+}))
 export const serviceLinks = Object.keys(servicePages).map((slug) => ({ label: servicePages[slug][0], to: `/services/${slug}` }))
 export const industryLinks = Object.keys(industries).map((slug) => ({ label: industries[slug][0], to: `/industries/${slug}` }))

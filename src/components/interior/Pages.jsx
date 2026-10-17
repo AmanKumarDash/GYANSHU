@@ -80,12 +80,12 @@ export function ServiceDetail({ page }) {
   const images = [hero, ...pool(page).filter((id) => id !== hero)].slice(0, 4)
   const related = isIot
     ? [
-        { title: 'FlowBits IPDR Analytics', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Related solution' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Related solution' },
       ]
     : isNetwork
     ? [
-        { title: 'FlowBits IPDR Analytics', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Network solution' },
-        { title: 'NYTT VAPT', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: imagePools.security[0], to: '/products/vapt', tag: 'Security solution' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Network solution' },
+        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: imagePools.security[0], to: '/products/vapt', tag: 'Security solution' },
       ]
     : serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c, i) => ({ ...c, tag: `Service ${String(i + 1).padStart(2, '0')}` }))
   const process = isIot
@@ -154,8 +154,8 @@ export function ServiceDetail({ page }) {
     ['React', 'Frontend'], ['React Native', 'Mobile'], ['Python', 'Backend'], ['Java', 'Enterprise'], ['PostgreSQL', 'Database'], ['AWS/Azure', 'Cloud'],
   ]
   const applicationSolutions = [
-    { title: 'NYTT HMS', text: 'Hostel Management System. A comprehensive solution for modern student housing, streamlining operations from allocation to billing with automated efficiency.', tags: ['View Details'] },
-    { title: 'NYTT LMS', text: 'Learning Management System. An intuitive platform for educational institutions and corporate training, facilitating course delivery, tracking, and assessment with ease.', tags: ['View Details'] },
+    { title: 'GYANSHU HMS', text: 'Hostel Management System. A comprehensive solution for modern student housing, streamlining operations from allocation to billing with automated efficiency.', tags: ['View Details'] },
+    { title: 'GYANSHU LMS', text: 'Learning Management System. An intuitive platform for educational institutions and corporate training, facilitating course delivery, tracking, and assessment with ease.', tags: ['View Details'] },
   ]
   const regulatoryServices = [
     ['Compliance Management', 'Legal and regulatory requirements including ISO, GRC, GDPR, HIPAA, PCI DSS, FISMA, and SOC standards.'],
@@ -189,8 +189,8 @@ export function ServiceDetail({ page }) {
     ['Operational Excellence', 'Improve processes, reduce inefficiencies, and enhance overall business performance through compliance frameworks.'],
   ]
   const complianceTools = [
-    { title: 'FlowBits IPDR Analytics', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['View Details'] },
-    { title: 'NYTT VAPT', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', tags: ['View Details'] },
+    { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['View Details'] },
+    { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', tags: ['View Details'] },
   ]
   return <main>
     <HeroCentered eyebrow={isRegulatory ? 'REGULATORY COMPLIANCE' : isApplication ? 'INITIALIZING APPLICATION SERVICES' : isIot ? 'INTERNET OF THINGS' : isNetwork ? 'Network Services' : 'Services / Expertise'} crumbs={[["Services", '/solutions'], [page.title]]} title={isRegulatory ? 'Navigate Regulations Confidently with Our Tailored GRC Services' : isApplication ? 'Empowering Businesses: Through Agile Development Smarter Solutions for Digital World' : isIot ? 'Driving Innovation with IoT' : page.title} pill={images}
@@ -263,15 +263,15 @@ function CybersecurityServiceContent({ page }) {
       captions={['Cybersecurity operations', 'Security monitoring', 'Threat analysis', 'Incident response']}
       mediaLabel="Cybersecurity services" chips={['VAPT Services', 'Threat Management', 'Incident Management']} />
 
-    <section id="cybersecurity-solutions" className="bg-paper py-24 md:py-32">
+    <section id="cybersecurity-solutions" className="bg-paper section-space">
       <div className="shell">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow>Cybersecurity Solutions</Eyebrow>
           <h2 className="h-section mt-5">Comprehensive Cybersecurity Solutions</h2>
           <p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p>
         </div>
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cyberServices.map(([title, text, image], i) => <article key={title} className="group relative isolate flex min-h-[330px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-6 text-white shadow-card">
+        <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {cyberServices.map(([title, text, image], i) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
             <img src={photo(image, 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
             <span className="mb-auto font-mono text-xs text-white/70">{String(i + 1).padStart(2, '0')}</span>
@@ -282,7 +282,7 @@ function CybersecurityServiceContent({ page }) {
       </div>
     </section>
 
-    <section className="py-24 md:py-32">
+    <section className="section-space">
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
           <div><Eyebrow>Why Gyanshu Cybersecurity</Eyebrow><h2 className="h-section mt-5">Advanced Protection for Modern Businesses</h2></div>
@@ -299,13 +299,13 @@ function CybersecurityServiceContent({ page }) {
 
     <StepsBanner eyebrow="Assessment" title="Security Assessment Process" accent="" steps={steps} image={securityImages[2]} />
 
-    <section className="bg-paper py-24 md:py-32">
+    <section className="bg-paper section-space">
       <div className="shell">
-        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(securityImages[3], 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-48 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
+        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(securityImages[3], 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
         <div className="grid gap-4 md:grid-cols-2">
           {[
-            ['FlowBits IPDR Analytics', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/ipdr', 'photo-1597733336794-12d05021d510'],
-            ['NYTT VAPT', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/vapt', 'photo-1550751827-4bd374c3f58b'],
+            ['FLOWBITS NEXORA', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/ipdr', 'photo-1597733336794-12d05021d510'],
+            ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/vapt', 'photo-1550751827-4bd374c3f58b'],
           ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
             <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
             <div className="p-6"><span className="font-mono text-xs uppercase tracking-wider text-brand-600">{subtitle}</span><h3 className="mt-2 font-display text-2xl font-medium">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
@@ -314,7 +314,7 @@ function CybersecurityServiceContent({ page }) {
       </div>
     </section>
 
-    <section className="py-24 md:py-32">
+    <section className="section-space">
       <div className="shell grid gap-8 lg:grid-cols-2 lg:items-center">
         <div><Eyebrow>Security Training</Eyebrow><h2 className="h-section mt-5">Security Training</h2><div className="mt-6 flex flex-wrap gap-2">{['Cyber Security', 'Ethical Hacking', 'VAPT', 'SOC'].map((item) => <span key={item} className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium">{item}</span>)}</div></div>
         <img src={photo(imagePools.learning[0], 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[24px] object-cover md:h-96" />
@@ -356,12 +356,12 @@ export function IndustryDetail({ page }) {
       { title: 'Multiple Data Sources', text: 'CGNAT, DHCP, and NetFlow data not correlated effectively.' },
       { title: 'Manual Compliance Reporting', text: 'Labor-intensive processes for generating legally admissible evidence reports.' },
     ]} />
-    <KeyFeatures eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." muted={3} items={[
+    <KeyFeatures eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." muted={3} items={[
       { title: 'IPDR / AI-IPDR Platform', text: 'CGNAT correlation, session reconstruction, and evidence-ready LEA-compliant reports.', icon: Search },
       { title: 'Attack Surface Detection', text: 'Government portal exposure detection and continuous monitoring.', icon: Eye },
       { title: 'SOC & VAPT', text: '24/7 monitoring of government networks and infrastructure.', icon: ShieldCheck },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/telecom') return <main>
     <HeroCentered eyebrow="Carrier-Grade Network Intelligence" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -377,13 +377,13 @@ export function IndustryDetail({ page }) {
       { title: 'Latency & Packet Visibility', text: 'Gaps in network visibility affecting performance and security monitoring.' },
       { title: 'Regulatory Penalties', text: 'TRAI/DoT compliance requirements and potential penalties for violations.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'Rust-Based IPDR Collection', text: 'High-performance packet processing at carrier scale.' },
       { title: 'CGNAT + RADIUS + DHCP Correlation', text: 'Unified subscriber identification across all network layers.' },
       { title: 'ClickHouse-Scale Storage', text: 'Petabyte-scale storage for billions of session records.' },
       { title: 'TRAI/DoT Compliant Reporting', text: 'Automated regulatory reporting and audit trails.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/finance') return <main>
     <HeroCentered eyebrow="Financial Cyber Defense" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -398,13 +398,13 @@ export function IndustryDetail({ page }) {
       { title: 'Account Takeover & Phishing', text: 'Increasing attacks targeting customer accounts and credentials.' },
       { title: 'Regulatory Compliance', text: 'RBI guidelines, ISO 27001, and PCI-DSS requirements.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'Network & Transaction Risk Intelligence', text: 'Correlating network behavior with transaction patterns.' },
       { title: 'Fraud Pattern Detection', text: 'AI-driven anomaly detection across financial transactions.' },
       { title: 'SOC + SIEM Integration', text: 'Centralized security monitoring and incident response.' },
       { title: 'VAPT & Red-Team Assessments', text: 'Proactive security testing and vulnerability assessment.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/enterprise') return <main>
     <HeroCentered eyebrow="Secure Digital Transformation" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -419,12 +419,12 @@ export function IndustryDetail({ page }) {
       { title: 'Internal Threat Visibility', text: 'Detecting insider threats and lateral movement within the network.' },
       { title: 'Compliance Fatigue', text: 'Meeting multiple regulatory and industry compliance requirements.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'End-to-End IT Infra Services', text: 'Campus networking, firewall management, and data center design.' },
       { title: 'Cybersecurity Stack', text: 'SOC, DLP, and EDR integration for comprehensive protection.' },
       { title: 'Attack Surface Detection', text: 'Continuous discovery and monitoring of external vulnerabilities.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/datacenter') return <main>
     <HeroCentered eyebrow="Cloud Security Intelligence" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -439,13 +439,13 @@ export function IndustryDetail({ page }) {
       { title: 'SLA Violations', text: 'Network performance issues affecting service level commitments.' },
       { title: 'Customer Isolation', text: 'Ensuring proper isolation between multi-tenant environments.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'Flow-Based Network Intelligence', text: 'Deep packet inspection and flow analysis at scale.' },
       { title: 'Micro-Segmentation Visibility', text: 'Granular control and monitoring of network segments.' },
       { title: 'AI-Assisted Anomaly Detection', text: 'ML-powered threat detection without performance impact.' },
       { title: 'Compliance & Audit Reporting', text: 'Automated reporting for regulatory and customer audits.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/healthcare') return <main>
     <HeroCentered eyebrow="Healthcare Cyber Resilience" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -460,13 +460,13 @@ export function IndustryDetail({ page }) {
       { title: 'Patient Data Leakage', text: 'Protecting sensitive health information from breaches.' },
       { title: 'Legacy Medical Devices', text: 'Securing unpatchable and outdated medical IoT devices.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'Network Segmentation', text: 'Isolating medical devices and critical hospital systems.' },
       { title: 'Attack Surface Monitoring', text: 'Continuous discovery and assessment of vulnerabilities.' },
       { title: '24/7 SOC', text: 'Round-the-clock monitoring and incident response.' },
       { title: 'Compliance Support', text: 'HIPAA-aligned controls and documentation.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/education') return <main>
     <HeroCentered eyebrow="Smart Campus Security" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -481,13 +481,13 @@ export function IndustryDetail({ page }) {
       { title: 'Bandwidth Abuse', text: 'Managing limited bandwidth across thousands of concurrent users.' },
       { title: 'IT Policy Compliance', text: 'Ensuring students and staff adhere to acceptable use policies.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'Campus Network Design', text: 'Scalable, secure infrastructure for educational institutions.' },
       { title: 'User-Level Traffic Visibility', text: 'Granular monitoring of individual user activity.' },
       { title: 'Content Abuse & Anomaly Detection', text: 'Automated detection of policy violations and threats.' },
       { title: 'SOC-Lite for Campuses', text: 'Affordable security operations for educational environments.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/manufacturing') return <main>
     <HeroCentered eyebrow="Industrial Cyber Defense" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -502,13 +502,13 @@ export function IndustryDetail({ page }) {
       { title: 'Legacy PLC Exposure', text: 'Unpatchable programmable logic controllers and industrial equipment.' },
       { title: 'Downtime Impact', text: 'Production halts due to cyber incidents affecting operations.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'OT Network Visibility', text: 'Deep monitoring of industrial protocols without disruption.' },
       { title: 'Non-Intrusive Threat Detection', text: "Passive monitoring that doesn't affect industrial systems." },
       { title: 'Perimeter Hardening', text: 'Securing the boundary between IT and OT networks.' },
       { title: 'Risk-Based Monitoring', text: 'Prioritized security based on criticality of assets.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   if (page.path === '/industries/startup') return <main>
     <HeroCentered eyebrow="Cybersecurity for Growing Businesses" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -522,13 +522,13 @@ export function IndustryDetail({ page }) {
       { title: 'Limited Cybersecurity Budget', text: 'Lack of resources for enterprise-grade security solutions.' },
       { title: 'Lack of In-House Expertise', text: 'No dedicated security team or specialists on staff.' },
     ]} />
-    <FeatureCards eyebrow="The NYTT Advantage" title="Tailored solutions for mission-critical operations." items={[
+    <FeatureCards eyebrow="The GYANSHU Advantage" title="Tailored solutions for mission-critical operations." items={[
       { title: 'Cybersecurity as a Service', text: 'Managed security without the cost of internal team.' },
       { title: 'Cloud-Based SOC', text: '24/7 monitoring delivered from the cloud.' },
       { title: 'Affordable VAPT', text: 'Budget-friendly vulnerability assessments and penetration testing.' },
       { title: 'Compliance Starter Kits', text: 'Quick-start compliance packages for common regulations.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with NYTT for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
   </main>
   return <main>
     <HeroCentered eyebrow="Industry perspective" crumbs={[['Industries', '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -614,7 +614,7 @@ function ContactBlock() {
     window.location.href = `mailto:Support.gyanshu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(form.message)}`
   }
   const field = 'w-full rounded-2xl border border-line bg-paper px-4 py-3.5 text-[15px] text-ink outline-none transition placeholder:text-muted-soft focus:border-ink focus:bg-white'
-  return <section id="details" className="pb-24 md:pb-32">
+  return <section id="details" className="section-space-bottom">
     <div className="shell grid gap-4 lg:grid-cols-[1fr_1.3fr]">
       <div className="flex flex-col gap-3">
         <Reveal>
@@ -682,7 +682,7 @@ const legal = [['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], [
 export function LegalPage({ page }) {
   return <main>
     <HeroCentered eyebrow="Legal" crumbs={[[page.title]]} title={page.title} subtitle={page.subtitle} actions={null} compact />
-    <section id="details" className="pb-24 md:pb-32">
+    <section id="details" className="section-space-bottom">
       <div className="shell grid gap-6 lg:grid-cols-[260px_1fr]">
         <Reveal as="nav" aria-label="Legal pages" className="h-fit rounded-[24px] border border-line bg-white p-3 shadow-card lg:sticky lg:top-28">
           {legal.map(([label, to]) => <Link key={to} to={to} className={`flex items-center justify-between rounded-2xl px-4 py-3 text-[14px] transition ${to === page.path ? 'bg-ink text-white' : 'text-muted hover:bg-paper hover:text-ink'}`}>{label}<ArrowUpRight size={14} className={to === page.path ? 'text-brand-300' : 'opacity-40'} /></Link>)}
@@ -706,7 +706,7 @@ export function NotFound({ page }) {
   return <main>
     <HeroCentered eyebrow="Error 404" title={page.title} pill={imagePools.network} subtitle={page.subtitle} intro={page.intro} compact
       actions={<><ArrowButton to="/">Back to home</ArrowButton><Link to="/contact" className="btn btn-outline">Contact us</Link></>} />
-    <section className="pb-24">
+    <section className="section-space-bottom">
       <div className="shell grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {[['Products', '/products', 'Platforms for network intelligence and security.'], ['Solutions', '/solutions', 'Cybersecurity, infrastructure, IoT, and more.'], ['Industries', '/industries', 'Secure technology for high-stakes environments.'], ['Contact', '/contact', 'Tell us what you need to make possible.']].map(([t, to, d], i) =>
           <motion.div key={to} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}>
@@ -719,3 +719,4 @@ export function NotFound({ page }) {
     </section>
   </main>
 }
+

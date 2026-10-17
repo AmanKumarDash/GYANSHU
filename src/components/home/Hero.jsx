@@ -47,7 +47,7 @@ export default function Hero() {
 
   const show = (delay) => ({ initial: { opacity: 0, y: 24 }, animate: ready ? { opacity: 1, y: 0 } : undefined, transition: { duration: 1, delay, ease: EASE } })
 
-  return <section className="relative overflow-hidden pb-8 pt-28 md:pt-36">
+  return <section className="relative overflow-hidden pb-5 pt-24 md:pb-6 md:pt-28">
     <div className="dot-grid-light pointer-events-none absolute inset-x-0 top-0 h-[70vh] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
     <div className="shell relative flex flex-col items-center text-center">
       <motion.div {...show(0.15)} className="eyebrow whitespace-nowrap">
@@ -59,7 +59,7 @@ export default function Hero() {
         </span>
       </motion.div>
 
-      <h1 className="h-poster mt-7 text-[clamp(4rem,10.4vw,10.5rem)] text-ink" aria-label="Intelligence. Trust. Innovation.">
+      <h1 className="h-poster mt-5 text-[clamp(3.6rem,8.8vw,8.8rem)] text-ink" aria-label="Intelligence. Trust. Innovation.">
         <MaskLines onLoad delay={0.2} stagger={0.1} lines={[
           <>Intelligence.</>,
           <span className="inline-flex flex-wrap items-center justify-center gap-x-[.18em]">
@@ -76,15 +76,15 @@ export default function Hero() {
         ]} />
       </h1>
 
-      <motion.p {...show(0.55)} className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg">Secure critical systems. Connect complex operations. Build technology that moves your organization forward.</motion.p>
-      <motion.div {...show(0.68)} className="mt-8 flex flex-wrap justify-center gap-3">
+      <motion.p {...show(0.55)} className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">Secure critical systems. Connect complex operations. Build technology that moves your organization forward.</motion.p>
+      <motion.div {...show(0.68)} className="mt-6 flex flex-wrap justify-center gap-3">
         <ArrowButton href="#capabilities" icon={ArrowDown}>Explore capabilities</ArrowButton>
         <Link to="/contact" className="btn btn-outline">Talk to our team</Link>
       </motion.div>
     </div>
 
-    <motion.div ref={panel} className="relative mt-14 px-3 sm:px-5 md:mt-20" initial={{ opacity: 0, y: 80 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.3, delay: 0.5, ease: EASE }}>
-      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: radius }} className="relative mx-auto h-[78svh] min-h-[520px] max-w-[1600px] origin-top overflow-hidden bg-ink">
+    <motion.div ref={panel} className="relative mt-8 px-3 sm:px-5 md:mt-10" initial={{ opacity: 0, y: 80 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.3, delay: 0.5, ease: EASE }}>
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: radius }} className="relative mx-auto h-[44svh] min-h-[280px] max-h-[420px] max-w-[1600px] origin-top overflow-hidden bg-ink md:h-[52svh] md:min-h-[380px] md:max-h-[560px]">
         <motion.div style={{ y: reduce ? 0 : imageY }} className="absolute inset-[-8%_0]"><SceneStack active={active} width={2200} /></motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-ink-950/30" />
         <div className="grain absolute inset-0" />

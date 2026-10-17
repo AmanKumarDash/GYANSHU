@@ -14,12 +14,12 @@ const socials = [['LinkedIn', 'https://linkedin.com', Linkedin], ['Instagram', '
 export default function Footer() {
   return <footer className="relative overflow-hidden bg-ink-950 text-white">
     <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent_60%)]" />
-    <div className="shell relative pt-20 md:pt-28">
-      <div className="grid gap-14 lg:grid-cols-[1.25fr_2fr]">
+    <div className="shell relative pt-14 sm:pt-16 lg:pt-20">
+      <div className="grid gap-10 lg:grid-cols-[1.25fr_2fr]">
         <div>
           <Link to="/" aria-label="Gyanshu Technologies home"><Logo tone="light" className="h-11 w-auto" /></Link>
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/55">Secure, automate, monitor, and operate critical technology environments with confidence.</p>
-          <div className="mt-8 flex flex-col gap-2">
+          <div className="mt-6 flex flex-col gap-2">
             <a href="mailto:Support.gyanshu@gmail.com" className="group inline-flex w-fit items-center gap-2 font-display text-xl tracking-tight text-white transition-colors hover:text-brand-300 md:text-2xl">Support.gyanshu@gmail.com<ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
             <a href="tel:+919040961361" className="w-fit text-white/55 transition-colors hover:text-white">+91 90409 61361</a>
             <p className="text-white/35">India</p>
@@ -28,7 +28,7 @@ export default function Footer() {
             {socials.map(([label, href, Icon]) => <a key={label} aria-label={label} href={href} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:border-brand-400 hover:bg-brand-400 hover:text-ink"><Icon size={16} /></a>)}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-7 sm:grid-cols-3">
           {footerGroups.map((group) => <div key={group.title}>
             <h4 className="font-mono text-[10.5px] uppercase tracking-[.2em] text-white/35">{group.title}</h4>
             <ul className="mt-5 flex flex-col gap-3">
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-20 flex flex-col-reverse items-start justify-between gap-5 border-t border-white/10 py-7 text-xs text-white/40 md:flex-row md:items-center">
+      <div className="mt-14 flex flex-col-reverse items-start justify-between gap-5 border-t border-white/10 py-6 text-xs text-white/40 md:flex-row md:items-center">
         <p>© 2026 Gyanshu Technology. All rights reserved.</p>
         <div className="flex flex-wrap items-center gap-5">
           {[['Privacy', '/privacy'], ['Terms', '/terms'], ['Compliance', '/compliance'], ['Cookies', '/cookies']].map(([l, to]) => <Link key={to} to={to} className="transition-colors hover:text-white">{l}</Link>)}

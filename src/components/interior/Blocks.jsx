@@ -111,7 +111,7 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
   const show = (delay) => ({ initial: { opacity: 0, y: 20 }, animate: ready ? { opacity: 1, y: 0 } : undefined, transition: { duration: 0.9, delay, ease: EASE } })
   const hasMedia = !compact && (media || images?.length)
 
-  return <section className={`relative overflow-hidden pt-32 md:pt-40 ${hasMedia ? '' : 'pb-16 md:pb-24'}`}>
+  return <section className={`relative overflow-hidden pt-24 md:pt-28 ${hasMedia ? '' : 'pb-10 md:pb-14'}`}>
     <div className="dot-grid-light pointer-events-none absolute inset-x-0 top-0 h-[70vh] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
     <div className="shell relative flex flex-col items-center text-center">
       <motion.div {...show(0.05)}><Eyebrow>{eyebrow}</Eyebrow></motion.div>
@@ -119,17 +119,17 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
         <Link to="/" className="transition-colors hover:text-ink">Home</Link>
         {crumbs.map(([label, to]) => <span key={label} className="flex items-center gap-2"><span className="h-px w-3 bg-muted-faint" />{to ? <Link to={to} className="transition-colors hover:text-ink">{label}</Link> : <span className="text-ink">{label}</span>}</span>)}
       </motion.nav>}
-      <PosterHeadline as="h1" onLoad text={title} muted={muted} pill={pill} pillAfter={pillAfter} className="mt-7 max-w-6xl text-[clamp(3.2rem,8.6vw,8.8rem)] text-ink" />
-      {subtitle && <motion.p {...show(0.45)} className="mt-7 max-w-2xl font-display text-xl font-medium leading-snug tracking-[-.02em] text-ink md:text-2xl">{subtitle}</motion.p>}
+      <PosterHeadline as="h1" onLoad text={title} muted={muted} pill={pill} pillAfter={pillAfter} className="mt-5 max-w-6xl text-[clamp(3rem,7.4vw,7.6rem)] text-ink" />
+      {subtitle && <motion.p {...show(0.45)} className="mt-5 max-w-2xl font-display text-lg font-medium leading-snug tracking-[-.02em] text-ink md:text-xl">{subtitle}</motion.p>}
       {intro && <motion.p {...show(0.52)} className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted md:text-base">{intro}</motion.p>}
-      {actions !== null && <motion.div {...show(0.6)} className="mt-8 flex flex-wrap justify-center gap-3">{actions || <>
+      {actions !== null && <motion.div {...show(0.6)} className="mt-6 flex flex-wrap justify-center gap-3">{actions || <>
         <ArrowButton to="/contact">Talk to our team</ArrowButton>
         <a href="#details" className="btn btn-outline">Explore <ArrowDown size={15} /></a>
       </>}</motion.div>}
     </div>
 
-    {hasMedia && <div ref={panel} className="relative mx-auto mt-14 max-w-[1240px] px-3 pb-16 sm:px-5 md:mt-20 md:pb-24">
-      <motion.div style={{ scale: reduce ? 1 : scale }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[56svh] min-h-[380px] origin-top overflow-hidden rounded-[2rem] shadow-lift md:max-h-[640px]">
+    {hasMedia && <div ref={panel} className="relative mx-auto mt-7 max-w-[1240px] px-3 pb-8 sm:px-5 md:mt-9 md:pb-10">
+      <motion.div style={{ scale: reduce ? 1 : scale }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[40svh] min-h-[260px] origin-top overflow-hidden rounded-[2rem] shadow-lift md:h-[44svh] md:min-h-[320px] md:max-h-[500px]">
         {media || <Slideshow images={images} label={mediaLabel} captions={captions} />}
         {chips.length > 0 && <div className="absolute left-5 top-5 z-10 hidden max-w-[60%] flex-wrap gap-2 md:flex">
           {chips.map((c, i) => <motion.span key={c} initial={{ opacity: 0, y: -8 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ delay: 1 + i * 0.1, duration: 0.6, ease: EASE }} className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/45 px-3.5 py-2 text-[12.5px] text-white/90 backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{c}</motion.span>)}
@@ -149,7 +149,7 @@ export function Statement({ eyebrow, text, id = 'details' }) {
   const end = Math.max(0, words.findIndex((w) => /[.!?]$/.test(w)))
   const stop = end || words.length - 1
   const accent = [stop - 2, stop - 1, stop].filter((n) => n >= 0)
-  return <section id={id} className="py-24 md:py-32">
+  return <section id={id} className="section-space">
     <div className="shell grid gap-8 lg:grid-cols-[220px_1fr]">
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
       <ScrollWords text={text} accent={accent} className="font-display text-[1.75rem] font-medium leading-[1.14] tracking-[-.035em] text-ink sm:text-[2.4rem] lg:text-[3.1rem]" />
@@ -162,10 +162,10 @@ export function Statement({ eyebrow, text, id = 'details' }) {
 /* ------------------------------------------------------------------ */
 
 export function KeyFeatures({ eyebrow, title, muted = 1, lede, items, cols = 3, tone = 'white' }) {
-  return <section className={`${tone === 'white' ? 'bg-white' : ''} py-24 md:py-32`}>
+  return <section className={`${tone === 'white' ? 'bg-white' : ''} section-space`}>
     <div className="shell">
       <SectionIntro eyebrow={eyebrow} title={title} muted={muted} lede={lede} />
-      <div className={`mt-16 grid sm:grid-cols-2 ${gridCols[cols]}`}>
+      <div className={`mt-7 lg:mt-9 grid sm:grid-cols-2 ${gridCols[cols]}`}>
         {items.map((item, i) => {
           return <Reveal key={item.title} delay={(i % cols) * 0.08} className={`group flex flex-col items-center px-6 py-10 text-center ${i % cols ? 'lg:border-l lg:border-line' : ''} ${i >= cols ? 'lg:border-t lg:border-line' : ''} border-line max-lg:border-b`}>
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-50 text-brand-600 ring-8 ring-brand-50/50 transition-all duration-500 group-hover:-rotate-6 group-hover:bg-ink group-hover:text-brand-300 group-hover:ring-brand-400/15"><ItemIcon title={item.title} icon={item.icon} size={24} strokeWidth={1.6} /></span>
@@ -183,7 +183,7 @@ export function KeyFeatures({ eyebrow, title, muted = 1, lede, items, cols = 3, 
 /* ------------------------------------------------------------------ */
 
 export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) {
-  return <section className="py-24 md:py-32">
+  return <section className="section-space">
     <div className="shell">
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-end">
         <div>
@@ -192,14 +192,14 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
         </div>
         {lede && <Reveal delay={0.12} className="lg:justify-self-end"><p className="lede max-w-sm">{lede}</p></Reveal>}
       </div>
-      <div className={`mt-14 grid grid-cols-2 gap-2 sm:gap-3 ${gridCols[cols]}`}>
+      <div className={`mt-7 grid grid-cols-1 gap-2 min-[360px]:grid-cols-2 sm:gap-3 ${gridCols[cols]}`}>
         {items.map((item, i) => {
           const Wrap = item.to ? Link : 'div'
           return <Reveal key={item.title} delay={(i % cols) * 0.06} className="h-full">
-            <Wrap to={item.to} className="group relative flex h-full min-h-[160px] flex-col overflow-hidden rounded-[22px] border border-line bg-white p-4 shadow-card sm:min-h-[200px] sm:p-6 transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
+            <Wrap to={item.to} className="group relative flex h-full min-h-[150px] flex-col overflow-hidden rounded-[22px] border border-line bg-white p-4 shadow-card sm:min-h-[180px] sm:p-5 transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_20px_-8px_rgba(10,138,143,.6)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={item.title} icon={item.icon} size={19} strokeWidth={1.8} /></span>
-              <h3 className="mt-6 font-display text-[15px] font-medium leading-snug tracking-[-.02em] text-ink sm:mt-8 sm:text-lg md:text-xl">{item.title}</h3>
-              {item.text && <p className="mt-2 hidden text-[13.5px] leading-relaxed text-muted sm:block">{item.text}</p>}
+              <h3 className="mt-4 font-display text-[15px] font-medium leading-snug tracking-[-.02em] text-ink sm:mt-5 sm:text-lg md:text-xl">{item.title}</h3>
+              {item.text && <p className="mt-2 text-[13px] leading-relaxed text-muted sm:text-[13.5px]">{item.text}</p>}
               {item.tags && <div className="mt-auto flex flex-wrap gap-1.5 pt-5">{item.tags.map((t) => <span key={t} className="rounded-full bg-paper px-2.5 py-1 text-[11px] text-muted">{t}</span>)}</div>}
               <span className="absolute right-5 top-5 font-mono text-[10.5px] text-muted-faint">{String(i + 1).padStart(2, '0')}</span>
             </Wrap>
@@ -216,16 +216,16 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
 
 export function Bento({ eyebrow, title, accent, lede, items }) {
   const [first, ...rest] = items
-  return <section className="py-24 md:py-32">
+  return <section className="section-space">
     <div className="shell">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
         <Reveal delay={0.05}><h2 className="h-section mt-5">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
         {lede && <Reveal delay={0.12}><p className="lede mx-auto mt-5 max-w-xl">{lede}</p></Reveal>}
       </div>
-      <div className="mt-14 grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
-        <Reveal className="lg:row-span-2">
-          <Link to={first.to} className="group relative flex h-full min-h-[420px] flex-col justify-between overflow-hidden rounded-[26px] bg-[linear-gradient(160deg,#26c8b2_0%,#0a8a8f_45%,#005564_100%)] p-8 text-white shadow-glow">
+      <div className="mt-7 grid grid-cols-2 gap-3 lg:grid-cols-3 lg:grid-rows-2">
+        <Reveal className="col-span-2 lg:col-span-1 lg:row-span-2">
+          <Link to={first.to} className="group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[26px] bg-[linear-gradient(160deg,#26c8b2_0%,#0a8a8f_45%,#005564_100%)] p-6 text-white shadow-glow sm:min-h-[340px] sm:p-8 lg:min-h-[360px]">
             <div className="dot-grid absolute inset-0 opacity-40 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <div className="relative flex items-start justify-between">
@@ -240,7 +240,7 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
           </Link>
         </Reveal>
         {rest.map((item, i) => <Reveal key={item.to} delay={0.08 + (i % 2) * 0.08}>
-          <Link to={item.to} className="group relative flex h-full min-h-[300px] flex-col justify-between overflow-hidden rounded-[26px] bg-ink p-6 text-white">
+          <Link to={item.to} className="group relative flex h-full min-h-[180px] flex-col justify-between overflow-hidden rounded-[26px] bg-ink p-4 text-white sm:min-h-[240px] sm:p-6 lg:min-h-[260px]">
             <img src={photo(item.image, 1000)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/25 to-ink-950/10" />
             <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-white/10 font-mono text-[11px] backdrop-blur">{String(i + 2).padStart(2, '0')}</span>
@@ -270,7 +270,7 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
   useMotionValueEvent(scrollYProgress, 'change', (v) => setCurrent(Math.min(steps.length - 1, Math.max(0, Math.floor(v * (steps.length + 0.2))))))
   const cols = gridCols[steps.length] || 'lg:grid-cols-4'
 
-  return <section id={id} className="pt-24 md:pt-32">
+  return <section id={id} className="section-space-top">
     <div className="shell">
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
       <Reveal delay={0.05}><h2 className="h-section mt-5 max-w-3xl">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
@@ -279,7 +279,7 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
       <motion.img src={photo(image, 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-0 h-[112%] w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-paper via-paper/55 to-ink-950/50" />
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950/70 to-transparent" />
-      <div className="shell relative pb-16 pt-20 md:pb-20 md:pt-40">
+      <div className="shell relative pb-9 pt-10 md:pb-10 md:pt-14">
         <div className={`relative grid gap-4 ${cols}`}>
           <div className="pointer-events-none absolute bottom-[9px] left-0 right-0 hidden h-px bg-white/40 lg:block">
             <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_10px_#26c8b2]" style={{ scaleX: reduce ? 1 : progress }} />
@@ -301,7 +301,7 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
             </div>
           })}
         </div>
-        {(note || lede) && <Reveal className="mt-14 flex justify-end"><p className="max-w-sm text-right text-[15px] leading-relaxed text-white/85 md:text-lg">{note || lede}</p></Reveal>}
+        {(note || lede) && <Reveal className="mt-8 flex justify-end"><p className="max-w-sm text-right text-[15px] leading-relaxed text-white/85 md:text-lg">{note || lede}</p></Reveal>}
       </div>
     </div>
   </section>
@@ -318,8 +318,8 @@ export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }
   const reduce = useReducedMotion()
   const n = items.length
   const points = items.map((_, i) => bezier(n === 1 ? 0.5 : 0.08 + (i * 0.84) / (n - 1)))
-  return <section className="px-3 py-6 sm:px-5">
-    <div className="relative mx-auto min-h-[780px] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0c1517_100%)]">
+  return <section className="px-3 py-4 sm:px-5 sm:py-5">
+    <div className="relative mx-auto min-h-[min(560px,calc(100svh-6rem))] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0c1517_100%)] md:min-h-[min(700px,calc(100svh-6rem))]">
       <div className="grain absolute inset-0" />
       {/* Arc + nodes (desktop) */}
       <div className="absolute inset-x-0 top-10 hidden h-[400px] md:block">
@@ -350,7 +350,7 @@ export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }
         <div className="h-24 overflow-hidden opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]"><img src={photo(image, 600)} alt="" className="h-[300px] w-full -scale-y-100 rounded-[22px] object-cover blur-[2px] grayscale" /></div>
       </motion.div>
 
-      <div className="relative flex min-h-[780px] flex-col justify-end gap-8 p-7 md:flex-row md:items-end md:justify-between md:p-12">
+      <div className="relative flex min-h-[min(560px,calc(100svh-6rem))] flex-col justify-end gap-6 p-6 md:min-h-[min(700px,calc(100svh-6rem))] md:flex-row md:items-end md:justify-between md:gap-8 md:p-10">
         <div className="md:hidden">
           <span className="eyebrow">{eyebrow}</span>
           <div className="mt-6 flex flex-wrap gap-2">{items.map((item) => <Link key={item.label} to={item.to} className="rounded-full border border-ink/10 bg-white/70 px-3.5 py-2 text-[13px] text-ink backdrop-blur">{item.label}</Link>)}</div>
@@ -369,7 +369,7 @@ export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }
 /* Case grid — Apex masonry with pagination                             */
 /* ------------------------------------------------------------------ */
 
-const heights = ['h-[280px]', 'h-[360px]', 'h-[230px]', 'h-[340px]', 'h-[250px]', 'h-[300px]']
+const heights = ['h-[160px] min-[480px]:h-[280px]', 'h-[180px] min-[480px]:h-[360px]', 'h-[150px] min-[480px]:h-[230px]', 'h-[180px] min-[480px]:h-[340px]', 'h-[160px] min-[480px]:h-[250px]', 'h-[170px] min-[480px]:h-[300px]']
 
 export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link, tone = 'white' }) {
   const [page, setPage] = useState(0)
@@ -377,15 +377,15 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
   const pages = Math.ceil(items.length / pageSize)
   const shown = items.slice(page * pageSize, page * pageSize + pageSize)
   const go = (p) => { setPage(p); top.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
-  return <section ref={top} className={`${tone === 'white' ? 'bg-white' : ''} py-24 md:py-32`}>
+  return <section ref={top} className={`${tone === 'white' ? 'bg-white' : ''} section-space`}>
     <div className="shell">
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <SectionIntro eyebrow={eyebrow} title={title} muted={muted} align="left" size="text-[clamp(2.8rem,6.6vw,6.4rem)]" />
         {link && <Reveal delay={0.15}><Link to={link.to} className="btn btn-outline">{link.label}</Link></Reveal>}
       </div>
       <AnimatePresence mode="wait">
-        <motion.div key={page} className="mt-14 gap-6 sm:columns-2 lg:columns-3" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.5, ease: EASE }}>
-          {shown.map((item, i) => <Reveal key={item.title} delay={(i % 3) * 0.08} className="mb-12 break-inside-avoid">
+        <motion.div key={page} className="mt-10 gap-4 min-[360px]:columns-2 lg:columns-3" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.5, ease: EASE }}>
+          {shown.map((item, i) => <Reveal key={item.title} delay={(i % 3) * 0.08} className="mb-8 break-inside-avoid">
             <Link to={item.to} className="group block">
               <div className={`relative overflow-hidden rounded-[20px] bg-ink ${heights[(i + page) % heights.length]}`}>
                 <img src={photo(item.image, 900)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
@@ -415,14 +415,14 @@ export function Quotes({ eyebrow, title, accent, lede, items, image }) {
   const [active, setActive] = useState(0)
   const q = items[active]
   const others = items.map((it, i) => [it, i]).filter(([, i]) => i !== active)
-  return <section className="py-24 md:py-32">
+  return <section className="section-space">
     <div className="shell">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
         <Reveal delay={0.05}><h2 className="h-section mt-5">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
         {lede && <Reveal delay={0.12}><p className="lede mx-auto mt-5 max-w-lg">{lede}</p></Reveal>}
       </div>
-      <Reveal className="mx-auto mt-14 max-w-5xl">
+      <Reveal className="mx-auto mt-7 max-w-5xl">
         <div className="grid gap-3 rounded-[30px] border border-line bg-white p-3 shadow-card md:grid-cols-[300px_1fr]">
           <div className="relative h-[280px] overflow-hidden rounded-[22px] bg-ink md:h-auto md:min-h-[320px]">
             <img src={photo(image, 800)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale" />
@@ -504,7 +504,7 @@ function FaqRow({ item, open, onToggle }) {
 export function FaqDark({ eyebrow = 'FAQ', title = 'Questions, answered.', lede, items, id, image, imageAlt = '' }) {
   const [open, setOpen] = useState(0)
   return <section id={id} className="px-3 py-6 sm:px-5">
-    <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-20 text-white md:py-28">
+    <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_left,black,transparent_60%)]" />
       <div className="shell relative grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-center">
         <Reveal>{image?<div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-white/10 shadow-lift"><img src={photo(image,1200)} alt={imageAlt} loading="lazy" className="h-full w-full object-cover"/></div>:<Shield3D />}</Reveal>
@@ -543,8 +543,8 @@ const arcs = [[0, 1], [1, 2], [2, 3], [4, 5], [1, 7], [6, 4], [3, 8]]
 
 export function StatsBand({ eyebrow, title, accent, lede, stats }) {
   const reduce = useReducedMotion()
-  return <section className="px-3 py-6 sm:px-5">
-    <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-20 text-white md:py-28">
+  return <section className="px-3 py-4 sm:px-5 sm:py-5">
+    <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
       {/* Tilted network plane */}
       <div className="pointer-events-none absolute inset-x-0 top-[24%] h-[420px] overflow-hidden [perspective:700px] [perspective-origin:50%_0%]" aria-hidden="true">
         <div className="absolute bottom-0 left-1/2 h-[1100px] w-[2200px] origin-bottom [transform:translateX(-50%)_rotateX(68deg)] [mask-image:radial-gradient(ellipse_50%_55%_at_50%_70%,black_25%,transparent_75%)]">
@@ -564,7 +564,7 @@ export function StatsBand({ eyebrow, title, accent, lede, stats }) {
           <Reveal delay={0.05}><h2 className="h-section mt-5 text-white">{title} <span className="text-brand-300">{accent}</span></h2></Reveal>
           {lede && <Reveal delay={0.1}><p className="mx-auto mt-5 max-w-lg text-[15px] text-white/50">{lede}</p></Reveal>}
         </div>
-        <div className="mt-[300px] grid grid-cols-2 gap-y-10 md:grid-cols-4">
+        <div className="mt-32 grid grid-cols-2 gap-y-6 md:mt-36 md:grid-cols-4">
           {stats.map(([value, suffix, label], i) => <Reveal key={label} delay={i * 0.08} className={`text-center ${i ? 'md:border-l md:border-white/10' : ''}`}>
             <p className="font-display text-5xl font-light tracking-[-.04em] text-brand-300 md:text-7xl"><Count value={value} suffix={suffix} /></p>
             <p className="mt-2 text-sm text-white/60">{label}</p>
@@ -580,7 +580,7 @@ export function StatsBand({ eyebrow, title, accent, lede, stats }) {
 /* ------------------------------------------------------------------ */
 
 export function NeedsSplit({ eyebrow, title, items }) {
-  return <section className="py-24 md:py-32">
+  return <section className="section-space">
     <div className="shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
       <SectionIntro eyebrow={eyebrow} title={title} muted={2} align="left" size="text-[clamp(2.8rem,5.6vw,5.4rem)]" />
       <div className="grid gap-3 sm:grid-cols-2">
@@ -605,10 +605,10 @@ const stripHeights = ['h-[220px]', 'h-[300px]', 'h-[250px]', 'h-[200px]', 'h-[28
 export function CtaPhotos({ eyebrow = 'Start a conversation', title = 'Ready to talk through your next challenge?', muted = 3, text = 'Let’s talk about what you need to make possible.', cta = 'Contact Gyanshu', to = '/contact', href, images }) {
   const row = [...images, ...images]
   const Action = href ? 'a' : Link
-  return <section className="overflow-hidden bg-white pb-20 pt-24 md:pt-32">
+  return <section className="overflow-hidden bg-white pb-14 pt-14 sm:pb-16 sm:pt-16 lg:pb-20 lg:pt-20">
     <div className="shell flex flex-col items-center text-center">
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
-      <PosterHeadline text={title} muted={muted} className="mt-6 max-w-5xl text-[clamp(2.8rem,6.4vw,6.2rem)] text-ink" />
+      <PosterHeadline text={title} muted={muted} className="mt-5 max-w-5xl text-[clamp(2.8rem,6.4vw,6.2rem)] text-ink" />
       <Reveal delay={0.15}><p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted md:text-base">{text}</p></Reveal>
       <Reveal delay={0.22}>
         <Action {...(href ? { href } : { to })} className="group mt-8 inline-flex items-center gap-4 text-[15px] font-medium text-ink">
@@ -616,8 +616,9 @@ export function CtaPhotos({ eyebrow = 'Start a conversation', title = 'Ready to 
         </Action>
       </Reveal>
     </div>
-    <div className="mt-16 flex w-max animate-marquee items-start gap-4 [animation-duration:70s] hover:[animation-play-state:paused]" aria-hidden="true">
+    <div className="mt-10 flex w-max animate-marquee items-start gap-3 [animation-duration:70s] hover:[animation-play-state:paused]" aria-hidden="true">
       {row.map((id, i) => <div key={i} className={`w-[240px] shrink-0 overflow-hidden rounded-[22px] bg-ink md:w-[280px] ${stripHeights[i % stripHeights.length]}`}><img src={photo(id, 600)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" /></div>)}
     </div>
   </section>
 }
+

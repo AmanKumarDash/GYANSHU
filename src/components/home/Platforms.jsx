@@ -42,16 +42,16 @@ function PlatformCard({ item, index }) {
     e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
   }
   return <Reveal delay={(index % 3) * 0.08} className="h-full">
-    <Link to={item.to} onMouseMove={onMove} className="group relative flex h-full min-h-[260px] flex-col justify-between overflow-hidden rounded-[24px] border border-white/[.08] bg-white/[.025] p-7 transition-colors duration-500 hover:border-brand-400/40">
+    <Link to={item.to} onMouseMove={onMove} className="group relative flex h-full min-h-[160px] flex-col justify-between overflow-hidden rounded-[24px] border border-white/[.08] bg-white/[.025] p-4 transition-colors duration-500 hover:border-brand-400/40 sm:min-h-[190px] sm:p-5">
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(420px circle at var(--mx) var(--my), rgba(38,200,178,.16), transparent 45%)' }} />
       <div className="relative flex items-start justify-between">
         <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[.04] text-brand-300 transition-all duration-500 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
         <span className="font-mono text-[11px] text-white/35">0{index + 1} / Platform</span>
       </div>
-      <div className="relative mt-10">
+      <div className="relative mt-4 sm:mt-5">
         <h3 className="font-display text-2xl font-medium tracking-[-.025em] text-white md:text-[1.7rem]">{item.label.trim()}</h3>
         <p className="mt-2 text-[14.5px] leading-relaxed text-white/50">{line}</p>
-        <div className="mt-6 flex items-center justify-between border-t border-white/[.08] pt-5">
+        <div className="mt-4 flex items-center justify-between border-t border-white/[.08] pt-3">
           <span className="text-sm text-white/70 transition-colors group-hover:text-white">View platform</span>
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={16} /></span>
         </div>
@@ -62,22 +62,23 @@ function PlatformCard({ item, index }) {
 
 export default function Platforms() {
   return <section className="px-3 sm:px-5">
-    <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-24 text-white md:py-32">
+    <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-7 text-white sm:py-8 lg:py-9">
       <Constellation />
       <div className="pointer-events-none absolute -right-40 top-1/3 h-[34rem] w-[34rem] rounded-full bg-brand-500/20 blur-[140px]" />
       <div className="shell relative">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <Reveal><Eyebrow dark>Built for critical operations</Eyebrow></Reveal>
             <h2 className="h-section mt-5 text-white"><MaskLines lines={['Purpose-built platforms.', <span className="text-brand-300">Operationally ready.</span>]} /></h2>
-            <Reveal delay={0.15}><p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/50">Technology for secure, visible, and dependable operations.</p></Reveal>
+            <Reveal delay={0.15}><p className="mt-3 max-w-md text-[15px] leading-relaxed text-white/50">Technology for secure, visible, and dependable operations.</p></Reveal>
           </div>
           <Reveal delay={0.2}><ArrowButton to="/products" variant="light">Explore all products</ArrowButton></Reveal>
         </div>
-        <motion.div className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE }}>
+        <motion.div className="mt-5 grid grid-cols-2 gap-2 sm:mt-6 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE }}>
           {productLinks.map((p, i) => <PlatformCard key={p.to} item={p} index={i} />)}
         </motion.div>
       </div>
     </div>
   </section>
 }
+
