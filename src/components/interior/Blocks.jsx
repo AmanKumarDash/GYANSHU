@@ -23,7 +23,7 @@ function PillImages({ images }) {
     const t = window.setInterval(() => setI((v) => (v + 1) % images.length), 3200)
     return () => window.clearInterval(t)
   }, [images, reduce])
-  return images.map((id, k) => <motion.img key={id} src={photo(id, 500)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={false} animate={{ opacity: k === i ? 1 : 0, scale: k === i ? 1 : 1.15 }} transition={{ opacity: { duration: 0.9 }, scale: { duration: 4, ease: 'linear' } }} />)
+  return images.map((id, k) => <motion.img key={`${id}-${k}`} src={photo(id, 500)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={false} animate={{ opacity: k === i ? 1 : 0, scale: k === i ? 1 : 1.15 }} transition={{ opacity: { duration: 0.9 }, scale: { duration: 4, ease: 'linear' } }} />)
 }
 
 // Apex-style poster headline: words rise one by one, trailing words turn grey and an image pill can sit inline.
@@ -62,7 +62,7 @@ function SectionIntro({ eyebrow, title, muted = 1, lede, dark = false, align = '
 /* Media                                                               */
 /* ------------------------------------------------------------------ */
 
-export function Slideshow({ images, label, captions = [], interval = 5.5 }) {
+export function Slideshow({ images, label, captions = [], interval = 5.5, imageY = 0 }) {
   const reduce = useReducedMotion()
   const [i, setI] = useState(0)
   useEffect(() => {
@@ -71,7 +71,9 @@ export function Slideshow({ images, label, captions = [], interval = 5.5 }) {
     return () => window.clearTimeout(t)
   }, [i, images, interval, reduce])
   return <div className="grain relative h-full w-full overflow-hidden bg-ink">
-    {images.map((id, k) => <motion.img key={id} src={photo(id, 2000)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={false} animate={{ opacity: k === i ? 1 : 0, scale: k === i || reduce ? 1 : 1.12 }} transition={{ opacity: { duration: 1.1 }, scale: k === i ? { duration: interval + 1.5, ease: 'linear' } : { duration: 0, delay: 1.1 } }} />)}
+    <motion.div style={{ y: imageY }} className="absolute inset-[-8%_0]">
+      {images.map((id, k) => <motion.img key={`${id}-${k}`} src={photo(id, 2400)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={false} animate={{ opacity: k === i ? 1 : 0, scale: k === i || reduce ? 1 : 1.12 }} transition={{ opacity: { duration: 1.1 }, scale: k === i ? { duration: interval + 1.5, ease: 'linear' } : { duration: 0, delay: 1.1 } }} />)}
+    </motion.div>
     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-ink-950/20" />
     <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-6 md:p-8">
       <div>
@@ -79,7 +81,7 @@ export function Slideshow({ images, label, captions = [], interval = 5.5 }) {
         {captions.length > 0 && <AnimatePresence mode="wait"><motion.p key={i} className="mt-3 font-display text-xl font-medium tracking-[-.02em] text-white md:text-3xl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.5 }}>{captions[i % captions.length]}</motion.p></AnimatePresence>}
       </div>
       {images.length > 1 && <div className="flex items-center gap-2">
-        {images.map((id, k) => <button key={id} onClick={() => setI(k)} aria-label={`Show image ${k + 1}`} aria-current={k === i ? 'true' : undefined} className="group relative h-6 w-9">
+        {images.map((id, k) => <button key={`${id}-${k}`} onClick={() => setI(k)} aria-label={`Show image ${k + 1}`} aria-current={k === i ? 'true' : undefined} className="group relative h-6 w-9">
           <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 overflow-hidden rounded-full bg-white/25">{k === i && <motion.span key={`p${i}`} className="absolute inset-0 origin-left bg-brand-400" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: reduce ? 0 : interval, ease: 'linear' }} />}</span>
         </button>)}
       </div>}
@@ -89,7 +91,7 @@ export function Slideshow({ images, label, captions = [], interval = 5.5 }) {
 
 function SpinBadge({ href = '#details' }) {
   const id = useId().replace(/:/g, '')
-  return <a href={href} aria-label="Scroll to details" className="group absolute -bottom-12 right-8 z-10 hidden h-28 w-28 items-center justify-center rounded-full bg-brand-400 text-ink shadow-lift transition-transform duration-500 hover:scale-105 md:flex lg:right-16">
+  return <a href={href} aria-label="Scroll to details" className="group absolute bottom-6 right-8 z-10 hidden h-28 w-28 items-center justify-center rounded-full bg-brand-400 text-ink shadow-lift transition-transform duration-500 hover:scale-105 md:flex lg:right-16">
     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-spin-slow" aria-hidden="true">
       <defs><path id={id} d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0" /></defs>
       <text className="fill-ink font-mono text-[8.6px] uppercase tracking-[.22em]"><textPath href={`#${id}`}>Scroll to explore · Gyanshu ·</textPath></text>
@@ -106,8 +108,11 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
   const ready = useIntroReady()
   const reduce = useReducedMotion()
   const panel = useRef(null)
-  const { scrollYProgress } = useScroll({ target: panel, offset: ['start end', 'start 20%'] })
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1])
+  // Same scroll-in as the home hero: the panel grows to full width, corners tighten and the image drifts.
+  const { scrollYProgress } = useScroll({ target: panel, offset: ['start end', 'start 12%'] })
+  const scale = useTransform(scrollYProgress, [0, 1], [0.88, 1])
+  const radius = useTransform(scrollYProgress, [0, 1], [48, 28])
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-8%', '0%'])
   const show = (delay) => ({ initial: { opacity: 0, y: 20 }, animate: ready ? { opacity: 1, y: 0 } : undefined, transition: { duration: 0.9, delay, ease: EASE } })
   const hasMedia = !compact && (media || images?.length)
 
@@ -128,9 +133,9 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
       </>}</motion.div>}
     </div>
 
-    {hasMedia && <div ref={panel} className="relative mx-auto mt-7 max-w-[1240px] px-3 pb-8 sm:px-5 md:mt-9 md:pb-10">
-      <motion.div style={{ scale: reduce ? 1 : scale }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[40svh] min-h-[260px] origin-top overflow-hidden rounded-[2rem] shadow-lift md:h-[44svh] md:min-h-[320px] md:max-h-[500px]">
-        {media || <Slideshow images={images} label={mediaLabel} captions={captions} />}
+    {hasMedia && <div ref={panel} className="relative mx-auto mt-7 max-w-[1600px] px-3 pb-10 sm:px-5 md:mt-9 md:pb-20">
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[44svh] min-h-[280px] max-h-[420px] origin-top overflow-hidden bg-ink shadow-lift md:h-[52svh] md:min-h-[380px] md:max-h-[560px]">
+        {media || <Slideshow images={images} label={mediaLabel} captions={captions} imageY={reduce ? 0 : imageY} />}
         {chips.length > 0 && <div className="absolute left-5 top-5 z-10 hidden max-w-[60%] flex-wrap gap-2 md:flex">
           {chips.map((c, i) => <motion.span key={c} initial={{ opacity: 0, y: -8 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ delay: 1 + i * 0.1, duration: 0.6, ease: EASE }} className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/45 px-3.5 py-2 text-[12.5px] text-white/90 backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{c}</motion.span>)}
         </div>}
