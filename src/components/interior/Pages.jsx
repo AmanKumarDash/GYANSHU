@@ -34,7 +34,7 @@ const guiding = [
 const voices = team.map((t) => ({ name: t.name, role: t.role, quote: t.quote, colors: t.colors }))
 const stats = [[productLinks.length, '', 'Purpose-built platforms'], [services.length, '', 'Capability areas'], [industryLinks.length, '', 'Industries served'], [delivery.length, '', 'Delivery phases']]
 const serviceCards = serviceLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: serviceImages[l.to], to: l.to }))
-const industryCards = industryLinks.map((l, i) => ({ title: l.label, text: getPage(l.to).subtitle, image: industryImages[l.to], to: l.to, tag: `Industry ${String(i + 1).padStart(2, '0')}` }))
+const industryCards = industryLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: industryImages[l.to], to: l.to, tag: 'Industry' }))
 const pool = (page) => imagePools[getScene(page).type] || imagePools.company
 const pickFaqs = (key, n) => (faqPicks[key] || faqs.map((_, i) => i)).slice(0, n).map((i) => faqs[i])
 
@@ -87,7 +87,7 @@ export function ServiceDetail({ page }) {
         { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Network solution' },
         { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: imagePools.security[0], to: '/products/vapt', tag: 'Security solution' },
       ]
-    : serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c, i) => ({ ...c, tag: `Service ${String(i + 1).padStart(2, '0')}` }))
+    : serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c) => ({ ...c, tag: 'Service' }))
   const process = isIot
     ? [['Discovery & Strategy', ''], ['Prototype Development', ''], ['Pilot Implementation', ''], ['Full-scale Deployment', ''], ['Monitoring & Optimization', '']]
     : isNetwork
@@ -271,10 +271,10 @@ function CybersecurityServiceContent({ page }) {
           <p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p>
         </div>
         <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {cyberServices.map(([title, text, image], i) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
+          {cyberServices.map(([title, text, image]) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
             <img src={photo(image, 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
-            <span className="mb-auto font-mono text-xs text-white/70">{String(i + 1).padStart(2, '0')}</span>
+            <span className="mb-auto font-mono text-xs text-white/70">◆</span>
             <h3 className="font-display text-xl font-medium">{title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-white/80">{text}</p>
           </article>)}
@@ -711,7 +711,7 @@ export function NotFound({ page }) {
         {[['Products', '/products', 'Platforms for network intelligence and security.'], ['Solutions', '/solutions', 'Cybersecurity, infrastructure, IoT, and more.'], ['Industries', '/industries', 'Secure technology for high-stakes environments.'], ['Contact', '/contact', 'Tell us what you need to make possible.']].map(([t, to, d], i) =>
           <motion.div key={to} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}>
             <Link to={to} className="group flex h-full min-h-[180px] flex-col justify-between rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
-              <span className="flex items-center justify-between font-mono text-[11px] text-muted-soft">0{i + 1}<ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
+              <span className="flex items-center justify-between font-mono text-[11px] text-brand-500">◆<ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
               <span><span className="block font-display text-xl font-medium tracking-[-.02em]">{t}</span><span className="mt-1 block text-sm text-muted">{d}</span></span>
             </Link>
           </motion.div>)}

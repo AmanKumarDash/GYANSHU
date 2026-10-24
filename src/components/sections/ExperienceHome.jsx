@@ -11,8 +11,8 @@ export default function ExperienceHome() {
   return <main className="overflow-x-clip bg-paper text-ink">
     <Hero />
     <Perspectives />
+    <div className="bg-[linear-gradient(to_bottom,#f3f2ee_50%,#fff_50%)]"><Platforms /></div>
     <Capabilities />
-    <div className="bg-[linear-gradient(to_bottom,#fff_50%,#f3f2ee_50%)]"><Platforms /></div>
     <Industries />
     <Process />
     <UseCases />

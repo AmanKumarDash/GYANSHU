@@ -41,7 +41,7 @@ export default function Process() {
           <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[.16em] text-white/45"><span>Current phase</span><span className="flex items-center gap-2 text-brand-300"><span className="relative flex h-1.5 w-1.5"><span className="absolute inset-0 animate-ping rounded-full bg-brand-400" /><span className="relative h-1.5 w-1.5 rounded-full bg-brand-400" /></span>Live</span></div>
           <div className="mt-3 h-10 overflow-hidden">
             <AnimatePresence mode="popLayout" initial={false}>
-              <motion.p key={current} className="font-display text-3xl font-medium tracking-[-.03em]" initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: -40 }} transition={{ duration: 0.5, ease: EASE }}>{steps[current][0]} — {steps[current][1]}</motion.p>
+              <motion.p key={current} className="font-display text-3xl font-medium tracking-[-.03em]" initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: -40 }} transition={{ duration: 0.5, ease: EASE }}>{steps[current][1]}</motion.p>
             </AnimatePresence>
           </div>
           <p className="mt-2 text-[13px] leading-relaxed text-white/55">Priorities visible. Decisions grounded. Ownership clear.</p>
@@ -56,7 +56,7 @@ export default function Process() {
             {steps.map(([n, t], i) => {
               const on = i <= current
               return <div key={n} className="flex flex-col items-center text-center">
-                <span className={`font-mono text-[11px] transition-colors duration-500 ${on ? 'text-brand-300' : 'text-white/35'}`}>{n}</span>
+                <span className={`font-mono text-[11px] transition-colors duration-500 ${on ? 'text-brand-300' : 'text-white/35'}`}>◆</span>
                 <span className={`mt-2 font-display text-xl font-medium tracking-[-.02em] transition-all duration-500 lg:text-3xl ${i === current ? 'text-white' : on ? 'text-white/70' : 'text-white/30'}`}>{t}</span>
                 <span className="relative mt-6 flex h-[18px] w-[18px] items-center justify-center">
                   <span className={`absolute inset-0 rounded-full border transition-all duration-500 ${on ? 'border-brand-400 bg-ink' : 'border-white/30 bg-ink/80'}`} />
@@ -71,7 +71,7 @@ export default function Process() {
         {/* Vertical list (mobile) */}
         <ol className="absolute inset-x-5 bottom-6 flex flex-col gap-3 md:hidden">
           {steps.map(([n, t], i) => <li key={n} className={`flex items-center gap-4 border-b border-white/10 pb-3 transition-colors duration-500 ${i <= current ? 'text-white' : 'text-white/35'}`}>
-            <span className={`h-2 w-2 rounded-full ${i <= current ? 'bg-brand-400' : 'bg-white/30'}`} /><span className="font-mono text-[11px]">{n}</span><span className="font-display text-xl font-medium">{t}</span>
+            <span className={`h-2 w-2 rounded-full ${i <= current ? 'bg-brand-400' : 'bg-white/30'}`} /><span className="font-display text-xl font-medium">{t}</span>
           </li>)}
         </ol>
       </div>

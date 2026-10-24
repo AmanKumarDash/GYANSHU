@@ -78,7 +78,7 @@ export default function Perspectives() {
           {storyCards.map((item, i) => <Reveal key={item.n} delay={0.1 + i * 0.08} className="flex-none lg:flex-1">
             <button onClick={() => setActive(i)} aria-label={`Show featured story ${i + 1}: ${item.tag}`} aria-current={active === i ? 'true' : undefined} className={`group relative flex h-full min-h-[108px] w-[13rem] flex-col justify-between overflow-hidden rounded-[18px] border p-4 text-left transition-all duration-500 sm:w-[15rem] sm:p-5 lg:min-h-0 lg:w-full lg:rounded-[22px] lg:p-4 ${active === i ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink hover:border-ink/25'}`}>
               <div className="flex items-center justify-between">
-                <span className={`font-mono text-[11px] ${active === i ? 'text-brand-300' : 'text-muted-soft'}`}>{item.n} / {item.tag}</span>
+                <span className={`font-mono text-[11px] ${active === i ? 'text-brand-300' : 'text-muted-soft'}`}>◆ {item.tag}</span>
                 <ArrowUpRight size={16} className={`transition-transform duration-500 ${active === i ? 'rotate-45 text-brand-300' : 'text-muted-soft group-hover:-translate-y-0.5 group-hover:translate-x-0.5'}`} />
               </div>
               <p className="mt-3 font-display text-base font-medium leading-snug tracking-[-.02em] sm:mt-4 sm:text-lg md:text-xl">{item.title}</p>

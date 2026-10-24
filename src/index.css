@@ -62,22 +62,10 @@
     padding-bottom: var(--section-space);
   }
 
-  /* Pill eyebrow — "● Our services" */
-  .eyebrow {
-    @apply inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white/70 px-3 py-1.5 font-mono text-[10.5px] font-medium uppercase tracking-[.16em] text-muted backdrop-blur;
-  }
-  .eyebrow::before {
-    content: '';
-    @apply h-1.5 w-1.5 rounded-full bg-brand-500;
-    box-shadow: 0 0 0 3px rgba(10, 138, 143, .14);
-  }
+  /* Eyebrow labels are hidden sitewide */
+  .eyebrow,
   .eyebrow-dark {
-    @apply inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[.04] px-3 py-1.5 font-mono text-[10.5px] font-medium uppercase tracking-[.16em] text-white/60 backdrop-blur;
-  }
-  .eyebrow-dark::before {
-    content: '';
-    @apply h-1.5 w-1.5 rounded-full bg-brand-400;
-    box-shadow: 0 0 0 3px rgba(38, 200, 178, .18);
+    display: none !important;
   }
 
   .h-section {

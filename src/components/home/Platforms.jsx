@@ -46,7 +46,7 @@ function PlatformCard({ item, index }) {
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(420px circle at var(--mx) var(--my), rgba(38,200,178,.16), transparent 45%)' }} />
       <div className="relative flex items-start justify-between">
         <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[.04] text-brand-300 transition-all duration-500 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
-        <span className="font-mono text-[11px] text-white/35">0{index + 1} / Platform</span>
+        <span className="font-mono text-[11px] text-white/35">◆ Platform</span>
       </div>
       <div className="relative mt-4 sm:mt-5">
         <h3 className="font-display text-2xl font-medium tracking-[-.025em] text-white md:text-[1.7rem]">{item.label.trim()}</h3>

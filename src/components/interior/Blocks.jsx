@@ -201,7 +201,7 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
               <h3 className="mt-4 font-display text-[15px] font-medium leading-snug tracking-[-.02em] text-ink sm:mt-5 sm:text-lg md:text-xl">{item.title}</h3>
               {item.text && <p className="mt-2 text-[13px] leading-relaxed text-muted sm:text-[13.5px]">{item.text}</p>}
               {item.tags && <div className="mt-auto flex flex-wrap gap-1.5 pt-5">{item.tags.map((t) => <span key={t} className="rounded-full bg-paper px-2.5 py-1 text-[11px] text-muted">{t}</span>)}</div>}
-              <span className="absolute right-5 top-5 font-mono text-[10.5px] text-muted-faint">{String(i + 1).padStart(2, '0')}</span>
+              <span className="absolute right-5 top-5 font-mono text-[10.5px] text-muted-faint">◆</span>
             </Wrap>
           </Reveal>
         })}
@@ -230,7 +230,7 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <div className="relative flex items-start justify-between">
               <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 backdrop-blur"><ItemIcon title={first.title} icon={first.icon} size={28} strokeWidth={1.5} /></span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 font-mono text-[11px]">01</span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-[11px]">◆</span>
             </div>
             <div className="relative">
               <h3 className="font-display text-3xl font-medium tracking-[-.03em] md:text-4xl">{first.title}</h3>
@@ -243,7 +243,7 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
           <Link to={item.to} className="group relative flex h-full min-h-[180px] flex-col justify-between overflow-hidden rounded-[26px] bg-ink p-4 text-white sm:min-h-[240px] sm:p-6 lg:min-h-[260px]">
             <img src={photo(item.image, 1000)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/25 to-ink-950/10" />
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-white/10 font-mono text-[11px] backdrop-blur">{String(i + 2).padStart(2, '0')}</span>
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-white/10 text-[11px] backdrop-blur">◆</span>
             <div className="relative">
               <h3 className="font-display text-2xl font-medium tracking-[-.025em]">{item.title}</h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">{item.text}</p>
@@ -289,7 +289,7 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
             const done = i <= current
             return <div key={t} className="relative flex flex-col items-start">
               <motion.div animate={{ y: on ? -18 : 0 }} transition={{ duration: 0.6, ease: EASE }} className={`w-full rounded-2xl border p-5 backdrop-blur-xl transition-colors duration-500 lg:max-w-[18rem] ${on ? 'border-brand-400 bg-brand-500 text-white shadow-glow' : 'border-white/60 bg-white/70 text-ink'}`}>
-                <span className={`font-mono text-[10.5px] ${on ? 'text-white/70' : 'text-brand-600'}`}>{String(i + 1).padStart(2, '0')}</span>
+                <span className={`font-mono text-[10.5px] ${on ? 'text-white/70' : 'text-brand-600'}`}>◆</span>
                 <h3 className="mt-2 font-display text-lg font-medium tracking-[-.02em]">{t}</h3>
                 {d && <p className={`mt-1.5 text-[13px] leading-relaxed ${on ? 'text-white/80' : 'text-muted'}`}>{d}</p>}
               </motion.div>
@@ -345,7 +345,6 @@ export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }
         <div className="relative h-[300px] overflow-hidden rounded-[22px] bg-ink shadow-[0_40px_80px_-20px_rgba(0,0,0,.6)]">
           <img src={photo(image, 600)} alt="" className="h-full w-full object-cover opacity-80 grayscale" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 to-ink-950/70" />
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white px-3.5 py-1.5 text-[12px] font-medium text-ink shadow-card"><span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-brand-500 align-middle" />{eyebrow}</span>
         </div>
         <div className="h-24 overflow-hidden opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]"><img src={photo(image, 600)} alt="" className="h-[300px] w-full -scale-y-100 rounded-[22px] object-cover blur-[2px] grayscale" /></div>
       </motion.div>
@@ -586,7 +585,7 @@ export function NeedsSplit({ eyebrow, title, items }) {
       <div className="grid gap-3 sm:grid-cols-2">
         {items.map((item, i) => <Reveal key={item} delay={0.1 + i * 0.1} className="h-full">
           <div className="group relative flex h-full min-h-[260px] flex-col justify-between overflow-hidden rounded-[24px] border border-line bg-white p-7 shadow-card">
-            <span className="font-poster text-[5.5rem] leading-[.8] text-brand-500/90 transition-transform duration-700 ease-expo group-hover:-translate-y-1">0{i + 1}</span>
+            <span className="text-[2.75rem] leading-none text-brand-500/90 transition-transform duration-700 ease-expo group-hover:-translate-y-1">✦</span>
             <p className="mt-8 font-display text-lg font-medium leading-snug tracking-[-.015em] text-ink">{item}</p>
             <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-400 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
           </div>

@@ -106,7 +106,7 @@ function MegaMenu({ group, onClose }) {
       <div className="grid grid-cols-2 content-start gap-1 p-2">
         {group.links.map((l, i) => <motion.div key={l.to} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.04 + i * 0.025, duration: 0.4, ease: EASE }}>
           <Link to={l.to} onClick={onClose} className="group flex items-center justify-between gap-3 rounded-2xl px-4 py-3 text-[14px] text-ink/80 transition-colors hover:bg-paper hover:text-ink">
-            <span className="flex items-center gap-3"><span className="font-mono text-[10px] text-muted-soft">{String(i + 1).padStart(2, '0')}</span>{l.label.trim()}</span>
+            <span className="flex items-center gap-3"><span className="text-[8px] text-brand-500">◆</span>{l.label.trim()}</span>
             <ArrowUpRight size={14} className="text-brand-500 opacity-0 transition-all duration-300 group-hover:opacity-100" />
           </Link>
         </motion.div>)}

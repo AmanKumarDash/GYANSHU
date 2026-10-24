@@ -69,8 +69,8 @@ export function ArrowButton({ to, href, variant = 'dark', icon: Icon = ArrowUpRi
   return <button type="button" className={cls} {...rest}>{content}</button>
 }
 
-export function Eyebrow({ children, dark = false, className = '' }) {
-  return <span className={`${dark ? 'eyebrow-dark' : 'eyebrow'} ${className}`}>{children}</span>
+export function Eyebrow() {
+  return null
 }
 
 // Centered (or left) section heading block with eyebrow, title and optional lede.

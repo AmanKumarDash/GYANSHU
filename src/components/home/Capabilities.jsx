@@ -37,7 +37,7 @@ export default function Capabilities() {
 
             {/* Collapsed label */}
             <div className={`pointer-events-none absolute inset-0 z-10 flex items-center justify-between gap-4 px-6 transition-opacity duration-300 lg:flex-col lg:items-start lg:justify-between lg:py-7 ${on ? 'opacity-0' : 'opacity-100 delay-200'}`}>
-              <span className="font-mono text-[11px] text-brand-300">0{i + 1}</span>
+              <span className="font-mono text-[11px] text-brand-300">◆</span>
               <span className="whitespace-nowrap font-display text-lg font-medium tracking-tight text-white lg:origin-bottom-left lg:translate-x-7 lg:-rotate-90 lg:text-xl">{item.title}</span>
             </div>
 
@@ -46,7 +46,7 @@ export default function Capabilities() {
               {on && <motion.div className="absolute inset-0 z-20 flex flex-col justify-between p-6 md:p-9" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.15 } }} transition={{ duration: 0.5, delay: 0.25 }}>
                 <div className="flex items-start justify-between">
                   <span className="eyebrow-dark">Capability spotlight</span>
-                  <span className="font-poster text-6xl leading-none text-white/25 md:text-8xl">0{i + 1}</span>
+                  <span className="text-4xl leading-none text-white/25 md:text-6xl">✦</span>
                 </div>
                 <div className="max-w-xl">
                   <motion.h3 className="font-display text-3xl font-medium tracking-[-.03em] text-white md:text-5xl" initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3, ease: EASE }}>{item.title}</motion.h3>
