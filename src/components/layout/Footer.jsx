@@ -1,7 +1,5 @@
-import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ArrowUp, ArrowUpRight, Briefcase as Linkedin, Camera as Instagram, Users as Facebook } from 'lucide-react'
-import { EASE } from '../../utils/intro'
 import Logo from '../ui/Logo'
 
 const footerGroups = [
@@ -12,8 +10,6 @@ const footerGroups = [
 const socials = [['LinkedIn', 'https://linkedin.com', Linkedin], ['Instagram', 'https://instagram.com', Instagram], ['Facebook', 'https://facebook.com', Facebook]]
 
 export default function Footer() {
-  const { pathname } = useLocation()
-
   return <footer className="relative overflow-hidden bg-ink-950 text-white">
     <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent_60%)]" />
     <div className="shell relative pt-14 sm:pt-16 lg:pt-20">
@@ -48,9 +44,5 @@ export default function Footer() {
         </div>
       </div>
     </div>
-
-    {pathname === '/' && <div aria-hidden="true" className="relative -mb-[3.2vw] flex select-none justify-center overflow-hidden px-2">
-      {'GYANSHU'.split('').map((ch, i) => <motion.span key={i} className="inline-block bg-gradient-to-b from-white/[.16] to-white/0 bg-clip-text font-poster text-[29vw] leading-[.8] text-transparent" initial={{ y: '40%', opacity: 0 }} whileInView={{ y: '0%', opacity: 1 }} viewport={{ once: true, margin: '0px 0px -5% 0px' }} transition={{ duration: 1.2, delay: i * 0.06, ease: EASE }}>{ch}</motion.span>)}
-    </div>}
   </footer>
 }

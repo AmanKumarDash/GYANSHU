@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { caseStudies, faqs, services, team } from '../../data/content'
 import { getPage, industryLinks, productLinks, serviceLinks } from '../../data/sitePages'
 import { getScene } from '../../data/visualScenes'
-import { defaultNeeds, faqPicks, imagePools, industryIcons, industryImages, operatingNeeds, serviceImages } from '../../data/pageMedia'
+import { defaultNeeds, faqPicks, industryIcons, industryImages, mediaFor, pageImages, productImages, operatingNeeds, serviceImages } from '../../data/pageMedia'
 import { ArrowButton, Eyebrow, Reveal } from '../ui/Motion'
 import { Bento, CaseGrid, CtaPhotos, FaqDark, FeatureCards, HeroCentered, KeyFeatures, NeedsSplit, Orbit, Quotes, Statement, StatsBand, StepsBanner } from './Blocks'
 import { EASE, photo } from '../../utils/intro'
@@ -35,36 +35,35 @@ const voices = team.map((t) => ({ name: t.name, role: t.role, quote: t.quote, co
 const stats = [[productLinks.length, '', 'Purpose-built platforms'], [services.length, '', 'Capability areas'], [industryLinks.length, '', 'Industries served'], [delivery.length, '', 'Delivery phases']]
 const serviceCards = serviceLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: serviceImages[l.to], to: l.to }))
 const industryCards = industryLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: industryImages[l.to], to: l.to, tag: 'Industry' }))
-const pool = (page) => imagePools[getScene(page).type] || imagePools.company
 const pickFaqs = (key, n) => (faqPicks[key] || faqs.map((_, i) => i)).slice(0, n).map((i) => faqs[i])
 
 /* ---------- listings ---------- */
 
 export function ServicesListing({ page }) {
   return <main>
-    <HeroCentered eyebrow="Technology solutions" crumbs={[['Solutions']]} title={page.title} pill={Object.values(serviceImages)} subtitle={page.subtitle} intro={page.intro}
-      images={Object.values(serviceImages)} captions={serviceLinks.map((l) => l.label)} mediaLabel="Gyanshu practices" chips={['Cybersecurity', 'Infrastructure', 'IoT', 'Applications', 'Compliance']} />
+    <HeroCentered eyebrow="Technology solutions" crumbs={[['Solutions']]} title={page.title} pill={pageImages['/solutions'].hero} subtitle={page.subtitle} intro={page.intro}
+      images={pageImages['/solutions'].hero} captions={serviceLinks.map((l) => l.label)} mediaLabel="Gyanshu practices" chips={['Cybersecurity', 'Infrastructure', 'IoT', 'Applications', 'Compliance']} />
     <Statement eyebrow="Our approach" text="Cybersecurity, infrastructure, software, AI, and connected operations—brought together around your environment and priorities. Practical expertise for critical technology environments." />
     <Bento eyebrow="Practices" title="Five practices," accent="one accountable team." lede="Each practice can stand alone or work together across a single engagement." items={serviceCards} />
     <FeatureCards eyebrow="Capabilities" title="Everything we bring," accent="end to end." lede="We consult, design, implement, integrate, operate, and improve environments with clear accountability." items={services.map((s) => ({ title: s.title, text: s.desc, tags: s.tags }))} />
-    <StepsBanner eyebrow="How we work" title="From understanding to" accent="improvement." steps={delivery} image="photo-1639322537228-f710d846310a" note="A considered engineering sequence keeps priorities visible, decisions grounded, and ownership clear." />
+    <StepsBanner eyebrow="How we work" title="From understanding to" accent="improvement." steps={delivery} image={pageImages['/solutions'].steps} note="A considered engineering sequence keeps priorities visible, decisions grounded, and ownership clear." />
     <FaqDark lede="What teams usually ask before an engagement begins." items={pickFaqs('/solutions', 5)} />
-    <CtaPhotos images={Object.values(serviceImages).concat(imagePools.company.slice(0, 3))} />
+    <CtaPhotos images={pageImages['/solutions'].cta} />
   </main>
 }
 
 export function IndustriesListing({ page }) {
-  const images = Object.values(industryImages)
+  const images = pageImages['/industries'].hero
   return <main>
     <HeroCentered eyebrow="Industries" crumbs={[['Industries']]} title={page.title} muted={2} pill={images.slice(0, 4)} pillAfter={0} subtitle={page.subtitle}
       images={images.slice(0, 5)} captions={industryLinks.slice(0, 5).map((l) => l.label)} mediaLabel="Sectors we serve" chips={industryLinks.slice(0, 3).map((l) => l.label)} />
     <Statement eyebrow="Our perspective" text={page.intro} />
-    <Orbit eyebrow="Industries" image="photo-1484557052118-f32bd25b45b5" title="Built for the way your sector operates."
+    <Orbit eyebrow="Industries" image={pageImages['/industries'].orbit} title="Built for the way your sector operates."
       text="Every industry faces a different mix of risk, regulation, and operational pressure. We design practical solutions that fit the environment and the people who run it."
       cta={{ label: 'Talk to a specialist', to: '/contact' }} items={industryLinks.map((l) => ({ label: l.label, to: l.to, icon: industryIcons[l.to] }))} />
     <CaseGrid eyebrow="All industries" title="See every industry we serve" muted={3} items={industryCards} pageSize={6} />
     <StatsBand eyebrow="At a glance" title="Secure technology for" accent="high-stakes environments." lede="Platforms, practices, and delivery discipline shaped around complex organizations." stats={stats} />
-    <CtaPhotos images={images} />
+    <CtaPhotos images={pageImages['/industries'].cta} />
   </main>
 }
 
@@ -76,16 +75,16 @@ export function ServiceDetail({ page }) {
   const isIot = page.path === '/services/iot'
   const isApplication = page.path === '/services/application'
   const isRegulatory = page.path === '/services/regulatory'
-  const hero = serviceImages[page.path]
-  const images = [hero, ...pool(page).filter((id) => id !== hero)].slice(0, 4)
+  const media = mediaFor(page.path)
+  const images = media.hero
   const related = isIot
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Related solution' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr', tag: 'Related solution' },
       ]
     : isNetwork
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: imagePools.network[0], to: '/products/ipdr', tag: 'Network solution' },
-        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: imagePools.security[0], to: '/products/vapt', tag: 'Security solution' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr', tag: 'Network solution' },
+        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: productImages['/products/vapt'], to: '/products/vapt', tag: 'Security solution' },
       ]
     : serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c) => ({ ...c, tag: 'Service' }))
   const process = isIot
@@ -208,7 +207,7 @@ export function ServiceDetail({ page }) {
     {isApplication && <FeatureCards eyebrow="Technology Stack" title="Technology Stack" lede="We leverage cutting-edge technologies to build robust, scalable applications." items={applicationStack.map(([title, text]) => ({ title, tags: [text] }))} cols={3} />}
     {isApplication && <FeatureCards eyebrow="Software Solutions" title="Software Solutions" items={applicationSolutions} cols={2} />}
     {isApplication && <FeatureCards eyebrow="Development Training" title="Development Training" items={['Web App Audit', 'Cloud'].map((title) => ({ title }))} cols={2} />}
-    {isRegulatory && <StepsBanner eyebrow="Compliance Process" title="Compliance Implementation Roadmap" steps={complianceRoadmap} image={images[1] || hero} />}
+    {isRegulatory && <StepsBanner eyebrow="Compliance Process" title="Compliance Implementation Roadmap" steps={complianceRoadmap} image={media.steps} />}
     {isRegulatory && <FeatureCards eyebrow="Benefits of Compliance" title="Benefits of Compliance" lede="Regulatory compliance isn't just about avoiding penalties—it's about building trust and competitive advantage." items={complianceBenefits.map(([title, text]) => ({ title, text }))} />}
     {isRegulatory && <FeatureCards eyebrow="Compliance & Auditing Tools" title="Compliance & Auditing Tools" items={complianceTools} cols={2} />}
     {isRegulatory && <FeatureCards eyebrow="Compliance Training" title="Compliance Training" items={['VAPT', 'Web App Audit'].map((title) => ({ title }))} cols={2} />}
@@ -216,37 +215,36 @@ export function ServiceDetail({ page }) {
     {isIot && <FeatureCards eyebrow="IMPLEMENTATION PROCESS" title="End-to-End IoT Solution Development" items={iotImplementation.map(([title, text]) => ({ title, text }))} />}
     {isNetwork && <FeatureCards eyebrow="Network Certification Training" title="Network Certification Training" items={['CCNA', 'CCNP', 'Firewall', 'Linux'].map((title) => ({ title }))} cols={4} />}
     {isIot && <FeatureCards eyebrow="IoT Training" title="IoT Training" items={['Cyber Security', 'IoT'].map((title) => ({ title }))} cols={2} />}
-    {!isRegulatory && <StepsBanner eyebrow={isApplication ? 'Development Lifecycle' : isIot ? 'IMPLEMENTATION PROCESS' : isNetwork ? 'Network Assessment Process' : 'How engagements move'} title={isApplication ? 'Development Lifecycle' : isIot ? 'IoT Development Roadmap' : isNetwork ? 'Network Assessment Process' : 'From first conversation to'} accent={isApplication || isIot || isNetwork ? '' : 'ongoing support.'} steps={isApplication ? appLifecycle : process} image={images[1] || hero} note={isApplication || isIot || isNetwork ? undefined : 'Practical expertise. Clear communication. Dependable outcomes.'} />}
+    {!isRegulatory && <StepsBanner eyebrow={isApplication ? 'Development Lifecycle' : isIot ? 'IMPLEMENTATION PROCESS' : isNetwork ? 'Network Assessment Process' : 'How engagements move'} title={isApplication ? 'Development Lifecycle' : isIot ? 'IoT Development Roadmap' : isNetwork ? 'Network Assessment Process' : 'From first conversation to'} accent={isApplication || isIot || isNetwork ? '' : 'ongoing support.'} steps={isApplication ? appLifecycle : process} image={media.steps} note={isApplication || isIot || isNetwork ? undefined : 'Practical expertise. Clear communication. Dependable outcomes.'} />}
     {!isNetwork && !isIot && !isApplication && !isRegulatory && <FaqDark lede={`Common questions about ${page.title.toLowerCase()}.`} items={pickFaqs(page.path, 4)} />}
     {!isApplication && !isRegulatory && <CaseGrid eyebrow={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Related services'} title={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Explore related services'} muted={isNetwork || isIot ? 0 : 2} items={related} pageSize={isNetwork ? 2 : isIot ? 1 : 6} link={{ label: 'All solutions', to: '/solutions' }} />}
     <CtaPhotos eyebrow={isRegulatory ? 'Compliance & Auditing' : isApplication ? 'Application Development' : isIot ? 'IoT' : isNetwork ? 'Network Infrastructure' : undefined} title={isRegulatory ? 'Ensure Compliance, Protect Your Business' : isApplication ? 'Transform Your Business with Custom Applications' : isIot ? 'Transform Your Business with IoT' : isNetwork ? 'Secure Your Network Infrastructure' : undefined}
       text={isRegulatory ? "Let's discuss your compliance requirements and build a comprehensive regulatory strategy." : isApplication ? "Let's discuss your project requirements and build the perfect solution for your business needs. Call: +91 9938883028" : isIot ? "Unlock the power of connected devices and real-time data insights. Let’s build your IoT solution today." : isNetwork ? "Don't let network issues slow down your business. Contact us for a comprehensive network assessment." : undefined}
-      cta={isRegulatory ? 'Compliance Assessment' : isApplication ? 'Start Your Project' : isIot ? 'Start IoT Project' : isNetwork ? 'Get Network Assessment' : undefined} images={images.concat(imagePools.company.slice(0, 2))} />
+      cta={isRegulatory ? 'Compliance Assessment' : isApplication ? 'Start Your Project' : isIot ? 'Start IoT Project' : isNetwork ? 'Get Network Assessment' : undefined} images={media.cta} />
     {isNetwork && <section className="bg-ink px-5 py-4 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919938883028">+91 9938883028</a></section>}
   </main>
 }
 
 const cyberServices = [
-  ['VAPT Services', 'Vulnerability Assessment and Penetration Testing to identify and remediate security weaknesses.', 'photo-1550751827-4bd374c3f58b'],
-  ['Source Code Review', 'Comprehensive code analysis to identify security vulnerabilities in your applications.', 'photo-1515879218367-8466d910aaa4'],
-  ['Mobile Security', 'Protect mobile applications and devices with advanced security measures and best practices.', 'photo-1516321318423-f06f85e504b3'],
-  ['Cloud Security', 'Secure cloud infrastructure with next-gen security tools and compliance measures.', 'photo-1451187580459-43490279c0fa'],
-  ['Threat Management', 'Continuous monitoring and rapid response to security incidents, ensuring your business stays protected 24/7.', 'photo-1526374965328-7f61d4dc18c5'],
-  ['Incident Management', 'Rapid incident response and management to minimize downtime and damage.', 'photo-1551808525-51a94da548ce'],
-  ['Red Teaming', 'Simulated attacks to test your defense strategies against real-world cyber threats.', 'photo-1563986768609-322da13575f3'],
-  ['Security Solutions', 'Comprehensive security frameworks and solutions tailored to your business needs.', 'photo-1552664730-d307ca884978'],
+  ['VAPT Services', 'Vulnerability Assessment and Penetration Testing to identify and remediate security weaknesses.'],
+  ['Source Code Review', 'Comprehensive code analysis to identify security vulnerabilities in your applications.'],
+  ['Mobile Security', 'Protect mobile applications and devices with advanced security measures and best practices.'],
+  ['Cloud Security', 'Secure cloud infrastructure with next-gen security tools and compliance measures.'],
+  ['Threat Management', 'Continuous monitoring and rapid response to security incidents, ensuring your business stays protected 24/7.'],
+  ['Incident Management', 'Rapid incident response and management to minimize downtime and damage.'],
+  ['Red Teaming', 'Simulated attacks to test your defense strategies against real-world cyber threats.'],
+  ['Security Solutions', 'Comprehensive security frameworks and solutions tailored to your business needs.'],
 ]
 
 const cyberStrengths = [
-  ['Certified Security Professionals', 'Our team holds industry-recognized certifications and stays updated with the latest security trends.', 'photo-1521737711867-e3b97375f902'],
-  ['Proactive Security Approach', 'We don’t just react to threats—we prevent them with continuous monitoring and threat intelligence.', 'photo-1516321318423-f06f85e504b3'],
-  ['Compliance-Focused Solutions', 'Our services ensure compliance with industry standards and regulatory requirements.', 'photo-1454165804606-c3d57bc86b40'],
-  ['24/7 Security Monitoring', 'Round-the-clock monitoring and incident response to protect your business at all times.', 'photo-1550751827-4bd374c3f58b'],
+  ['Certified Security Professionals', 'Our team holds industry-recognized certifications and stays updated with the latest security trends.'],
+  ['Proactive Security Approach', 'We don’t just react to threats—we prevent them with continuous monitoring and threat intelligence.'],
+  ['Compliance-Focused Solutions', 'Our services ensure compliance with industry standards and regulatory requirements.'],
+  ['24/7 Security Monitoring', 'Round-the-clock monitoring and incident response to protect your business at all times.'],
 ]
 
 function CybersecurityServiceContent({ page }) {
-  const hero = serviceImages[page.path]
-  const securityImages = imagePools.security
+  const media = pageImages['/services/cybersecurity']
   const steps = [
     ['Initial Security Assessment', ''],
     ['Vulnerability Scanning', ''],
@@ -259,7 +257,7 @@ function CybersecurityServiceContent({ page }) {
     <HeroCentered eyebrow="Cybersecurity Services" crumbs={[["Services", '/solutions'], [page.title]]} title="Cybersecurity Services"
       subtitle="Empower Your Business with Robust Cyber Defense"
       intro="Preparing for your success, Gyanshu provides cybersecurity solutions to protect your critical infrastructure."
-      pill={[hero, ...securityImages.slice(0, 3)]} images={[hero, ...securityImages.slice(0, 3)]}
+      pill={media.hero} images={media.hero}
       captions={['Cybersecurity operations', 'Security monitoring', 'Threat analysis', 'Incident response']}
       mediaLabel="Cybersecurity services" chips={['VAPT Services', 'Threat Management', 'Incident Management']} />
 
@@ -271,8 +269,8 @@ function CybersecurityServiceContent({ page }) {
           <p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p>
         </div>
         <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {cyberServices.map(([title, text, image]) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
-            <img src={photo(image, 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          {cyberServices.map(([title, text], i) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
+            <img src={photo(media.services[i], 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
             <span className="mb-auto font-mono text-xs text-white/70">◆</span>
             <h3 className="font-display text-xl font-medium">{title}</h3>
@@ -286,26 +284,26 @@ function CybersecurityServiceContent({ page }) {
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
           <div><Eyebrow>Why Gyanshu Cybersecurity</Eyebrow><h2 className="h-section mt-5">Advanced Protection for Modern Businesses</h2></div>
-          <img src={photo(securityImages[1], 1400)} alt="Cybersecurity professionals monitoring digital threats" loading="lazy" className="h-64 w-full rounded-[24px] object-cover md:h-80" />
+          <img src={photo(media.monitoring, 1400)} alt="Cybersecurity professionals monitoring digital threats" loading="lazy" className="h-64 w-full rounded-[24px] object-cover md:h-80" />
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {cyberStrengths.map(([title, text, image]) => <article key={title} className="grid overflow-hidden rounded-[22px] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
-            <img src={photo(image, 700)} alt="" loading="lazy" className="h-44 w-full object-cover md:h-full" />
+          {cyberStrengths.map(([title, text], i) => <article key={title} className="grid overflow-hidden rounded-[22px] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
+            <img src={photo(media.strengths[i], 700)} alt="" loading="lazy" className="h-44 w-full object-cover md:h-full" />
             <div className="p-5 sm:p-6"><h3 className="font-display text-xl font-medium">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
           </article>)}
         </div>
       </div>
     </section>
 
-    <StepsBanner eyebrow="Assessment" title="Security Assessment Process" accent="" steps={steps} image={securityImages[2]} />
+    <StepsBanner eyebrow="Assessment" title="Security Assessment Process" accent="" steps={steps} image={media.steps} />
 
     <section className="bg-paper section-space">
       <div className="shell">
-        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(securityImages[3], 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
+        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(media.products, 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
         <div className="grid gap-4 md:grid-cols-2">
           {[
-            ['FLOWBITS NEXORA', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/ipdr', 'photo-1597733336794-12d05021d510'],
-            ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/vapt', 'photo-1550751827-4bd374c3f58b'],
+            ['FLOWBITS NEXORA', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/ipdr', productImages['/products/ipdr']],
+            ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/vapt', productImages['/products/vapt']],
           ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
             <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
             <div className="p-6"><span className="font-mono text-xs uppercase tracking-wider text-brand-600">{subtitle}</span><h3 className="mt-2 font-display text-2xl font-medium">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
@@ -317,11 +315,11 @@ function CybersecurityServiceContent({ page }) {
     <section className="section-space">
       <div className="shell grid gap-8 lg:grid-cols-2 lg:items-center">
         <div><Eyebrow>Security Training</Eyebrow><h2 className="h-section mt-5">Security Training</h2><div className="mt-6 flex flex-wrap gap-2">{['Cyber Security', 'Ethical Hacking', 'VAPT', 'SOC'].map((item) => <span key={item} className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium">{item}</span>)}</div></div>
-        <img src={photo(imagePools.learning[0], 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[24px] object-cover md:h-96" />
+        <img src={photo(media.training, 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[24px] object-cover md:h-96" />
       </div>
     </section>
 
-    <CtaPhotos eyebrow="Cybersecurity" title="Secure Your Business Today" text="Let’s discuss your security requirements and build a comprehensive protection strategy." cta="Get Security Assessment" images={[hero, ...securityImages, ...imagePools.learning.slice(0, 2)]} />
+    <CtaPhotos eyebrow="Cybersecurity" title="Secure Your Business Today" text="Let’s discuss your security requirements and build a comprehensive protection strategy." cta="Get Security Assessment" images={media.cta} />
     <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919938883028">+91 9938883028</a></section>
   </main>
 }
@@ -338,8 +336,8 @@ const focusLinks = [
 ]
 
 export function IndustryDetail({ page }) {
-  const hero = industryImages[page.path]
-  const images = [hero, ...imagePools.industry.filter((id) => id !== hero)].slice(0, 4)
+  const media = mediaFor(page.path)
+  const images = media.hero
   const idx = industryLinks.findIndex((l) => l.to === page.path)
   const others = [1, 2, 3].map((k) => industryCards[(idx + k) % industryCards.length])
   if (page.path === '/industries/government') return <main>
@@ -361,7 +359,7 @@ export function IndustryDetail({ page }) {
       { title: 'Attack Surface Detection', text: 'Government portal exposure detection and continuous monitoring.', icon: Eye },
       { title: 'SOC & VAPT', text: '24/7 monitoring of government networks and infrastructure.', icon: ShieldCheck },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/telecom') return <main>
     <HeroCentered eyebrow="Carrier-Grade Network Intelligence" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -383,7 +381,7 @@ export function IndustryDetail({ page }) {
       { title: 'ClickHouse-Scale Storage', text: 'Petabyte-scale storage for billions of session records.' },
       { title: 'TRAI/DoT Compliant Reporting', text: 'Automated regulatory reporting and audit trails.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/finance') return <main>
     <HeroCentered eyebrow="Financial Cyber Defense" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -404,7 +402,7 @@ export function IndustryDetail({ page }) {
       { title: 'SOC + SIEM Integration', text: 'Centralized security monitoring and incident response.' },
       { title: 'VAPT & Red-Team Assessments', text: 'Proactive security testing and vulnerability assessment.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/enterprise') return <main>
     <HeroCentered eyebrow="Secure Digital Transformation" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -424,7 +422,7 @@ export function IndustryDetail({ page }) {
       { title: 'Cybersecurity Stack', text: 'SOC, DLP, and EDR integration for comprehensive protection.' },
       { title: 'Attack Surface Detection', text: 'Continuous discovery and monitoring of external vulnerabilities.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/datacenter') return <main>
     <HeroCentered eyebrow="Cloud Security Intelligence" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -445,7 +443,7 @@ export function IndustryDetail({ page }) {
       { title: 'AI-Assisted Anomaly Detection', text: 'ML-powered threat detection without performance impact.' },
       { title: 'Compliance & Audit Reporting', text: 'Automated reporting for regulatory and customer audits.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/healthcare') return <main>
     <HeroCentered eyebrow="Healthcare Cyber Resilience" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -466,7 +464,7 @@ export function IndustryDetail({ page }) {
       { title: '24/7 SOC', text: 'Round-the-clock monitoring and incident response.' },
       { title: 'Compliance Support', text: 'HIPAA-aligned controls and documentation.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/education') return <main>
     <HeroCentered eyebrow="Smart Campus Security" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -487,7 +485,7 @@ export function IndustryDetail({ page }) {
       { title: 'Content Abuse & Anomaly Detection', text: 'Automated detection of policy violations and threats.' },
       { title: 'SOC-Lite for Campuses', text: 'Affordable security operations for educational environments.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/manufacturing') return <main>
     <HeroCentered eyebrow="Industrial Cyber Defense" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -508,7 +506,7 @@ export function IndustryDetail({ page }) {
       { title: 'Perimeter Hardening', text: 'Securing the boundary between IT and OT networks.' },
       { title: 'Risk-Based Monitoring', text: 'Prioritized security based on criticality of assets.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   if (page.path === '/industries/startup') return <main>
     <HeroCentered eyebrow="Cybersecurity for Growing Businesses" crumbs={[["Industries", '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
@@ -528,14 +526,14 @@ export function IndustryDetail({ page }) {
       { title: 'Affordable VAPT', text: 'Budget-friendly vulnerability assessments and penetration testing.' },
       { title: 'Compliance Starter Kits', text: 'Quick-start compliance packages for common regulations.' },
     ]} />
-    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos eyebrow="Secure Your Future" title="Don't let cyber threats slow down your innovation." text="Partner with GYANSHU for industry-leading security." cta="Get Started" to="/contact" images={media.cta} />
   </main>
   return <main>
     <HeroCentered eyebrow="Industry perspective" crumbs={[['Industries', '/industries'], [page.title]]} title={page.title} pill={images} subtitle={page.subtitle}
       images={images} mediaLabel={getScene(page).label} captions={[page.title]} chips={page.features.slice(0, 3)} />
     <Statement eyebrow="The context" text={page.intro} />
     <NeedsSplit eyebrow="Industry pressures" title="Start with the realities on the ground." items={operatingNeeds[page.path] || defaultNeeds} />
-    <Orbit eyebrow="Focus areas" image={hero} title="Technology shaped around the work."
+    <Orbit eyebrow="Focus areas" image={media.orbit || images[images.length - 1]} title="Technology shaped around the work."
       text="Every environment has its own pressures, people, and service expectations. We start there, then connect the right expertise."
       cta={{ label: 'Talk to a specialist', to: '/contact' }} items={focusLinks} />
     <KeyFeatures eyebrow="Our approach" title="Three steps to dependable operations" muted={2} items={[
@@ -545,7 +543,7 @@ export function IndustryDetail({ page }) {
     ]} />
     <Bento eyebrow="Capabilities" title="Expertise for this" accent="environment." lede="Connect security, infrastructure, software, and IoT expertise around your sector’s priorities." items={serviceCards} />
     <CaseGrid eyebrow="More industries" title="Explore other industries" muted={2} items={others} link={{ label: 'All industries', to: '/industries' }} tone="paper" />
-    <CtaPhotos images={images.concat(imagePools.company.slice(0, 2))} />
+    <CtaPhotos images={media.cta} />
   </main>
 }
 
@@ -573,31 +571,32 @@ const topics = [
   { title: 'Connected technologies', text: 'IoT, sensors, and edge systems in practice.' },
 ]
 const workItems = [
-  ...caseStudies.map((c) => ({ title: c.result, text: c.desc, tag: c.industry, image: { 1: 'photo-1597733336794-12d05021d510', 2: 'photo-1639322537228-f710d846310a', 3: 'photo-1760199789455-49098afd02f0', 4: 'photo-1581092160562-40aa08e78837' }[c.id], to: { 1: '/products/ipdr', 2: '/products/argos-enms', 3: '/products/vapt', 4: '/services/iot' }[c.id] })),
-  { title: 'Infrastructure intelligence', text: 'Understand network relationships, performance, and operational change.', tag: 'Illustrative use case', image: 'photo-1518770660439-4636190af475', to: '/products/argos-enms' },
-  { title: 'Security exposure management', text: 'Connect assets, vulnerabilities, and response priorities.', tag: 'Illustrative use case', image: 'photo-1526374965328-7f61d4dc18c5', to: '/products/panoptix' },
-  { title: 'Connected operations', text: 'Bring sensor data from edge environments into useful action.', tag: 'Illustrative use case', image: 'photo-1581091226825-a6a2a5aee158', to: '/services/iot' },
+  ...caseStudies.map((c) => ({ title: c.result, text: c.desc, tag: c.industry, image: pageImages['/our-work'].cases[c.id - 1], to: { 1: '/products/ipdr', 2: '/products/argos-enms', 3: '/products/vapt', 4: '/services/iot' }[c.id] })),
+  { title: 'Infrastructure intelligence', text: 'Understand network relationships, performance, and operational change.', tag: 'Illustrative use case', image: pageImages['/our-work'].useCases[0], to: '/products/argos-enms' },
+  { title: 'Security exposure management', text: 'Connect assets, vulnerabilities, and response priorities.', tag: 'Illustrative use case', image: pageImages['/our-work'].useCases[1], to: '/products/panoptix' },
+  { title: 'Connected operations', text: 'Bring sensor data from edge environments into useful action.', tag: 'Illustrative use case', image: pageImages['/our-work'].useCases[2], to: '/services/iot' },
 ]
 
 export function CompanyPage({ page }) {
   const cfg = companyConfig[page.path] || { eyebrow: 'Gyanshu / Company', sections: ['features', 'quotes'] }
-  const images = page.path === '/training' ? imagePools.learning : page.path === '/our-work' ? workItems.slice(0, 4).map((w) => w.image) : imagePools.company
+  const media = mediaFor(page.path)
+  const images = media.hero || workItems.slice(0, 4).map((w) => w.image)
   const blocks = {
     features: <KeyFeatures key="f" eyebrow="What guides our work" title="People first, technology with purpose" muted={3} lede="We pair engineering depth with direct collaboration, so progress stays understandable and useful." items={guiding} cols={4} />,
     values: <KeyFeatures key="v" eyebrow="What we value" title="How we work shapes what we deliver" muted={3} items={values} cols={4} />,
     topics: <KeyFeatures key="t" eyebrow="Programs" title="Practical, hands-on learning" muted={2} lede="Instructor-led programs across the technologies organizations depend on." items={topics} cols={4} />,
     stats: <StatsBand key="s" eyebrow="At a glance" title="Built for" accent="critical operations." lede="Platforms, practices, and delivery discipline under one roof." stats={stats} />,
-    quotes: <Quotes key="q" eyebrow="Voices from our teams" title="The people behind" accent="the work." lede="Principles our practice teams bring to every engagement." items={voices} image="photo-1600880292203-757bb62b4baf" />,
+    quotes: <Quotes key="q" eyebrow="Voices from our teams" title="The people behind" accent="the work." lede="Principles our practice teams bring to every engagement." items={voices} image={media.quotes || pageImages['/about'].quotes} />,
     bento: <Bento key="b" eyebrow="Capabilities" title="Capabilities that work" accent="together." lede="Cybersecurity, infrastructure, software, AI, and connected operations." items={serviceCards} />,
-    steps: <StepsBanner key="st" eyebrow="How we deliver" title="From understanding to" accent="improvement." steps={delivery} image="photo-1639322537228-f710d846310a" note="A considered sequence that keeps priorities visible and ownership clear." />,
-    learning: <StepsBanner key="l" eyebrow="The journey" title="Learn, practice," accent="grow." steps={[['Learn', 'Structured, instructor-led sessions.'], ['Practice', 'Hands-on labs with real tools and scenarios.'], ['Grow', 'Confidence you can apply on the job.']]} image="photo-1552664730-d307ca884978" note="Looking for a school operations platform? Explore SMMS for connected administration." />,
+    steps: <StepsBanner key="st" eyebrow="How we deliver" title="From understanding to" accent="improvement." steps={delivery} image={media.steps || pageImages['/our-work'].steps} note="A considered sequence that keeps priorities visible and ownership clear." />,
+    learning: <StepsBanner key="l" eyebrow="The journey" title="Learn, practice," accent="grow." steps={[['Learn', 'Structured, instructor-led sessions.'], ['Practice', 'Hands-on labs with real tools and scenarios.'], ['Grow', 'Confidence you can apply on the job.']]} image={media.learning || pageImages['/training'].learning} note="Looking for a school operations platform? Explore SMMS for connected administration." />,
     cases: <CaseGrid key="c" eyebrow="Case studies" title="See all our work" muted={2} items={workItems} pageSize={6} />,
   }
   return <main>
     <HeroCentered eyebrow={cfg.eyebrow} title={page.title} pill={images} subtitle={page.subtitle} images={images} mediaLabel={getScene(page).label} />
     <Statement eyebrow="Overview" text={page.intro} />
     {cfg.sections.map((s) => blocks[s])}
-    <CtaPhotos images={images.concat(imagePools.company).slice(0, 7)} {...(cfg.cta || {})} />
+    <CtaPhotos images={media.cta.length ? media.cta : images} {...(cfg.cta || {})} />
   </main>
 }
 
@@ -659,7 +658,7 @@ function ContactBlock() {
 export function ContactPage({ page }) {
   const support = page.path === '/support'
   return <main>
-    <HeroCentered eyebrow={support ? 'Support' : 'Contact'} title={page.title} pill={imagePools.company} subtitle={page.subtitle} intro={page.intro} actions={null} compact />
+    <HeroCentered eyebrow={support ? 'Support' : 'Contact'} title={page.title} pill={pageImages[support ? '/support' : '/contact'].hero} subtitle={page.subtitle} intro={page.intro} actions={null} compact />
     <ContactBlock />
     <FaqDark lede="Quick answers before you get in touch." items={support ? faqs.slice(0, 6) : pickFaqs('/contact', 4)} />
     <div className="h-6" />
@@ -668,10 +667,10 @@ export function ContactPage({ page }) {
 
 export function HelpPage({ page }) {
   return <main>
-    <HeroCentered eyebrow="Help & FAQ" title={page.title} pill={imagePools.company} subtitle={page.subtitle} intro={page.intro} compact
+    <HeroCentered eyebrow="Help & FAQ" title={page.title} pill={pageImages['/help'].hero} subtitle={page.subtitle} intro={page.intro} compact
       actions={<><a href="#faq" className="btn btn-dark"><span>Browse answers</span><span className="btn-chip"><Search size={14} /></span></a><Link to="/contact" className="btn btn-outline">Contact us</Link></>} />
     <FaqDark id="faq" title="Everything you might ask." lede="Twelve answers covering services, platforms, deployment, and how to start." items={faqs} />
-    <CtaPhotos title="Still have a question?" muted={2} text="Our team will help you find a clear next step." images={imagePools.company} />
+    <CtaPhotos title="Still have a question?" muted={2} text="Our team will help you find a clear next step." images={pageImages['/help'].cta} />
   </main>
 }
 
@@ -704,7 +703,7 @@ export function LegalPage({ page }) {
 
 export function NotFound({ page }) {
   return <main>
-    <HeroCentered eyebrow="Error 404" title={page.title} pill={imagePools.network} subtitle={page.subtitle} intro={page.intro} compact
+    <HeroCentered eyebrow="Error 404" title={page.title} pill={pageImages.notFound.hero} subtitle={page.subtitle} intro={page.intro} compact
       actions={<><ArrowButton to="/">Back to home</ArrowButton><Link to="/contact" className="btn btn-outline">Contact us</Link></>} />
     <section className="section-space-bottom">
       <div className="shell grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

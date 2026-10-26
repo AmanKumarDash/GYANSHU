@@ -1,5 +1,5 @@
 import { Fragment, createElement, useEffect, useId, useRef, useState } from 'react'
-import { AnimatePresence, animate, motion, useInView, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { AnimatePresence, animate, motion, useInView, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Plus, Quote } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ArrowButton, Eyebrow, Reveal, ScrollWords } from '../ui/Motion'
@@ -262,51 +262,141 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Steps banner — Waypoint "four steps" over an image                   */
+/* Steps banner — workflow stages over an image, pinned while it plays  */
 /* ------------------------------------------------------------------ */
+
+// Desktop rows hold up to five stages; longer flows wrap into rows of four (6 → 4 + 2).
+const stepRows = (n) => {
+  const per = n <= 5 ? n : 4
+  return Array.from({ length: Math.ceil(n / per) }, (_, r) => Array.from({ length: Math.min(per, n - r * per) }, (_, k) => r * per + k))
+}
+// Node centre sits 24.5px in from each column's left edge; columns are 1rem apart.
+const NODE_X = 24.5
+const clamp01 = (v) => Math.min(1, Math.max(0, v))
+// Share of the pinned scroll spent advancing stages; the rest holds on the last one until it completes.
+const STEP_TRAVEL = 0.88
+
+function StepNode({ state, reduce }) {
+  return <span className="relative z-10 flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-full border border-white/70 bg-ink-950/80 backdrop-blur">
+    <span className={`h-2 w-2 rounded-full transition-colors duration-500 ${state === 'upcoming' ? 'bg-white/70' : 'bg-brand-400'}`} />
+    {state === 'active' && !reduce && <span className="absolute inset-0 animate-ping2 rounded-full bg-brand-400/50" />}
+  </span>
+}
+
+function StepCard({ title, text, state }) {
+  const on = state === 'active'
+  return <div className={`flex-1 rounded-2xl border p-5 backdrop-blur-xl transition-[background-color,border-color,box-shadow,color] duration-500 ${on ? 'border-brand-400 bg-brand-500 text-white shadow-glow' : 'border-white/60 bg-white/75 text-ink'}`}>
+    <span className={`font-mono text-[10.5px] ${on ? 'text-white/70' : state === 'complete' ? 'text-brand-600' : 'text-muted-soft'}`}>◆</span>
+    <h3 className="mt-2 font-display text-lg font-medium tracking-[-.02em]">{title}</h3>
+    {text && <p className={`mt-1.5 text-[13px] leading-relaxed ${on ? 'text-white/85' : 'text-muted'}`}>{text}</p>}
+  </div>
+}
+
+function StepRow({ row, per, steps, stateOf, progress, reduce }) {
+  const first = row[0]
+  const last = row[row.length - 1]
+  const fill = useTransform(progress, (c) => (last === first ? (c >= first ? 1 : 0) : clamp01((c - first) / (last - first))))
+  // Node-to-node width: (columns spanned) × column width + the gaps between them.
+  const span = `calc((100% - ${per - 1}rem) / ${per} * ${row.length - 1} + ${row.length - 1}rem)`
+  return <div className="relative grid gap-x-4" style={{ gridTemplateColumns: `repeat(${per}, minmax(0, 1fr))` }}>
+    {row.length > 1 && <div className="pointer-events-none absolute bottom-[9px] h-px bg-white/40" style={{ left: NODE_X, width: span }}>
+      <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_10px_#26c8b2]" style={{ scaleX: reduce ? 1 : fill }} />
+    </div>}
+    {row.map((i) => {
+      const s = stateOf(i)
+      return <div key={steps[i][0]} className="flex flex-col">
+        <StepCard title={steps[i][0]} text={steps[i][1]} state={s} />
+        <span className={`ml-6 h-8 w-px transition-colors duration-500 ${s === 'upcoming' ? 'bg-white/50' : 'bg-brand-400'}`} />
+        <span className="ml-[15px]"><StepNode state={s} reduce={reduce} /></span>
+      </div>
+    })}
+  </div>
+}
 
 export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, id }) {
   const ref = useRef(null)
+  const content = useRef(null)
   const reduce = useReducedMotion()
-  const [current, setCurrent] = useState(reduce ? steps.length - 1 : 0)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 70%', 'end 75%'] })
-  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 })
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%'])
-  useMotionValueEvent(scrollYProgress, 'change', (v) => setCurrent(Math.min(steps.length - 1, Math.max(0, Math.floor(v * (steps.length + 0.2))))))
-  const cols = gridCols[steps.length] || 'lg:grid-cols-4'
+  const n = steps.length
+  const rows = stepRows(n)
+  const per = rows[0].length
+  // Pin only when the whole composition fits the viewport; otherwise it scrolls normally.
+  const [pinned, setPinned] = useState(false)
+  const [state, setState] = useState(reduce ? { current: n - 1, done: true } : { current: 0, done: false })
 
-  return <section id={id} className="section-space-top">
-    <div className="shell">
-      <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
-      <Reveal delay={0.05}><h2 className="h-section mt-5 max-w-3xl">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
-    </div>
-    <div ref={ref} className="relative mt-4 overflow-hidden md:mt-0">
-      <motion.img src={photo(image, 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-0 h-[112%] w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-b from-paper via-paper/55 to-ink-950/50" />
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950/70 to-transparent" />
-      <div className="shell relative pb-9 pt-10 md:pb-10 md:pt-14">
-        <div className={`relative grid gap-4 ${cols}`}>
-          <div className="pointer-events-none absolute bottom-[9px] left-0 right-0 hidden h-px bg-white/40 lg:block">
-            <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_10px_#26c8b2]" style={{ scaleX: reduce ? 1 : progress }} />
-          </div>
-          {steps.map(([t, d], i) => {
-            const on = i === current
-            const done = i <= current
-            return <div key={t} className="relative flex flex-col items-start">
-              <motion.div animate={{ y: on ? -18 : 0 }} transition={{ duration: 0.6, ease: EASE }} className={`w-full rounded-2xl border p-5 backdrop-blur-xl transition-colors duration-500 lg:max-w-[18rem] ${on ? 'border-brand-400 bg-brand-500 text-white shadow-glow' : 'border-white/60 bg-white/70 text-ink'}`}>
-                <span className={`font-mono text-[10.5px] ${on ? 'text-white/70' : 'text-brand-600'}`}>◆</span>
-                <h3 className="mt-2 font-display text-lg font-medium tracking-[-.02em]">{t}</h3>
-                {d && <p className={`mt-1.5 text-[13px] leading-relaxed ${on ? 'text-white/80' : 'text-muted'}`}>{d}</p>}
-              </motion.div>
-              <span className={`ml-6 hidden w-px transition-all duration-500 lg:block ${on ? 'h-16 bg-brand-400' : 'h-8 bg-white/50'}`} />
-              <span className="relative ml-[15px] hidden h-[19px] w-[19px] items-center justify-center rounded-full border border-white/70 bg-white/30 backdrop-blur lg:flex">
-                <span className={`h-2 w-2 rounded-full transition-all duration-500 ${done ? 'bg-brand-400' : 'bg-white'}`} />
-                {on && !reduce && <span className="absolute inset-0 animate-ping2 rounded-full bg-brand-400/50" />}
-              </span>
-            </div>
-          })}
+  useEffect(() => {
+    if (reduce || !content.current) return undefined
+    // Measured without its top padding (which differs per mode) plus the pinned 5rem, so the answer can't flip-flop.
+    const check = () => {
+      if (!content.current) return // a resize can land just after the section unmounts
+      const pad = parseFloat(getComputedStyle(content.current).paddingTop) || 0
+      setPinned(content.current.offsetHeight - pad + 80 <= window.innerHeight)
+    }
+    const ro = new ResizeObserver(check)
+    ro.observe(content.current)
+    window.addEventListener('resize', check)
+    check()
+    return () => { ro.disconnect(); window.removeEventListener('resize', check) }
+  }, [reduce])
+
+  // Progress is read from the section's live rect on every scroll, so it stays right when pinning changes the section's height.
+  // Pinned: 0 → 1 while the stage holds the viewport. Unpinned: 0 → 1 as the banner passes through.
+  const { scrollY } = useScroll()
+  const position = useMotionValue(0)
+  const imageY = useMotionValue('0%')
+  const pinnedRef = useRef(pinned)
+  const sync = () => {
+    if (!ref.current) return
+    const isPinned = pinnedRef.current
+    const r = ref.current.getBoundingClientRect()
+    const vh = window.innerHeight
+    const v = isPinned ? -r.top / Math.max(1, r.height - vh) : (vh * 0.7 - r.top) / Math.max(1, r.height - vh * 0.05)
+    const c = clamp01(isPinned ? v / STEP_TRAVEL : v * 1.1) * (n - 1)
+    position.set(c)
+    imageY.set(`${(clamp01(v) - 0.5) * 10}%`)
+    const current = Math.min(n - 1, Math.floor(c + 0.001))
+    const done = isPinned ? v >= 0.985 : current === n - 1
+    setState((s) => (s.current === current && s.done === done ? s : { current, done }))
+  }
+  useMotionValueEvent(scrollY, 'change', sync)
+  useEffect(() => { pinnedRef.current = pinned; if (!reduce) sync() }, [pinned]) // eslint-disable-line react-hooks/exhaustive-deps
+  const smooth = useSpring(position, { stiffness: 160, damping: 32, restDelta: 0.001 })
+  const { current, done } = state
+  const stateOf = (i) => (i < current || (i === n - 1 && done) ? 'complete' : i === current ? 'active' : 'upcoming')
+
+  return <section ref={ref} id={id} className="relative" style={pinned ? { height: `calc(100svh + ${n * 50}svh)` } : undefined}>
+    <div className={pinned ? 'sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden' : ''}>
+      <div ref={content} className={pinned ? 'pt-20' : 'section-space-top'}>
+        <div className="shell">
+          <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
+          <Reveal delay={0.05}><h2 className="h-section max-w-3xl">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
         </div>
-        {(note || lede) && <Reveal className="mt-8 flex justify-end"><p className="max-w-sm text-right text-[15px] leading-relaxed text-white/85 md:text-lg">{note || lede}</p></Reveal>}
+        <div className="relative mt-4 overflow-hidden md:mt-6">
+          <motion.img src={photo(image, 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-x-0 top-[-6%] h-[112%] w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper via-paper/55 to-ink-950/50" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950/75 to-transparent" />
+          <div className="shell relative pb-8 pt-8 md:pb-10 md:pt-10">
+
+            {/* Desktop: rows of cards. Each row's connector is placed with the same column maths as the grid. */}
+            <div className="hidden flex-col gap-6 lg:flex">
+              {rows.map((row) => <StepRow key={row[0]} row={row} per={per} steps={steps} stateOf={stateOf} progress={smooth} reduce={reduce} />)}
+            </div>
+
+            {/* Tablet and mobile: one vertical rail; each stage draws the segment down to the next. */}
+            <ol className="flex flex-col lg:hidden">
+              {steps.map(([t, d], i) => {
+                const s = stateOf(i)
+                return <li key={t} className="relative flex gap-4 pb-3 last:pb-0">
+                  {i < n - 1 && <span className={`absolute -bottom-[10px] left-[9px] top-[29px] w-px transition-colors duration-500 ${i < current ? 'bg-brand-400' : 'bg-white/50'}`} />}
+                  <span className="pt-[10px]"><StepNode state={s} reduce={reduce} /></span>
+                  <StepCard title={t} text={d} state={s} />
+                </li>
+              })}
+            </ol>
+
+            {(note || lede) && <Reveal className="mt-6 flex md:mt-8 md:justify-end"><p className="max-w-md text-[15px] leading-relaxed text-white/90 md:text-right md:text-lg">{note || lede}</p></Reveal>}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -316,37 +406,73 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
 /* Orbit — Waypoint "Built for the way your industry ships"             */
 /* ------------------------------------------------------------------ */
 
-const P0 = [20, 380], P1 = [500, -120], P2 = [980, 380]
-const bezier = (t) => [0, 1].map((k) => (1 - t) ** 2 * P0[k] + 2 * (1 - t) * t * P1[k] + t ** 2 * P2[k])
+// Arc geometry in real pixels: the curve, the draw-in mask and every node share these points.
+const ARC_H = 400
+const ARC_T0 = 0.08
+const ARC_T1 = 0.92
+const arcPoint = (w, t) => {
+  const p0 = [w * 0.02, 380], p1 = [w * 0.5, -120], p2 = [w * 0.98, 380]
+  return [0, 1].map((k) => (1 - t) ** 2 * p0[k] + 2 * (1 - t) * t * p1[k] + t ** 2 * p2[k])
+}
+// Only the stretch between the first and last node is drawn, so the line starts and ends on a node.
+const arcPath = (w) => Array.from({ length: 49 }, (_, s) => arcPoint(w, ARC_T0 + ((ARC_T1 - ARC_T0) * s) / 48))
+  .map(([x, y], s) => `${s ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join(' ')
+
+function OrbitArc({ items }) {
+  const reduce = useReducedMotion()
+  const box = useRef(null)
+  const maskId = useId().replace(/:/g, '')
+  const [w, setW] = useState(0)
+  useEffect(() => {
+    if (!box.current) return undefined
+    const ro = new ResizeObserver(([e]) => setW(Math.round(e.contentRect.width)))
+    ro.observe(box.current)
+    return () => ro.disconnect()
+  }, [])
+  const n = items.length
+  const tAt = (i) => (n === 1 ? 0.5 : ARC_T0 + ((ARC_T1 - ARC_T0) * i) / (n - 1))
+  const d = w ? arcPath(w) : ''
+  const pts = items.map((_, i) => arcPoint(w, tAt(i)))
+  // Each label is as wide as the gap to its nearest neighbour allows (max 8rem), so neighbours never collide.
+  const labelW = (i) => Math.min(128, ...[pts[i - 1], pts[i + 1]].filter(Boolean).map((p) => Math.abs(p[0] - pts[i][0]) - 8))
+
+  return <div ref={box} className="absolute inset-x-0 top-10 hidden lg:block" style={{ height: ARC_H }}>
+    {w > 0 && <>
+      <svg width={w} height={ARC_H} viewBox={`0 0 ${w} ${ARC_H}`} className="absolute inset-0 overflow-visible" aria-hidden="true">
+        <defs>
+          <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="-40" width={w} height={ARC_H + 80}>
+            {/* A solid stroke reveals the dotted line from the first node to the last. */}
+            <motion.path d={d} fill="none" stroke="#fff" strokeWidth="8" strokeLinecap="round" initial={{ pathLength: reduce ? 1 : 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.8, ease: 'easeInOut' }} />
+          </mask>
+        </defs>
+        <path d={d} fill="none" stroke="#0c1517" strokeOpacity=".32" strokeWidth="1.5" strokeDasharray="2 6" strokeLinecap="round" mask={`url(#${maskId})`} />
+      </svg>
+      {items.map((item, i) => {
+        const [x, y] = pts[i]
+        const Icon = item.icon
+        const mid = Math.abs(i - (n - 1) / 2) < 0.6
+        return <motion.div key={item.label} className="absolute" style={{ left: x, top: y }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 + i * 0.08, duration: 0.6, ease: EASE }}>
+          {/* Label grows upward from just above the node, so its length never moves the node off the curve. */}
+          <Link to={item.to} style={{ width: labelW(i) }} className="group absolute bottom-5 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-center">
+            {Icon && <Icon size={16} strokeWidth={1.6} className={`transition-colors ${mid ? 'text-brand-600' : 'text-ink/50 group-hover:text-brand-600'}`} />}
+            <span className={`text-[12px] leading-tight transition-colors ${mid ? 'font-medium text-ink' : 'text-ink/65 group-hover:text-ink'}`}>{item.label}</span>
+          </Link>
+          <span className={`absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full ${mid ? 'h-6 w-6 border border-brand-500/40 bg-white' : 'h-3 w-3 bg-white shadow'}`}>{mid && <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />}</span>
+        </motion.div>
+      })}
+    </>}
+  </div>
+}
 
 export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }) {
-  const reduce = useReducedMotion()
-  const n = items.length
-  const points = items.map((_, i) => bezier(n === 1 ? 0.5 : 0.08 + (i * 0.84) / (n - 1)))
   return <section className="px-3 py-4 sm:px-5 sm:py-5">
     <div className="relative mx-auto min-h-[min(560px,calc(100svh-6rem))] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0c1517_100%)] md:min-h-[min(700px,calc(100svh-6rem))]">
       <div className="grain absolute inset-0" />
-      {/* Arc + nodes (desktop) */}
-      <div className="absolute inset-x-0 top-10 hidden h-[400px] md:block">
-        <svg viewBox="0 0 1000 400" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
-          <motion.path d={`M ${P0} Q ${P1} ${P2}`} fill="none" stroke="#0c1517" strokeOpacity=".28" strokeDasharray="2 6" vectorEffect="non-scaling-stroke" strokeWidth="1.5" initial={{ pathLength: reduce ? 1 : 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.8, ease: 'easeInOut' }} />
-        </svg>
-        {items.map((item, i) => {
-          const [x, y] = points[i]
-          const Icon = item.icon
-          const mid = Math.abs(i - (n - 1) / 2) < 0.6
-          return <motion.div key={item.label} className="absolute flex -translate-x-1/2 flex-col items-center" style={{ left: `${x / 10}%`, top: y - 74 }} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 + i * 0.08, duration: 0.6, ease: EASE }}>
-            <Link to={item.to} className="group flex w-32 flex-col items-center gap-1.5 text-center">
-              {Icon && <Icon size={16} strokeWidth={1.6} className={`transition-colors ${mid ? 'text-brand-600' : 'text-ink/50 group-hover:text-brand-600'}`} />}
-              <span className={`text-[12px] leading-tight transition-colors ${mid ? 'font-medium text-ink' : 'text-ink/65 group-hover:text-ink'}`}>{item.label}</span>
-            </Link>
-            <span className={`mt-4 flex items-center justify-center rounded-full ${mid ? 'h-6 w-6 border border-brand-500/40 bg-white' : 'h-3 w-3 bg-white shadow'}`}>{mid && <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />}</span>
-          </motion.div>
-        })}
-      </div>
+      {/* Arc + nodes (laptop and up; smaller screens get the sector links below) */}
+      <OrbitArc items={items} />
 
       {/* Monolith */}
-      <motion.div className="absolute left-1/2 top-[230px] hidden w-[210px] -translate-x-1/2 md:block" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: EASE }}>
+      <motion.div className="absolute left-1/2 top-[230px] hidden w-[210px] -translate-x-1/2 lg:block" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: EASE }}>
         <div className="relative h-[300px] overflow-hidden rounded-[22px] bg-ink shadow-[0_40px_80px_-20px_rgba(0,0,0,.6)]">
           <img src={photo(image, 600)} alt="" className="h-full w-full object-cover opacity-80 grayscale" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 to-ink-950/70" />
@@ -355,7 +481,7 @@ export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }
       </motion.div>
 
       <div className="relative flex min-h-[min(560px,calc(100svh-6rem))] flex-col justify-end gap-6 p-6 md:min-h-[min(700px,calc(100svh-6rem))] md:flex-row md:items-end md:justify-between md:gap-8 md:p-10">
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <span className="eyebrow">{eyebrow}</span>
           <div className="mt-6 flex flex-wrap gap-2">{items.map((item) => <Link key={item.label} to={item.to} className="rounded-full border border-ink/10 bg-white/70 px-3.5 py-2 text-[13px] text-ink backdrop-blur">{item.label}</Link>)}</div>
         </div>

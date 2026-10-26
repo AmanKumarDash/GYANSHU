@@ -3,13 +3,13 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { productLinks, serviceLinks, industryLinks } from '../../data/sitePages'
-import { EASE, useIntroReady } from '../../utils/intro'
+import { EASE, photo, useIntroReady } from '../../utils/intro'
 import Logo from '../ui/Logo'
 
 const groups = [
-  { label: 'Products', to: '/products', links: productLinks, blurb: 'Platforms for network intelligence, cyber exposure, and connected operations.' },
-  { label: 'Services', to: '/solutions', links: serviceLinks, blurb: 'Cybersecurity, infrastructure, IoT, applications, and compliance expertise.' },
-  { label: 'Industries', to: '/industries', links: industryLinks, blurb: 'Secure technology shaped for high-stakes environments.' },
+  { label: 'Products', to: '/products', links: productLinks, image: 'photo-1634176866089-b633f4aec882', blurb: 'Platforms for network intelligence, cyber exposure, and connected operations.' },
+  { label: 'Services', to: '/solutions', links: serviceLinks, image: 'photo-1581091212911-f4efc3f71c48', blurb: 'Cybersecurity, infrastructure, IoT, applications, and compliance expertise.' },
+  { label: 'Industries', to: '/industries', links: industryLinks, image: 'photo-1477959858617-67f85cf4f1df', blurb: 'Secure technology shaped for high-stakes environments.' },
 ]
 const pages = [['About', '/about'], ['Our Work', '/our-work'], ['Training', '/training'], ['Blog', '/blog'], ['Careers', '/careers']]
 
@@ -94,8 +94,9 @@ function MegaMenu({ group, onClose }) {
     initial={{ opacity: 0, y: -8, scale: 0.985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -6, scale: 0.99 }} transition={{ duration: 0.35, ease: EASE }}
   >
     <div className="grid grid-cols-[1fr_2fr] gap-2">
-      <Link to={group.to} onClick={onClose} className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-[22px] bg-ink p-6 text-white">
-        <div className="dot-grid absolute inset-0 opacity-50" />
+      <Link to={group.to} onClick={onClose} className="group relative flex min-h-[220px] flex-col justify-end overflow-hidden rounded-[22px] bg-ink p-6 text-white">
+        <img src={photo(group.image, 900)} alt="" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.06]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/55 to-ink-950/10" />
         <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
         <span className="eyebrow-dark relative w-fit">{group.label}</span>
         <div className="relative">
