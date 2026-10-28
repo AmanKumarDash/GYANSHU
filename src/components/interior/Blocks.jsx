@@ -1,6 +1,6 @@
 import { Fragment, createElement, useEffect, useId, useRef, useState } from 'react'
 import { AnimatePresence, animate, motion, useInView, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Plus, Quote } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BriefcaseBusiness, Check, Clock, MapPin, Plus, Quote } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ArrowButton, Eyebrow, Reveal, ScrollWords } from '../ui/Motion'
 import { EASE, photo, useIntroReady } from '../../utils/intro'
@@ -134,7 +134,7 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
     </div>
 
     {hasMedia && <div ref={panel} className="relative mx-auto mt-7 max-w-[1600px] px-3 pb-10 sm:px-5 md:mt-9 md:pb-20">
-      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[44svh] min-h-[280px] max-h-[420px] origin-top overflow-hidden bg-ink shadow-lift md:h-[52svh] md:min-h-[380px] md:max-h-[560px]">
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[52svh] min-h-[320px] max-h-[500px] origin-top overflow-hidden bg-ink shadow-lift md:h-[62svh] md:min-h-[440px] md:max-h-[680px]">
         {media || <Slideshow images={images} label={mediaLabel} captions={captions} imageY={reduce ? 0 : imageY} />}
         {chips.length > 0 && <div className="absolute left-5 top-5 z-10 hidden max-w-[60%] flex-wrap gap-2 md:flex">
           {chips.map((c, i) => <motion.span key={c} initial={{ opacity: 0, y: -8 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ delay: 1 + i * 0.1, duration: 0.6, ease: EASE }} className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/45 px-3.5 py-2 text-[12.5px] text-white/90 backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{c}</motion.span>)}
@@ -216,11 +216,18 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
 }
 
 /* ------------------------------------------------------------------ */
-/* Bento — Waypoint image cards with one accent card                    */
+/* Bento — equal image cards; a short last row is centred               */
 /* ------------------------------------------------------------------ */
 
+// Cards span 2 of 4 columns (sm) or 2 of 6 (lg); these start offsets centre an incomplete last row.
+const bentoStart = (i, n) => {
+  const sm = n % 2 === 1 && i === n - 1 ? 'sm:col-start-2' : ''
+  const tail = n % 3
+  const lg = tail && i === n - tail ? (tail === 1 ? 'lg:col-start-3' : 'lg:col-start-2') : 'lg:col-start-auto'
+  return `${sm} ${lg}`
+}
+
 export function Bento({ eyebrow, title, accent, lede, items }) {
-  const [first, ...rest] = items
   return <section className="section-space">
     <div className="shell">
       <div className="mx-auto max-w-3xl text-center">
@@ -228,32 +235,19 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
         <Reveal delay={0.05}><h2 className="h-section mt-5">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
         {lede && <Reveal delay={0.12}><p className="lede mx-auto mt-5 max-w-xl">{lede}</p></Reveal>}
       </div>
-      <div className="mt-7 grid grid-cols-2 gap-3 lg:grid-cols-3 lg:grid-rows-2">
-        <Reveal className="col-span-2 lg:col-span-1 lg:row-span-2">
-          <Link to={first.to} className="group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[26px] bg-[linear-gradient(160deg,#26c8b2_0%,#0a8a8f_45%,#005564_100%)] p-6 text-white shadow-glow sm:min-h-[340px] sm:p-8 lg:min-h-[360px]">
-            <div className="dot-grid absolute inset-0 opacity-40 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
-            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
-            <div className="relative flex items-start justify-between">
-              <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 backdrop-blur"><ItemIcon title={first.title} icon={first.icon} size={28} strokeWidth={1.5} /></span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-[11px]">◆</span>
-            </div>
-            <div className="relative">
-              <h3 className="font-display text-3xl font-medium tracking-[-.03em] md:text-4xl">{first.title}</h3>
-              <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-white/80">{first.text}</p>
-              <span className="btn btn-light mt-7 !py-1"><span>Explore</span><span className="btn-chip h-7 w-7"><ArrowUpRight size={14} /></span></span>
-            </div>
-          </Link>
-        </Reveal>
-        {rest.map((item, i) => <Reveal key={item.to} delay={0.08 + (i % 2) * 0.08}>
-          <Link to={item.to} className="group relative flex h-full min-h-[180px] flex-col justify-between overflow-hidden rounded-[26px] bg-ink p-4 text-white sm:min-h-[240px] sm:p-6 lg:min-h-[260px]">
+      <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+        {items.map((item, i) => <Reveal key={item.to} delay={0.06 + (i % 3) * 0.08} className={`sm:col-span-2 ${bentoStart(i, items.length)}`}>
+          <Link to={item.to} className="group relative flex h-[300px] flex-col justify-between overflow-hidden rounded-[26px] bg-ink p-6 text-white shadow-card sm:h-[340px] lg:h-[360px]">
             <img src={photo(item.image, 1000)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/25 to-ink-950/10" />
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-white/10 text-[11px] backdrop-blur">◆</span>
-            <div className="relative">
-              <h3 className="font-display text-2xl font-medium tracking-[-.025em]">{item.title}</h3>
-              <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">{item.text}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/40 to-ink-950/10" />
+            <div className="relative flex items-start justify-between">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md"><ItemIcon title={item.title} icon={item.icon} size={22} strokeWidth={1.6} /></span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100"><ArrowUpRight size={15} /></span>
             </div>
-            <span className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100"><ArrowUpRight size={15} /></span>
+            <div className="relative">
+              <h3 className="font-display text-2xl font-medium tracking-[-.025em] md:text-[1.7rem]">{item.title}</h3>
+              <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/75">{item.text}</p>
+            </div>
           </Link>
         </Reveal>)}
       </div>
@@ -365,17 +359,18 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
   const stateOf = (i) => (i < current || (i === n - 1 && done) ? 'complete' : i === current ? 'active' : 'upcoming')
 
   return <section ref={ref} id={id} className="relative" style={pinned ? { height: `calc(100svh + ${n * 50}svh)` } : undefined}>
-    <div className={pinned ? 'sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden' : ''}>
-      <div ref={content} className={pinned ? 'pt-20' : 'section-space-top'}>
+    {/* Pinned: the heading sits at the top and the image banner fills the rest of the screen, so no blank band appears above it. */}
+    <div className={pinned ? 'sticky top-0 flex h-[100svh] flex-col overflow-hidden' : ''}>
+      <div ref={content} className={pinned ? 'flex flex-1 flex-col pt-20' : 'section-space-top'}>
         <div className="shell">
           <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
           <Reveal delay={0.05}><h2 className="h-section max-w-3xl">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
         </div>
-        <div className="relative mt-4 overflow-hidden md:mt-6">
+        <div className={`relative mt-4 overflow-hidden md:mt-6 ${pinned ? 'flex flex-1 flex-col' : ''}`}>
           <motion.img src={photo(image, 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-x-0 top-[-6%] h-[112%] w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-paper via-paper/55 to-ink-950/50" />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950/75 to-transparent" />
-          <div className="shell relative pb-8 pt-8 md:pb-10 md:pt-10">
+          <div className={`shell relative pb-8 pt-8 md:pb-10 md:pt-10 ${pinned ? 'flex w-full flex-1 flex-col justify-center' : ''}`}>
 
             {/* Desktop: rows of cards. Each row's connector is placed with the same column maths as the grid. */}
             <div className="hidden flex-col gap-6 lg:flex">
@@ -496,10 +491,8 @@ export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }
 }
 
 /* ------------------------------------------------------------------ */
-/* Case grid — Apex masonry with pagination                             */
+/* Case grid — equal-size image cards with pagination                    */
 /* ------------------------------------------------------------------ */
-
-const heights = ['h-[160px] min-[480px]:h-[280px]', 'h-[180px] min-[480px]:h-[360px]', 'h-[150px] min-[480px]:h-[230px]', 'h-[180px] min-[480px]:h-[340px]', 'h-[160px] min-[480px]:h-[250px]', 'h-[170px] min-[480px]:h-[300px]']
 
 export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link, tone = 'white' }) {
   const [page, setPage] = useState(0)
@@ -514,16 +507,17 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
         {link && <Reveal delay={0.15}><Link to={link.to} className="btn btn-outline">{link.label}</Link></Reveal>}
       </div>
       <AnimatePresence mode="wait">
-        <motion.div key={page} className="mt-10 gap-4 min-[360px]:columns-2 lg:columns-3" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.5, ease: EASE }}>
-          {shown.map((item, i) => <Reveal key={item.title} delay={(i % 3) * 0.08} className="mb-8 break-inside-avoid">
-            <Link to={item.to} className="group block">
-              <div className={`relative overflow-hidden rounded-[20px] bg-ink ${heights[(i + page) % heights.length]}`}>
-                <img src={photo(item.image, 900)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
+        <motion.div key={page} className="mt-10 grid gap-x-4 gap-y-10 min-[480px]:grid-cols-2 lg:grid-cols-3" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.5, ease: EASE }}>
+          {shown.map((item, i) => <Reveal key={item.title} delay={(i % 3) * 0.08} className="h-full">
+            <Link to={item.to} className="group flex h-full flex-col">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ink">
+                <img src={photo(item.image, 900)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
                 {item.tag && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[.14em] text-ink backdrop-blur">{item.tag}</span>}
               </div>
-              <h3 className="mt-5 font-poster text-[1.75rem] uppercase leading-none tracking-[.01em] text-ink">{item.title}</h3>
-              {item.text && <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">{item.text}</p>}
-              <span className="mt-4 inline-flex items-center gap-3 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
+              {/* Room for a two-line title and four-line description keeps every card the same height. */}
+              <h3 className="mt-5 line-clamp-2 min-h-[2em] font-poster text-[1.75rem] uppercase leading-none tracking-[.01em] text-ink">{item.title}</h3>
+              <p className="mt-2 line-clamp-4 min-h-[6.5em] max-w-sm text-sm leading-relaxed text-muted">{item.text}</p>
+              <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
             </Link>
           </Reveal>)}
         </motion.div>
@@ -538,13 +532,141 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
 }
 
 /* ------------------------------------------------------------------ */
-/* Quotes — Waypoint customer stories, using team voices                */
+/* Openings — job cards with details and an apply action                */
 /* ------------------------------------------------------------------ */
 
-export function Quotes({ eyebrow, title, accent, lede, items, image }) {
-  const [active, setActive] = useState(0)
-  const q = items[active]
-  const others = items.map((it, i) => [it, i]).filter(([, i]) => i !== active)
+export function Openings({ eyebrow = 'Current openings', title, lede, jobs }) {
+  return <section className="section-space">
+    <div className="shell">
+      <SectionIntro eyebrow={eyebrow} title={title} muted={1} lede={lede} />
+      <div className="mx-auto mt-8 flex max-w-5xl flex-col gap-4">
+        {jobs.map((job) => <Reveal key={job.title}>
+          <article className="group relative overflow-hidden rounded-[28px] border border-line bg-white p-6 shadow-card transition-all duration-500 ease-expo hover:border-brand-400/50 hover:shadow-lift md:p-9">
+            <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-brand-500 to-brand-400" />
+            <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+              <div>
+                <span className="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-[12px] font-medium text-brand-600">{job.badge}</span>
+                <h3 className="mt-4 font-display text-2xl font-medium tracking-[-.025em] text-ink md:text-[2rem]">{job.title}</h3>
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+                  <span className="inline-flex items-center gap-1.5"><MapPin size={15} className="text-brand-500" />{job.location}</span>
+                  <span className="inline-flex items-center gap-1.5"><BriefcaseBusiness size={15} className="text-brand-500" />{job.type}</span>
+                  <span className="inline-flex items-center gap-1.5"><Clock size={15} className="text-brand-500" />{job.experience}</span>
+                </div>
+              </div>
+              <ArrowButton href={job.apply} variant="brand" className="shrink-0 self-start">Apply now</ArrowButton>
+            </div>
+            <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">{job.summary}</p>
+            <div className="mt-7 grid gap-6 border-t border-line pt-7 md:grid-cols-2">
+              {[["What you'll do", job.duties], ["What we're looking for", job.requirements]].map(([heading, list]) => <div key={heading}>
+                <h4 className="font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">{heading}</h4>
+                <ul className="mt-4 flex flex-col gap-2.5">
+                  {list.map((line) => <li key={line} className="flex gap-3 text-[14px] leading-relaxed text-ink/80"><Check size={16} className="mt-[3px] shrink-0 text-brand-500" />{line}</li>)}
+                </ul>
+              </div>)}
+            </div>
+            <div className="mt-7 flex flex-wrap gap-2">
+              {job.skills.map((skill) => <span key={skill} className="rounded-full border border-line bg-paper px-3 py-1.5 text-[12px] text-ink/75">{skill}</span>)}
+            </div>
+          </article>
+        </Reveal>)}
+      </div>
+    </div>
+  </section>
+}
+
+/* ------------------------------------------------------------------ */
+/* Training panel — dark band with intro and course cards               */
+/* ------------------------------------------------------------------ */
+
+export function TrainingPanel({ eyebrow = 'Training', title, lede, courses, cta = { label: 'View training programs', to: '/training' } }) {
+  return <section className="px-3 py-6 sm:px-5 md:py-8">
+    <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 text-white">
+      <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_65%)]" />
+      <div className="pointer-events-none absolute -left-32 -top-32 h-[26rem] w-[26rem] rounded-full bg-brand-500/25 blur-[120px]" />
+      <div className="shell relative grid gap-10 py-12 md:py-16 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-14">
+        <div>
+          <Reveal><Eyebrow dark>{eyebrow}</Eyebrow></Reveal>
+          <Reveal delay={0.05}><h2 className="h-section text-white">{title}</h2></Reveal>
+          <Reveal delay={0.12}><p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/60 md:text-base">{lede}</p></Reveal>
+          <Reveal delay={0.18}>
+            <ul className="mt-7 flex flex-col gap-2.5 text-sm text-white/75">
+              {['Instructor-led sessions', 'Hands-on labs with real tools', 'Practical, job-ready skills'].map((point) => <li key={point} className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{point}</li>)}
+            </ul>
+            <ArrowButton to={cta.to} variant="brand" className="mt-8">{cta.label}</ArrowButton>
+          </Reveal>
+        </div>
+        <div className={`grid gap-3 ${courses.length > 1 ? 'sm:grid-cols-2' : ''}`}>
+          {courses.map((course, i) => <Reveal key={course.title} delay={0.08 + i * 0.08} className="h-full">
+            <Link to={cta.to} className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/[.04] p-6 backdrop-blur transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/60 hover:bg-white/[.07]">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-400/0 blur-3xl transition-colors duration-700 group-hover:bg-brand-400/20" />
+              <div className="relative flex items-start justify-between">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_24px_-8px_rgba(38,200,178,.55)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={course.title} icon={course.icon} size={21} strokeWidth={1.8} /></span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={15} /></span>
+              </div>
+              <h3 className="relative mt-6 font-display text-xl font-medium tracking-[-.02em] md:text-2xl">{course.title}</h3>
+              <p className="relative mt-2 text-[13.5px] leading-relaxed text-white/60">{course.text}</p>
+              <div className="relative mt-auto flex flex-wrap gap-1.5 pt-5">
+                {course.tags.map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/[.05] px-2.5 py-1 text-[11px] text-white/70">{tag}</span>)}
+              </div>
+            </Link>
+          </Reveal>)}
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+/* ------------------------------------------------------------------ */
+/* Tech marquee — logo tiles drifting in two opposite rows              */
+/* ------------------------------------------------------------------ */
+
+function TechTile({ name, role, logos }) {
+  return <div className="flex shrink-0 items-center gap-4 rounded-[22px] border border-line bg-white py-4 pl-4 pr-7 shadow-card transition-colors duration-300 hover:border-brand-400">
+    <span className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-paper px-3">
+      {logos.map((src) => <img key={src} src={src} alt="" className="h-9 w-9 object-contain" />)}
+    </span>
+    <span>
+      <span className="block font-display text-lg font-medium tracking-[-.02em] text-ink">{name}</span>
+      <span className="mt-0.5 block font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">{role}</span>
+    </span>
+  </div>
+}
+
+function TechRow({ items, reverse }) {
+  // Four copies so one half (two copies) is always wider than the viewport; the animation moves exactly one half.
+  const loop = [...items, ...items, ...items, ...items]
+  return <div className="group flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+    <div className={`flex w-max gap-4 py-2 pr-4 group-hover:[animation-play-state:paused] ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
+      {loop.map((item, i) => <TechTile key={`${item.name}-${i}`} {...item} />)}
+    </div>
+  </div>
+}
+
+export function TechMarquee({ eyebrow, title, lede, items }) {
+  const reduce = useReducedMotion()
+  return <section className="section-space overflow-hidden">
+    <div className="shell">
+      <SectionIntro eyebrow={eyebrow} title={title} muted={1} lede={lede} />
+    </div>
+    {/* The list is read once by assistive tech; the moving copies are decorative. */}
+    <ul className="sr-only">{items.map((item) => <li key={item.name}>{item.name}: {item.role}</li>)}</ul>
+    {reduce
+      ? <div aria-hidden="true" className="shell mt-8 flex flex-wrap justify-center gap-4">{items.map((item) => <TechTile key={item.name} {...item} />)}</div>
+      : <Reveal className="mt-8 flex flex-col gap-3" aria-hidden="true">
+        <TechRow items={items} />
+        <TechRow items={[...items].reverse()} reverse />
+      </Reveal>}
+  </section>
+}
+
+/* ------------------------------------------------------------------ */
+/* Quotes — equal testimonial cards                                     */
+/* ------------------------------------------------------------------ */
+
+export function Quotes({ eyebrow, title, accent, lede, items }) {
+  // Three quotes sit in one row; four make a 2 × 2 grid, so every row is full and every card the same size.
+  const cols = items.length === 4 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
+  const initials = (name) => name.split(' ').map((w) => w[0]).slice(0, 2).join('')
   return <section className="section-space">
     <div className="shell">
       <div className="mx-auto max-w-3xl text-center">
@@ -552,31 +674,17 @@ export function Quotes({ eyebrow, title, accent, lede, items, image }) {
         <Reveal delay={0.05}><h2 className="h-section mt-5">{title} <span className="text-brand-500">{accent}</span></h2></Reveal>
         {lede && <Reveal delay={0.12}><p className="lede mx-auto mt-5 max-w-lg">{lede}</p></Reveal>}
       </div>
-      <Reveal className="mx-auto mt-7 max-w-5xl">
-        <div className="grid gap-3 rounded-[30px] border border-line bg-white p-3 shadow-card md:grid-cols-[300px_1fr]">
-          <div className="relative h-[280px] overflow-hidden rounded-[22px] bg-ink md:h-auto md:min-h-[320px]">
-            <img src={photo(image, 800)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-            <span className="absolute bottom-4 left-4 font-mono text-[10.5px] uppercase tracking-[.16em] text-white/80">{String(active + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
-          </div>
-          <div className="flex flex-col justify-between gap-8 p-5 md:p-8">
+      <div className={`mx-auto mt-8 grid max-w-6xl gap-4 sm:grid-cols-2 ${cols}`}>
+        {items.map((it, i) => <Reveal key={it.name} delay={(i % 3) * 0.08} className="h-full">
+          <figure className="group relative flex h-full flex-col overflow-hidden rounded-[26px] border border-line bg-white p-7 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-lift">
+            <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-400 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
             <Quote size={30} className="text-brand-400" />
-            <AnimatePresence mode="wait">
-              <motion.div key={active} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.5, ease: EASE }}>
-                <p className="font-display text-2xl font-medium leading-[1.25] tracking-[-.025em] text-ink md:text-[2.1rem]">“{q.quote}”</p>
-                <p className="mt-8 font-display text-lg font-medium text-brand-600">{q.name}</p>
-                <p className="text-sm text-muted">{q.role}</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </Reveal>
-      <div className="mx-auto mt-3 grid max-w-5xl gap-3 md:grid-cols-3">
-        {others.map(([it, i]) => <Reveal key={it.name} delay={0.05}>
-          <button onClick={() => setActive(i)} className="group flex h-full w-full flex-col justify-between gap-6 rounded-[22px] border border-line bg-white/70 p-5 text-left transition-all duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-card">
-            <p className="line-clamp-3 text-[14px] leading-relaxed text-ink/75">“{it.quote}”</p>
-            <span className="flex items-center gap-3"><span className="h-8 w-8 rounded-full" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0a8a8f'}, #26c8b2)` }} /><span><span className="block text-[13px] font-medium text-ink">{it.name}</span><span className="block text-[12px] text-muted">{it.role}</span></span></span>
-          </button>
+            <blockquote className="mt-5 flex-1 font-display text-xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[1.35rem]">“{it.quote}”</blockquote>
+            <figcaption className="mt-8 flex items-center gap-3 border-t border-line pt-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-mono text-[12px] font-medium text-white" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0a8a8f'}, #26c8b2)` }}>{initials(it.name)}</span>
+              <span><span className="block font-display text-[15px] font-medium text-ink">{it.name}</span><span className="block text-[13px] text-muted">{it.role}</span></span>
+            </figcaption>
+          </figure>
         </Reveal>)}
       </div>
     </div>

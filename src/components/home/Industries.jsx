@@ -28,8 +28,7 @@ export default function Industries() {
                 <ArrowUpRight size={18} className="text-muted-faint transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-500" />
               </div>
               <div className="mt-3 sm:mt-4">
-                <span className="font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">◆ Context</span>
-                <h3 className="mt-2 font-display text-xl font-medium tracking-[-.02em] text-ink md:text-[1.4rem]">{item.label}</h3>
+                <h3 className="font-display text-xl font-medium tracking-[-.02em] text-ink md:text-[1.4rem]">{item.label}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{getPage(item.to).subtitle}</p>
               </div>
               <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-400 transition-transform duration-700 ease-expo group-hover:scale-x-100" />

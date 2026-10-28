@@ -7,7 +7,7 @@ import { getPage, industryLinks, productLinks, serviceLinks } from '../../data/s
 import { getScene } from '../../data/visualScenes'
 import { defaultNeeds, faqPicks, industryIcons, industryImages, mediaFor, pageImages, productImages, operatingNeeds, serviceImages } from '../../data/pageMedia'
 import { ArrowButton, Eyebrow, Reveal } from '../ui/Motion'
-import { Bento, CaseGrid, CtaPhotos, FaqDark, FeatureCards, HeroCentered, KeyFeatures, NeedsSplit, Orbit, Quotes, Statement, StatsBand, StepsBanner } from './Blocks'
+import { Bento, CaseGrid, Openings, TechMarquee, TrainingPanel, CtaPhotos, FaqDark, FeatureCards, HeroCentered, KeyFeatures, NeedsSplit, Orbit, Quotes, Statement, StatsBand, StepsBanner } from './Blocks'
 import { EASE, photo } from '../../utils/intro'
 
 /* ---------- shared copy & helpers ---------- */
@@ -34,7 +34,24 @@ const guiding = [
 const voices = team.map((t) => ({ name: t.name, role: t.role, quote: t.quote, colors: t.colors }))
 const stats = [[productLinks.length, '', 'Purpose-built platforms'], [services.length, '', 'Capability areas'], [industryLinks.length, '', 'Industries served'], [delivery.length, '', 'Delivery phases']]
 const serviceCards = serviceLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: serviceImages[l.to], to: l.to }))
-const industryCards = industryLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: industryImages[l.to], to: l.to, tag: 'Industry' }))
+const industryCards = industryLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: industryImages[l.to], to: l.to }))
+
+// Course summaries shown in the training panels on service pages.
+const trainingCourses = {
+  'Web App Audit': { text: 'Find and fix common web application weaknesses, from input handling and authentication to session management.', tags: ['Web security', 'Hands-on labs'] },
+  Cloud: { text: 'Plan, deploy and secure cloud workloads with sound identity, networking and monitoring practices.', tags: ['Cloud platforms', 'Hands-on labs'] },
+  'Ethical Hacking': { text: 'Think like an attacker: reconnaissance, exploitation and the ethics of authorised testing.', tags: ['Offensive security', 'Hands-on labs'] },
+  SOC: { text: 'Monitor, triage and respond to security events using the workflows of a security operations centre.', tags: ['Security operations', 'Hands-on labs'] },
+  'Digital Forensics': { text: 'Collect, preserve and analyse digital evidence in a way that stands up to scrutiny.', tags: ['Investigation', 'Hands-on labs'] },
+  VAPT: { text: 'Learn a structured approach to vulnerability assessment and penetration testing, through to clear reporting.', tags: ['Offensive security', 'Hands-on labs'] },
+  'Cyber Security': { text: 'Build a working foundation in threats, controls and incident response for connected environments.', tags: ['Security fundamentals', 'Instructor-led'] },
+  IoT: { text: 'Work with sensors, gateways and edge devices to collect, process and act on operational data.', tags: ['Connected devices', 'Hands-on labs'] },
+  CCNA: { text: 'Core networking: addressing, switching, routing and the fundamentals of network security.', tags: ['Networking', 'Certification prep'] },
+  CCNP: { text: 'Advanced routing, switching and troubleshooting for larger enterprise networks.', tags: ['Enterprise networking', 'Certification prep'] },
+  Firewall: { text: 'Design and manage firewall policies, segmentation and secure remote access.', tags: ['Network security', 'Hands-on labs'] },
+  Linux: { text: 'Administer Linux systems confidently: the shell, users, services, networking and hardening.', tags: ['System administration', 'Hands-on labs'] },
+}
+const courses = (titles) => titles.map((title) => ({ title, ...trainingCourses[title] }))
 const pickFaqs = (key, n) => (faqPicks[key] || faqs.map((_, i) => i)).slice(0, n).map((i) => faqs[i])
 
 /* ---------- listings ---------- */
@@ -79,14 +96,14 @@ export function ServiceDetail({ page }) {
   const images = media.hero
   const related = isIot
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr', tag: 'Related solution' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr' },
       ]
     : isNetwork
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr', tag: 'Network solution' },
-        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: productImages['/products/vapt'], to: '/products/vapt', tag: 'Security solution' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr' },
+        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: productImages['/products/vapt'], to: '/products/vapt' },
       ]
-    : serviceCards.filter((c) => c.to !== page.path).slice(0, 3).map((c) => ({ ...c, tag: 'Service' }))
+    : serviceCards.filter((c) => c.to !== page.path).slice(0, 3)
   const process = isIot
     ? [['Discovery & Strategy', ''], ['Prototype Development', ''], ['Pilot Implementation', ''], ['Full-scale Deployment', ''], ['Monitoring & Optimization', '']]
     : isNetwork
@@ -149,8 +166,15 @@ export function ServiceDetail({ page }) {
     ['Deployment & Support', 'Smooth deployment and ongoing support to ensure optimal application performance.'],
   ]
   const appLifecycle = [['Discovery & Planning', ''], ['Design & Prototyping', ''], ['Development & Testing', ''], ['Deployment & Launch', ''], ['Maintenance & Support', '']]
+  // Logos are Devicon SVGs (MIT), stored in public/images/tech.
+  const tech = (file) => `/images/tech/${file}.svg`
   const applicationStack = [
-    ['React', 'Frontend'], ['React Native', 'Mobile'], ['Python', 'Backend'], ['Java', 'Enterprise'], ['PostgreSQL', 'Database'], ['AWS/Azure', 'Cloud'],
+    { name: 'React', role: 'Frontend', logos: [tech('react-original')] },
+    { name: 'React Native', role: 'Mobile', logos: [tech('react-original')] },
+    { name: 'Python', role: 'Backend', logos: [tech('python-original')] },
+    { name: 'Java', role: 'Enterprise', logos: [tech('java-original')] },
+    { name: 'PostgreSQL', role: 'Database', logos: [tech('postgresql-original')] },
+    { name: 'AWS / Azure', role: 'Cloud', logos: [tech('amazonwebservices-original-wordmark'), tech('azure-original')] },
   ]
   const applicationSolutions = [
     { title: 'GYANSHU HMS', text: 'Hostel Management System. A comprehensive solution for modern student housing, streamlining operations from allocation to billing with automated efficiency.', tags: ['View Details'] },
@@ -204,17 +228,17 @@ export function ServiceDetail({ page }) {
     {isRegulatory && <FeatureCards eyebrow="Compliance Standards" title="Industry Compliance Frameworks" lede="We help organizations navigate complex compliance frameworks and industry standards across various sectors." items={complianceStandards.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
     {isRegulatory && <FeatureCards eyebrow="Compliance Process" title="Structured Approach to Regulatory Compliance" items={complianceProcess.map(([title, text]) => ({ title, text }))} />}
     {isApplication && <FeatureCards eyebrow="Our Development Approach" title="Agile Development Methodology" items={applicationApproach.map(([title, text]) => ({ title, text }))} />}
-    {isApplication && <FeatureCards eyebrow="Technology Stack" title="Technology Stack" lede="We leverage cutting-edge technologies to build robust, scalable applications." items={applicationStack.map(([title, text]) => ({ title, tags: [text] }))} cols={3} />}
+    {isApplication && <TechMarquee eyebrow="Technology Stack" title="Technology Stack" lede="We leverage cutting-edge technologies to build robust, scalable applications." items={applicationStack} />}
     {isApplication && <FeatureCards eyebrow="Software Solutions" title="Software Solutions" items={applicationSolutions} cols={2} />}
-    {isApplication && <FeatureCards eyebrow="Development Training" title="Development Training" items={['Web App Audit', 'Cloud'].map((title) => ({ title }))} cols={2} />}
+    {isApplication && <TrainingPanel eyebrow="Development Training" title="Development Training" lede="Practical courses that help your developers build, review and run secure applications, taught by the people who deliver them." courses={courses(['Web App Audit', 'Cloud'])} />}
     {isRegulatory && <StepsBanner eyebrow="Compliance Process" title="Compliance Implementation Roadmap" steps={complianceRoadmap} image={media.steps} />}
     {isRegulatory && <FeatureCards eyebrow="Benefits of Compliance" title="Benefits of Compliance" lede="Regulatory compliance isn't just about avoiding penalties—it's about building trust and competitive advantage." items={complianceBenefits.map(([title, text]) => ({ title, text }))} />}
     {isRegulatory && <FeatureCards eyebrow="Compliance & Auditing Tools" title="Compliance & Auditing Tools" items={complianceTools} cols={2} />}
-    {isRegulatory && <FeatureCards eyebrow="Compliance Training" title="Compliance Training" items={['VAPT', 'Web App Audit'].map((title) => ({ title }))} cols={2} />}
+    {isRegulatory && <TrainingPanel eyebrow="Compliance Training" title="Compliance Training" lede="Give your team the skills to test, evidence and maintain the controls that compliance frameworks expect." courses={courses(['VAPT', 'Web App Audit'])} />}
     {isIot && <FeatureCards eyebrow="IOT APPLICATIONS" title="Industry Solutions" lede="Our IoT solutions are tailored for specific industries, delivering measurable results and competitive advantages." items={iotApplications.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
     {isIot && <FeatureCards eyebrow="IMPLEMENTATION PROCESS" title="End-to-End IoT Solution Development" items={iotImplementation.map(([title, text]) => ({ title, text }))} />}
-    {isNetwork && <FeatureCards eyebrow="Network Certification Training" title="Network Certification Training" items={['CCNA', 'CCNP', 'Firewall', 'Linux'].map((title) => ({ title }))} cols={4} />}
-    {isIot && <FeatureCards eyebrow="IoT Training" title="IoT Training" items={['Cyber Security', 'IoT'].map((title) => ({ title }))} cols={2} />}
+    {isNetwork && <TrainingPanel eyebrow="Network Certification Training" title="Network Certification Training" lede="Structured preparation for widely recognised networking skills, with labs that mirror real enterprise environments." courses={courses(['CCNA', 'CCNP', 'Firewall', 'Linux'])} />}
+    {isIot && <TrainingPanel eyebrow="IoT Training" title="IoT Training" lede="Hands-on learning for teams designing, deploying and securing connected devices and the data they produce." courses={courses(['Cyber Security', 'IoT'])} />}
     {!isRegulatory && <StepsBanner eyebrow={isApplication ? 'Development Lifecycle' : isIot ? 'IMPLEMENTATION PROCESS' : isNetwork ? 'Network Assessment Process' : 'How engagements move'} title={isApplication ? 'Development Lifecycle' : isIot ? 'IoT Development Roadmap' : isNetwork ? 'Network Assessment Process' : 'From first conversation to'} accent={isApplication || isIot || isNetwork ? '' : 'ongoing support.'} steps={isApplication ? appLifecycle : process} image={media.steps} note={isApplication || isIot || isNetwork ? undefined : 'Practical expertise. Clear communication. Dependable outcomes.'} />}
     {!isNetwork && !isIot && !isApplication && !isRegulatory && <FaqDark lede={`Common questions about ${page.title.toLowerCase()}.`} items={pickFaqs(page.path, 4)} />}
     {!isApplication && !isRegulatory && <CaseGrid eyebrow={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Related services'} title={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Explore related services'} muted={isNetwork || isIot ? 0 : 2} items={related} pageSize={isNetwork ? 2 : isIot ? 1 : 6} link={{ label: 'All solutions', to: '/solutions' }} />}
@@ -550,12 +574,12 @@ export function IndustryDetail({ page }) {
 /* ---------- company pages ---------- */
 
 const companyConfig = {
-  '/about': { eyebrow: 'Gyanshu / Company', sections: ['features', 'stats', 'quotes', 'bento'] },
+  '/about': { eyebrow: 'Gyanshu / Company', sections: ['features', 'stats', 'quotes'] },
   '/why-choose-us': { eyebrow: 'Why Gyanshu', sections: ['features', 'steps', 'quotes'] },
   '/mission': { eyebrow: 'Our mission', sections: ['features', 'stats', 'bento'] },
   '/core-values': { eyebrow: 'Core values', sections: ['values', 'quotes', 'steps'] },
-  '/careers': { eyebrow: 'Careers', sections: ['features', 'quotes', 'bento'], cta: { title: 'Bring your skills to meaningful work.', muted: 2, text: 'Tell us about yourself and the work you want to do.', cta: 'Share your profile', href: 'mailto:Support.gyanshu@gmail.com?subject=Careers%20at%20Gyanshu' } },
-  '/training': { eyebrow: 'Training & development', sections: ['topics', 'learning'], cta: { title: 'Build skills that last.', muted: 2, text: 'Ask about instructor-led programs for your team.', cta: 'Ask about training' } },
+  '/careers': { eyebrow: 'Careers', sections: ['openings', 'reasons', 'hiring'], cta: { title: 'Ready to join our team?', muted: 2, text: 'Do not see a role that fits? Send us your resume anyway. We are always glad to meet talented people.', cta: 'Send your resume', href: 'mailto:Support.gyanshu@gmail.com?subject=Careers%20at%20Gyanshu' } },
+  '/training': { eyebrow: 'Training & development', sections: ['highlights', 'courses', 'formats', 'learning', 'students'], cta: { title: 'Start your journey with Gyanshu.', muted: 2, text: 'Tell us what you want to learn and we will help you choose the right course.', cta: 'Ask about training' } },
   '/our-work': { eyebrow: 'Our work', sections: ['cases', 'steps', 'stats'] },
 }
 const values = [
@@ -564,17 +588,71 @@ const values = [
   { title: 'Curiosity', text: 'We keep learning so systems keep improving as technology evolves.', icon: Compass },
   { title: 'Lasting partnerships', text: 'We stay with you beyond launch, through operations and improvement.', icon: Building2 },
 ]
-const topics = [
-  { title: 'Cybersecurity', text: 'Hands-on assessment, defence, and response practice.' },
-  { title: 'Networking', text: 'Design, configuration, and troubleshooting fundamentals.' },
-  { title: 'Cloud', text: 'Secure cloud networking and operations skills.' },
-  { title: 'Connected technologies', text: 'IoT, sensors, and edge systems in practice.' },
+// Careers page content.
+const careersMail = (subject) => `mailto:Support.gyanshu@gmail.com?subject=${encodeURIComponent(subject)}`
+const openings = [
+  {
+    title: 'Python Full Stack Intern',
+    badge: 'Internship',
+    location: 'Bhubaneswar',
+    type: 'Internship',
+    experience: 'Freshers welcome',
+    summary: 'Join our application team and help build web products end to end, from Python services and APIs to the interfaces people use every day. You will learn by shipping real features alongside experienced developers.',
+    duties: [
+      'Build and maintain features across the backend and frontend of our web applications',
+      'Develop and integrate REST APIs using Python',
+      'Work with relational databases to design tables and write efficient queries',
+      'Test, debug and document your code, and take part in code reviews',
+    ],
+    requirements: [
+      'Working knowledge of Python and a web framework such as Django or Flask',
+      'Familiarity with HTML, CSS and JavaScript; React is a plus',
+      'Understanding of SQL and relational databases',
+      'Comfortable using Git, eager to learn and able to work in a team',
+    ],
+    skills: ['Python', 'Django / Flask', 'REST APIs', 'JavaScript', 'React', 'SQL', 'Git'],
+    apply: careersMail('Application: Python Full Stack Intern'),
+  },
+]
+const careerReasons = [
+  { title: 'Innovation First', text: 'Work with modern technology on solutions that help shape how organisations run and protect their IT.' },
+  { title: 'Continuous Learning', text: 'Grow through training programmes, certifications and room to keep expanding your skills.' },
+  { title: 'Collaborative Culture', text: 'A supportive team where people share knowledge and solve problems together.' },
+  { title: 'Work-Life Balance', text: 'Flexible working arrangements that respect your time and well-being.' },
+  { title: 'Impactful Work', text: 'Projects that protect businesses and move their digital transformation forward.' },
+  { title: 'Growth Opportunities', text: 'Clear paths to progress, with mentorship and chances to take on leadership.' },
+]
+const hiringSteps = [
+  ['Application review', 'We read your application and resume to understand your fit for the role.'],
+  ['Technical interview', 'Talk through your skills, experience and how you approach problems.'],
+  ['Practical assessment', 'Complete a short task or case study related to the role.'],
+  ['Final interview', 'Meet our leadership and discuss how you would fit our culture and values.'],
+]
+
+// Training page content.
+const trainingHighlights = [
+  { title: 'Expert Trainers', text: 'Learn from practitioners who bring field experience and give every learner personal guidance.' },
+  { title: 'Classroom Training', text: 'Work directly with instructors and peers in person, with online classes available too.' },
+  { title: 'Global Certification', text: 'Earn internationally recognised certification that helps your skills stand out wherever you work.' },
+  { title: 'Career-Focused Curriculum', text: 'Courses shaped around the skills employers look for in security, networking and cloud roles.' },
+  { title: 'Live Project Work', text: 'Apply what you learn on practical projects that reflect real workplace challenges.' },
+  { title: 'Tech Resource Library', text: 'Reference material and lab resources that support you throughout your course.' },
+]
+const courseCatalog = ['Cyber Security', 'Ethical Hacking', 'VAPT', 'Web App Audit', 'CCNA', 'CCNP', 'Firewall', 'Linux', 'SOC', 'Cloud', 'Digital Forensics', 'IoT']
+const trainingFormats = [
+  { title: 'Classroom training', text: 'Our preferred format: learn face to face with instructors and peers for a more immersive, hands-on experience.', tags: ['In person', 'Instructor-led'] },
+  { title: 'Online classes', text: 'Join instructor-led sessions remotely, wherever you are.', tags: ['Remote', 'Instructor-led'] },
+]
+const studentVoices = [
+  { name: 'Sangita Das', role: 'Networking Student', quote: 'The classes were very helpful. I understand IP addressing and routing clearly now.', colors: ['#005564', '#e5ebec'] },
+  { name: 'Satyajit Nayak', role: 'Cybersecurity Beginner', quote: 'I always wanted to learn about cyber safety. This training made it easy and interesting.', colors: ['#176d79', '#e5ebec'] },
+  { name: 'Lopamudra Sahoo', role: 'CCNA Aspirant', quote: 'Before the course I was confused. Now I am preparing confidently for my CCNA exam.', colors: ['#36444b', '#e5ebec'] },
 ]
 const workItems = [
   ...caseStudies.map((c) => ({ title: c.result, text: c.desc, tag: c.industry, image: pageImages['/our-work'].cases[c.id - 1], to: { 1: '/products/ipdr', 2: '/products/argos-enms', 3: '/products/vapt', 4: '/services/iot' }[c.id] })),
-  { title: 'Infrastructure intelligence', text: 'Understand network relationships, performance, and operational change.', tag: 'Illustrative use case', image: pageImages['/our-work'].useCases[0], to: '/products/argos-enms' },
-  { title: 'Security exposure management', text: 'Connect assets, vulnerabilities, and response priorities.', tag: 'Illustrative use case', image: pageImages['/our-work'].useCases[1], to: '/products/panoptix' },
-  { title: 'Connected operations', text: 'Bring sensor data from edge environments into useful action.', tag: 'Illustrative use case', image: pageImages['/our-work'].useCases[2], to: '/services/iot' },
+  { title: 'Infrastructure intelligence', text: 'Understand network relationships, performance, and operational change.', image: pageImages['/our-work'].useCases[0], to: '/products/argos-enms' },
+  { title: 'Security exposure management', text: 'Connect assets, vulnerabilities, and response priorities.', image: pageImages['/our-work'].useCases[1], to: '/products/panoptix' },
+  { title: 'Connected operations', text: 'Bring sensor data from edge environments into useful action.', image: pageImages['/our-work'].useCases[2], to: '/services/iot' },
 ]
 
 export function CompanyPage({ page }) {
@@ -584,9 +662,15 @@ export function CompanyPage({ page }) {
   const blocks = {
     features: <KeyFeatures key="f" eyebrow="What guides our work" title="People first, technology with purpose" muted={3} lede="We pair engineering depth with direct collaboration, so progress stays understandable and useful." items={guiding} cols={4} />,
     values: <KeyFeatures key="v" eyebrow="What we value" title="How we work shapes what we deliver" muted={3} items={values} cols={4} />,
-    topics: <KeyFeatures key="t" eyebrow="Programs" title="Practical, hands-on learning" muted={2} lede="Instructor-led programs across the technologies organizations depend on." items={topics} cols={4} />,
+    openings: <Openings key="op" title="Current openings" lede="We are always looking for talented people to join our growing team. Explore our current opportunities below." jobs={openings} />,
+    reasons: <KeyFeatures key="wr" eyebrow="Why join us" title="Why work with Gyanshu" muted={1} lede="Join a team that is passionate about technology and committed to doing it well." items={careerReasons} cols={3} />,
+    hiring: <StepsBanner key="hp" eyebrow="Hiring process" title="Our hiring" accent="process." steps={hiringSteps} image={media.steps} note="A clear, straightforward process to find the right people for our team." />,
+    highlights: <KeyFeatures key="h" eyebrow="Why train with us" title="Why train with Gyanshu" muted={1} lede="Practical skills, taught by people who use them every day." items={trainingHighlights} cols={3} />,
+    courses: <FeatureCards key="cc" eyebrow="Course categories" title="Course categories" lede="Twelve practical courses across security, networking, cloud and connected technologies." items={courses(courseCatalog)} cols={4} />,
+    formats: <FeatureCards key="fm" eyebrow="Learn your way" title="Classroom or online" lede="Choose the format that suits you. Both are led by our instructors." items={trainingFormats} cols={2} />,
+    students: <Quotes key="sv" eyebrow="Testimonials" title="What our students" accent="say." lede="Learners on how our training helped them." items={studentVoices} />,
     stats: <StatsBand key="s" eyebrow="At a glance" title="Built for" accent="critical operations." lede="Platforms, practices, and delivery discipline under one roof." stats={stats} />,
-    quotes: <Quotes key="q" eyebrow="Voices from our teams" title="The people behind" accent="the work." lede="Principles our practice teams bring to every engagement." items={voices} image={media.quotes || pageImages['/about'].quotes} />,
+    quotes: <Quotes key="q" eyebrow="Voices from our teams" title="The people behind" accent="the work." lede="Principles our practice teams bring to every engagement." items={voices} />,
     bento: <Bento key="b" eyebrow="Capabilities" title="Capabilities that work" accent="together." lede="Cybersecurity, infrastructure, software, AI, and connected operations." items={serviceCards} />,
     steps: <StepsBanner key="st" eyebrow="How we deliver" title="From understanding to" accent="improvement." steps={delivery} image={media.steps || pageImages['/our-work'].steps} note="A considered sequence that keeps priorities visible and ownership clear." />,
     learning: <StepsBanner key="l" eyebrow="The journey" title="Learn, practice," accent="grow." steps={[['Learn', 'Structured, instructor-led sessions.'], ['Practice', 'Hands-on labs with real tools and scenarios.'], ['Grow', 'Confidence you can apply on the job.']]} image={media.learning || pageImages['/training'].learning} note="Looking for a school operations platform? Explore SMMS for connected administration." />,

@@ -84,7 +84,7 @@ export default function Hero() {
     </div>
 
     <motion.div ref={panel} className="relative mt-8 px-3 sm:px-5 md:mt-10" initial={{ opacity: 0, y: 80 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.3, delay: 0.5, ease: EASE }}>
-      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: radius }} className="relative mx-auto h-[44svh] min-h-[280px] max-h-[420px] max-w-[1600px] origin-top overflow-hidden bg-ink md:h-[52svh] md:min-h-[380px] md:max-h-[560px]">
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: radius }} className="relative mx-auto h-[52svh] min-h-[320px] max-h-[500px] max-w-[1600px] origin-top overflow-hidden bg-ink md:h-[62svh] md:min-h-[440px] md:max-h-[680px]">
         <motion.div style={{ y: reduce ? 0 : imageY }} className="absolute inset-[-8%_0]"><SceneStack active={active} width={2200} /></motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-ink-950/30" />
         <div className="grain absolute inset-0" />

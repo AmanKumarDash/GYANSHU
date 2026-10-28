@@ -118,12 +118,10 @@ export const pageImages = {
 
   '/about': {
     hero: ['photo-1521737711867-e3b97375f902', 'photo-1582213782179-e0d53f98f2ca', 'photo-1758691736843-90f58dce465e', 'photo-1600880292203-757bb62b4baf'],
-    quotes: 'photo-1758873269181-270f5b7fc6aa',
     cta: ['photo-1739285452621-59d92842fcc8', 'photo-1566140967404-b8b3932483f5', 'photo-1776057441344-38e0587ad1e6', 'photo-1492366254240-43affaefc3e3'],
   },
   '/why-choose-us': {
     hero: ['photo-1549923746-c502d488b3ea', 'photo-1758518730384-be3d205838e8', 'photo-1686771416282-3888ddaf249b', 'photo-1758520144427-ddb02ac74e9d'],
-    quotes: 'photo-1758691737278-3af15b37af48',
     steps: 'photo-1787647560683-0e4b037ea9d6',
     cta: ['photo-1758518729240-7162d07427b8', 'photo-1698047682091-782b1e5c6536', 'photo-1768055105012-4c53791b2877', 'photo-1581087724694-14c17b0c17fc'],
   },
@@ -133,13 +131,12 @@ export const pageImages = {
   },
   '/core-values': {
     hero: ['photo-1544027993-37dbfe43562a', 'photo-1501770118606-b1d640526693', 'photo-1758873268745-dd2cf0d677b5', 'photo-1581091226033-d5c48150dbaa'],
-    quotes: 'photo-1758691737207-e75821e080cb',
     steps: 'photo-1761250246894-ee2314939662',
     cta: ['photo-1581094481644-f2ab64522498', 'photo-1581091226205-b28ac533a45f', 'photo-1702468049239-49fd1cf99d20', 'photo-1580982333389-cca46f167381'],
   },
   '/careers': {
     hero: ['photo-1758520144437-f068ecaf0d83', 'photo-1635350736475-c8cef4b21906', 'photo-1573497620053-ea5300f94f21', 'photo-1511376979163-f804dff7ad7b'],
-    quotes: 'photo-1598970434795-0c54fe7c0648',
+    steps: 'photo-1758691736979-ff263c04b3d1',
     cta: ['photo-1629904853716-f0bc54eea481', 'photo-1544006659-f0b21884ce1d', 'photo-1602016736566-7ed6a58894bd', 'photo-1622151834677-70f982c9adef'],
   },
   '/training': {

@@ -21,7 +21,6 @@ function CaseCard({ c, i, progress }) {
         <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] bg-ink">
           <img src={photo(img, 1000)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.06]" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-          <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[.14em] text-ink backdrop-blur">Illustrative use case</span>
           <span className="absolute bottom-4 right-4 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-brand-400 text-ink opacity-0 transition-all duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100"><ArrowUpRight size={18} /></span>
         </div>
         <h3 className="mt-3 font-poster text-[1.9rem] uppercase leading-none tracking-[.01em] text-ink">{title}</h3>
