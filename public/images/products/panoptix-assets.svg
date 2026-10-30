@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#0b1416"/>
+<rect x="0" y="0" width="230" height="900" rx="0" fill="#0e181b"/>
+<line x1="230" y1="0" x2="230" y2="900" stroke="#24363b"/>
+<rect x="22" y="24" width="34" height="34" rx="9" fill="#0a8a8f"/><text x="39" y="47" font-size="15" fill="#fff" font-weight="700" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">PX</text>
+<text x="66" y="40" font-size="14.5" fill="#e8f1f0" font-weight="700" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">PANOPTIX</text><text x="66" y="57" font-size="11" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Gyanshu Technologies</text>
+<circle cx="36" cy="106" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="111" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Exposure Overview</text>
+<rect x="14" y="132" width="202" height="36" rx="8" fill="#1b2c30"/><rect x="14" y="132" width="3" height="36" fill="#26c8b2"/>
+<circle cx="36" cy="150" r="5" fill="#26c8b2" opacity="1"/>
+<text x="52" y="155" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Assets</text>
+<circle cx="36" cy="194" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="199" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Exposures</text>
+<circle cx="36" cy="238" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="243" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Misconfigurations</text>
+<circle cx="36" cy="282" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="287" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Prioritisation</text>
+<circle cx="36" cy="326" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="331" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Remediation</text>
+<circle cx="36" cy="370" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="375" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Reports</text>
+<rect x="14" y="822" width="202" height="56" rx="10" fill="#122024"/><text x="30" y="848" font-size="11.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">On-premises deployment</text><text x="30" y="866" font-size="11" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">All data stays in your network</text>
+<text x="262" y="46" font-size="22" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Asset Inventory</text><text x="262" y="70" font-size="12" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Discovered assets  ·  1,284</text>
+<rect x="980" y="26" width="330" height="38" rx="19" fill="#18262a" stroke="#24363b" stroke-width="1"/><text x="1002" y="50" font-size="13" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Search…</text>
+<rect x="1326" y="26" width="250" height="38" rx="19" fill="#1d2a1f00" stroke="#0a8a8f" stroke-width="1"/><text x="1451" y="50" font-size="12.5" fill="#26c8b2" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Illustrative interface</text>
+<rect x="262" y="96" width="1314" height="56" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/>
+<rect x="284" y="114" width="86.0" height="22" rx="11" fill="#26c8b226"/><text x="327.0" y="130" font-size="11.5" fill="#26c8b2" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">All assets</text>
+<rect x="382.0" y="114" width="150.8" height="22" rx="11" fill="#5aa9e626"/><text x="457.4" y="130" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Internet-facing 214</text>
+<rect x="544.8" y="114" width="78.8" height="22" rx="11" fill="#5aa9e626"/><text x="584.1999999999999" y="130" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Cloud 318</text>
+<rect x="635.5999999999999" y="114" width="122.0" height="22" rx="11" fill="#5aa9e626"/><text x="696.5999999999999" y="130" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">On-premises 752</text>
+<rect x="769.5999999999999" y="114" width="129.2" height="22" rx="11" fill="#f2b84b26"/><text x="834.1999999999999" y="130" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">New this week 36</text>
+<rect x="262" y="168" width="960" height="708" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="282" y="200" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Assets</text><text x="1202" y="200" font-size="12" fill="#5e7377" font-weight="400" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Sorted by risk</text>
+<rect x="278" y="216" width="928" height="34" rx="6" fill="#18262a"/>
+<text x="294" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">ASSET</text>
+<text x="524" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">TYPE</text>
+<text x="704" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">EXPOSED SERVICES</text>
+<text x="894" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">FINDINGS</text>
+<text x="994" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">RISK</text>
+<text x="1114" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">LAST SEEN</text>
+<line x1="278" y1="294" x2="1206" y2="294" stroke="#24363b"/>
+<text x="294" y="275" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">portal.example.in</text>
+<text x="524" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Web application</text>
+<text x="704" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443, 80</text>
+<text x="894" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">6</text>
+<rect x="994" y="260" width="71.6" height="22" rx="11" fill="#ef5d5d26"/><text x="1029.8" y="276" font-size="11.5" fill="#ef5d5d" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Critical</text>
+<text x="1114" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">2 min ago</text>
+<line x1="278" y1="338" x2="1206" y2="338" stroke="#24363b"/>
+<text x="294" y="319" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">vpn.example.in</text>
+<text x="524" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">VPN gateway</text>
+<text x="704" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443, 500</text>
+<text x="894" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">3</text>
+<rect x="994" y="304" width="71.6" height="22" rx="11" fill="#ef5d5d26"/><text x="1029.8" y="320" font-size="11.5" fill="#ef5d5d" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Critical</text>
+<text x="1114" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">5 min ago</text>
+<line x1="278" y1="382" x2="1206" y2="382" stroke="#24363b"/>
+<text x="294" y="363" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">api.example.in</text>
+<text x="524" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">API endpoint</text>
+<text x="704" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443</text>
+<text x="894" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">4</text>
+<rect x="994" y="348" width="42.8" height="22" rx="11" fill="#f2b84b26"/><text x="1015.4" y="364" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">High</text>
+<text x="1114" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">5 min ago</text>
+<line x1="278" y1="426" x2="1206" y2="426" stroke="#24363b"/>
+<text x="294" y="407" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.20.4.17</text>
+<text x="524" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">File server</text>
+<text x="704" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">445, 3389</text>
+<text x="894" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">5</text>
+<rect x="994" y="392" width="42.8" height="22" rx="11" fill="#f2b84b26"/><text x="1015.4" y="408" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">High</text>
+<text x="1114" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">1 h ago</text>
+<line x1="278" y1="470" x2="1206" y2="470" stroke="#24363b"/>
+<text x="294" y="451" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">mail.example.in</text>
+<text x="524" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Mail server</text>
+<text x="704" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">25, 587, 993</text>
+<text x="894" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">2</text>
+<rect x="994" y="436" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1022.6" y="452" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+<text x="1114" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">12 min ago</text>
+<line x1="278" y1="514" x2="1206" y2="514" stroke="#24363b"/>
+<text x="294" y="495" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">storage-bkp-02</text>
+<text x="524" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Cloud bucket</text>
+<text x="704" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">HTTPS</text>
+<text x="894" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">1</text>
+<rect x="994" y="480" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1022.6" y="496" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+<text x="1114" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">30 min ago</text>
+<line x1="278" y1="558" x2="1206" y2="558" stroke="#24363b"/>
+<text x="294" y="539" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.20.9.3</text>
+<text x="524" y="539" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Printer</text>
+<text x="704" y="539" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">9100, 80</text>
+<text x="894" y="539" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">2</text>
+<rect x="994" y="524" width="35.6" height="22" rx="11" fill="#3fcf8e26"/><text x="1011.8" y="540" font-size="11.5" fill="#3fcf8e" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Low</text>
+<text x="1114" y="539" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">3 h ago</text>
+<line x1="278" y1="602" x2="1206" y2="602" stroke="#24363b"/>
+<text x="294" y="583" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">hr.example.in</text>
+<text x="524" y="583" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Web application</text>
+<text x="704" y="583" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443</text>
+<text x="894" y="583" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">0</text>
+<rect x="994" y="568" width="35.6" height="22" rx="11" fill="#3fcf8e26"/><text x="1011.8" y="584" font-size="11.5" fill="#3fcf8e" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Low</text>
+<text x="1114" y="583" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">9 min ago</text>
+<line x1="278" y1="646" x2="1206" y2="646" stroke="#24363b"/>
+<text x="294" y="627" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.30.1.5</text>
+<text x="524" y="627" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Hypervisor</text>
+<text x="704" y="627" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443, 902</text>
+<text x="894" y="627" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">1</text>
+<rect x="994" y="612" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1022.6" y="628" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+<text x="1114" y="627" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">2 h ago</text>
+<line x1="278" y1="690" x2="1206" y2="690" stroke="#24363b"/>
+<text x="294" y="671" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">dev.example.in</text>
+<text x="524" y="671" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Staging site</text>
+<text x="704" y="671" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443, 8080</text>
+<text x="894" y="671" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">3</text>
+<rect x="994" y="656" width="42.8" height="22" rx="11" fill="#f2b84b26"/><text x="1015.4" y="672" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">High</text>
+<text x="1114" y="671" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">15 min ago</text>
+<line x1="278" y1="734" x2="1206" y2="734" stroke="#24363b"/>
+<text x="294" y="715" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.20.2.40</text>
+<text x="524" y="715" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Database</text>
+<text x="704" y="715" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">5432</text>
+<text x="894" y="715" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">1</text>
+<rect x="994" y="700" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1022.6" y="716" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+<text x="1114" y="715" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">1 h ago</text>
+<line x1="278" y1="778" x2="1206" y2="778" stroke="#24363b"/>
+<text x="294" y="759" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">ftp.example.in</text>
+<text x="524" y="759" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">File transfer</text>
+<text x="704" y="759" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">21</text>
+<text x="894" y="759" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">2</text>
+<rect x="994" y="744" width="42.8" height="22" rx="11" fill="#f2b84b26"/><text x="1015.4" y="760" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">High</text>
+<text x="1114" y="759" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">20 min ago</text>
+<line x1="278" y1="822" x2="1206" y2="822" stroke="#24363b"/>
+<text x="294" y="803" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.10.0.254</text>
+<text x="524" y="803" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Firewall</text>
+<text x="704" y="803" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443</text>
+<text x="894" y="803" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">0</text>
+<rect x="994" y="788" width="35.6" height="22" rx="11" fill="#3fcf8e26"/><text x="1011.8" y="804" font-size="11.5" fill="#3fcf8e" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Low</text>
+<text x="1114" y="803" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">1 min ago</text>
+<line x1="278" y1="866" x2="1206" y2="866" stroke="#24363b"/>
+<text x="294" y="847" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">cdn.example.in</text>
+<text x="524" y="847" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Content delivery</text>
+<text x="704" y="847" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">443</text>
+<text x="894" y="847" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">0</text>
+<rect x="994" y="832" width="35.6" height="22" rx="11" fill="#3fcf8e26"/><text x="1011.8" y="848" font-size="11.5" fill="#3fcf8e" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Low</text>
+<text x="1114" y="847" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">4 min ago</text>
+<rect x="1238" y="168" width="338" height="330" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="1258" y="200" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Assets by type</text>
+<rect x="1271.1833333333334" y="242.0" width="29.96666666666667" height="198.0" rx="4" fill="#0a8a8f"/>
+<text x="1286.1666666666667" y="460" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Web</text>
+<rect x="1319.5166666666667" y="319.0" width="29.96666666666667" height="121.00000000000001" rx="4" fill="#0a8a8f"/>
+<text x="1334.5" y="460" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">API</text>
+<rect x="1367.8500000000001" y="286.0" width="29.96666666666667" height="154.0" rx="4" fill="#0a8a8f"/>
+<text x="1382.8333333333335" y="460" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Server</text>
+<rect x="1416.1833333333334" y="363.0" width="29.96666666666667" height="77.0" rx="4" fill="#0a8a8f"/>
+<text x="1431.1666666666667" y="460" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Cloud</text>
+<rect x="1464.5166666666667" y="341.0" width="29.96666666666667" height="99.0" rx="4" fill="#0a8a8f"/>
+<text x="1479.5" y="460" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Net</text>
+<rect x="1512.8500000000001" y="385.0" width="29.96666666666667" height="55.0" rx="4" fill="#0a8a8f"/>
+<text x="1527.8333333333335" y="460" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">IoT</text>
+<rect x="1238" y="514" width="338" height="362" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="1258" y="546" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Selected asset</text>
+<text x="1258" y="572" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">portal.example.in</text><text x="1258" y="596" font-size="12" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Web application · Internet-facing</text>
+<rect x="1254" y="618" width="306" height="42" rx="8" fill="#18262a"/><text x="1270" y="644" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">TLS 1.0 enabled</text><rect x="1476" y="628" width="71.6" height="22" rx="11" fill="#ef5d5d26"/><text x="1511.8" y="644" font-size="11.5" fill="#ef5d5d" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Critical</text>
+<rect x="1254" y="670" width="306" height="42" rx="8" fill="#18262a"/><text x="1270" y="696" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Missing HSTS header</text><rect x="1476" y="680" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1504.6" y="696" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+<rect x="1254" y="722" width="306" height="42" rx="8" fill="#18262a"/><text x="1270" y="748" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Directory listing on /files</text><rect x="1476" y="732" width="42.8" height="22" rx="11" fill="#f2b84b26"/><text x="1497.4" y="748" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">High</text>
+<rect x="1254" y="774" width="306" height="42" rx="8" fill="#18262a"/><text x="1270" y="800" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Outdated JavaScript library</text><rect x="1476" y="784" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1504.6" y="800" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+</svg>

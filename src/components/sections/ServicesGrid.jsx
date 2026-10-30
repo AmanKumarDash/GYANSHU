@@ -6,13 +6,13 @@ import heroImage from '../../assets/hero.png'
 import ScrollReveal from '../ui/ScrollReveal'
 
 const serviceAccents = {
-  1: '#005564',
-  2: '#176d79',
+  1: '#0B4D49',
+  2: '#0F7A70',
   3: '#36444b',
-  4: '#267f83',
+  4: '#14998B',
   5: '#68777d',
-  6: '#005564',
-  7: '#176d79',
+  6: '#0B4D49',
+  7: '#0F7A70',
   8: '#36444b',
 }
 

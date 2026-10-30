@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
@@ -9,7 +9,7 @@ import Logo from '../ui/Logo'
 const groups = [
   { label: 'Products', to: '/products', links: productLinks, image: 'photo-1634176866089-b633f4aec882', blurb: 'Platforms for network intelligence, cyber exposure, and connected operations.' },
   { label: 'Services', to: '/solutions', links: serviceLinks, image: 'photo-1581091212911-f4efc3f71c48', blurb: 'Cybersecurity, infrastructure, IoT, applications, and compliance expertise.' },
-  { label: 'Industries', to: '/industries', links: industryLinks, image: 'photo-1477959858617-67f85cf4f1df', blurb: 'Secure technology shaped for high-stakes environments.' },
+  { label: 'Industries', to: '/industries', links: industryLinks, image: 'px-5414582', blurb: 'Secure technology shaped for high-stakes environments.' },
 ]
 const pages = [['About', '/about'], ['Our Work', '/our-work'], ['Training', '/training'], ['Blog', '/blog'], ['Careers', '/careers']]
 
@@ -18,8 +18,19 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
-  const [open, setOpen] = useState(null)
+  const [open, setOpenState] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  // Closing waits a moment so a brief slip of the pointer outside the menu does not shut it; any open cancels the wait.
+  const closeTimer = useRef(null)
+  const setOpen = (value) => {
+    window.clearTimeout(closeTimer.current)
+    setOpenState(value)
+  }
+  const closeSoon = () => {
+    window.clearTimeout(closeTimer.current)
+    closeTimer.current = window.setTimeout(() => setOpenState(null), 150)
+  }
+  useEffect(() => () => window.clearTimeout(closeTimer.current), [])
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', (y) => {
@@ -29,11 +40,18 @@ export default function Navbar() {
   })
   // Close menus when the route changes (state adjusted during render, not in an effect).
   const [lastPath, setLastPath] = useState(pathname)
-  if (lastPath !== pathname) { setLastPath(pathname); setOpen(null); setMobileOpen(false) }
+  if (lastPath !== pathname) { setLastPath(pathname); setOpenState(null); setMobileOpen(false) }
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
+  // Escape closes whichever menu is open.
+  useEffect(() => {
+    if (!open && !mobileOpen) return undefined
+    const onKey = (e) => { if (e.key === 'Escape') { setOpen(null); setMobileOpen(false) } }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
 
   return <>
     <motion.header
@@ -41,7 +59,8 @@ export default function Navbar() {
       initial={{ y: -90, opacity: 0 }}
       animate={ready ? { y: hidden && !open ? -110 : 0, opacity: 1 } : { y: -90, opacity: 0 }}
       transition={{ duration: 0.8, ease: EASE, delay: ready && !scrolled ? 0.35 : 0 }}
-      onMouseLeave={() => setOpen(null)}
+      onMouseLeave={closeSoon}
+      onMouseEnter={() => window.clearTimeout(closeTimer.current)}
     >
       <div className={`relative mx-auto flex max-w-[1360px] items-center justify-between gap-6 rounded-full py-2 pl-5 pr-2 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ${mobileOpen ? 'border border-white/10 bg-white/[.04]' : scrolled || open ? 'border border-line/80 bg-white/80 shadow-[0_10px_40px_-18px_rgba(12,21,23,.25)] backdrop-blur-xl' : 'border border-transparent bg-transparent'}`}>
         <Link to="/" className="shrink-0" aria-label="Gyanshu Technologies home"><Logo tone={mobileOpen ? 'light' : 'dark'} className="h-9 w-auto sm:h-10" /></Link>
@@ -89,10 +108,12 @@ export default function Navbar() {
 }
 
 function MegaMenu({ group, onClose }) {
+  // The 10px gap under the bar is padding on this wrapper, so the pointer never "leaves" while moving into the panel.
   return <motion.div
-    className="absolute left-0 right-0 top-[calc(100%+10px)] overflow-hidden rounded-[28px] border border-line bg-white/95 p-2 shadow-[0_40px_80px_-30px_rgba(12,21,23,.35)] backdrop-blur-xl"
+    className="absolute left-0 right-0 top-full pt-[10px]"
     initial={{ opacity: 0, y: -8, scale: 0.985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -6, scale: 0.99 }} transition={{ duration: 0.35, ease: EASE }}
   >
+    <div className="overflow-hidden rounded-[28px] border border-line bg-white/95 p-2 shadow-[0_40px_80px_-30px_rgba(12,21,23,.35)] backdrop-blur-xl">
     <div className="grid grid-cols-[1fr_2fr] gap-2">
       <Link to={group.to} onClick={onClose} className="group relative flex min-h-[220px] flex-col justify-end overflow-hidden rounded-[22px] bg-ink p-6 text-white">
         <img src={photo(group.image, 900)} alt="" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.06]" />
@@ -112,6 +133,7 @@ function MegaMenu({ group, onClose }) {
           </Link>
         </motion.div>)}
       </div>
+    </div>
     </div>
   </motion.div>
 }

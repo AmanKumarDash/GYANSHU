@@ -1,19 +1,19 @@
 const base = {
-  security: {type:'security',accent:'#005564',label:'Threat telemetry',subtitle:'DETECT / ANALYZE / RESPOND',image:'photo-1516321318423-f06f85e504b3',video:32336446},
+  security: {type:'security',accent:'#0B4D49',label:'Threat telemetry',subtitle:'DETECT / ANALYZE / RESPOND',image:'photo-1516321318423-f06f85e504b3',video:32336446},
   network: {type:'network',accent:'#007b8c',label:'Network topology',subtitle:'LINKS / ROUTES / SIGNAL',image:'photo-1597733336794-12d05021d510',video:35402241},
   iot: {type:'iot',accent:'#188d83',label:'Connected devices',subtitle:'SENSORS / EDGE / CONTROL',image:'photo-1581091226825-a6a2a5aee158',video:32386581},
   application: {type:'application',accent:'#586f9e',label:'Application workflow',subtitle:'DESIGN / BUILD / SHIP',image:'photo-1498050108023-c5249f4df085',video:5925286},
   learning: {type:'learning',accent:'#8b7852',label:'Learning journey',subtitle:'LEARN / PRACTICE / GROW',image:'photo-1509062522246-3755977927d7',video:8102889},
   industry: {type:'industry',accent:'#007b8c',label:'Industry operations',subtitle:'SYSTEMS / PEOPLE / SERVICES',image:'photo-1567789884554-0b844b597180',video:32386581},
-  product: {type:'product',accent:'#005564',label:'Product intelligence',subtitle:'DATA / INSIGHT / ACTION',image:'photo-1597733336794-12d05021d510',video:35402241},
-  company: {type:'company',accent:'#005564',label:'People and technology',subtitle:'EXPERTISE / PARTNERSHIP / IMPACT',image:'photo-1521737711867-e3b97375f902',video:8102889},
+  product: {type:'product',accent:'#0B4D49',label:'Product intelligence',subtitle:'DATA / INSIGHT / ACTION',image:'photo-1597733336794-12d05021d510',video:35402241},
+  company: {type:'company',accent:'#0B4D49',label:'People and technology',subtitle:'EXPERTISE / PARTNERSHIP / IMPACT',image:'photo-1521737711867-e3b97375f902',video:8102889},
 }
 const routeScenes = {
   '/products/ipdr':['Subscriber flow correlation','RECORDS / SESSIONS / EVIDENCE','network','photo-1597733336794-12d05021d510',35402241],
   '/products/argos-enms':['Live network operations','NODES / UPTIME / CAPACITY','network','photo-1597733336794-12d05021d510',35402241],
   '/products/panoptix':['External asset discovery','ASSETS / EXPOSURE / RESPONSE','security','photo-1516321318423-f06f85e504b3',32336446],
   '/products/vapt':['Vulnerability scan cycle','SCAN / VALIDATE / REPORT','security','photo-1516321318423-f06f85e504b3',5377646],
-  '/products/smms':['Connected school operations','STUDENTS / OPERATIONS / COMMUNITY','learning','photo-1509062522246-3755977927d7',8102889],
+  '/products/smms':['Unified infrastructure monitoring','STATUS / ALERTS / SERVICE','network','photo-1509062522246-3755977927d7',8102889],
   '/products/gyanshu-ai-office-assistance':['AI office assistance','ASK / DRAFT / SUMMARISE','application','photo-1498050108023-c5249f4df085',5925286],
   '/services/cybersecurity':['Security operations','ASSESS / PROTECT / RESPOND','security','photo-1516321318423-f06f85e504b3',35402241],
   '/services/network':['Resilient network design','CONNECT / MONITOR / OPTIMIZE','network','photo-1597733336794-12d05021d510',35402241],

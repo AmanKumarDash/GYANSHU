@@ -1,7 +1,6 @@
-import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-export default function MarqueeText({ items, speed = 'slow', direction = 'forward' }) {
+export default function MarqueeText({ items, direction = 'forward' }) {
   // We'll rely on the Tailwind config animations for marquee
   const animationClass = direction === 'reverse' ? 'animate-marquee-reverse' : 'animate-marquee'
   

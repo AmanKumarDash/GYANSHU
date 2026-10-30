@@ -7,9 +7,9 @@ import { EASE, photo, useIntroReady } from '../../utils/intro'
 
 const SCENE_SECONDS = 6.5
 const scenes = [
-  { image: 'photo-1451187580459-43490279c0fa', label: 'Network intelligence', text: 'See the systems behind every signal.', to: '/products/argos-enms' },
-  { image: 'photo-1550751827-4bd374c3f58b', label: 'Cybersecurity', text: 'Make exposure easier to understand.', to: '/services/cybersecurity' },
-  { image: 'photo-1581091226825-a6a2a5aee158', label: 'Connected operations', text: 'Bring field data into the decisions that matter.', to: '/services/iot' },
+  { image: 'px-256219', label: 'Network intelligence', text: 'See the systems behind every signal.', to: '/products/argos-enms' },
+  { image: 'px-6963944', label: 'Cybersecurity', text: 'Make exposure easier to understand.', to: '/services/cybersecurity' },
+  { image: 'px-32845694', label: 'Connected operations', text: 'Bring field data into the decisions that matter.', to: '/services/iot' },
 ]
 const explore = [['Cybersecurity', '/services/cybersecurity'], ['Network intelligence', '/products/argos-enms'], ['IoT & smart operations', '/services/iot']]
 
@@ -61,9 +61,9 @@ export default function Hero() {
 
       <h1 className="h-poster mt-5 text-[clamp(3.6rem,8.8vw,8.8rem)] text-ink" aria-label="Intelligence. Trust. Innovation.">
         <MaskLines onLoad delay={0.2} stagger={0.1} lines={[
-          <>Intelligence.</>,
+          <>Intelligence.{' '}</>,
           <span className="inline-flex flex-wrap items-center justify-center gap-x-[.18em]">
-            <span className="text-muted-faint">Trust.</span>
+            <span className="text-muted-faint">Trust.</span>{' '}
             <motion.span
               className="relative inline-block h-[.74em] overflow-hidden rounded-full bg-ink align-middle"
               initial={{ width: 0 }}

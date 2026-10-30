@@ -31,8 +31,8 @@ export default function ProcessTimeline() {
           <motion.div 
             className="w-4 h-4 rounded-full border-2 transition-colors duration-500"
             animate={{ 
-              borderColor: inView ? '#005564' : 'rgba(54,68,75,0.2)',
-              backgroundColor: inView ? '#005564' : '#ffffff'
+              borderColor: inView ? '#0B4D49' : 'rgba(54,68,75,0.2)',
+              backgroundColor: inView ? '#0B4D49' : '#ffffff'
             }}
           />
           <span className="absolute left-8 font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity text-mist-900">Scroll</span>

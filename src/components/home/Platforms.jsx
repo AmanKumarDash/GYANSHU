@@ -25,10 +25,10 @@ const links = nodes.flatMap((n, i) => nodes.slice(i + 1).filter((m) => Math.hypo
 function Constellation() {
   const reduce = useReducedMotion()
   return <svg viewBox="0 0 1200 400" className="absolute inset-x-0 top-0 h-[420px] w-full opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent)]" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    {links.map(([n, m], i) => <motion.line key={i} x1={n.x} y1={n.y} x2={m.x} y2={m.y} stroke="#26c8b2" strokeOpacity=".16" strokeWidth="1" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: (i % 20) * 0.04, ease: 'easeOut' }} />)}
+    {links.map(([n, m], i) => <motion.line key={i} x1={n.x} y1={n.y} x2={m.x} y2={m.y} stroke="#14B8A6" strokeOpacity=".16" strokeWidth="1" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: (i % 20) * 0.04, ease: 'easeOut' }} />)}
     {nodes.map((n, i) => <g key={i}>
-      {n.r > 2 && !reduce && <circle cx={n.x} cy={n.y} r="3" fill="#26c8b2" className="animate-ping2" style={{ transformOrigin: `${n.x}px ${n.y}px`, animationDelay: `${(i % 5) * 0.5}s` }} />}
-      <circle cx={n.x} cy={n.y} r={n.r} fill={n.r > 2 ? '#5fd8c6' : '#ffffff'} fillOpacity={n.r > 2 ? 1 : 0.35} />
+      {n.r > 2 && !reduce && <circle cx={n.x} cy={n.y} r="3" fill="#14B8A6" className="animate-ping2" style={{ transformOrigin: `${n.x}px ${n.y}px`, animationDelay: `${(i % 5) * 0.5}s` }} />}
+      <circle cx={n.x} cy={n.y} r={n.r} fill={n.r > 2 ? '#7EE3D9' : '#ffffff'} fillOpacity={n.r > 2 ? 1 : 0.35} />
     </g>)}
   </svg>
 }
@@ -43,7 +43,7 @@ function PlatformCard({ item, index }) {
   }
   return <Reveal delay={(index % 3) * 0.08} className="h-full">
     <Link to={item.to} onMouseMove={onMove} className="group relative flex h-full min-h-[160px] flex-col justify-between overflow-hidden rounded-[24px] border border-white/[.08] bg-white/[.025] p-4 transition-colors duration-500 hover:border-brand-400/40 sm:min-h-[190px] sm:p-5">
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(420px circle at var(--mx) var(--my), rgba(38,200,178,.16), transparent 45%)' }} />
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(420px circle at var(--mx) var(--my), rgba(20,184,166,.16), transparent 45%)' }} />
       <div className="relative flex items-start justify-between">
         <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[.04] text-brand-300 transition-all duration-500 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
       </div>

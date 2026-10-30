@@ -23,7 +23,13 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Core no-unused-vars cannot see JSX use: allow capitalised components and the `motion` namespace (<motion.div>).
+      'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)', argsIgnorePattern: '^[A-Z_]', destructuredArrayIgnorePattern: '^[A-Z_]' }],
     },
+  },
+  {
+    // The Tailwind config runs in Node as CommonJS.
+    files: ['tailwind.config.js'],
+    languageOptions: { globals: globals.node, sourceType: 'commonjs' },
   },
 ])

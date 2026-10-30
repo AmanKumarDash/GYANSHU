@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#0b1416"/>
+<rect x="0" y="0" width="230" height="900" rx="0" fill="#0e181b"/>
+<line x1="230" y1="0" x2="230" y2="900" stroke="#24363b"/>
+<rect x="22" y="24" width="34" height="34" rx="9" fill="#0a8a8f"/><text x="39" y="47" font-size="15" fill="#fff" font-weight="700" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">PX</text>
+<text x="66" y="40" font-size="14.5" fill="#e8f1f0" font-weight="700" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">PANOPTIX</text><text x="66" y="57" font-size="11" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Gyanshu Technologies</text>
+<rect x="14" y="88" width="202" height="36" rx="8" fill="#1b2c30"/><rect x="14" y="88" width="3" height="36" fill="#26c8b2"/>
+<circle cx="36" cy="106" r="5" fill="#26c8b2" opacity="1"/>
+<text x="52" y="111" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Exposure Overview</text>
+<circle cx="36" cy="150" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="155" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Assets</text>
+<circle cx="36" cy="194" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="199" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Exposures</text>
+<circle cx="36" cy="238" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="243" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Misconfigurations</text>
+<circle cx="36" cy="282" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="287" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Prioritisation</text>
+<circle cx="36" cy="326" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="331" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Remediation</text>
+<circle cx="36" cy="370" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="375" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Reports</text>
+<rect x="14" y="822" width="202" height="56" rx="10" fill="#122024"/><text x="30" y="848" font-size="11.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">On-premises deployment</text><text x="30" y="866" font-size="11" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">All data stays in your network</text>
+<text x="262" y="46" font-size="22" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Cyber Exposure Overview</text><text x="262" y="70" font-size="12" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">All business units  ·  Continuous assessment</text>
+<rect x="980" y="26" width="330" height="38" rx="19" fill="#18262a" stroke="#24363b" stroke-width="1"/><text x="1002" y="50" font-size="13" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Search…</text>
+<rect x="1326" y="26" width="250" height="38" rx="19" fill="#1d2a1f00" stroke="#0a8a8f" stroke-width="1"/><text x="1451" y="50" font-size="12.5" fill="#26c8b2" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Illustrative interface</text>
+<rect x="262.0" y="96" width="316.5" height="104" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/>
+<text x="282.0" y="128" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Assets discovered</text><text x="282.0" y="168" font-size="30" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">1,284</text><text x="558.5" y="168" font-size="12" fill="#26c8b2" font-weight="600" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">+36 new</text>
+<rect x="594.5" y="96" width="316.5" height="104" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/>
+<text x="614.5" y="128" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Open exposures</text><text x="614.5" y="168" font-size="30" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">212</text><text x="891.0" y="168" font-size="12" fill="#3fcf8e" font-weight="600" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">−18 this week</text>
+<rect x="927.0" y="96" width="316.5" height="104" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/>
+<text x="947.0" y="128" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Critical exposures</text><text x="947.0" y="168" font-size="30" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">9</text><text x="1223.5" y="168" font-size="12" fill="#ef5d5d" font-weight="600" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SLA 7 days</text>
+<rect x="1259.5" y="96" width="316.5" height="104" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/>
+<text x="1279.5" y="128" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Remediated (30 days)</text><text x="1279.5" y="168" font-size="30" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">146</text><text x="1556.0" y="168" font-size="12" fill="#26c8b2" font-weight="600" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">verified</text>
+<rect x="262" y="216" width="420" height="360" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="282" y="248" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Exposure risk score</text>
+<path d="M342,440 A130,130 0 0 1 602,440" fill="none" stroke="#18262a" stroke-width="26"/>
+<path d="M342,440 A130,130 0 0 1 519.9,319.1" fill="none" stroke="#f2b84b" stroke-width="26"/>
+<text x="472" y="420" font-size="54" fill="#e8f1f0" font-weight="700" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">62</text><text x="472" y="452" font-size="13" fill="#8fa3a6" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Elevated · down from 71</text>
+<rect x="698" y="216" width="878" height="360" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="718" y="248" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Open exposures over 30 days</text><text x="1556" y="248" font-size="12" fill="#5e7377" font-weight="400" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">By severity</text>
+<line x1="728" y1="520" x2="1546" y2="520" stroke="#24363b"/>
+<line x1="728" y1="332.5" x2="1546" y2="332.5" stroke="#24363b" stroke-dasharray="3 5" opacity=".6"/>
+<line x1="728" y1="395.0" x2="1546" y2="395.0" stroke="#24363b" stroke-dasharray="3 5" opacity=".6"/>
+<line x1="728" y1="457.5" x2="1546" y2="457.5" stroke="#24363b" stroke-dasharray="3 5" opacity=".6"/>
+<path d="M728.0,320.0 L802.4,325.0 L876.7,330.0 L951.1,327.5 L1025.5,340.0 L1099.8,345.0 L1174.2,355.0 L1248.5,360.0 L1322.9,370.0 L1397.3,375.0 L1471.6,382.5 L1546.0,395.0 L1546,520 L728,520 Z" fill="#5aa9e6" opacity=".14"/>
+<path d="M728.0,320.0 L802.4,325.0 L876.7,330.0 L951.1,327.5 L1025.5,340.0 L1099.8,345.0 L1174.2,355.0 L1248.5,360.0 L1322.9,370.0 L1397.3,375.0 L1471.6,382.5 L1546.0,395.0" fill="none" stroke="#5aa9e6" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M728.0,415.0 L802.4,420.0 L876.7,417.5 L951.1,425.0 L1025.5,430.0 L1099.8,437.5 L1174.2,442.5 L1248.5,445.0 L1322.9,452.5 L1397.3,457.5 L1471.6,465.0 L1546.0,470.0 L1546,520 L728,520 Z" fill="#f2b84b" opacity=".14"/>
+<path d="M728.0,415.0 L802.4,420.0 L876.7,417.5 L951.1,425.0 L1025.5,430.0 L1099.8,437.5 L1174.2,442.5 L1248.5,445.0 L1322.9,452.5 L1397.3,457.5 L1471.6,465.0 L1546.0,470.0" fill="none" stroke="#f2b84b" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M728.0,490.0 L802.4,492.5 L876.7,490.0 L951.1,495.0 L1025.5,495.0 L1099.8,497.5 L1174.2,500.0 L1248.5,500.0 L1322.9,502.5 L1397.3,505.0 L1471.6,507.5 L1546.0,507.5 L1546,520 L728,520 Z" fill="#ef5d5d" opacity=".14"/>
+<path d="M728.0,490.0 L802.4,492.5 L876.7,490.0 L951.1,495.0 L1025.5,495.0 L1099.8,497.5 L1174.2,500.0 L1248.5,500.0 L1322.9,502.5 L1397.3,505.0 L1471.6,507.5 L1546.0,507.5" fill="none" stroke="#ef5d5d" stroke-width="2.4" stroke-linejoin="round"/>
+<text x="728.0" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">1</text>
+<text x="802.3636363636364" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="876.7272727272727" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="951.0909090909091" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">9</text>
+<text x="1025.4545454545455" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="1099.8181818181818" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="1174.1818181818182" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">18</text>
+<text x="1248.5454545454545" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="1322.909090909091" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="1397.2727272727273" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">27</text>
+<text x="1471.6363636363635" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"></text>
+<text x="1546.0" y="542" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">30</text>
+<rect x="262" y="592" width="1314" height="284" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="282" y="624" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Top exposures to fix first</text><text x="1556" y="624" font-size="12" fill="#5e7377" font-weight="400" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Ranked by severity, exposure and asset criticality</text>
+<rect x="278" y="640" width="1282" height="34" rx="6" fill="#18262a"/>
+<text x="294" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">ASSET</text>
+<text x="494" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">EXPOSURE</text>
+<text x="824" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">CATEGORY</text>
+<text x="994" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">INTERNET-FACING</text>
+<text x="1144" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SEVERITY</text>
+<text x="1294" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">OWNER</text>
+<text x="1444" y="662" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">STATUS</text>
+<line x1="278" y1="718" x2="1560" y2="718" stroke="#24363b"/>
+<text x="294" y="699" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">portal.example.in</text>
+<text x="494" y="699" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">TLS 1.0 enabled on login page</text>
+<text x="824" y="699" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Configuration</text>
+<text x="994" y="699" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Yes</text>
+<rect x="1144" y="684" width="71.6" height="22" rx="11" fill="#ef5d5d26"/><text x="1179.8" y="700" font-size="11.5" fill="#ef5d5d" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Critical</text>
+<text x="1294" y="699" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Web team</text>
+<text x="1444" y="699" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">In progress</text>
+<line x1="278" y1="762" x2="1560" y2="762" stroke="#24363b"/>
+<text x="294" y="743" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">vpn.example.in</text>
+<text x="494" y="743" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Unpatched VPN gateway firmware</text>
+<text x="824" y="743" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Vulnerability</text>
+<text x="994" y="743" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Yes</text>
+<rect x="1144" y="728" width="71.6" height="22" rx="11" fill="#ef5d5d26"/><text x="1179.8" y="744" font-size="11.5" fill="#ef5d5d" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Critical</text>
+<text x="1294" y="743" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Network ops</text>
+<text x="1444" y="743" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Assigned</text>
+<line x1="278" y1="806" x2="1560" y2="806" stroke="#24363b"/>
+<text x="294" y="787" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.20.4.17</text>
+<text x="494" y="787" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SMB signing not required</text>
+<text x="824" y="787" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Configuration</text>
+<text x="994" y="787" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">No</text>
+<rect x="1144" y="772" width="42.8" height="22" rx="11" fill="#f2b84b26"/><text x="1165.4" y="788" font-size="11.5" fill="#f2b84b" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">High</text>
+<text x="1294" y="787" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">IT operations</text>
+<text x="1444" y="787" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Open</text>
+<line x1="278" y1="850" x2="1560" y2="850" stroke="#24363b"/>
+<text x="294" y="831" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">mail.example.in</text>
+<text x="494" y="831" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SPF record allows any sender</text>
+<text x="824" y="831" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Email security</text>
+<text x="994" y="831" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Yes</text>
+<rect x="1144" y="816" width="57.2" height="22" rx="11" fill="#5aa9e626"/><text x="1172.6" y="832" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Medium</text>
+<text x="1294" y="831" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Messaging</text>
+<text x="1444" y="831" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Re-test due</text>
+</svg>

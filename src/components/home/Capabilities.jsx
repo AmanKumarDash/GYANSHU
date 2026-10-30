@@ -9,7 +9,7 @@ import { EASE, photo } from '../../utils/intro'
 const items = services.slice(0, 6)
 const paths = ['/services/cybersecurity', '/services/network', '/services/application', '/services/iot', '/services/network', '/services/application']
 // Cybersecurity, IT infrastructure, software & AI, IoT, managed IT, consulting & training
-const images = ['photo-1614064641938-3bbee52942c7', 'photo-1594915440248-1e419eba6611', 'photo-1461749280684-dccba630e2f6', 'photo-1638734254958-4a11c989e9bb', 'photo-1708807472445-d33589e6b090', 'photo-1542744173-8e7e53415bb0']
+const images = ['photo-1614064641938-3bbee52942c7', 'photo-1594915440248-1e419eba6611', 'photo-1461749280684-dccba630e2f6', 'photo-1638734254958-4a11c989e9bb', 'px-7709142', 'photo-1542744173-8e7e53415bb0']
 
 export default function Capabilities() {
   const [active, setActive] = useState(0)

@@ -6,9 +6,9 @@ import { Eyebrow, MaskLines, Reveal } from '../ui/Motion'
 import { photo } from '../../utils/intro'
 
 const cases = [
-  ['Infrastructure intelligence', 'Understand network relationships, performance, and operational change.', 'photo-1518770660439-4636190af475'],
-  ['Security exposure management', 'Connect assets, vulnerabilities, and response priorities.', 'photo-1526374965328-7f61d4dc18c5'],
-  ['Connected operations', 'Bring sensor data from edge environments into useful action.', 'photo-1581092160562-40aa08e78837'],
+  ['Infrastructure intelligence', 'Understand network relationships, performance, and operational change.', 'px-37730211'],
+  ['Security exposure management', 'Connect assets, vulnerabilities, and response priorities.', 'px-8247921'],
+  ['Connected operations', 'Bring sensor data from edge environments into useful action.', 'px-37769416'],
 ]
 
 function CaseCard({ c, i, progress }) {

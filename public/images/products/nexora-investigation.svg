@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#0b1416"/>
+<rect x="0" y="0" width="230" height="900" rx="0" fill="#0e181b"/>
+<line x1="230" y1="0" x2="230" y2="900" stroke="#24363b"/>
+<rect x="22" y="24" width="34" height="34" rx="9" fill="#0a8a8f"/><text x="39" y="47" font-size="15" fill="#fff" font-weight="700" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">FN</text>
+<text x="66" y="40" font-size="14.5" fill="#e8f1f0" font-weight="700" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">FLOWBITS NEXORA</text><text x="66" y="57" font-size="11" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Gyanshu Technologies</text>
+<circle cx="36" cy="106" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="111" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Overview</text>
+<rect x="14" y="132" width="202" height="36" rx="8" fill="#1b2c30"/><rect x="14" y="132" width="3" height="36" fill="#26c8b2"/>
+<circle cx="36" cy="150" r="5" fill="#26c8b2" opacity="1"/>
+<text x="52" y="155" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">IPDR Search</text>
+<circle cx="36" cy="194" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="199" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Subscribers</text>
+<circle cx="36" cy="238" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="243" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Flow Analysis</text>
+<circle cx="36" cy="282" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="287" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Threat Intel</text>
+<circle cx="36" cy="326" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="331" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Behaviour</text>
+<circle cx="36" cy="370" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="375" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Forensic Cases</text>
+<circle cx="36" cy="414" r="5" fill="#5e7377" opacity="0.6"/>
+<text x="52" y="419" font-size="13.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Reports</text>
+<rect x="14" y="822" width="202" height="56" rx="10" fill="#122024"/><text x="30" y="848" font-size="11.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">On-premises deployment</text><text x="30" y="866" font-size="11" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">All data stays in your network</text>
+<text x="262" y="46" font-size="22" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">IPDR &amp; Subscriber Search</text><text x="262" y="70" font-size="12" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Investigation workspace  /  Case NX-2041</text>
+<rect x="980" y="26" width="330" height="38" rx="19" fill="#18262a" stroke="#24363b" stroke-width="1"/><text x="1002" y="50" font-size="13" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Search…</text>
+<rect x="1326" y="26" width="250" height="38" rx="19" fill="#1d2a1f00" stroke="#0a8a8f" stroke-width="1"/><text x="1451" y="50" font-size="12.5" fill="#26c8b2" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Illustrative interface</text>
+<rect x="262" y="96" width="1314" height="56" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="284" y="130" font-size="12" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Public IP</text><text x="360" y="130" font-size="14" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48 : 51832</text>
+<text x="600" y="130" font-size="12" fill="#5e7377" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Window</text><text x="660" y="130" font-size="14" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">12 Oct 2026  14:00 – 16:00 IST</text>
+<rect x="960" y="114" width="93.2" height="22" rx="11" fill="#26c8b226"/><text x="1006.6" y="130" font-size="11.5" fill="#26c8b2" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">CGNAT aware</text><rect x="1070" y="114" width="107.60000000000001" height="22" rx="11" fill="#5aa9e626"/><text x="1123.8" y="130" font-size="11.5" fill="#5aa9e6" font-weight="600" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">RADIUS + DHCP</text>
+<rect x="1436" y="108" width="120" height="32" rx="16" fill="#26c8b2"/><text x="1496" y="129" font-size="13" fill="#06201c" font-weight="700" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Correlate</text>
+<rect x="262" y="168" width="900" height="430" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="282" y="200" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Session records</text><text x="1142" y="200" font-size="12" fill="#5e7377" font-weight="400" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">6 matching sessions</text>
+<rect x="278" y="216" width="868" height="34" rx="6" fill="#18262a"/>
+<text x="294" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">START TIME</text>
+<text x="414" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUBSCRIBER</text>
+<text x="554" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">PRIVATE IP</text>
+<text x="684" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">PUBLIC IP:PORT</text>
+<text x="894" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">DESTINATION</text>
+<text x="1084" y="238" font-size="10.5" fill="#5e7377" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">VOLUME</text>
+<line x1="278" y1="294" x2="1146" y2="294" stroke="#24363b"/>
+<text x="294" y="275" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">14:02:11</text>
+<text x="414" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUB-•••7412</text>
+<text x="554" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6</text>
+<text x="684" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:51832</text>
+<text x="894" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">198.51.100.20:443</text>
+<text x="1084" y="275" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">18.4 MB</text>
+<line x1="278" y1="338" x2="1146" y2="338" stroke="#24363b"/>
+<text x="294" y="319" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">14:09:47</text>
+<text x="414" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUB-•••7412</text>
+<text x="554" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6</text>
+<text x="684" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:51907</text>
+<text x="894" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">198.51.100.77:443</text>
+<text x="1084" y="319" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">2.1 MB</text>
+<line x1="278" y1="382" x2="1146" y2="382" stroke="#24363b"/>
+<text x="294" y="363" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">14:21:05</text>
+<text x="414" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUB-•••7412</text>
+<text x="554" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6</text>
+<text x="684" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:52114</text>
+<text x="894" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">192.0.2.15:8443</text>
+<text x="1084" y="363" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">640 KB</text>
+<line x1="278" y1="426" x2="1146" y2="426" stroke="#24363b"/>
+<text x="294" y="407" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">14:37:52</text>
+<text x="414" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUB-•••7412</text>
+<text x="554" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6</text>
+<text x="684" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:52230</text>
+<text x="894" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">198.51.100.20:443</text>
+<text x="1084" y="407" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">7.9 MB</text>
+<line x1="278" y1="470" x2="1146" y2="470" stroke="#24363b"/>
+<text x="294" y="451" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">15:12:30</text>
+<text x="414" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUB-•••7412</text>
+<text x="554" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6</text>
+<text x="684" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:52871</text>
+<text x="894" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">192.0.2.88:22</text>
+<text x="1084" y="451" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">120 KB</text>
+<line x1="278" y1="514" x2="1146" y2="514" stroke="#24363b"/>
+<text x="294" y="495" font-size="12.5" fill="#e8f1f0" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">15:48:16</text>
+<text x="414" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">SUB-•••7412</text>
+<text x="554" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6</text>
+<text x="684" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:53302</text>
+<text x="894" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">198.51.100.20:443</text>
+<text x="1084" y="495" font-size="12.5" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">4.6 MB</text>
+<rect x="1178" y="168" width="398" height="430" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="1198" y="200" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Correlated identity</text>
+<circle cx="1210" cy="222" r="9" fill="#26c8b2"/>
+<line x1="1210" y1="232" x2="1210" y2="298" stroke="#0a8a8f" stroke-width="2"/>
+<text x="1234" y="227" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">NAT log</text><text x="1234" y="249" font-size="12" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">203.0.113.48:51832 → 10.24.18.6</text>
+<circle cx="1210" cy="308" r="9" fill="#26c8b2"/>
+<line x1="1210" y1="318" x2="1210" y2="384" stroke="#0a8a8f" stroke-width="2"/>
+<text x="1234" y="313" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">DHCP lease</text><text x="1234" y="335" font-size="12" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">10.24.18.6 · MAC •••:3F:A1</text>
+<circle cx="1210" cy="394" r="9" fill="#26c8b2"/>
+<line x1="1210" y1="404" x2="1210" y2="470" stroke="#0a8a8f" stroke-width="2"/>
+<text x="1234" y="399" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">RADIUS session</text><text x="1234" y="421" font-size="12" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">User SUB-•••7412 · NAS-07</text>
+<circle cx="1210" cy="480" r="9" fill="#26c8b2"/>
+<text x="1234" y="485" font-size="13.5" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Subscriber record</text><text x="1234" y="507" font-size="12" fill="#8fa3a6" font-weight="400" text-anchor="start" font-family="'Cascadia Mono', Consolas, 'Courier New', monospace">Verified KYC · Plan Business 200</text>
+<rect x="1194" y="556" width="366" height="30" rx="8" fill="#18262a"/><text x="1210" y="576" font-size="11.5" fill="#26c8b2" font-weight="400" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Chain of custody logged · export as evidence</text>
+<rect x="262" y="614" width="1314" height="262" rx="12" fill="#121d20" stroke="#24363b" stroke-width="1"/><text x="282" y="646" font-size="15" fill="#e8f1f0" font-weight="600" text-anchor="start" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Session timeline</text><text x="1556" y="646" font-size="12" fill="#5e7377" font-weight="400" text-anchor="end" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Sessions per 10 minutes</text>
+<rect x="309.95" y="798.0" width="65.1" height="32.0" rx="4" fill="#0a8a8f"/>
+<text x="342.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">14:00</text>
+<rect x="414.95" y="742.0" width="65.1" height="88.0" rx="4" fill="#0a8a8f"/>
+<text x="447.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">14:10</text>
+<rect x="519.95" y="782.0" width="65.1" height="48.0" rx="4" fill="#0a8a8f"/>
+<text x="552.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">14:20</text>
+<rect x="624.95" y="766.0" width="65.1" height="64.0" rx="4" fill="#0a8a8f"/>
+<text x="657.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">14:30</text>
+<rect x="729.95" y="790.0" width="65.1" height="40.0" rx="4" fill="#0a8a8f"/>
+<text x="762.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">14:40</text>
+<rect x="834.95" y="718.0" width="65.1" height="112.0" rx="4" fill="#0a8a8f"/>
+<text x="867.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">14:50</text>
+<rect x="939.95" y="774.0" width="65.1" height="56.0" rx="4" fill="#0a8a8f"/>
+<text x="972.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">15:00</text>
+<rect x="1044.95" y="750.0" width="65.1" height="80.0" rx="4" fill="#0a8a8f"/>
+<text x="1077.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">15:10</text>
+<rect x="1149.95" y="798.0" width="65.1" height="32.0" rx="4" fill="#0a8a8f"/>
+<text x="1182.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">15:20</text>
+<rect x="1254.95" y="730.8" width="65.1" height="99.2" rx="4" fill="#0a8a8f"/>
+<text x="1287.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">15:30</text>
+<rect x="1359.95" y="782.0" width="65.1" height="48.0" rx="4" fill="#0a8a8f"/>
+<text x="1392.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">15:40</text>
+<rect x="1464.95" y="758.0" width="65.1" height="72.0" rx="4" fill="#0a8a8f"/>
+<text x="1497.5" y="850" font-size="11" fill="#5e7377" font-weight="400" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">15:50</text>
+</svg>

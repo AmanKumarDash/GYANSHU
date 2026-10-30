@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { services } from '../../data/content'
 import { Eyebrow, Reveal, ScrollWords } from '../ui/Motion'
@@ -8,8 +8,8 @@ import { EASE, photo } from '../../utils/intro'
 
 const STORY_SECONDS = 5
 const storyCards = [
-  { tag: 'Network intelligence', title: 'From infrastructure signals to operational clarity', image: 'photo-1758691737124-05c5bffe46f0', to: '/products/argos-enms', n: '01' },
-  { tag: 'Cyber exposure', title: 'Understand what is exposed. Prioritize what matters.', image: 'photo-1758873269276-9518d0cb4a0b', to: '/products/panoptix', n: '02' },
+  { tag: 'Network intelligence', title: 'From infrastructure signals to operational clarity', image: 'px-1181338', to: '/products/argos-enms', n: '01' },
+  { tag: 'Cyber exposure', title: 'Understand what is exposed. Prioritize what matters.', image: 'px-5483070', to: '/products/panoptix', n: '02' },
   { tag: 'Industrial IoT', title: 'Connect physical operations with useful insight', image: 'photo-1581091212991-8891c7d4bd9b', to: '/services/iot', n: '03' },
 ]
 const tags = [...new Set(services.flatMap((s) => s.tags))]
@@ -26,7 +26,10 @@ function Marquee() {
 export default function Perspectives() {
   const reduce = useReducedMotion()
   const [active, setActive] = useState(0)
-  const [paused, setPaused] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  // The visible pause button stops rotation until pressed again (hover only pauses while the pointer is over it).
+  const [stopped, setStopped] = useState(false)
+  const paused = hovered || stopped
   const story = storyCards[active]
   const go = (step) => setActive((c) => (c + step + storyCards.length) % storyCards.length)
 
@@ -37,6 +40,8 @@ export default function Perspectives() {
   }, [active, reduce, paused])
 
   return <section id="stories" className="relative py-8 md:py-9 lg:py-10">
+    {/* The visible eyebrow is hidden sitewide; this keeps the story titles (h3) under a section heading. */}
+    <h2 className="sr-only">Featured perspectives</h2>
     <div className="shell">
       <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
         <Reveal><Eyebrow>Featured perspectives</Eyebrow></Reveal>
@@ -50,7 +55,7 @@ export default function Perspectives() {
     <Marquee />
 
     <div className="shell mt-5 md:mt-6">
-      <div className="grid gap-4 lg:grid-cols-[1.65fr_1fr]" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="grid gap-4 lg:grid-cols-[1.65fr_1fr]" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <Reveal className="relative isolate h-[260px] overflow-hidden rounded-[28px] bg-ink sm:h-[300px] md:h-[min(46svh,380px)]" aria-roledescription="carousel" aria-label="Featured perspectives">
           <AnimatePresence initial={false}>
             <motion.div key={story.n} className="absolute inset-0" initial={{ clipPath: 'inset(0 0 0 100%)' }} animate={{ clipPath: 'inset(0 0 0 0%)' }} exit={{ opacity: 0.4 }} transition={{ duration: reduce ? 0.01 : 1.1, ease: [0.76, 0, 0.24, 1] }}>
@@ -67,9 +72,10 @@ export default function Perspectives() {
                 <span className="mt-6 inline-flex items-center gap-2 text-sm text-brand-300">Discover more <ArrowUpRight size={15} /></span>
               </motion.div>
             </AnimatePresence>
-            <div className="pointer-events-auto hidden gap-2 md:flex">
-              <button onClick={() => go(-1)} aria-label="Previous featured story" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white backdrop-blur transition hover:bg-white hover:text-ink"><ArrowLeft size={17} /></button>
-              <button onClick={() => go(1)} aria-label="Next featured story" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white backdrop-blur transition hover:bg-white hover:text-ink"><ArrowRight size={17} /></button>
+            <div className="pointer-events-auto flex gap-2">
+              {!reduce && <button onClick={() => setStopped((v) => !v)} aria-label={stopped ? 'Play featured stories' : 'Pause featured stories'} aria-pressed={stopped} className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white backdrop-blur transition hover:bg-white hover:text-ink">{stopped ? <Play size={16} /> : <Pause size={16} />}</button>}
+              <button onClick={() => go(-1)} aria-label="Previous featured story" className="hidden md:flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white backdrop-blur transition hover:bg-white hover:text-ink"><ArrowLeft size={17} /></button>
+              <button onClick={() => go(1)} aria-label="Next featured story" className="hidden md:flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white backdrop-blur transition hover:bg-white hover:text-ink"><ArrowRight size={17} /></button>
             </div>
           </div>
         </Reveal>

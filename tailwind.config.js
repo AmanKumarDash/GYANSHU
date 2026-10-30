@@ -12,9 +12,9 @@ module.exports = {
         muted: { DEFAULT: '#5d696c', soft: '#8a9497', faint: '#b4bbbc' },
         line: { DEFAULT: '#e1dfd8', dark: 'rgba(255,255,255,.1)' },
         // Gyanshu brand teal scale
-        brand: { 50: '#eef8f6', 100: '#dbf0ec', 300: '#5fd8c6', 400: '#26c8b2', 500: '#0a8a8f', 600: '#00707a', 700: '#005564', 900: '#003e49' },
+        brand: { 50: '#EEFBF9', 100: '#D3F4EF', 300: '#7EE3D9', 400: '#14B8A6', 500: '#0E8378', 600: '#0C6B63', 700: '#0B4D49', 900: '#0B3D3B' },
         // Legacy aliases kept for older components
-        signal: { DEFAULT: '#0a8a8f', dim: '#005564' },
+        signal: { DEFAULT: '#0E8378', dim: '#0B4D49' },
         ember: { DEFAULT: '#0c1517', dim: '#131e21' },
         mist: { 900: '#0c1517', 700: '#5d696c', 500: '#8a9497', 100: '#f3f2ee' },
       },
@@ -36,7 +36,7 @@ module.exports = {
       boxShadow: {
         card: '0 1px 0 rgba(12,21,23,.04), 0 12px 32px -12px rgba(12,21,23,.12)',
         lift: '0 1px 0 rgba(12,21,23,.04), 0 30px 60px -24px rgba(12,21,23,.28)',
-        glow: '0 0 0 1px rgba(38,200,178,.25), 0 20px 60px -20px rgba(38,200,178,.45)',
+        glow: '0 0 0 1px rgba(20,184,166,.25), 0 20px 60px -20px rgba(20,184,166,.45)',
       },
       transitionTimingFunction: {
         expo: 'cubic-bezier(.16,1,.3,1)',

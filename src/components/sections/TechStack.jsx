@@ -18,7 +18,7 @@ export default function TechStack() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-8">
-          {stack.map((category, i) => (
+          {stack.map((category) => (
             <div key={category.cat} className="flex flex-col">
               <h3 className="font-mono text-xs text-signal uppercase tracking-widest mb-6 border-b border-white/5 pb-4">
                 {category.cat}
@@ -27,7 +27,7 @@ export default function TechStack() {
                 {category.items.map((tech) => (
                   <motion.div
                     key={tech}
-                    whileHover={{ scale: 1.05, backgroundColor: '#005564', color: '#ffffff', borderColor: '#005564' }}
+                    whileHover={{ scale: 1.05, backgroundColor: '#0B4D49', color: '#ffffff', borderColor: '#0B4D49' }}
                     className="font-mono text-xs md:text-sm px-4 py-2 rounded-full border border-white/10 text-mist-500 cursor-default transition-colors"
                   >
                     {tech}

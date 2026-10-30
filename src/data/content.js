@@ -17,10 +17,10 @@ export const caseStudies = [
 ]
 
 export const team = [
-  { name: 'Security Engineering', role: 'Cybersecurity & Risk', quote: 'Security improves when visibility, evidence, and action work together.', colors: ['#005564', '#e5ebec'] },
-  { name: 'Infrastructure Operations', role: 'Network & Cloud', quote: 'Reliable technology is designed to remain supportable after go-live.', colors: ['#176d79', '#e5ebec'] },
+  { name: 'Security Engineering', role: 'Cybersecurity & Risk', quote: 'Security improves when visibility, evidence, and action work together.', colors: ['#0B4D49', '#e5ebec'] },
+  { name: 'Infrastructure Operations', role: 'Network & Cloud', quote: 'Reliable technology is designed to remain supportable after go-live.', colors: ['#0F7A70', '#e5ebec'] },
   { name: 'Software & AI', role: 'Platforms & Automation', quote: 'Productized capability turns hard-won experience into repeatable outcomes.', colors: ['#36444b', '#e5ebec'] },
-  { name: 'IoT Monitoring', role: 'Smart Operations', quote: 'The right signal at the right time makes operations measurable.', colors: ['#267f83', '#e5ebec'] },
+  { name: 'IoT Monitoring', role: 'Smart Operations', quote: 'The right signal at the right time makes operations measurable.', colors: ['#14998B', '#e5ebec'] },
 ]
 
 export const faqs = [

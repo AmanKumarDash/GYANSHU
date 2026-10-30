@@ -49,7 +49,7 @@ export default function Process() {
 
       <div className="mt-6 flex min-h-0 flex-1 px-3 sm:px-5 md:mt-7">
         <div className="relative mx-auto min-h-[360px] w-full max-w-[1600px] flex-1 overflow-hidden rounded-[2.5rem] bg-ink text-white md:max-h-[620px]">
-          <motion.img src={photo('photo-1639322537228-f710d846310a', 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-[-8%_0] h-[116%] w-full object-cover opacity-60" />
+          <motion.img src={photo('px-8000525', 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-[-8%_0] h-[116%] w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/50 to-ink-950/90" />
           <div className="grain absolute inset-0" />
 
@@ -75,7 +75,7 @@ export default function Process() {
           <div className="absolute inset-x-8 bottom-12 hidden md:block lg:inset-x-14 lg:bottom-16">
             <div className="relative grid grid-cols-5">
               <div className="absolute left-[10%] right-[10%] top-[calc(100%-9px)] h-px bg-white/20">
-                <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_12px_#26c8b2]" style={{ scaleX: reduce ? 1 : lineSmooth }} />
+                <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_12px_#14B8A6]" style={{ scaleX: reduce ? 1 : lineSmooth }} />
               </div>
               {steps.map(([t], i) => {
                 const p = phase(i)

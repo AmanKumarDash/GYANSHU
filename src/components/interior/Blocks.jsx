@@ -44,6 +44,8 @@ export function PosterHeadline({ text, muted = 1, pill, pillAfter, onLoad = fals
       <span className="-mb-[.05em] inline-block overflow-hidden pb-[.05em]" aria-hidden="true">
         <motion.span className={`inline-block ${i >= greyFrom ? 'text-muted-faint' : ''}`} variants={{ hidden: { y: '110%' }, show: { y: '0%', transition: { duration: 1, ease: EASE } } }}>{w}</motion.span>
       </span>
+      {/* Flex layout ignores this space, but it keeps words apart in the page text read by crawlers and copy-paste. */}
+      {' '}
       {i === pillAt && <motion.span aria-hidden="true" className="relative inline-block h-[.72em] overflow-hidden rounded-full bg-ink" variants={{ hidden: { width: 0, opacity: 0 }, show: { width: '1.6em', opacity: 1, transition: { duration: 1.1, ease: EASE } } }}><PillImages images={pill} /></motion.span>}
     </Fragment>)}
   </Tag>
@@ -89,7 +91,7 @@ export function Slideshow({ images, label, captions = [], interval = 5.5, imageY
   </div>
 }
 
-function SpinBadge({ href = '#details' }) {
+function SpinBadge({ href = '#hero-end' }) {
   const id = useId().replace(/:/g, '')
   return <a href={href} aria-label="Scroll to details" className="group absolute bottom-6 right-8 z-10 hidden h-28 w-28 items-center justify-center rounded-full bg-brand-400 text-ink shadow-lift transition-transform duration-500 hover:scale-105 md:flex lg:right-16">
     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-spin-slow" aria-hidden="true">
@@ -104,7 +106,7 @@ function SpinBadge({ href = '#details' }) {
 /* Hero (Apex centered poster + Waypoint media with chips)             */
 /* ------------------------------------------------------------------ */
 
-export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pillAfter, subtitle, intro, actions, media, images, mediaLabel, captions, chips = [], compact = false }) {
+export function HeroCentered({ eyebrow, title, muted = 1, pill, pillAfter, subtitle, intro, actions, media, images, mediaLabel, captions, chips = [], compact = false }) {
   const ready = useIntroReady()
   const reduce = useReducedMotion()
   const panel = useRef(null)
@@ -116,20 +118,16 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
   const show = (delay) => ({ initial: { opacity: 0, y: 20 }, animate: ready ? { opacity: 1, y: 0 } : undefined, transition: { duration: 0.9, delay, ease: EASE } })
   const hasMedia = !compact && (media || images?.length)
 
-  return <section className={`relative overflow-hidden pt-24 md:pt-28 ${hasMedia ? '' : 'pb-10 md:pb-14'}`}>
+  return <><section className={`relative overflow-hidden pt-24 md:pt-28 ${hasMedia ? '' : 'pb-10 md:pb-14'}`}>
     <div className="dot-grid-light pointer-events-none absolute inset-x-0 top-0 h-[70vh] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
     <div className="shell relative flex flex-col items-center text-center">
       <motion.div {...show(0.05)}><Eyebrow>{eyebrow}</Eyebrow></motion.div>
-      {crumbs.length > 0 && <motion.nav {...show(0.12)} aria-label="Breadcrumb" className="mt-4 flex flex-wrap items-center justify-center gap-2 font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">
-        <Link to="/" className="transition-colors hover:text-ink">Home</Link>
-        {crumbs.map(([label, to]) => <span key={label} className="flex items-center gap-2"><span className="h-px w-3 bg-muted-faint" />{to ? <Link to={to} className="transition-colors hover:text-ink">{label}</Link> : <span className="text-ink">{label}</span>}</span>)}
-      </motion.nav>}
       <PosterHeadline as="h1" onLoad text={title} muted={muted} pill={pill} pillAfter={pillAfter} className="mt-5 max-w-6xl text-[clamp(3rem,7.4vw,7.6rem)] text-ink" />
       {subtitle && <motion.p {...show(0.45)} className="mt-5 max-w-2xl font-display text-lg font-medium leading-snug tracking-[-.02em] text-ink md:text-xl">{subtitle}</motion.p>}
       {intro && <motion.p {...show(0.52)} className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted md:text-base">{intro}</motion.p>}
       {actions !== null && <motion.div {...show(0.6)} className="mt-6 flex flex-wrap justify-center gap-3">{actions || <>
         <ArrowButton to="/contact">Talk to our team</ArrowButton>
-        <a href="#details" className="btn btn-outline">Explore <ArrowDown size={15} /></a>
+        <a href="#hero-end" className="btn btn-outline">Explore <ArrowDown size={15} /></a>
       </>}</motion.div>}
     </div>
 
@@ -143,6 +141,9 @@ export function HeroCentered({ eyebrow, crumbs = [], title, muted = 1, pill, pil
       <SpinBadge />
     </div>}
   </section>
+  {/* "Explore" and the spin badge scroll here, so they work whatever section follows the hero. */}
+  <div id="hero-end" aria-hidden="true" />
+  </>
 }
 
 /* ------------------------------------------------------------------ */
@@ -202,7 +203,7 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
           const Wrap = item.to ? Link : 'div'
           return <Reveal key={item.title} delay={(i % cols) * 0.06} className="h-full">
             <Wrap to={item.to} className="group relative flex h-full min-h-[150px] flex-col overflow-hidden rounded-[22px] border border-line bg-white p-4 shadow-card sm:min-h-[180px] sm:p-5 transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_20px_-8px_rgba(10,138,143,.6)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={item.title} icon={item.icon} size={19} strokeWidth={1.8} /></span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_20px_-8px_rgba(14,131,120,.6)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={item.title} icon={item.icon} size={19} strokeWidth={1.8} /></span>
               <h3 className="mt-4 font-display text-[15px] font-medium leading-snug tracking-[-.02em] text-ink sm:mt-5 sm:text-lg md:text-xl">{item.title}</h3>
               {item.text && <p className="mt-2 text-[13px] leading-relaxed text-muted sm:text-[13.5px]">{item.text}</p>}
               {item.tags && <div className="mt-auto flex flex-wrap gap-1.5 pt-5">{item.tags.map((t) => <span key={t} className="rounded-full bg-paper px-2.5 py-1 text-[11px] text-muted">{t}</span>)}</div>}
@@ -294,7 +295,7 @@ function StepRow({ row, per, steps, stateOf, progress, reduce }) {
   const span = `calc((100% - ${per - 1}rem) / ${per} * ${row.length - 1} + ${row.length - 1}rem)`
   return <div className="relative grid gap-x-4" style={{ gridTemplateColumns: `repeat(${per}, minmax(0, 1fr))` }}>
     {row.length > 1 && <div className="pointer-events-none absolute bottom-[9px] h-px bg-white/40" style={{ left: NODE_X, width: span }}>
-      <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_10px_#26c8b2]" style={{ scaleX: reduce ? 1 : fill }} />
+      <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_10px_#14B8A6]" style={{ scaleX: reduce ? 1 : fill }} />
     </div>}
     {row.map((i) => {
       const s = stateOf(i)
@@ -600,7 +601,7 @@ export function TrainingPanel({ eyebrow = 'Training', title, lede, courses, cta 
             <Link to={cta.to} className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/[.04] p-6 backdrop-blur transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/60 hover:bg-white/[.07]">
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-400/0 blur-3xl transition-colors duration-700 group-hover:bg-brand-400/20" />
               <div className="relative flex items-start justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_24px_-8px_rgba(38,200,178,.55)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={course.title} icon={course.icon} size={21} strokeWidth={1.8} /></span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_24px_-8px_rgba(20,184,166,.55)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={course.title} icon={course.icon} size={21} strokeWidth={1.8} /></span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={15} /></span>
               </div>
               <h3 className="relative mt-6 font-display text-xl font-medium tracking-[-.02em] md:text-2xl">{course.title}</h3>
@@ -681,7 +682,7 @@ export function Quotes({ eyebrow, title, accent, lede, items }) {
             <Quote size={30} className="text-brand-400" />
             <blockquote className="mt-5 flex-1 font-display text-xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[1.35rem]">“{it.quote}”</blockquote>
             <figcaption className="mt-8 flex items-center gap-3 border-t border-line pt-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-mono text-[12px] font-medium text-white" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0a8a8f'}, #26c8b2)` }}>{initials(it.name)}</span>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-mono text-[12px] font-medium text-white" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0E8378'}, #14B8A6)` }}>{initials(it.name)}</span>
               <span><span className="block font-display text-[15px] font-medium text-ink">{it.name}</span><span className="block text-[13px] text-muted">{it.role}</span></span>
             </figcaption>
           </figure>
@@ -707,15 +708,15 @@ function Shield3D() {
   return <div ref={ref} onMouseMove={onMove} onMouseLeave={() => setTilt([0, 0])} className="relative flex h-full min-h-[340px] items-center justify-center [perspective:900px]">
     <div className="absolute bottom-10 h-10 w-64 rounded-[50%] bg-brand-400/30 blur-2xl" />
     <motion.div animate={reduce ? {} : { y: [0, -14, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} style={{ rotateY: tilt[0], rotateX: tilt[1] }} className="w-[min(78%,340px)] transition-transform duration-300 ease-out">
-      <svg viewBox="0 0 300 340" className="w-full overflow-visible drop-shadow-[0_40px_60px_rgba(38,200,178,.25)]" aria-hidden="true">
+      <svg viewBox="0 0 300 340" className="w-full overflow-visible drop-shadow-[0_40px_60px_rgba(20,184,166,.25)]" aria-hidden="true">
         <defs>
-          <linearGradient id="shield-front" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#5fd8c6" /><stop offset=".55" stopColor="#14a89f" /><stop offset="1" stopColor="#0a7f86" /></linearGradient>
-          <linearGradient id="shield-side" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#00707a" /><stop offset="1" stopColor="#003e49" /></linearGradient>
+          <linearGradient id="shield-front" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#7EE3D9" /><stop offset=".55" stopColor="#14a89f" /><stop offset="1" stopColor="#0a7f86" /></linearGradient>
+          <linearGradient id="shield-side" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#0C6B63" /><stop offset="1" stopColor="#0B3D3B" /></linearGradient>
         </defs>
         <g transform="rotate(-12 150 160) skewX(8)">
           {[30, 24, 18, 12, 6].map((d) => <path key={d} d={shield} transform={`translate(${d * 0.35} ${d})`} fill="url(#shield-side)" />)}
           <path d={shield} fill="url(#shield-front)" />
-          <path d={shield} fill="none" stroke="#bff3ea" strokeOpacity=".6" strokeWidth="1.5" />
+          <path d={shield} fill="none" stroke="#CDF5F0" strokeOpacity=".6" strokeWidth="1.5" />
           <path d="M118 128 Q118 92 152 92 Q186 92 186 122 Q186 142 162 150 Q152 154 152 170 L152 178" fill="none" stroke="#00505c" strokeWidth="22" strokeLinecap="round" />
           <circle cx="152" cy="214" r="13" fill="#00505c" />
           <path d="M60 80 Q150 40 240 80" fill="none" stroke="#ffffff" strokeOpacity=".35" strokeWidth="6" strokeLinecap="round" />
@@ -788,10 +789,10 @@ export function StatsBand({ eyebrow, title, accent, lede, stats }) {
         <div className="absolute bottom-0 left-1/2 h-[1100px] w-[2200px] origin-bottom [transform:translateX(-50%)_rotateX(68deg)] [mask-image:radial-gradient(ellipse_50%_55%_at_50%_70%,black_25%,transparent_75%)]">
           <div className={`dot-grid h-full w-full ${reduce ? '' : 'grid-drift'}`} />
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
-            {arcs.map(([a, b], i) => <motion.path key={i} d={`M ${markers[a][0]} ${markers[a][1]} Q ${(markers[a][0] + markers[b][0]) / 2} ${Math.min(markers[a][1], markers[b][1]) - 14} ${markers[b][0]} ${markers[b][1]}`} fill="none" stroke="#26c8b2" strokeOpacity=".7" strokeWidth=".18" strokeDasharray=".8 .6" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3 + i * 0.12 }} />)}
+            {arcs.map(([a, b], i) => <motion.path key={i} d={`M ${markers[a][0]} ${markers[a][1]} Q ${(markers[a][0] + markers[b][0]) / 2} ${Math.min(markers[a][1], markers[b][1]) - 14} ${markers[b][0]} ${markers[b][1]}`} fill="none" stroke="#14B8A6" strokeOpacity=".7" strokeWidth=".18" strokeDasharray=".8 .6" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3 + i * 0.12 }} />)}
           </svg>
           {markers.map(([x, y], i) => <span key={i} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${x}%`, top: `${y}%` }}>
-            <span className="relative flex h-4 w-4"><span className={`absolute inset-0 rounded-full bg-brand-400 ${reduce ? '' : 'animate-ping2'}`} style={{ animationDelay: `${i * 0.35}s` }} /><span className="relative h-4 w-4 rounded-full bg-brand-400 shadow-[0_0_18px_#26c8b2]" /></span>
+            <span className="relative flex h-4 w-4"><span className={`absolute inset-0 rounded-full bg-brand-400 ${reduce ? '' : 'animate-ping2'}`} style={{ animationDelay: `${i * 0.35}s` }} /><span className="relative h-4 w-4 rounded-full bg-brand-400 shadow-[0_0_18px_#14B8A6]" /></span>
           </span>)}
         </div>
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink-950 to-transparent" />

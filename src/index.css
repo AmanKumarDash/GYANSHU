@@ -6,8 +6,8 @@
   :root {
     --paper: #f3f2ee;
     --ink: #0c1517;
-    --brand: #005564;
-    --brand-bright: #26c8b2;
+    --brand: #0B4D49;
+    --brand-bright: #14B8A6;
     --ease-expo: cubic-bezier(.16, 1, .3, 1);
     /* Shared breathing room for content sections, scaled to the viewport. */
     --section-space: clamp(2.5rem, 5svh, 4rem);
@@ -30,7 +30,7 @@
   }
 
   ::selection {
-    background: #26c8b2;
+    background: #14B8A6;
     color: #0c1517;
   }
 
@@ -39,7 +39,7 @@
   ::-webkit-scrollbar-thumb { background: #c8c6bf; border-radius: 999px; }
 
   :focus-visible {
-    outline: 2px solid #0a8a8f;
+    outline: 2px solid #0E8378;
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -164,11 +164,11 @@ html.lenis, html.lenis body { height: auto; }
   position: absolute;
   inset: 0 0 auto;
   height: 2px;
-  background: linear-gradient(90deg, #26c8b2, rgba(38,200,178,0));
+  background: linear-gradient(90deg, #14B8A6, rgba(20,184,166,0));
 }
 .product-experience.product-detail .capability-flip-front > * { position: relative; z-index: 1; }
 .product-experience.product-detail #capabilities article:hover:not(.capability-flip-card) {
-  border-color: #26c8b2;
+  border-color: #14B8A6;
   box-shadow: 0 18px 40px -18px rgba(12,21,23,.2);
 }
 .product-experience.product-detail #workflow .rounded-2xl {
@@ -182,8 +182,8 @@ html.lenis, html.lenis body { height: auto; }
   transition: border-color .25s ease, background-color .25s ease, transform .4s var(--ease-expo);
 }
 .product-experience.product-detail #deployment .rounded-2xl:hover {
-  border-color: rgba(38,200,178,.6);
-  background-color: rgba(38,200,178,.08);
+  border-color: rgba(20,184,166,.6);
+  background-color: rgba(20,184,166,.08);
   transform: translateY(-2px);
 }
 
@@ -194,4 +194,32 @@ html.lenis, html.lenis body { height: auto; }
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Justified body text sitewide. Hyphenation keeps word spacing even in narrow cards;
+   paragraphs in centred or right-aligned areas keep their last line in that alignment. */
+p {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.text-center p,
+p.text-center {
+  text-align: justify;
+  text-align-last: center;
+}
+@media (min-width: 768px) {
+  .md\:text-right p,
+  p.md\:text-right {
+    text-align: justify;
+    text-align-last: right;
+  }
+}
+/* Large display-type lines (statements, headline-style paragraphs) read like headings, so they keep normal alignment. */
+p.font-display,
+p.font-poster {
+  text-align: inherit;
+  text-align-last: auto;
+  -webkit-hyphens: manual;
+  hyphens: manual;
 }

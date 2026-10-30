@@ -3,7 +3,7 @@ import { getScene } from '../../data/visualScenes'
 
 function SceneArt({ scene }) {
   const center = scene.type === 'iot' ? 'M130 58a25 25 0 1 0 0 50 25 25 0 1 0 0-50Z' : scene.type === 'learning' ? 'M102 62q28-18 56 0v47q-28-18-56 0Zm56 0q28-18 56 0v47q-28-18-56 0Z' : scene.type === 'application' ? 'M91 62h122v85H91z' : scene.type === 'network' ? 'M150 75 94 119m56-44 56 44m-56-44v74m-56-30 56 30 56-30' : 'M150 55 195 72v35c0 27-19 47-45 59-26-12-45-32-45-59V72z'
-  const accent = '#5fd8c6'
+  const accent = '#7EE3D9'
   return <svg viewBox="0 0 300 230" className="h-full w-full" fill="none" aria-hidden="true">
     <defs><radialGradient id={`glow-${scene.id}`}><stop stopColor={accent} stopOpacity=".28" /><stop offset="1" stopColor={accent} stopOpacity="0" /></radialGradient></defs>
     <circle cx="150" cy="112" r="104" fill={`url(#glow-${scene.id})`} />
