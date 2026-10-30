@@ -36,7 +36,7 @@ const profiles = {
     images: ['photo-1579389083078-4e7018379f7e','photo-1768839721176-2fa91fdce725','px-1901388','photo-1563986768609-322da13575f3'],
     gallery:['px-6805152','px-7988743','px-12899191'],flowImage:'px-5480781',ctaImages:['px-36598855','px-7988749','px-17489151','px-37605913'],
     accent: '#0C6B63',
-    overviewTitle: 'See the Exposure Before It Becomes an Incident.',
+    overviewTitle: 'Overview: See the Exposure Before It Becomes an Incident.',
     overview: [
       'Enterprise digital environments are constantly evolving. New assets, cloud services, configuration changes, vulnerabilities and external-facing systems introduce security exposures that are difficult to manage through periodic assessments and fragmented tools alone.',
       'PANOPTIX is designed to provide a consolidated view of organisational cyber exposure. By bringing together asset intelligence, vulnerability findings, configuration weaknesses and risk context, the platform helps security teams understand where weaknesses exist and which exposures require attention.',
@@ -51,7 +51,7 @@ const profiles = {
       ['Validate','Reassess findings and verify corrective measures.'],
       ['Monitor','Observe changing assets and exposure trends.']
     ],
-    flowTitle: 'From Exposure Discovery to Continuous Risk Reduction.',
+    flowTitle: 'How It Works: From Exposure Discovery to Continuous Risk Reduction.',
     flowEyebrow: 'Operational lifecycle',
     flowNote: 'A connected exposure-management workflow helps security teams identify what is at risk, understand why it matters, track who should act and verify whether exposures have been reduced.',
     exposureDomains: [
@@ -63,7 +63,8 @@ const profiles = {
       ['Cloud & Application Exposure','Cloud and application security findings from integrated sources.']
     ],
     domainNote: 'Domain coverage depends on the supported collectors, scanners and connectors of the deployed edition.',
-    useCasesTitle: 'Exposure Intelligence for Real-World Security Challenges.',
+    domainTitle: 'Exposure Areas: Understand Cyber Exposure Across Your Digital Environment.',
+    useCasesTitle: 'Use Cases: Exposure Intelligence for Real-World Security Challenges.',
     useCaseLead: 'PANOPTIX helps security teams discover risks, investigate affected assets and coordinate remediation across increasingly complex environments.',
     useCases: [
       ['Enterprise Attack Surface','Discover exposed assets and identify weaknesses across distributed infrastructure.'],
@@ -80,9 +81,9 @@ const profiles = {
       {title:'Exposure Validation',items:['Reassess findings and verify remediation.']},
       {title:'Dashboards & Reporting',items:['Visualise risk distribution, trends, ownership and closure.']}
     ],
-    capabilityTitle: 'PANOPTIX Cyber Exposure Management Capabilities',
+    capabilityTitle: 'Capabilities: Cyber Exposure Management in One Platform.',
     capabilityLead: 'Discover, assess, prioritise and reduce exposure from one coordinated environment.',
-    riskTitle: 'Focus on the Exposures That Matter Most.',
+    riskTitle: 'Prioritisation: Focus on the Exposures That Matter Most.',
     riskIntro: 'Not every vulnerability creates the same level of risk. PANOPTIX is designed to bring security findings into context so teams can distinguish critical exposures from lower-priority weaknesses. By considering vulnerability severity, potential exploitability, asset importance and exposure conditions, teams can establish meaningful remediation priorities.',
     riskSignals: [
       ['Vulnerability severity','CVSS score, assessed technical impact and severity category.'],
@@ -100,7 +101,7 @@ const profiles = {
       ['Standalone assessment reports','Consolidated exposure, trend and closure reporting']
     ],
     differentiatorSummary: 'Point-in-time assessments provide valuable findings. Exposure management adds ongoing visibility, prioritisation, remediation accountability and validation.',
-    differentiatorTitle: 'Move Beyond Periodic Vulnerability Assessment.',
+    differentiatorTitle: 'Why PANOPTIX: Snapshots vs. Continuous Coverage.',
     comparisonNote: 'Comparison reflects a fragmented approach, not a claim that all vulnerability-management competitors lack these capabilities.',
     benefitsTitle: 'Reduce Exposure. Strengthen Resilience.',
     benefits: [
@@ -111,7 +112,7 @@ const profiles = {
       ['Continuous Security Improvement','Track exposure reduction and validate corrections through reassessment.']
     ],
     industriesEyebrow: 'Industry applications',
-    industriesTitle: 'Cyber Exposure Management for Complex Digital Environments.',
+    industriesTitle: 'Industries: Cyber Exposure Management for Complex Digital Environments.',
     industries: [
       ['Large Enterprises','Manage exposure across multi-site networks, endpoints, servers and digital services.'],
       ['BFSI & Financial Services','Support vulnerability governance and remediation for sensitive financial infrastructure.'],
@@ -132,7 +133,7 @@ const profiles = {
     ],
     trustNote: 'Designed to support accountability and security governance; PANOPTIX does not guarantee compliance or certification.',
     deploymentEyebrow: 'Deployment & integration',
-    deploymentTitle: 'Fit Cyber Exposure Management to Your Environment.',
+    deploymentTitle: 'Deployment: Fit Cyber Exposure Management to Your Environment.',
     deploymentIntro: 'PANOPTIX can be positioned for organisations seeking controlled exposure assessment across existing infrastructure. Deployment planning should address asset scope, network access, supported assessment methods, integration requirements and security governance.',
     deploymentOptions: [
       ['Environment & Asset Scope','Identify targets, ownership, network boundaries and access rules.'],
@@ -159,7 +160,7 @@ const profiles = {
     images: ['photo-1774901128276-1eab48f1fb9c','photo-1576836165612-8bc9b07e7778','photo-1763568258330-039d2f3dfc76','photo-1776161560127-a8623e0fa820'],
     gallery:['photo-1542903660-eedba2cda473','px-36496927','px-34803990'],flowImage:'photo-1771189958197-06850d4828af',ctaImages:['px-12899168','px-6804076','px-7988086','photo-1571171637578-41bc2dd41cd2'],
     accent: '#0C6B63',
-    overviewTitle: 'Proactive Security Assessment for a Safer Digital Environment.',
+    overviewTitle: 'Overview: Proactive Security Assessment for a Safer Digital Environment.',
     overview: [
       'As organisations expand networks, applications and infrastructure, vulnerabilities and configuration weaknesses accumulate across technologies. Periodic tests become difficult to coordinate when assessment evidence, severity classifications, remediation actions and reports are distributed among disconnected tools.',
       'Nested VA is designed to unify assessment execution, findings management and security reporting. It supports repeatable checks, structured vulnerability evidence, consistent severity classification and clear remediation recommendations while preserving room for manual validation by qualified professionals.'
@@ -173,7 +174,7 @@ const profiles = {
       ['Report','Document evidence, severity, impact and prioritised corrective actions.'],
       ['Re-test','Reassess remediated issues and record verified closure or residual exposure.']
     ],
-    flowTitle: 'From Assessment Scope to Verified Remediation.',
+    flowTitle: 'How It Works: From Assessment Scope to Verified Remediation.',
     flowEyebrow: 'Security testing lifecycle',
     flowNote: 'A disciplined security testing lifecycle connects technical discovery, finding validation, remediation ownership and closure evidence without confusing scan results with proof of exploitability.',
     exposureDomains: [
@@ -184,11 +185,11 @@ const profiles = {
       ['Web & API Security','Planned or integration-dependent domain; promote only after supported scanners and manual workflows are validated.'],
       ['Cloud / Wireless','Potential future coverage through dedicated assessment engines or integrations; not confirmed as present capabilities.']
     ],
-    domainTitle: 'Targeted Testing Across Your Digital Environment.',
+    domainTitle: 'Testing Scope: Targeted Testing Across Your Digital Environment.',
     domainEyebrow: 'Assessment coverage',
     domainNote: 'Coverage depends on supported assessment workers, tools, versions, credentials and agreed testing scope.',
     useCasesEyebrow: 'People and systems',
-    useCasesTitle: 'Practical Security Testing for Complex Environments.',
+    useCasesTitle: 'Use Cases: Practical Security Testing for Complex Environments.',
     useCaseLead: '',
     useCases: [
       ['Network & Firewall Audits','Review supported vendor configurations to surface risky management services, rule weaknesses and security-control gaps.'],
@@ -205,10 +206,10 @@ const profiles = {
       {title:'Re-testing & Closure',items:['Support repeat assessment and closure confirmation, subject to release availability.']},
       {title:'Risk Prioritisation',items:['Present severity-oriented findings with business-context scoring as a proposed enhancement.']}
     ],
-    capabilityTitle: 'Nested VA Platform Capabilities.',
+    capabilityTitle: 'Capabilities: Everything Nested VA Brings to an Assessment.',
     capabilityLead: 'Automate supported checks, organise evidence and guide remediation through a structured assessment workflow.',
     riskEyebrow: 'Vulnerability intelligence',
-    riskTitle: 'Findings That Lead to Action.',
+    riskTitle: 'Findings: Results That Lead to Action.',
     riskIntro: 'A useful VAPT report should help an engineer understand what is affected, why it matters, what evidence supports the conclusion and which corrective step comes next. Nested VA should maintain clear finding records suitable for technical remediation and management review.',
     riskSignals: [
       ['Finding details','Vulnerability title, description, affected IP, hostname or device, and vulnerable parameter or configuration item.'],
@@ -227,7 +228,7 @@ const profiles = {
     ],
     differentiatorSummary: '',
     comparisonNote: 'These comparisons describe a fragmented workflow; they are not categorical claims that competing commercial tools lack these features.',
-    differentiatorTitle: 'More Than a Collection of Security Scan Results.',
+    differentiatorTitle: 'Why Nested VA: Scattered Tests vs. One Platform.',
     businessEyebrow: 'Business benefits',
     benefitsTitle: 'Stronger Security. Greater Assessment Confidence.',
     benefits: [
@@ -238,7 +239,7 @@ const profiles = {
       ['Demonstrate Closure','Support re-testing and maintain evidence of validated remediation.']
     ],
     industriesEyebrow: 'Industry applications',
-    industriesTitle: 'Structured Assessment for Complex Environments.',
+    industriesTitle: 'Industries: Structured Assessment for Complex Environments.',
     industries: [
       ['Enterprises','Assess network and server environments across business locations and technology teams.'],
       ['BFSI','Support structured infrastructure testing and remediation evidence for security governance.'],
@@ -246,7 +247,7 @@ const profiles = {
       ['Data Centres & MSPs','Repeat infrastructure and configuration reviews across supported asset groups.']
     ],
     deploymentEyebrow: 'Deployment & integrations',
-    deploymentTitle: 'Fit Security Testing to Your Environment.',
+    deploymentTitle: 'Deployment: Fit Security Testing to Your Environment.',
     deploymentIntro: 'Nested VA is intended for controlled deployment within customer-managed infrastructure. Assessment jobs are coordinated through a central control plane and executed by technology-specific workers. Deployment planning accounts for network reachability, target authorisation, credential handling, scanner scope, secure storage and reporting requirements; supported architecture and integrations depend on the release.',
     deploymentOptions: [
       ['Assessment Scope & Access','Confirm authorised targets, ownership, network reachability, testing windows and access rules.'],
@@ -294,7 +295,7 @@ const profiles = {
     faqImage: '/images/smms/06_SMMS_FAQ_Trust_4x3.webp',
     accent: '#007b8c',
     overviewEyebrow: 'ABOUT SMMS',
-    overviewTitle: 'One Operational View Across Your Critical Systems.',
+    overviewTitle: 'Overview: One Operational View Across Your Critical Systems.',
     overview: [
       'Modern operations rely on interconnected infrastructure, applications and services. When device status, alerts, response workflows and service targets are managed separately, teams lose time understanding what requires action.',
       'SMMS brings monitoring data and operational workflows into a shared view. Device health and performance measurements connect with alert management, incident handling, notifications, escalations and SLA reporting to provide greater clarity across distributed services.',
@@ -302,14 +303,14 @@ const profiles = {
     ],
     use: ['Enterprises & Multi-site IT','Data Centres & Managed Service Providers','Operations & Service Delivery Teams','IT Helpdesk & NOC Teams'],
     useCasesEyebrow: 'PEOPLE AND SYSTEMS',
-    useCasesTitle: 'Smart Monitoring in the Real World.',
+    useCasesTitle: 'Use Cases: Smart Monitoring in the Real World.',
     useCaseLead: 'From infrastructure rooms to operational teams, SMMS connects systems, signals and action in a single monitoring approach.',
     useCases: [
       ['Infrastructure Monitoring','Track the health and status of servers, network assets and critical systems.'],
       ['Network Operations','Improve operational awareness and issue response across connected infrastructure.'],
       ['Service Performance','Review dashboards, alert patterns and service performance indicators.']
     ],
-    capabilityTitle: 'SMMS Capabilities',
+    capabilityTitle: 'Capabilities: Everything SMMS Brings Together.',
     capabilityLead: '',
     capabilityGroups: [
       {title:'Unified System Visibility',items:['Bring monitored assets, health indicators and operational status together.']},
@@ -320,7 +321,7 @@ const profiles = {
       {title:'Dashboards & Operational Insights',items:['Present metrics and status for operators and management.']}
     ],
     differentiatorEyebrow: 'WHY SMMS',
-    differentiatorTitle: 'Move from Fragmented Status Checks to Coordinated Operations.',
+    differentiatorTitle: 'Why SMMS: Scattered Checks vs. Coordinated Operations.',
     differentiatorSummary: '',
     differentiators: [
       ['Separate status screens','Unified operational dashboard'],
@@ -330,7 +331,7 @@ const profiles = {
       ['Ad hoc service reporting','SLA-related measurement and reporting']
     ],
     benefitsEyebrow: 'BUSINESS BENEFITS',
-    benefitsTitle: 'Improve Awareness. Reduce Response Friction.',
+    benefitsTitle: 'Benefits: Improve Awareness. Reduce Response Friction.',
     benefits: [
       ['Clearer Operations','Understand service conditions from one monitoring environment.'],
       ['Timely Intervention','Surface emerging infrastructure faults through alert workflows.'],
@@ -339,7 +340,7 @@ const profiles = {
       ['Scalable Operating Model','Build repeatable monitoring processes as infrastructure grows.']
     ],
     flowEyebrow: 'HOW IT WORKS',
-    flowTitle: 'An Operational Workflow Teams Can Follow.',
+    flowTitle: 'How It Works: An Operational Workflow Teams Can Follow.',
     flow: [
       ['Monitor Systems',''],
       ['Detect & Prioritise Alerts',''],
@@ -348,11 +349,11 @@ const profiles = {
     ],
     flowNote: 'SMMS connects monitoring signals with incidents, notifications, escalation and service reporting so teams can move from observation to accountable action.',
     integrationsEyebrow: 'DATA SOURCES AND INTEGRATIONS',
-    integrationsTitle: 'Bring Operational Signals into a Connected Monitoring Environment.',
+    integrationsTitle: 'Integrations: Bring Operational Signals into One Monitoring Environment.',
     integrationsIntro: 'SMMS is built around health checks, metric collection, alert evaluation and operational records. Its architecture includes service components for polling, alert handling, dashboards and notification workflows. Specific SNMP, ICMP, API, syslog, IoT protocol and third-party integration support should be confirmed against the deployed release.',
     integrations: ['Assets & Devices','Polling & Metrics','Alerts & Incidents','SLA & Notifications'],
     deploymentEyebrow: 'DEPLOYMENT AND INTEGRATIONS',
-    deploymentTitle: 'Fit SMMS to Your Operating Environment.',
+    deploymentTitle: 'Deployment: Fit SMMS to Your Operating Environment.',
     deploymentIntro: 'Align the platform to existing infrastructure and service workflows through structured onboarding, source mapping, rules configuration and operational handover. Validate supported deployment packaging and technical capacity during solution scoping.',
     deploymentOptions: [
       ['Environment & Access Planning','Plan the operating environment, access needs and prerequisites.'],
@@ -494,6 +495,12 @@ const productShots = {
   vapt: ['/images/products/nestedva-findings.svg', '/images/products/nestedva-report.svg'],
   smms: ['/images/products/smms-overview.svg', '/images/products/smms-incident.svg'],
 }
+// "On this page" links, in the same order as the sections and named after their headings.
+const subNav = {
+  panoptix: [['#overview','Overview'],['#workflow','How it works'],['#exposure-domains','Exposure areas'],['#use-cases','Use cases'],['#capabilities','Capabilities'],['#risk-intelligence','Prioritisation'],['#different','Why PANOPTIX'],['#industries','Industries'],['#deployment','Deployment']],
+  smms: [['#overview','Overview'],['#people','Use cases'],['#capabilities','Capabilities'],['#different','Why SMMS'],['#business-benefits','Benefits'],['#workflow','How it works'],['#integrations-data','Integrations'],['#deployment','Deployment'],['#faq','FAQ']],
+  vapt: [['#overview','Overview'],['#workflow','How it works'],['#exposure-domains','Testing scope'],['#use-cases','Use cases'],['#capabilities','Capabilities'],['#risk-intelligence','Findings'],['#different','Why Nested VA'],['#industries','Industries'],['#deployment','Deployment']],
+}
 // Hero slideshow: the two interface screens, then two real-world photos of the job each product does. One caption per slide.
 const heroScenes = {
   ipdr: { photos: ['px-15483318', 'px-4339335'], captions: ['IPDR & subscriber investigation', 'Network intelligence overview', 'Built for ISP & telecom networks', 'Fibre-core traffic, correlated'] },
@@ -634,7 +641,7 @@ export function ProductDetail({page}) {
   },[id])
   return <main className="product-experience product-detail min-h-screen overflow-x-clip bg-white text-[#0c1517]">
      <HeroCentered eyebrow={id==='ipdr'||id==='smms'||id==='gyanshu-ai-office-assistance'?profile.heroEyebrow:id==='argos-enms'?'NETWORK OPERATIONS / ENTERPRISE VISIBILITY':id==='panoptix'||id==='vapt'?profile.heroEyebrow:`Gyanshu platform / ${profile.category}`} title={id==='argos-enms'?'NetSight360':id==='smms'?profile.heroTitle:page.title} pill={profile.images} subtitle={id==='panoptix'?'Know Your Exposure. Control Your Cyber Risk.':id==='vapt'?'Discover Weaknesses. Validate Security. Strengthen with Confidence.':id==='smms'||id==='gyanshu-ai-office-assistance'?profile.heroHeadline:page.subtitle} intro={profile.summary} chips={profile.heroFeatures?page.features:page.features.slice(0,3)} actions={<><Link to="/contact" className="btn btn-dark"><span>{id==='ipdr'||id==='argos-enms'||id==='panoptix'||id==='vapt'||id==='smms'||id==='gyanshu-ai-office-assistance'?'Request Demo':'Discuss this platform'}</span><span className="btn-chip"><ArrowRight size={15}/></span></Link><a href="#capabilities" className="btn btn-outline">Explore Capabilities</a></>} media={<ProductImageSequence id={id} images={profile.heroImages || profile.images} captions={profile.heroCaptions} accent={profile.accent} label={profile.descriptor}/>}/>
-     <nav aria-label="On this page" className="sticky top-3 z-30 mt-8 flex justify-center px-3"><div ref={sectionNav} className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-[#e1dfd8] bg-white/85 p-1.5 font-mono text-[10.5px] uppercase tracking-[.14em] text-[#5d696c] shadow-card backdrop-blur-xl"><a href="#overview" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Overview</a>{id==='ipdr'&&<a href="#highlights" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Key highlights</a>}{id!=='ipdr'&&id!=='argos-enms'&&id!=='panoptix'&&<a href="#people" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">People and systems</a>}<a href="#capabilities" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Capabilities</a><a href="#workflow" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Workflow</a>{id==='panoptix'&&<><a href="#exposure-domains" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Domains</a><a href="#risk-intelligence" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Risk</a><a href="#industries" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Industries</a><a href="#security-governance" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Security</a></>}{id!=='ipdr'&&<a href="#deployment" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Deployment</a>}{id==='smms'&&<><a href="#business-benefits" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Benefits</a><a href="#integrations-data" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Data & integrations</a></>}{id==='vapt'&&<><a href="#use-cases" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Use cases</a><a href="#risk-intelligence" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Findings</a><a href="#industries" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Industries</a><a href="#security-trust" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Security</a></>}{id==='gyanshu-ai-office-assistance'&&<><a href="#business-benefits" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Benefits</a><a href="#departments" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Departments</a><a href="#security-trust" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Security</a></>}{(id==='smms'||id==='gyanshu-ai-office-assistance')&&<a href="#faq" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">FAQ</a>}{profile.differentiators&&id!=='ipdr'&&id!=='argos-enms'&&<a href="#different" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Why {id==='argos-enms'?'ARGOS':id==='vapt'?'VAPT SCANNER':id==='smms'?'SMMS':id==='gyanshu-ai-office-assistance'?'AI OFFICE ASSISTANT':'PANOPTIX'}</a>}</div></nav>
+     <nav aria-label="On this page" className="sticky top-3 z-30 mt-8 flex justify-center px-3"><div ref={sectionNav} className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-[#e1dfd8] bg-white/85 p-1.5 font-mono text-[10.5px] uppercase tracking-[.14em] text-[#5d696c] shadow-card backdrop-blur-xl">{subNav[id] ? subNav[id].map(([href,label])=><a key={href} href={href} className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">{label}</a>) : <><a href="#overview" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Overview</a>{id==='ipdr'&&<a href="#highlights" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Key highlights</a>}{id!=='ipdr'&&id!=='argos-enms'&&id!=='panoptix'&&<a href="#people" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">People and systems</a>}<a href="#capabilities" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Capabilities</a><a href="#workflow" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Workflow</a>{id==='panoptix'&&<><a href="#exposure-domains" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Domains</a><a href="#risk-intelligence" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Risk</a><a href="#industries" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Industries</a><a href="#security-governance" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Security</a></>}{id!=='ipdr'&&<a href="#deployment" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Deployment</a>}{id==='smms'&&<><a href="#business-benefits" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Benefits</a><a href="#integrations-data" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Data & integrations</a></>}{id==='vapt'&&<><a href="#use-cases" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Use cases</a><a href="#risk-intelligence" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Findings</a><a href="#industries" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Industries</a><a href="#security-trust" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Security</a></>}{id==='gyanshu-ai-office-assistance'&&<><a href="#business-benefits" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Benefits</a><a href="#departments" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Departments</a><a href="#security-trust" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Security</a></>}{(id==='smms'||id==='gyanshu-ai-office-assistance')&&<a href="#faq" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">FAQ</a>}{profile.differentiators&&id!=='ipdr'&&id!=='argos-enms'&&<a href="#different" className="shrink-0 rounded-full px-4 py-2 transition-colors hover:bg-[#f3f2ee] hover:text-[#0c1517]">Why {id==='argos-enms'?'ARGOS':id==='vapt'?'VAPT SCANNER':id==='smms'?'SMMS':id==='gyanshu-ai-office-assistance'?'AI OFFICE ASSISTANT':'PANOPTIX'}</a>}</>}</div></nav>
     <section id="overview" className={`mx-auto flex w-full items-center `}><div className={`mx-auto grid w-full max-w-7xl gap-8 px-6 md:px-12 py-10 sm:py-12 md:py-14 lg:grid-cols-[.75fr_1.25fr]`}><div><p className="eyebrow w-fit">{id==='panoptix'?'PRODUCT OVERVIEW':id==='vapt'?'ABOUT VAPT SCANNER':id==='smms'||id==='gyanshu-ai-office-assistance'?profile.overviewEyebrow:id==='ipdr'?profile.overviewEyebrow:id==='argos-enms'?'ABOUT NetSight360 ENTERPRISE':'About the platform'}</p><h2 className="mt-4 font-display font-medium tracking-[-.035em] text-4xl leading-tight md:text-5xl">{id==='ipdr'?profile.overviewTitle:id==='argos-enms'?'Centralised Network Operations for a Smarter, More Resilient Enterprise':id==='panoptix'||id==='vapt'||id==='smms'||id==='gyanshu-ai-office-assistance'?profile.overviewTitle:'Designed for clearer operational decisions.'}</h2></div><div><div className="text-lg leading-relaxed text-[#5d696c]">{(id==='ipdr'||id==='panoptix'||id==='vapt'||id==='smms'||id==='gyanshu-ai-office-assistance')?profile.overview.map((paragraph)=><p key={paragraph} className="mb-4 last:mb-0">{paragraph}</p>):<p>{page.intro}</p>}</div>{id==='argos-enms'&&<><p className="mt-5 leading-relaxed text-[#5d696c]">From core to edge, NetSight360 brings your entire network under a single pane of glass, enabling proactive operations and faster problem resolution.</p></>}<div className="mt-6 grid gap-3 sm:grid-cols-2">{profile.use.map((x)=><div key={x} className="flex items-center gap-3 border-b border-[#e1dfd8] py-3"><span className="font-mono text-xs" style={{color:profile.accent}}>◆</span><span className="text-sm font-medium">{x}</span></div>)}</div></div></div></section>
     {(id==='panoptix'||id==='vapt')&&<><StepsBanner id="workflow" eyebrow={profile.flowEyebrow} title={profile.flowTitle} steps={profile.flow} image={flowImageOf(profile)} note={profile.flowNote}/><ExtendedProductSections profile={profile} part="domains"/></>}{id==='ipdr'&&<ExtendedProductSections profile={profile} part="domains"/>}
     {profile.why&&id!=='vapt'&&<section id={id==='ipdr'?'highlights':undefined} className={`flex items-center bg-[#f3f2ee] `}><div className={`mx-auto w-full max-w-[1360px] px-5 sm:px-8 lg:px-12 py-10 sm:py-12 md:py-14`}><p className="eyebrow w-fit">{id==='ipdr'?'Key highlights':id==='argos-enms'?'KEY HIGHLIGHTS':id==='vapt'?'Adopt Nested VA?':'Why PANOPTIX?'}</p><h2 className="mt-3 font-display font-medium tracking-[-.035em] text-4xl md:text-5xl">{profile.whySubtitle || 'IP intelligence for demanding environments.'}</h2><div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-3">{profile.why.map(([title,description])=><article key={title} tabIndex={0} aria-label={`${title}. Focus or hover to see details.`} className="capability-flip-card group relative h-[216px] rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0E8378] focus-visible:ring-offset-2"><div className="capability-flip-inner relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus:[transform:rotateY(180deg)]"><div className="capability-flip-face capability-flip-front absolute inset-0 flex flex-col justify-end overflow-hidden rounded-2xl border border-[#e1dfd8] bg-white p-5 shadow-card [backface-visibility:hidden]"><div><FlipIcon title={title}/><h3 className="mt-4 font-display font-medium tracking-[-.02em] text-xl leading-snug text-[#0c1517]">{title}</h3></div><span className="font-mono text-[10px] uppercase tracking-widest text-[#8a9497]">Hover or focus to explore</span></div><div className="capability-flip-face capability-flip-back absolute inset-0 overflow-y-auto rounded-2xl border border-[#e1dfd8] bg-white p-5 shadow-card [transform:rotateY(180deg)] [backface-visibility:hidden]"><h3 className="font-display font-medium tracking-[-.015em] text-lg leading-snug text-[#0c1517]">{title}</h3><p className="mt-3 text-sm leading-relaxed text-[#5d696c]">{description}</p></div></div></article>)}</div></div></section>}
@@ -646,7 +653,7 @@ export function ProductDetail({page}) {
     {id!=='ipdr'&&id!=='panoptix'&&id!=='vapt'&&<StepsBanner id="workflow" eyebrow={id==='ipdr'||id==='smms'||id==='gyanshu-ai-office-assistance'?profile.flowEyebrow:'How it works'} title={id==='ipdr'||id==='smms'||id==='gyanshu-ai-office-assistance'?profile.flowTitle:id==='argos-enms'?'From Discovery to Resolution':'A workflow teams'} accent={id==='smms'||id==='gyanshu-ai-office-assistance'?'':id==='ipdr'?'':id==='argos-enms'?'— In Simple Steps':'can follow.'} steps={profile.flow.map((step)=>Array.isArray(step)?step:[step])} image={id==='smms'||id==='gyanshu-ai-office-assistance'?profile.images[4]:flowImageOf(profile)} note={id==='smms'||id==='gyanshu-ai-office-assistance'?profile.flowNote:id==='ipdr'?profile.flowNote:id==='argos-enms'?'':'The platform connects a sequence of practical steps, giving teams context for what happens next and why it matters.'}/>}
     {id==='smms'&&<SmmsSections profile={profile} part="integrations"/>}{id==='gyanshu-ai-office-assistance'&&<><AiOfficeSections profile={profile} part="security"/><AiOfficeSections profile={profile} part="deployment"/></>}{id==='smms'&&<SmmsSections profile={profile} part="deployment"/>}{profile.leafletPage&&<IpdrLeafletSections profile={profile} part="business"/>}{profile.leafletPage&&<IpdrLeafletSections profile={profile} part="security"/>}
     {id!=='ipdr'&&id!=='argos-enms'&&id!=='panoptix'&&id!=='vapt'&&id!=='smms'&&id!=='gyanshu-ai-office-assistance'&&(    <section id="deployment" className="grain relative mx-3 my-6 flex items-center overflow-hidden rounded-[2.5rem] bg-[#070d0f] text-white sm:mx-5"><div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_60%)]"/><div className="pointer-events-none absolute -bottom-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-[#0E8378]/25 blur-[120px]"/><div className="relative mx-auto grid w-full max-w-[1360px] gap-8 px-5 py-10 sm:py-12 sm:px-8 md:py-14 lg:grid-cols-[1fr_.9fr] lg:items-center lg:px-12"><div><p className="eyebrow-dark w-fit">{id==='vapt'?'Deployment & usage':id==='ipdr'?'On-premises control & security':id==='argos-enms'?'Industry & deployment':'Deployment and integration'}</p><h2 className="mt-4 font-display font-medium tracking-[-.035em] text-4xl leading-tight text-white md:text-5xl">{id==='vapt'?'Periodic assessments that fit your environment.':id==='ipdr'?'Your Data. Your Infrastructure. Your Rules.':id==='argos-enms'?'Designed for Diverse Environments':'Fit the platform to your environment.'}</h2><p className="mt-5 max-w-xl leading-relaxed text-white/70">{id==='vapt'?'Deploy Nested VA on-premises or in a controlled environment. Agentless scanning lets teams run periodic assessments alongside their monitoring and intelligence platforms.':id==='ipdr'?'Deploy within your data centre or private cloud. Keep sensitive subscriber and network data in your environment, with role-based access and audit logging.':id==='argos-enms'?'Designed for enterprises, ISPs and telecom providers, data centres, and critical infrastructure.':'Deployment approach, data sources, integrations, and operational responsibilities are planned with your team to match security and service requirements.'}</p><Link to="/contact" className="btn btn-brand mt-7 !pr-1.5">Discuss deployment <span className="btn-chip"><ArrowRight size={15}/></span></Link></div><div className="grid gap-3 sm:grid-cols-2">{(profile.deployment || ['Environment and access planning','Data-source and integration mapping','Rollout and knowledge transfer','Ongoing operational support']).map((item)=><div key={item} className="flex gap-3 rounded-2xl border border-white/15 bg-white/[.04] p-5"><Check size={17} style={{color:profile.accent}} className="shrink-0"/><p className="text-sm leading-relaxed text-white/80">{item}</p></div>)}</div></div></section>)}
-    {profile.ecosystem&&id!=='panoptix'&&id!=='vapt'&&<section id="ecosystem" className="flex items-center bg-[#f3f2ee]"><div className="mx-auto w-full max-w-7xl px-5 py-10 sm:py-12 sm:px-8 md:py-14 lg:px-12"><p className="eyebrow w-fit">{id==='vapt'?' Security Product Portfolio':'PANOPTIX in the product ecosystem'}</p><h2 className="mt-3 font-display font-medium tracking-[-.03em] text-3xl md:text-4xl">{id==='vapt'?'Layered security visibility and assurance.':'Unified network and exposure intelligence.'}</h2><p className="mt-3 max-w-2xl text-[#5d696c]">{id==='vapt'?'The portfolio brings together:':'PANOPTIX integrates seamlessly with:'}</p><div className="mt-7 grid gap-4 md:grid-cols-2">{profile.ecosystem.map(([name,description,to])=><Link key={name} to={to} className="rounded-2xl border border-[#e1dfd8] bg-white p-6 transition hover:-translate-y-1 hover:shadow-lg"><span className="font-mono text-[10.5px] uppercase tracking-[.16em] text-[#0C6B63]">{id==='vapt'?'Portfolio platform':'Connected platform'}</span><h3 className="mt-3 font-display font-medium tracking-[-.025em] text-2xl">{name}</h3><p className="mt-2 text-sm text-[#5d696c]">{description}</p></Link>)}</div><p className="mt-6 font-medium text-[#0c1517]">{id==='vapt'?'Together, they provide layered visibility, exposure awareness, and security assurance.':'Together, they form a unified network and exposure intelligence platform.'}</p><blockquote className="mt-8 border-l-2 border-[#0C6B63] pl-5 font-display font-medium tracking-[-.025em] text-2xl text-[#0B4D49]">{id==='vapt'?'Measure your security posture. Validate compliance. Improve with every scan.':'If you can see your attack surface, you can control your risk.'}</blockquote></div></section>}<FaqDark eyebrow={id==='ipdr'||id==='panoptix'||id==='vapt'?'Frequently Asked Questions':id==='smms'?'Questions, answered':'FAQ'} title={id==='ipdr'||id==='panoptix'||id==='vapt'?'Questions, Answered.':'Questions, answered.'} lede={id==='ipdr'||id==='panoptix'||id==='vapt'||id==='smms'?undefined:'What teams ask before deploying a Gyanshu platform.'} id={id==='smms'||id==='gyanshu-ai-office-assistance'?'faq':undefined} image={id==='smms'||id==='gyanshu-ai-office-assistance'?profile.faqImage:undefined} imageAlt={profile.faqImageAlt} items={id==='ipdr'||id==='panoptix'||id==='vapt'||id==='smms'||id==='gyanshu-ai-office-assistance'?profile.faqs:faqPicks.products.map((i)=>faqs[i])}/>
+    {profile.ecosystem&&id!=='panoptix'&&id!=='vapt'&&<section id="ecosystem" className="flex items-center bg-[#f3f2ee]"><div className="mx-auto w-full max-w-7xl px-5 py-10 sm:py-12 sm:px-8 md:py-14 lg:px-12"><p className="eyebrow w-fit">{id==='vapt'?' Security Product Portfolio':'PANOPTIX in the product ecosystem'}</p><h2 className="mt-3 font-display font-medium tracking-[-.03em] text-3xl md:text-4xl">{id==='vapt'?'Layered security visibility and assurance.':'Unified network and exposure intelligence.'}</h2><p className="mt-3 max-w-2xl text-[#5d696c]">{id==='vapt'?'The portfolio brings together:':'PANOPTIX integrates seamlessly with:'}</p><div className="mt-7 grid gap-4 md:grid-cols-2">{profile.ecosystem.map(([name,description,to])=><Link key={name} to={to} className="rounded-2xl border border-[#e1dfd8] bg-white p-6 transition hover:-translate-y-1 hover:shadow-lg"><span className="font-mono text-[10.5px] uppercase tracking-[.16em] text-[#0C6B63]">{id==='vapt'?'Portfolio platform':'Connected platform'}</span><h3 className="mt-3 font-display font-medium tracking-[-.025em] text-2xl">{name}</h3><p className="mt-2 text-sm text-[#5d696c]">{description}</p></Link>)}</div><p className="mt-6 font-medium text-[#0c1517]">{id==='vapt'?'Together, they provide layered visibility, exposure awareness, and security assurance.':'Together, they form a unified network and exposure intelligence platform.'}</p><blockquote className="mt-8 border-l-2 border-[#0C6B63] pl-5 font-display font-medium tracking-[-.025em] text-2xl text-[#0B4D49]">{id==='vapt'?'Measure your security posture. Validate compliance. Improve with every scan.':'If you can see your attack surface, you can control your risk.'}</blockquote></div></section>}<FaqDark eyebrow={id==='ipdr'||id==='panoptix'||id==='vapt'?'Frequently Asked Questions':id==='smms'?'Questions, answered':'FAQ'} title={id==='ipdr'||id==='panoptix'||id==='vapt'?'Questions, Answered.':id==='smms'?'FAQ: Questions, Answered.':'Questions, answered.'} lede={id==='ipdr'||id==='panoptix'||id==='vapt'||id==='smms'?undefined:'What teams ask before deploying a Gyanshu platform.'} id={id==='smms'||id==='gyanshu-ai-office-assistance'?'faq':undefined} image={id==='smms'||id==='gyanshu-ai-office-assistance'?profile.faqImage:undefined} imageAlt={profile.faqImageAlt} items={id==='ipdr'||id==='panoptix'||id==='vapt'||id==='smms'||id==='gyanshu-ai-office-assistance'?profile.faqs:faqPicks.products.map((i)=>faqs[i])}/>
     {id==='gyanshu-ai-office-assistance'?<CtaPhotos eyebrow="Next step" title="Bring Private AI Into Your Organisation." muted={3} text="Begin with a scoped pilot covering users, approved document collections, security requirements, use cases and success criteria." cta="Discuss Private AI Deployment" images={ctaImagesOf(profile)}/>:id==='smms'?<CtaPhotos eyebrow="Next step" title="See SMMS in Your Operating Environment." muted={3} text="Request a technical demonstration covering supported monitoring methods, scale, notification rules, service reporting and deployment prerequisites." cta="Request Demo" images={ctaImagesOf(profile)}/>:id==='panoptix'||id==='vapt'?<CtaPhotos eyebrow="Next step" title={id==='vapt'?'Strengthen Your Security Assessment Process.':'Discuss PANOPTIX deployment.'} muted={3} text={id==='vapt'?'Share your intended target classes, scope, assessment permissions and reporting requirements.':'Talk with our team about asset scope, network access, assessment methods, integrations and security governance.'} cta={id==='vapt'?'Request a Demo':'Discuss Deployment'} images={ctaImagesOf(profile)}/>:profile.leafletPage?<IpdrContactSection heading={id==='argos-enms'?'Let’s Build a More Connected Enterprise':undefined}/>:<CtaPhotos eyebrow="Next step" title="See how this can fit your environment." muted={3} text="Plan integrations, access, rollout, and knowledge transfer with the people who will operate the platform." cta="Talk to Gyanshu" images={ctaImagesOf(profile)}/>}
   </main>
 }
