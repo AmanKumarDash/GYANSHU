@@ -10,6 +10,7 @@ import SplashScreen from './components/ui/SplashScreen'
 import { IntroContext } from './utils/intro'
 import { getPage } from './data/sitePages'
 import { publishedBlogPosts } from './data/blogPosts'
+import { OG_IMAGE, SITE_URL } from './data/siteConfig'
 
 // Interior and blog pages load on demand so the home page ships a smaller bundle.
 const InteriorPage = lazy(() => import('./components/sections/InteriorPage'))
@@ -19,8 +20,8 @@ const BlogArticle = lazy(() => import('./components/sections/BlogPages').then((m
 const SPLASH_SECONDS = 2.4
 
 const SITE = 'Gyanshu Technologies'
-const HOME_TITLE = `${SITE} | Secure Digital Operations`
-const HOME_DESCRIPTION = 'Gyanshu Technologies helps organizations secure, connect, and operate critical technology environments.'
+const HOME_TITLE = `${SITE} | AI-Powered Enterprise Engineering Intelligence`
+const HOME_DESCRIPTION = 'Gyanshu Technologies delivers cybersecurity, intelligent infrastructure, AI-powered platforms and digital engineering to reduce risk and accelerate growth.'
 
 // Title, description and robots tag for a route. Product pages with their own SEO copy refine this afterwards.
 function seoFor(pathname) {
@@ -38,15 +39,29 @@ function seoFor(pathname) {
   return { title: `${page.title} | ${SITE}`, description: description.length > 160 ? `${description.slice(0, 157).replace(/\s+\S*$/, '')}…` : description }
 }
 
+// Create or update a <meta>/<link> tag in <head> (invisible; read by search engines and social previews).
+function headTag(tag, key, value, attr, content) {
+  let el = document.head.querySelector(`${tag}[${key}="${value}"]`)
+  if (!el) { el = document.head.appendChild(document.createElement(tag)); el.setAttribute(key, value) }
+  el.setAttribute(attr, content)
+}
+
 function useRouteSeo(pathname) {
   // A layout effect runs before page-level effects, so pages can still override these values.
   useLayoutEffect(() => {
     const { title, description, noindex } = seoFor(pathname)
+    const resolved = getPage(pathname.replace(/\/$/, '') || '/')
+    const url = SITE_URL + (resolved.type === 'redirect' ? resolved.to : pathname.replace(/\/$/, '') || '/')
     document.title = title
-    document.querySelector('meta[name="description"]')?.setAttribute('content', description)
-    let robots = document.querySelector('meta[name="robots"]')
-    if (noindex && !robots) robots = document.head.appendChild(Object.assign(document.createElement('meta'), { name: 'robots' }))
-    if (robots) robots.content = noindex ? 'noindex' : 'index, follow'
+    headTag('meta', 'name', 'description', 'content', description)
+    headTag('meta', 'name', 'robots', 'content', noindex ? 'noindex' : 'index, follow')
+    headTag('link', 'rel', 'canonical', 'href', url)
+    headTag('meta', 'property', 'og:title', 'content', title)
+    headTag('meta', 'property', 'og:description', 'content', description)
+    headTag('meta', 'property', 'og:url', 'content', url)
+    headTag('meta', 'property', 'og:image', 'content', SITE_URL + OG_IMAGE)
+    headTag('meta', 'name', 'twitter:title', 'content', title)
+    headTag('meta', 'name', 'twitter:description', 'content', description)
   }, [pathname])
 }
 

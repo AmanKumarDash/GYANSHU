@@ -1,6 +1,33 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/products/ipdr",
+      "destination": "/products/flowbits-nexora",
+      "permanent": true
+    },
+    {
+      "source": "/products/argos-enms",
+      "destination": "/products/netsight360",
+      "permanent": true
+    },
+    {
+      "source": "/products/vapt",
+      "destination": "/products/nested-va",
+      "permanent": true
+    },
+    {
+      "source": "/products/gyanshu-ai-office-assistance",
+      "destination": "/products/ai-office-assistant",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/shell"
+    }
   ]
 }
