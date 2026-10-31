@@ -28,8 +28,8 @@ export const industryImages = {
 }
 
 export const productImages = {
-  '/products/ipdr': 'photo-1772862991841-f0e3e1502d7b',
-  '/products/vapt': 'photo-1768839722988-91767bb82b10',
+  '/products/flowbits-nexora': 'photo-1772862991841-f0e3e1502d7b',
+  '/products/nested-va': 'photo-1768839722988-91767bb82b10',
 }
 
 // Per-page sets. `hero` feeds the hero slideshow and headline pill, `cta` the closing photo strip;
@@ -190,12 +190,12 @@ export const faqPicks = {
 
 // Operational pressures shown on service, product and industry pages.
 export const operatingNeeds = {
-  '/products/ipdr': ['Correlate address and subscriber records across high-volume sessions.', 'Reconstruct activity quickly while keeping sensitive data under controlled deployment.'],
-  '/products/argos-enms': ['Understand dependencies across a growing network estate.', 'Identify performance changes early and coordinate an accountable operations response.'],
+  '/products/flowbits-nexora': ['Correlate address and subscriber records across high-volume sessions.', 'Reconstruct activity quickly while keeping sensitive data under controlled deployment.'],
+  '/products/netsight360': ['Understand dependencies across a growing network estate.', 'Identify performance changes early and coordinate an accountable operations response.'],
   '/products/panoptix': ['Maintain an accurate picture of internet-facing assets as they change.', 'Prioritize exposed systems by context so security work starts with the greatest risk.'],
-  '/products/vapt': ['Turn periodic scanning into a repeatable improvement cycle.', 'Give teams clear findings and evidence they can use to track remediation.'],
+  '/products/nested-va': ['Turn periodic scanning into a repeatable improvement cycle.', 'Give teams clear findings and evidence they can use to track remediation.'],
   '/products/smms': ['See infrastructure status, alerts and service health in one place.', 'Coordinate escalation across distributed sites with consistent, auditable workflows.'],
-  '/products/gyanshu-ai-office-assistance': ['Use AI to draft, summarise, and organise everyday office information.', 'Help teams spend less time on routine tasks and more time on meaningful work.'],
+  '/products/ai-office-assistant': ['Use AI to draft, summarise, and organise everyday office information.', 'Help teams spend less time on routine tasks and more time on meaningful work.'],
   '/services/cybersecurity': ['Security controls drift as infrastructure, identities, and applications change.', 'Incident roles and response paths need to be understood before a critical event.'],
   '/services/network': ['Legacy infrastructure can limit reliability and make change difficult to control.', 'Teams need end-to-end visibility across cloud, network, and data centre dependencies.'],
   '/services/iot': ['Operational data is often isolated from the decisions that could improve outcomes.', 'Connected devices need secure edge processing and lifecycle ownership.'],

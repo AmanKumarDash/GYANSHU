@@ -39,12 +39,20 @@ const labels = {
   '/cookies': ['Cookies Policy', 'A clear view of how cookies are used.', 'Cookies may support essential site functionality and help us understand site usage. You can manage cookies in your browser settings.'],
 }
 
+// Product page addresses (named after the product) for each internal product id.
+export const productSlugs = { ipdr: 'flowbits-nexora', 'argos-enms': 'netsight360', panoptix: 'panoptix', vapt: 'nested-va', smms: 'smms', 'gyanshu-ai-office-assistance': 'ai-office-assistant' }
+const productIdBySlug = Object.fromEntries(Object.entries(productSlugs).map(([id, slug]) => [slug, id]))
+// Internal product id for a product address, e.g. '/products/nested-va' -> 'vapt'.
+export const productIdFor = (path) => productIdBySlug[path.split('/').pop()] || path.split('/').pop()
+
 export function getPage(pathname) {
   const path = pathname.replace(/\/$/, '') || '/'
   if (labels[path]) return { title: labels[path][0], eyebrow: 'GYANSHU TECHNOLOGY', subtitle: labels[path][1], intro: labels[path][2], type: path === '/products' || path === '/industries' || path === '/solutions' ? 'listing' : 'standard', path }
   const productMatch = path.match(/^\/products\/([^/]+)$/)
-  if (productMatch && products[productMatch[1]]) {
-    const [title, eyebrow, intro, features] = products[productMatch[1]]
+  // Old addresses (e.g. /products/ipdr) forward to the named ones.
+  if (productMatch && products[productMatch[1]] && productSlugs[productMatch[1]] !== productMatch[1]) return { type: 'redirect', to: `/products/${productSlugs[productMatch[1]]}`, path }
+  if (productMatch && productIdBySlug[productMatch[1]]) {
+    const [title, eyebrow, intro, features] = products[productIdBySlug[productMatch[1]]]
     return { title, eyebrow, subtitle: eyebrow, intro, features, type: 'product', path }
   }
   const serviceMatch = path.match(/^\/services\/([^/]+)$/)
@@ -71,7 +79,7 @@ export function getPage(pathname) {
 
 export const productLinks = Object.keys(products).map((slug) => ({
   label: ({ ipdr: 'FLOWBITS NEXORA', 'argos-enms': 'NetSight360', vapt: 'Nested VA' })[slug] || products[slug][0],
-  to: `/products/${slug}`,
+  to: `/products/${productSlugs[slug]}`,
 }))
 export const serviceLinks = Object.keys(servicePages).map((slug) => ({ label: servicePages[slug][0], to: `/services/${slug}` }))
 export const industryLinks = Object.keys(industries).map((slug) => ({ label: industries[slug][0], to: `/industries/${slug}` }))

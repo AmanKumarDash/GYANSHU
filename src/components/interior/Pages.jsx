@@ -96,12 +96,12 @@ export function ServiceDetail({ page }) {
   const images = media.hero
   const related = isIot
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/flowbits-nexora'], to: '/products/flowbits-nexora' },
       ]
     : isNetwork
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/ipdr'], to: '/products/ipdr' },
-        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: productImages['/products/vapt'], to: '/products/vapt' },
+        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/flowbits-nexora'], to: '/products/flowbits-nexora' },
+        { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: productImages['/products/nested-va'], to: '/products/nested-va' },
       ]
     : serviceCards.filter((c) => c.to !== page.path).slice(0, 3)
   const process = isIot
@@ -212,8 +212,8 @@ export function ServiceDetail({ page }) {
     ['Operational Excellence', 'Improve processes, reduce inefficiencies, and enhance overall business performance through compliance frameworks.'],
   ]
   const complianceTools = [
-    { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['IPDR', 'Audit trails'], to: '/products/ipdr' },
-    { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', tags: ['VAPT', 'Compliance checks'], to: '/products/vapt' },
+    { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['IPDR', 'Audit trails'], to: '/products/flowbits-nexora' },
+    { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', tags: ['VAPT', 'Compliance checks'], to: '/products/nested-va' },
   ]
   return <main>
     <HeroCentered eyebrow={isRegulatory ? 'REGULATORY COMPLIANCE' : isApplication ? 'INITIALIZING APPLICATION SERVICES' : isIot ? 'INTERNET OF THINGS' : isNetwork ? 'Network Services' : 'Services / Expertise'} title={isRegulatory ? 'Navigate Regulations Confidently with Our Tailored GRC Services' : isApplication ? 'Smarter Software Through Agile Development' : isIot ? 'Driving Innovation with IoT' : page.title} pill={images}
@@ -326,8 +326,8 @@ function CybersecurityServiceContent() {
         <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(media.products, 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
         <div className="grid gap-4 md:grid-cols-2">
           {[
-            ['FLOWBITS NEXORA', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/ipdr', productImages['/products/ipdr']],
-            ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/vapt', productImages['/products/vapt']],
+            ['FLOWBITS NEXORA', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/flowbits-nexora', productImages['/products/flowbits-nexora']],
+            ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/nested-va', productImages['/products/nested-va']],
           ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
             <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
             <div className="p-6"><span className="font-mono text-xs uppercase tracking-wider text-brand-600">{subtitle}</span><h3 className="mt-2 font-display text-2xl font-medium">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
@@ -354,7 +354,7 @@ function CybersecurityServiceContent() {
 const focusLinks = [
   { label: 'Resilient infrastructure', to: '/services/network', icon: Layers },
   { label: 'Practical cybersecurity', to: '/services/cybersecurity', icon: BadgeCheck },
-  { label: 'Clear operational visibility', to: '/products/argos-enms', icon: Search },
+  { label: 'Clear operational visibility', to: '/products/netsight360', icon: Search },
   { label: 'IoT & smart operations', to: '/services/iot', icon: Boxes },
   { label: 'Scalable technology choices', to: '/solutions', icon: Compass },
 ]
@@ -649,8 +649,8 @@ const studentVoices = [
   { name: 'Lopamudra Sahoo', role: 'CCNA Aspirant', quote: 'Before the course I was confused. Now I am preparing confidently for my CCNA exam.', colors: ['#36444b', '#e5ebec'] },
 ]
 const workItems = [
-  ...caseStudies.map((c) => ({ title: c.result, text: c.desc, tag: c.industry, image: pageImages['/our-work'].cases[c.id - 1], to: { 1: '/products/ipdr', 2: '/products/argos-enms', 3: '/products/vapt', 4: '/services/iot' }[c.id] })),
-  { title: 'Infrastructure intelligence', text: 'Understand network relationships, performance, and operational change.', image: pageImages['/our-work'].useCases[0], to: '/products/argos-enms' },
+  ...caseStudies.map((c) => ({ title: c.result, text: c.desc, tag: c.industry, image: pageImages['/our-work'].cases[c.id - 1], to: { 1: '/products/flowbits-nexora', 2: '/products/netsight360', 3: '/products/nested-va', 4: '/services/iot' }[c.id] })),
+  { title: 'Infrastructure intelligence', text: 'Understand network relationships, performance, and operational change.', image: pageImages['/our-work'].useCases[0], to: '/products/netsight360' },
   { title: 'Security exposure management', text: 'Connect assets, vulnerabilities, and response priorities.', image: pageImages['/our-work'].useCases[1], to: '/products/panoptix' },
   { title: 'Connected operations', text: 'Bring sensor data from edge environments into useful action.', image: pageImages['/our-work'].useCases[2], to: '/services/iot' },
 ]

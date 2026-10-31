@@ -2,7 +2,7 @@ import { createElement, useEffect, useLayoutEffect, useMemo, useRef, useState } 
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { getPage, productLinks } from '../../data/sitePages'
+import { getPage, productIdFor, productLinks } from '../../data/sitePages'
 import { CtaPhotos, FaqDark, HeroCentered, StepsBanner } from '../interior/Blocks'
 import { faqs } from '../../data/content'
 import { faqPicks, iconFor } from '../../data/pageMedia'
@@ -513,7 +513,7 @@ for (const [id, shots] of Object.entries(productShots)) profiles[id] = { ...prof
 
 // Shared helper understands local, Pexels and Unsplash ids.
 const photo = (id, w=1000) => sharedPhoto(id, w)
-const idFor = (path) => path.split('/').pop()
+const idFor = productIdFor
 // The product's own interface screen where there is one, otherwise its product artwork.
 const catalogImage = (id) => (profiles[id].productShots || profiles[id].images)[0]
 // Section images separate from the hero set, so a product page does not repeat its hero photos.

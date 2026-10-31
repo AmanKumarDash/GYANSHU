@@ -1,7 +1,7 @@
 import { ArrowUpRight, Banknote, Building2, HeartPulse, Landmark, RadioTower, Server } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { getPage, industryLinks } from '../../data/sitePages'
-import { ArrowButton, Eyebrow, MaskLines, Reveal } from '../ui/Motion'
+import { ArrowButton, MaskLines, Reveal } from '../ui/Motion'
 
 const icons = [Landmark, RadioTower, Banknote, Building2, Server, HeartPulse]
 
@@ -10,11 +10,11 @@ export default function Industries() {
     <div className="shell">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
-          <Reveal><Eyebrow>Operating environments</Eyebrow></Reveal>
-          <h2 className="h-section mt-5"><MaskLines lines={['Every context has its', <>own <span className="text-brand-500">priorities.</span></>]} /></h2>
+          <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-600">Expertise across sectors</p></Reveal>
+          <h2 className="h-section mt-4"><MaskLines lines={[<>Industries We <span className="text-brand-500">Serve</span></>]} /></h2>
         </div>
         <Reveal delay={0.15} className="lg:justify-self-end">
-          <p className="lede max-w-md">We shape technology around the realities of each environment—from public services and critical networks to connected facilities.</p>
+          <p className="lede max-w-md">Gyanshu delivers secure IT infrastructure, cyber defense, and network intelligence solutions to organizations operating in high-risk, high-compliance environments.</p>
         </Reveal>
       </div>
 

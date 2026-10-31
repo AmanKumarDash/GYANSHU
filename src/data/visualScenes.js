@@ -9,12 +9,12 @@ const base = {
   company: {type:'company',accent:'#0B4D49',label:'People and technology',subtitle:'EXPERTISE / PARTNERSHIP / IMPACT',image:'photo-1521737711867-e3b97375f902',video:8102889},
 }
 const routeScenes = {
-  '/products/ipdr':['Subscriber flow correlation','RECORDS / SESSIONS / EVIDENCE','network','photo-1597733336794-12d05021d510',35402241],
-  '/products/argos-enms':['Live network operations','NODES / UPTIME / CAPACITY','network','photo-1597733336794-12d05021d510',35402241],
+  '/products/flowbits-nexora':['Subscriber flow correlation','RECORDS / SESSIONS / EVIDENCE','network','photo-1597733336794-12d05021d510',35402241],
+  '/products/netsight360':['Live network operations','NODES / UPTIME / CAPACITY','network','photo-1597733336794-12d05021d510',35402241],
   '/products/panoptix':['External asset discovery','ASSETS / EXPOSURE / RESPONSE','security','photo-1516321318423-f06f85e504b3',32336446],
-  '/products/vapt':['Vulnerability scan cycle','SCAN / VALIDATE / REPORT','security','photo-1516321318423-f06f85e504b3',5377646],
+  '/products/nested-va':['Vulnerability scan cycle','SCAN / VALIDATE / REPORT','security','photo-1516321318423-f06f85e504b3',5377646],
   '/products/smms':['Unified infrastructure monitoring','STATUS / ALERTS / SERVICE','network','photo-1509062522246-3755977927d7',8102889],
-  '/products/gyanshu-ai-office-assistance':['AI office assistance','ASK / DRAFT / SUMMARISE','application','photo-1498050108023-c5249f4df085',5925286],
+  '/products/ai-office-assistant':['AI office assistance','ASK / DRAFT / SUMMARISE','application','photo-1498050108023-c5249f4df085',5925286],
   '/services/cybersecurity':['Security operations','ASSESS / PROTECT / RESPOND','security','photo-1516321318423-f06f85e504b3',35402241],
   '/services/network':['Resilient network design','CONNECT / MONITOR / OPTIMIZE','network','photo-1597733336794-12d05021d510',35402241],
   '/services/iot':['Industrial IoT systems','SENSE / AUTOMATE / IMPROVE','iot','photo-1581091226825-a6a2a5aee158',32386581],

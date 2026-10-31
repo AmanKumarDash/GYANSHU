@@ -6,12 +6,13 @@ import { ArrowButton, MaskLines } from '../ui/Motion'
 import { EASE, photo, useIntroReady } from '../../utils/intro'
 
 const SCENE_SECONDS = 6.5
+// One slide per product: its interface screen, product name, category and tagline.
 const scenes = [
-  { image: 'px-256219', label: 'Network intelligence', text: 'See the systems behind every signal.', to: '/products/argos-enms' },
-  { image: 'px-6963944', label: 'Cybersecurity', text: 'Make exposure easier to understand.', to: '/services/cybersecurity' },
-  { image: 'px-32845694', label: 'Connected operations', text: 'Bring field data into the decisions that matter.', to: '/services/iot' },
+  { image: '/images/products/nexora-overview.svg', product: 'FLOWBITS NEXORA', label: 'Network Intelligence', description: 'Achieve Comprehensive Network Traffic Visibility, Proactively Detect Threats, and Strengthen Enterprise Security with Actionable Network Intelligence.', to: '/products/flowbits-nexora' },
+  { image: '/images/products/netsight-topology.svg', product: 'NetSight360', label: 'Network Observability', description: 'Optimize Enterprise Networks with Intelligent Observability, Proactive Monitoring, and Automated Incident Management to Minimize Downtime, Reduce Costs, and Ensure Business Continuity.', to: '/products/netsight360' },
+  { image: '/images/products/panoptix-overview.svg', product: 'PANOPTIX', label: 'Cyber Exposure Management', description: 'Strengthen Enterprise Cybersecurity with Continuous Exposure Visibility, Proactive Risk Assessment, and Intelligent Threat Prioritization to Reduce Attack Surfaces, Minimize Risks, and Enhance Business Resilience.', to: '/products/panoptix' },
 ]
-const explore = [['Cybersecurity', '/services/cybersecurity'], ['Network intelligence', '/products/argos-enms'], ['IoT & smart operations', '/services/iot']]
+const explore = scenes.map((s) => [s.label, s.to])
 
 // Stack of cross-fading images with a slow Ken Burns push on the active one.
 function SceneStack({ active, width, className = '' }) {
@@ -59,11 +60,11 @@ export default function Hero() {
         </span>
       </motion.div>
 
-      <h1 className="h-poster mt-5 text-[clamp(3.6rem,8.8vw,8.8rem)] text-ink" aria-label="Intelligence. Trust. Innovation.">
+      <h1 className="h-poster mt-5 text-[clamp(3.6rem,8.8vw,8.8rem)] text-ink" aria-label="AI-Powered Enterprise Engineering Intelligence Driving Resilience, Efficiency & Growth.">
         <MaskLines onLoad delay={0.2} stagger={0.1} lines={[
-          <>Intelligence.{' '}</>,
+          <>AI-Powered Enterprise Engineering Intelligence Driving Resilience{' '}</>,
           <span className="inline-flex flex-wrap items-center justify-center gap-x-[.18em]">
-            <span className="text-muted-faint">Trust.</span>{' '}
+            <span className="text-muted-faint">Efficiency &</span>{' '}
             <motion.span
               className="relative inline-block h-[.74em] overflow-hidden rounded-full bg-ink align-middle"
               initial={{ width: 0 }}
@@ -71,12 +72,12 @@ export default function Hero() {
               transition={{ duration: 1.1, delay: 0.75, ease: EASE }}
               aria-hidden="true"
             ><SceneStack active={active} width={500} /></motion.span>
-            <span>Innovation.</span>
+            <span>Growth.</span>
           </span>,
         ]} />
       </h1>
 
-      <motion.p {...show(0.55)} className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">Secure critical systems. Connect complex operations. Build technology that moves your organization forward.</motion.p>
+      <motion.p {...show(0.55)} className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">Empower your business with cybersecurity, intelligent infrastructure, AI-powered platforms, and digital engineering to reduce risks, streamline operations, and accelerate growth.</motion.p>
       <motion.div {...show(0.68)} className="mt-6 flex flex-wrap justify-center gap-3">
         <ArrowButton href="#capabilities" icon={ArrowDown}>Explore capabilities</ArrowButton>
         <Link to="/contact" className="btn btn-outline">Talk to our team</Link>
@@ -98,14 +99,16 @@ export default function Hero() {
           <div className="max-w-xl">
             <AnimatePresence mode="wait">
               <motion.div key={scene.label} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.6, ease: EASE }}>
-                <p className="font-display text-3xl font-medium leading-[1.05] tracking-[-.03em] text-white md:text-5xl">{scene.text}</p>
-                <Link to={scene.to} className="mt-5 inline-flex items-center gap-2 text-sm text-brand-300 transition-colors hover:text-white">Explore the story <ArrowUpRight size={15} /></Link>
+                <span className="mb-3 inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[.16em] text-white/80">{scene.label}</span>
+                <p className="font-display text-2xl font-medium tracking-[-.025em] text-white md:text-4xl">{scene.product}</p>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/85 md:text-base">{scene.description}</p>
+                <Link to={scene.to} className="mt-5 inline-flex items-center gap-2 text-sm text-brand-300 transition-colors hover:text-white">Explore {scene.product} <ArrowUpRight size={15} /></Link>
               </motion.div>
             </AnimatePresence>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
             <div className="flex flex-wrap gap-2">
-              {explore.map(([label, to]) => <Link key={to} to={to} className="rounded-full border border-white/15 bg-white/[.07] px-4 py-2 text-[13px] text-white/85 backdrop-blur-md transition-colors hover:bg-white hover:text-ink">{label}</Link>)}
+              {explore.map(([label, to]) => <Link key={label} to={to} className="rounded-full border border-white/15 bg-white/[.07] px-4 py-2 text-[13px] text-white/85 backdrop-blur-md transition-colors hover:bg-white hover:text-ink">{label}</Link>)}
             </div>
             <div className="flex w-full items-center gap-3 lg:w-[22rem]">
               <span className="font-mono text-[11px] text-white/70">{String(active + 1).padStart(2, '0')}</span>

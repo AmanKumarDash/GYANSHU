@@ -1,17 +1,18 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, Building2, Radar, ScanEye, ShieldCheck, Sparkles, Waypoints } from 'lucide-react'
+import { ArrowUpRight, Radar, ScanEye, Server, ShieldCheck, Sparkles, Waypoints } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { productLinks } from '../../data/sitePages'
-import { ArrowButton, Eyebrow, MaskLines, Reveal } from '../ui/Motion'
+import { ArrowButton, MaskLines, Reveal } from '../ui/Motion'
 import { EASE } from '../../utils/intro'
 
+// Icon, category and tagline for each product card.
 const meta = {
-  ipdr: [Waypoints, 'IP & subscriber correlation at scale.'],
-  'argos-enms': [Radar, 'The all-seeing network intelligence platform.'],
-  panoptix: [ScanEye, 'Real-time attack surface detection.'],
-  vapt: [ShieldCheck, 'Periodic vulnerability assessment & compliance scanning.'],
-  smms: [Building2, 'Connected school operations.'],
-  'gyanshu-ai-office-assistance': [Sparkles, 'AI assistance for everyday office work.'],
+  ipdr: [Waypoints, 'Network Intelligence', 'Transform network data into actionable security and operational intelligence.'],
+  'argos-enms': [Radar, 'Network Operations', 'Intelligent observability. Proactive operations. Assured continuity.'],
+  panoptix: [ScanEye, 'Cyber Exposure Management', 'Identify exposures. Prioritize risks. Strengthen cyber resilience.'],
+  vapt: [ShieldCheck, 'VAPT Platform', 'Continuous security assessment and actionable vulnerability intelligence.'],
+  smms: [Server, 'Smart Monitoring', 'Unified infrastructure visibility and intelligent service monitoring.'],
+  'gyanshu-ai-office-assistance': [Sparkles, 'Private Enterprise AI', 'Secure enterprise knowledge, AI assistance, and workflow automation.'],
 }
 
 // Deterministic constellation of nodes for the backdrop.
@@ -35,7 +36,7 @@ function Constellation() {
 
 function PlatformCard({ item, index }) {
   const slug = item.to.split('/').pop()
-  const [Icon, line] = meta[slug] || [ShieldCheck, '']
+  const [Icon, category, line] = meta[slug] || [ShieldCheck, '', '']
   const onMove = (e) => {
     const r = e.currentTarget.getBoundingClientRect()
     e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
@@ -49,9 +50,10 @@ function PlatformCard({ item, index }) {
       </div>
       <div className="relative mt-4 sm:mt-5">
         <h3 className="font-display text-2xl font-medium tracking-[-.025em] text-white md:text-[1.7rem]">{item.label.trim()}</h3>
+        {category && <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-300">{category}</p>}
         <p className="mt-2 text-[14.5px] leading-relaxed text-white/50">{line}</p>
         <div className="mt-4 flex items-center justify-between border-t border-white/[.08] pt-3">
-          <span className="text-sm text-white/70 transition-colors group-hover:text-white">View platform</span>
+          <span className="text-sm text-white/70 transition-colors group-hover:text-white">Explore Platform</span>
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={16} /></span>
         </div>
       </div>
@@ -67,11 +69,11 @@ export default function Platforms() {
       <div className="shell relative">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <Reveal><Eyebrow dark>Built for critical operations</Eyebrow></Reveal>
-            <h2 className="h-section mt-5 text-white"><MaskLines lines={['Purpose-built platforms.', <span className="text-brand-300">Operationally ready.</span>]} /></h2>
-            <Reveal delay={0.15}><p className="mt-3 max-w-md text-[15px] leading-relaxed text-white/50">Technology for secure, visible, and dependable operations.</p></Reveal>
+            <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300 [text-align:left!important]">Gyanshu | Enterprise Technology Platforms</p></Reveal>
+            <h2 className="h-section mt-4 text-white"><MaskLines lines={['Engineered for Complexity.', <span className="text-brand-300">Built for Enterprise.</span>]} /></h2>
+            <Reveal delay={0.15}><p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/60">Intelligent, secure, and scalable technology platforms designed to strengthen resilience, simplify operations, and accelerate digital transformation.</p></Reveal>
           </div>
-          <Reveal delay={0.2}><ArrowButton to="/products" variant="light">Explore all products</ArrowButton></Reveal>
+          <Reveal delay={0.2}><ArrowButton to="/products" variant="light">Explore Our Platforms</ArrowButton></Reveal>
         </div>
         <motion.div className="mt-5 grid grid-cols-2 gap-2 sm:mt-6 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE }}>
           {productLinks.map((p, i) => <PlatformCard key={p.to} item={p} index={i} />)}

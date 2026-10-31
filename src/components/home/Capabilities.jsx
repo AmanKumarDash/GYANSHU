@@ -17,8 +17,8 @@ export default function Capabilities() {
     <div className="shell">
       <SectionHead
         eyebrow="Industries and services"
-        title={[<>Capabilities that work <span className="text-brand-500">together.</span></>]}
-        lede="Cybersecurity, infrastructure, software, AI, and connected operations—brought together around your environment and priorities."
+        title={[<>Key <span className="text-brand-500">Capabilities</span></>]}
+        lede="Explore our core strengths across cybersecurity, infrastructure, software, AI, and connected operations."
       />
 
       <Reveal className="mt-6 flex flex-col gap-2 md:mt-8 lg:h-[min(48svh,390px)] lg:min-h-[340px] lg:flex-row">

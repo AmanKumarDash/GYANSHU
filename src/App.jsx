@@ -32,6 +32,7 @@ function seoFor(pathname) {
     return post ? { title: `${post.title} | ${SITE}`, description: post.excerpt } : { title: `Post not found | ${SITE}`, description: HOME_DESCRIPTION, noindex: true }
   }
   const page = getPage(path)
+  if (page.type === 'redirect') return seoFor(page.to)
   if (page.type === 'missing') return { title: `Page not found | ${SITE}`, description: page.intro, noindex: true }
   const description = page.type === 'product' || page.type === 'industry' ? page.intro : `${page.subtitle} ${page.intro}`
   return { title: `${page.title} | ${SITE}`, description: description.length > 160 ? `${description.slice(0, 157).replace(/\s+\S*$/, '')}…` : description }
