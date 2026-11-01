@@ -43,7 +43,7 @@ export default function ClosingCTA() {
   return <section className="bg-white px-3 pb-3 sm:px-5 sm:pb-5">
     <div ref={ref} className="relative isolate mx-auto flex min-h-[76svh] max-w-[1600px] items-center justify-center overflow-hidden rounded-[2.5rem] bg-ink-950 py-14 text-center text-white sm:min-h-[82svh] sm:py-16 lg:min-h-[min(86svh,760px)] lg:py-20">
       <motion.img src={photo('photo-1446776811953-b23d57bd21aa', 2200)} alt="" loading="lazy" style={{ scale: reduce ? 1 : scale }} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-70" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(7,13,15,.35),rgba(7,13,15,.9)_75%)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(6,43,42,.35),rgba(6,43,42,.9)_75%)]" />
       <div className="grain absolute inset-0 -z-10" />
       <div className="shell flex flex-col items-center">
         <Reveal><Eyebrow dark>Start a conversation</Eyebrow></Reveal>

@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react'
-import { animate, motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { EASE, EASE_IN_OUT } from '../../utils/intro'
 
 // Brand mark from the brand kit (brand-kit/logo-only.svg, 547×652): ribbon pieces, three bars, four data squares.
@@ -27,23 +26,10 @@ const gradients = [
   ['g7', [447.36, 146.31, 447.36, 415], [[0, '#14B8A6'], [1, '#0B3D3B']]],
 ]
 
-export default function SplashScreen({ duration = 2.4 }) {
+// Splash shows the brand logo only (no counter or side captions).
+export default function SplashScreen() {
   const reduce = useReducedMotion()
-  const counter = useRef(null)
-  const bar = useRef(null)
   const d = reduce ? 0.2 : 1
-
-  useEffect(() => {
-    const controls = animate(0, 100, {
-      duration: duration * 0.92 * d,
-      ease: [0.65, 0, 0.35, 1],
-      onUpdate: (v) => {
-        if (counter.current) counter.current.textContent = String(Math.round(v)).padStart(3, '0')
-        if (bar.current) bar.current.style.transform = `scaleX(${v / 100})`
-      },
-    })
-    return () => controls.stop()
-  }, [duration, d])
 
   const piece = (i) => ({ initial: { opacity: 0, y: 26 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.55 * d, delay: (0.05 + i * 0.07) * d, ease: EASE } })
   const wipe = (delay) => ({ initial: { clipPath: 'inset(0 100% 0 0)' }, animate: { clipPath: 'inset(0 0% 0 0)' }, transition: { duration: 0.7 * d, delay: delay * d, ease: EASE_IN_OUT } })
@@ -56,11 +42,7 @@ export default function SplashScreen({ duration = 2.4 }) {
       <div className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(rgba(11,61,59,.08)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
       <motion.div className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-400/15 blur-[120px]" initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 2 * d, ease: EASE }} />
 
-      <motion.div className="relative flex h-full flex-col justify-between p-5 sm:p-8 lg:p-12" exit={{ y: -120, opacity: 0 }} transition={{ duration: 0.8, ease: EASE_IN_OUT }}>
-        <div className="flex items-start justify-between font-mono text-[10px] uppercase tracking-[.2em] text-brand-900/55">
-          <motion.span initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 * d, duration: 0.6 }}>From infrastructure to intelligence</motion.span>
-          <motion.span initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 * d, duration: 0.6 }} className="hidden sm:block">Technology · People · Possibilities</motion.span>
-        </div>
+      <motion.div className="relative flex h-full flex-col justify-center p-5 sm:p-8 lg:p-12" exit={{ y: -120, opacity: 0 }} transition={{ duration: 0.8, ease: EASE_IN_OUT }}>
 
         <div className="flex flex-col items-center">
           <svg viewBox="0 0 547 652" className="h-24 w-auto overflow-visible sm:h-32 lg:h-36" aria-hidden="true">
@@ -74,13 +56,7 @@ export default function SplashScreen({ duration = 2.4 }) {
           <motion.img src="/brand/gyanshu-tagline.svg" alt="" className="mt-4 w-[15rem] sm:mt-5 sm:w-[22rem] lg:w-[25rem]" {...wipe(0.95)} />
           <span className="sr-only">Gyanshu Technologies Pvt. Ltd. Secure. Intelligent. Connected.</span>
         </div>
-
-        <div className="flex items-end justify-between gap-6">
-          <motion.p className="max-w-[14rem] text-left font-mono text-[10px] uppercase leading-relaxed tracking-[.2em] text-brand-900/55" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 * d, duration: 0.6 }}>A smarter, more secure<span className="text-brand-400"> · </span>connected world</motion.p>
-          <span className="font-poster text-[4.5rem] leading-[.8] text-brand-900 sm:text-[7rem] lg:text-[8.5rem]"><span ref={counter}>000</span><span className="text-brand-400">%</span></span>
-        </div>
       </motion.div>
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-brand-900/10"><div ref={bar} className="h-full origin-left scale-x-0 bg-gradient-to-r from-brand-900 via-brand-400 to-brand-300" /></div>
     </motion.div>
   </motion.div>
 }

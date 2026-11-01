@@ -73,7 +73,7 @@ export function Slideshow({ images, label, captions = [], interval = 5.5, imageY
     return () => window.clearTimeout(t)
   }, [i, images, interval, reduce])
   return <div className="grain relative h-full w-full overflow-hidden bg-ink">
-    <motion.div style={{ y: imageY }} className="absolute inset-[-8%_0]">
+    <motion.div style={{ y: imageY }} className="absolute inset-[-3%_0]">
       {images.map((id, k) => <motion.img key={`${id}-${k}`} src={photo(id, 2400)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={false} animate={{ opacity: k === i ? 1 : 0, scale: k === i || reduce ? 1 : 1.12 }} transition={{ opacity: { duration: 1.1 }, scale: k === i ? { duration: interval + 1.5, ease: 'linear' } : { duration: 0, delay: 1.1 } }} />)}
     </motion.div>
     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-ink-950/20" />
@@ -114,7 +114,7 @@ export function HeroCentered({ eyebrow, title, muted = 1, pill, pillAfter, subti
   const { scrollYProgress } = useScroll({ target: panel, offset: ['start end', 'start 12%'] })
   const scale = useTransform(scrollYProgress, [0, 1], [0.88, 1])
   const radius = useTransform(scrollYProgress, [0, 1], [48, 28])
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-8%', '0%'])
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-3%', '0%'])
   const show = (delay) => ({ initial: { opacity: 0, y: 20 }, animate: ready ? { opacity: 1, y: 0 } : undefined, transition: { duration: 0.9, delay, ease: EASE } })
   const hasMedia = !compact && (media || images?.length)
 
@@ -131,8 +131,8 @@ export function HeroCentered({ eyebrow, title, muted = 1, pill, pillAfter, subti
       </>}</motion.div>}
     </div>
 
-    {hasMedia && <div ref={panel} className="relative mx-auto mt-7 max-w-[1600px] px-3 pb-10 sm:px-5 md:mt-9 md:pb-20">
-      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[52svh] min-h-[320px] max-h-[500px] origin-top overflow-hidden bg-ink shadow-lift md:h-[62svh] md:min-h-[440px] md:max-h-[680px]">
+    {hasMedia && <div ref={panel} className="relative mx-auto mt-7 px-3 pb-10 sm:px-5 md:mt-9 md:pb-20">
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[52svh] min-h-[320px] max-h-[500px] origin-top overflow-hidden bg-ink shadow-lift md:h-[min(56.25vw,calc(100svh-2.5rem))] md:min-h-[440px] md:max-h-none">
         {media || <Slideshow images={images} label={mediaLabel} captions={captions} imageY={reduce ? 0 : imageY} />}
         {chips.length > 0 && <div className="absolute left-5 top-5 z-10 hidden max-w-[60%] flex-wrap gap-2 md:flex">
           {chips.map((c, i) => <motion.span key={c} initial={{ opacity: 0, y: -8 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ delay: 1 + i * 0.1, duration: 0.6, ease: EASE }} className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/45 px-3.5 py-2 text-[12.5px] text-white/90 backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{c}</motion.span>)}
@@ -441,7 +441,7 @@ function OrbitArc({ items }) {
             <motion.path d={d} fill="none" stroke="#fff" strokeWidth="8" strokeLinecap="round" initial={{ pathLength: reduce ? 1 : 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.8, ease: 'easeInOut' }} />
           </mask>
         </defs>
-        <path d={d} fill="none" stroke="#0c1517" strokeOpacity=".32" strokeWidth="1.5" strokeDasharray="2 6" strokeLinecap="round" mask={`url(#${maskId})`} />
+        <path d={d} fill="none" stroke="#0B3D3B" strokeOpacity=".32" strokeWidth="1.5" strokeDasharray="2 6" strokeLinecap="round" mask={`url(#${maskId})`} />
       </svg>
       {items.map((item, i) => {
         const [x, y] = pts[i]
@@ -462,7 +462,7 @@ function OrbitArc({ items }) {
 
 export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }) {
   return <section className="px-3 py-4 sm:px-5 sm:py-5">
-    <div className="relative mx-auto min-h-[min(560px,calc(100svh-6rem))] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0c1517_100%)] md:min-h-[min(700px,calc(100svh-6rem))]">
+    <div className="relative mx-auto min-h-[min(560px,calc(100svh-6rem))] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0B3D3B_100%)] md:min-h-[min(700px,calc(100svh-6rem))]">
       <div className="grain absolute inset-0" />
       {/* Arc + nodes (laptop and up; smaller screens get the sector links below) */}
       <OrbitArc items={items} />

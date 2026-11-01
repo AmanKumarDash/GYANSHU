@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import Logo from '../ui/Logo'
-import { productLinks } from '../../data/sitePages'
+import { industryLinks, productLinks } from '../../data/sitePages'
 
 const footerGroups = [
   { title: 'Products', links: [...productLinks.map((l) => [l.label.trim(), l.to]), ['All products', '/products']] },
   { title: 'Services', links: [['Cybersecurity', '/services/cybersecurity'], ['Network Infrastructure', '/services/network'], ['IoT Solutions', '/services/iot'], ['Application Development', '/services/application'], ['Regulatory Compliance', '/services/regulatory'], ['Training', '/training']] },
   { title: 'Company', links: [['About Gyanshu', '/about'], ['Why Choose Us', '/why-choose-us'], ['Our Mission', '/mission'], ['Core Values', '/core-values'], ['Careers', '/careers'], ['Contact', '/contact']] },
-  { title: 'Explore', links: [['Industries', '/industries'], ['Our Work', '/our-work'], ['Blog & Updates', '/blog'], ['Support', '/support'], ['Help & FAQ', '/help']] },
+  { title: 'Industries', links: industryLinks.map((l) => [l.label, l.to]) },
+  { title: 'Explore', links: [['Our Work', '/our-work'], ['Blog & Updates', '/blog'], ['Support', '/support'], ['Help & FAQ', '/help']] },
 ]
 // Simple brand glyphs (the icon library ships no brand logos).
 const glyph = (d) => function Glyph() { return <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d={d} /></svg> }
@@ -22,7 +23,6 @@ const socials = [['LinkedIn', '', Linkedin], ['Facebook', '', Facebook], ['X', '
 
 export default function Footer() {
   return <footer className="relative overflow-hidden bg-ink-950 text-white">
-    <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent_60%)]" />
     <div className="shell relative pt-14 sm:pt-16 lg:pt-20">
       <div className="grid gap-10 lg:grid-cols-[1.25fr_2fr]">
         <div>
@@ -40,7 +40,7 @@ export default function Footer() {
               : <span key={label} role="img" aria-label={`${label} (link coming soon)`} title={`${label}: coming soon`} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60"><Icon /></span>)}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-7 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-7 md:grid-cols-3 xl:grid-cols-5">
           {footerGroups.map((group) => <div key={group.title}>
             <h2 className="font-mono text-[10.5px] uppercase tracking-[.2em] text-white/50">{group.title}</h2>
             <ul className="mt-5 flex flex-col gap-3">

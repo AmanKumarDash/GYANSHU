@@ -8,18 +8,20 @@ import Process from '../home/Process'
 import WhyGyanshu from '../home/WhyGyanshu'
 import Customers from '../home/Customers'
 import Testimonials from '../home/Testimonials'
+import CoreStrengths from '../home/CoreStrengths'
 
 export default function ExperienceHome() {
   return <main className="overflow-x-clip bg-paper text-ink">
     <Hero />
     <Perspectives />
-    <div className="bg-[linear-gradient(to_bottom,#f3f2ee_50%,#fff_50%)]"><Platforms /></div>
+    <div className="bg-[linear-gradient(to_bottom,#F8FCFC_50%,#fff_50%)]"><Platforms /></div>
     <Capabilities />
-    <Industries />
     <EmergingTech />
     <Process />
     <WhyGyanshu />
     <Customers />
+    <Industries />
+    <CoreStrengths />
     <Testimonials />
   </main>
 }

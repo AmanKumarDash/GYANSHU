@@ -8,10 +8,11 @@ import { EASE, photo } from '../../utils/intro'
 
 const STORY_SECONDS = 5
 // `title`/`text`/`cta` fill the large panel; `tag`/`short` fill the selector card beside it.
+// `textInImage`: the artwork already shows the title and text, so on larger screens only the label and link are overlaid.
 const storyCards = [
-  { n: '01', tag: 'Cybersecurity & Risk Advisory', short: 'Anticipate threats. Reduce risk. Strengthen resilience.', title: 'Secure What Matters. Build Resilience That Lasts.', text: 'Protect critical assets, anticipate emerging threats, and strengthen enterprise resilience through proactive cybersecurity and risk advisory.', cta: 'Explore Cybersecurity', image: 'px-5483070', to: '/services/cybersecurity' },
-  { n: '02', tag: 'Network Operations & Solutions', short: 'Intelligent visibility. Reliable networks. Seamless operations.', title: 'Intelligent Networks. Uninterrupted Business.', text: 'Gain end-to-end visibility, optimize network performance, and ensure operational continuity through intelligent monitoring and automation.', cta: 'Explore Network Solutions', image: 'px-1181338', to: '/services/network' },
-  { n: '03', tag: 'AI & Intelligent Automation', short: 'Automate workflows. Unlock intelligence. Accelerate growth.', title: 'Transform Operations with Intelligent Automation.', text: 'Accelerate productivity, automate complex workflows, and turn enterprise data into actionable intelligence with AI-driven solutions.', cta: 'Explore AI Solutions', image: '/images/ai-office-assistant/01_AI_Office_Assistant_Hero_16x9.webp', to: '/products/ai-office-assistant' },
+  { n: '01', tag: 'Cybersecurity & Risk Advisory', short: 'Anticipate threats. Reduce risk. Strengthen resilience.', title: 'Secure What Matters. Build Resilience That Lasts.', text: 'Protect critical assets, anticipate emerging threats, and strengthen enterprise resilience through proactive cybersecurity and risk advisory.', cta: 'Explore Cybersecurity', image: '/images/home/cybersecurity-story.webp', textInImage: true, to: '/services/cybersecurity' },
+  { n: '02', tag: 'Network Operations & Solutions', short: 'Intelligent visibility. Reliable networks. Seamless operations.', title: 'Intelligent Networks. Uninterrupted Business.', text: 'Gain end-to-end visibility, optimize network performance, and ensure operational continuity through intelligent monitoring and automation.', cta: 'Explore Network Solutions', image: '/images/home/network-operations-story.webp', textInImage: true, to: '/services/network' },
+  { n: '03', tag: 'AI & Intelligent Automation', short: 'Automate workflows. Unlock intelligence. Accelerate growth.', title: 'Transform Operations with Intelligent Automation.', text: 'Accelerate productivity, automate complex workflows, and turn enterprise data into actionable intelligence with AI-driven solutions.', cta: 'Explore AI Solutions', image: '/images/home/ai-automation-story.webp', textInImage: true, to: '/products/ai-office-assistant' },
 ]
 const kicker = { '01': 'Cybersecurity', '02': 'Network operations', '03': 'AI & automation' }
 const tags = [...new Set(services.flatMap((s) => s.tags))]
@@ -61,8 +62,8 @@ export default function Perspectives() {
         <Reveal className="relative isolate h-[300px] overflow-hidden rounded-[28px] bg-ink sm:h-[360px] md:h-[min(52svh,430px)]" aria-roledescription="carousel" aria-label="Featured perspectives">
           <AnimatePresence initial={false}>
             <motion.div key={story.n} className="absolute inset-0" initial={{ clipPath: 'inset(0 0 0 100%)' }} animate={{ clipPath: 'inset(0 0 0 0%)' }} exit={{ opacity: 0.4 }} transition={{ duration: reduce ? 0.01 : 1.1, ease: [0.76, 0, 0.24, 1] }}>
-              <motion.img src={photo(story.image, 1800)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={{ scale: reduce ? 1 : 1.18 }} animate={{ scale: 1.02 }} transition={{ duration: STORY_SECONDS + 1.5, ease: 'linear' }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent" />
+              <motion.img src={photo(story.image, 1800)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={{ scale: reduce ? 1 : story.textInImage ? 1.05 : 1.18 }} animate={{ scale: 1.02 }} transition={{ duration: STORY_SECONDS + 1.5, ease: 'linear' }} />
+              <div className={story.textInImage ? 'absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent max-md:bg-ink-950/75' : 'absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent'} />
             </motion.div>
           </AnimatePresence>
           <Link to={story.to} className="absolute inset-0 z-10" aria-label={`${story.cta}: ${story.title}`} />
@@ -70,9 +71,9 @@ export default function Perspectives() {
             <AnimatePresence mode="wait">
               <motion.div key={story.n} className="max-w-xl" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.7, delay: 0.25, ease: EASE }}>
                 <span className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">{story.n} / {kicker[story.n]}</span>
-                <h3 className="mt-3 font-display text-2xl font-medium leading-[1.08] tracking-[-.03em] text-white sm:text-3xl md:text-[2.4rem]">{story.title}</h3>
-                <p className="mt-3 hidden max-w-lg text-[14.5px] leading-relaxed text-white/75 sm:block">{story.text}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-brand-300">{story.cta} <ArrowUpRight size={15} /></span>
+                <h3 className={`mt-3 font-display text-2xl font-medium leading-[1.08] tracking-[-.03em] text-white sm:text-3xl md:text-[2.4rem] ${story.textInImage ? 'md:sr-only' : ''}`}>{story.title}</h3>
+                <p className={`mt-3 hidden max-w-lg text-[14.5px] leading-relaxed text-white/75 sm:block ${story.textInImage ? 'md:sr-only' : ''}`}>{story.text}</p>
+                <span className="mt-5 flex w-fit items-center gap-2 text-sm font-medium text-brand-300">{story.cta} <ArrowUpRight size={15} /></span>
               </motion.div>
             </AnimatePresence>
             <div className="pointer-events-auto flex gap-2">

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Radar, ScanEye, Server, ShieldCheck, Sparkles, Waypoints } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { productLinks } from '../../data/sitePages'
+import { productIdFor, productLinks } from '../../data/sitePages'
 import { ArrowButton, MaskLines, Reveal } from '../ui/Motion'
 import { EASE } from '../../utils/intro'
 
@@ -35,26 +35,26 @@ function Constellation() {
 }
 
 function PlatformCard({ item, index }) {
-  const slug = item.to.split('/').pop()
-  const [Icon, category, line] = meta[slug] || [ShieldCheck, '', '']
+  const [Icon, category, line] = meta[productIdFor(item.to)] || [ShieldCheck, '', '']
   const onMove = (e) => {
     const r = e.currentTarget.getBoundingClientRect()
     e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
     e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
   }
   return <Reveal delay={(index % 3) * 0.08} className="h-full">
-    <Link to={item.to} onMouseMove={onMove} className="group relative flex h-full min-h-[160px] flex-col justify-between overflow-hidden rounded-[24px] border border-white/[.08] bg-white/[.025] p-4 transition-colors duration-500 hover:border-brand-400/40 sm:min-h-[190px] sm:p-5">
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(420px circle at var(--mx) var(--my), rgba(20,184,166,.16), transparent 45%)' }} />
+    <Link to={item.to} onMouseMove={onMove} className="group relative flex h-full min-h-[160px] flex-col justify-between overflow-hidden rounded-[24px] border border-white bg-white p-4 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift focus-visible:-translate-y-1.5 sm:min-h-[190px] sm:p-5">
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(380px circle at var(--mx) var(--my), rgba(20,184,166,.13), transparent 45%)' }} />
+      <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-300 transition-transform duration-700 ease-expo group-hover:scale-x-100 group-focus-visible:scale-x-100" />
       <div className="relative flex items-start justify-between">
-        <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[.04] text-brand-300 transition-all duration-500 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
+        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
       </div>
       <div className="relative mt-4 sm:mt-5">
-        <h3 className="font-display text-2xl font-medium tracking-[-.025em] text-white md:text-[1.7rem]">{item.label.trim()}</h3>
-        {category && <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-300">{category}</p>}
-        <p className="mt-2 text-[14.5px] leading-relaxed text-white/50">{line}</p>
-        <div className="mt-4 flex items-center justify-between border-t border-white/[.08] pt-3">
-          <span className="text-sm text-white/70 transition-colors group-hover:text-white">Explore Platform</span>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={16} /></span>
+        <h3 className="font-display text-2xl font-medium tracking-[-.025em] text-ink md:text-[1.7rem]">{item.label.trim()}</h3>
+        {category && <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-600 [text-align:left!important]">{category}</p>}
+        <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{line}</p>
+        <div className="mt-4 flex items-center justify-between border-t border-line pt-3">
+          <span className="text-sm font-medium text-ink/75 transition-colors group-hover:text-brand-600">Explore Platform</span>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={16} /></span>
         </div>
       </div>
     </Link>

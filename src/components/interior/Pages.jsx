@@ -96,11 +96,11 @@ export function ServiceDetail({ page }) {
   const images = media.hero
   const related = isIot
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/flowbits-nexora'], to: '/products/flowbits-nexora' },
+        { title: 'Flowbits Nexora', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/flowbits-nexora'], to: '/products/flowbits-nexora' },
       ]
     : isNetwork
     ? [
-        { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/flowbits-nexora'], to: '/products/flowbits-nexora' },
+        { title: 'Flowbits Nexora', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', image: productImages['/products/flowbits-nexora'], to: '/products/flowbits-nexora' },
         { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', image: productImages['/products/nested-va'], to: '/products/nested-va' },
       ]
     : serviceCards.filter((c) => c.to !== page.path).slice(0, 3)
@@ -212,7 +212,7 @@ export function ServiceDetail({ page }) {
     ['Operational Excellence', 'Improve processes, reduce inefficiencies, and enhance overall business performance through compliance frameworks.'],
   ]
   const complianceTools = [
-    { title: 'FLOWBITS NEXORA', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['IPDR', 'Audit trails'], to: '/products/flowbits-nexora' },
+    { title: 'Flowbits Nexora', text: 'Internet Protocol Detail Record System. Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', tags: ['IPDR', 'Audit trails'], to: '/products/flowbits-nexora' },
     { title: 'Nested VA', text: 'Vulnerability Assessment & Pen-Testing. Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', tags: ['VAPT', 'Compliance checks'], to: '/products/nested-va' },
   ]
   return <main>
@@ -326,7 +326,7 @@ function CybersecurityServiceContent() {
         <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(media.products, 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
         <div className="grid gap-4 md:grid-cols-2">
           {[
-            ['FLOWBITS NEXORA', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/flowbits-nexora', productImages['/products/flowbits-nexora']],
+            ['Flowbits Nexora', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/flowbits-nexora', productImages['/products/flowbits-nexora']],
             ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/nested-va', productImages['/products/nested-va']],
           ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
             <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />

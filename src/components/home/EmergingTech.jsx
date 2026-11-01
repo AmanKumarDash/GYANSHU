@@ -39,6 +39,13 @@ const services = [
   },
 ]
 
+// Soft teal glow that follows the pointer inside a card.
+const onMove = (e) => {
+  const r = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
+  e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
+}
+
 export default function EmergingTech() {
   return <section className="px-3 py-6 sm:px-5">
     <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
@@ -53,20 +60,23 @@ export default function EmergingTech() {
         {/* Two cards on the last row of three are centred by the flex wrap. */}
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           {services.map(({ icon: Icon, title, text, points, value }, i) => <Reveal key={title} delay={(i % 3) * 0.08} className="w-full md:w-[calc(50%-.375rem)] lg:w-[calc(33.333%-.5rem)]">
-            <article className="flex h-full flex-col rounded-[22px] border border-white/[.09] bg-white/[.03] p-5 transition-colors duration-500 hover:border-brand-400/40 sm:p-6">
-              <div className="flex items-start gap-3">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[.05] text-brand-300"><Icon size={19} strokeWidth={1.7} /></span>
+            <article onMouseMove={onMove} className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-white bg-white p-5 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift sm:p-6">
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(380px circle at var(--mx) var(--my), rgba(20,184,166,.12), transparent 45%)' }} />
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-300 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
+              <div className="relative flex items-start gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={19} strokeWidth={1.7} /></span>
                 <div>
-                  <h3 className="font-display text-lg font-medium leading-snug tracking-[-.02em] text-white">{title}</h3>
-                  <p className="mt-1.5 text-[13.5px] leading-relaxed text-white/55">{text}</p>
+                  <h3 className="font-display text-lg font-medium leading-snug tracking-[-.02em] text-ink">{title}</h3>
+                  <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted">{text}</p>
                 </div>
               </div>
-              <ul className="mb-5 mt-5 flex flex-col gap-2.5">
-                {points.map((pt) => <li key={pt} className="flex gap-2.5 text-[13.5px] leading-snug text-white/80"><Check size={15} className="mt-0.5 shrink-0 text-brand-400" />{pt}</li>)}
+              <ul className="relative mb-5 mt-5 flex flex-col gap-2.5">
+                {points.map((pt) => <li key={pt} className="flex gap-2.5 text-[13.5px] leading-snug text-ink/85"><Check size={15} className="mt-0.5 shrink-0 text-brand-500 transition-transform duration-500 group-hover:scale-110" />{pt}</li>)}
               </ul>
-              <p className="mt-auto border-t border-white/[.08] pt-4 text-[13px] leading-relaxed text-white/65"><span className="font-medium text-brand-300">Value: </span>{value}</p>
+              <p className="relative mt-auto border-t border-line pt-4 text-[13px] leading-relaxed text-muted"><span className="font-semibold text-brand-600">Value: </span>{value}</p>
             </article>
           </Reveal>)}
+          <div aria-hidden="true" className="hidden min-h-[28rem] w-full rounded-[22px] border border-white bg-white md:block md:w-[calc(50%-.375rem)] lg:w-[calc(33.333%-.5rem)]" />
         </div>
       </div>
     </div>

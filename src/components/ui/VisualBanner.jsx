@@ -9,7 +9,7 @@ function SceneArt({ scene }) {
     <circle cx="150" cy="112" r="104" fill={`url(#glow-${scene.id})`} />
     {[68, 92, 116].map((radius, index) => <motion.circle key={radius} cx="150" cy="112" r={radius} stroke={accent} strokeOpacity={index === 0 ? '.4' : '.15'} strokeDasharray={index === 1 ? '3 7' : 'none'} animate={{ rotate: index % 2 ? 360 : -360 }} style={{ transformOrigin: '150px 112px' }} transition={{ duration: 35 + index * 9, repeat: Infinity, ease: 'linear' }} />)}
     <motion.g animate={{ y: [0, -7, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}>
-      <path d={center} fill="rgba(7,13,15,.75)" stroke={accent} strokeWidth="1.6" />
+      <path d={center} fill="rgba(6,43,42,.75)" stroke={accent} strokeWidth="1.6" />
       {scene.type === 'network' && <><circle cx="150" cy="75" r="7" fill={accent} /><circle cx="94" cy="119" r="6" fill="#fff" /><circle cx="206" cy="119" r="6" fill="#fff" /><circle cx="150" cy="149" r="6" fill="#fff" /></>}
       {scene.type === 'iot' && <><rect x="116" y="68" width="28" height="31" rx="5" stroke={accent} strokeWidth="2" /><path d="M120 110h20m-10 0v10m-20 0h40" stroke={accent} strokeWidth="2" strokeLinecap="round" /><circle cx="130" cy="83" r="4" fill={accent} /></>}
       {scene.type === 'application' && <><path d="M91 78h122" stroke={accent} /><circle cx="103" cy="70" r="2" fill={accent} /><path d="M110 96h42m-42 11h78m-78 11h60m-60 11h38" stroke="#fff" strokeOpacity=".65" strokeWidth="3" strokeLinecap="round" /></>}

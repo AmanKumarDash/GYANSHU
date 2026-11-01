@@ -102,7 +102,7 @@ function SiteShell() {
     <IntroContext.Provider value={!showSplash}>
       <div className="relative min-h-screen bg-paper font-body text-ink">
         <a href="#main-content" className="sr-only z-[100] rounded-full bg-ink px-5 py-3 text-sm text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
-        <AnimatePresence>{showSplash && <SplashScreen key="splash" duration={SPLASH_SECONDS} />}</AnimatePresence>
+        <AnimatePresence>{showSplash && <SplashScreen key="splash" />}</AnimatePresence>
         <ScrollProgressBar />
         <Navbar />
         <div id="main-content" tabIndex={-1} className="outline-none">

@@ -5,18 +5,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Warm editorial canvas
-        paper: { DEFAULT: '#f3f2ee', 2: '#ebe9e3', 3: '#e2e0d9' },
-        // Near-black with a teal undertone
-        ink: { DEFAULT: '#0c1517', 950: '#070d0f', 900: '#0c1517', 800: '#131e21', 700: '#1c292c', 600: '#2a383b' },
-        muted: { DEFAULT: '#5d696c', soft: '#8a9497', faint: '#b4bbbc' },
-        line: { DEFAULT: '#e1dfd8', dark: 'rgba(255,255,255,.1)' },
+        // Pearl White canvas (brand palette)
+        paper: { DEFAULT: '#F8FCFC', 2: '#EEF6F5', 3: '#E2EEEC' },
+        // Deep Teal (brand palette) for text and dark surfaces
+        ink: { DEFAULT: '#0B3D3B', 950: '#062B2A', 900: '#0B3D3B', 800: '#0F4744', 700: '#15524F', 600: '#1F605C' },
+        muted: { DEFAULT: '#4A6866', soft: '#5A7674', faint: '#AFC6C3' },
+        line: { DEFAULT: '#DCE9E7', dark: 'rgba(255,255,255,.1)' },
         // Gyanshu brand teal scale
         brand: { 50: '#EEFBF9', 100: '#D3F4EF', 300: '#7EE3D9', 400: '#14B8A6', 500: '#0E8378', 600: '#0C6B63', 700: '#0B4D49', 900: '#0B3D3B' },
         // Legacy aliases kept for older components
         signal: { DEFAULT: '#0E8378', dim: '#0B4D49' },
-        ember: { DEFAULT: '#0c1517', dim: '#131e21' },
-        mist: { 900: '#0c1517', 700: '#5d696c', 500: '#8a9497', 100: '#f3f2ee' },
+        ember: { DEFAULT: '#0B3D3B', dim: '#0F4744' },
+        mist: { 900: '#0B3D3B', 700: '#4A6866', 500: '#5A7674', 100: '#F8FCFC' },
       },
       fontFamily: {
         display: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
@@ -34,8 +34,8 @@ module.exports = {
         '5xl': '2.5rem',
       },
       boxShadow: {
-        card: '0 1px 0 rgba(12,21,23,.04), 0 12px 32px -12px rgba(12,21,23,.12)',
-        lift: '0 1px 0 rgba(12,21,23,.04), 0 30px 60px -24px rgba(12,21,23,.28)',
+        card: '0 1px 0 rgba(11,61,59,.04), 0 12px 32px -12px rgba(11,61,59,.12)',
+        lift: '0 1px 0 rgba(11,61,59,.04), 0 30px 60px -24px rgba(11,61,59,.28)',
         glow: '0 0 0 1px rgba(20,184,166,.25), 0 20px 60px -20px rgba(20,184,166,.45)',
       },
       transitionTimingFunction: {
