@@ -1,5 +1,5 @@
-import { createElement, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { ArrowRight, ArrowUpRight, Check, ChevronRight, Search } from 'lucide-react'
+import { createElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Check, Server, ShieldCheck, Workflow } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { getPage, productIdFor, productLinks } from '../../data/sitePages'
@@ -589,30 +589,96 @@ function IpdrContactSection({heading}) {
   return <section id="get-in-touch" className="flex items-center bg-[#f3f2ee]"><div className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-10 sm:py-12 sm:px-8 md:py-14 lg:grid-cols-[.8fr_1.2fr] lg:px-12"><div><p className="eyebrow w-fit">Get in touch</p><h2 className="mt-3 font-display font-medium tracking-[-.035em] text-4xl md:text-5xl">{heading}</h2><div className="mt-7 rounded-2xl bg-[#071d2a] p-6 text-white"><p className="font-display text-2xl font-semibold tracking-[.08em]">GYANSHU TECHNOLOGIES</p><p className="mt-1 text-xs text-white/70">Pvt. Ltd.</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.16em] text-[#65d9cb]">Secure. Intelligent. Connected</p></div></div><div className="rounded-2xl border border-[#dce9ef] bg-white p-6 shadow-card md:p-8"><h3 className="font-display text-2xl font-medium">Kirti Raj Choudhury</h3><p className="mt-1 text-sm text-[#5d696c]">Head – Business Operations</p><div className="mt-6 space-y-3 text-sm"><a className="block text-[#0B4D49] hover:underline" href="tel:+919090009301">+91 90900 09301</a><a className="block text-[#0B4D49] hover:underline" href="mailto:operations@gyanshu.tech">operations@gyanshu.tech</a><a className="block text-[#0B4D49] hover:underline" href="https://www.gyanshu.tech" target="_blank" rel="noreferrer">www.gyanshu.tech</a></div></div></div></section>
 }
 
-function ProductCard({item}) {
-  const id=idFor(item.to), profile=profiles[id], page=getPage(item.to)
-  return <Link to={item.to} className="product-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[#e1dfd8] bg-white p-2 shadow-card transition duration-500 hover:-translate-y-1.5 hover:shadow-lift">
-    <div className="relative h-56 overflow-hidden rounded-[18px] bg-[#0c1517]"><img src={photo((profile.productShots || profile.images)[0],900)} alt="" loading="lazy" className="h-full w-full object-cover transition duration-[1.2s] ease-expo group-hover:scale-[1.06]"/><div className="absolute inset-0 bg-gradient-to-t from-[#070d0f]/60 via-transparent to-transparent"/><span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[.14em] text-[#0c1517] backdrop-blur">{profile.category}</span><span className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0c1517] transition-all duration-500 group-hover:rotate-45 group-hover:bg-[#14B8A6]"><ArrowUpRight size={16}/></span></div>
-    <div className="flex flex-1 flex-col p-5 md:p-6"><p className="font-mono text-[10.5px] uppercase tracking-[.16em]" style={{color:profile.accent}}>◆ {profile.descriptor}</p><h3 className="mt-3 font-display text-2xl font-medium tracking-[-.025em] text-[#0c1517]">{page.title.trim()}</h3><p className="mt-3 line-clamp-3 text-sm leading-relaxed text-[#5d696c]">{profile.summary}</p><span className="link-arrow mt-auto pt-6">Explore product <ArrowRight size={15}/></span></div>
-  </Link>
+// Products page content: one showcase card per product (category, tagline and four key features).
+const showcase = {
+  ipdr: ['Network Intelligence', 'Convert network flows and subscriber activity into operational, security, and forensic intelligence.', ['Flow telemetry & IPDR', 'Subscriber intelligence', 'Threat & behavior analytics', 'Investigation & forensics']],
+  'argos-enms': ['Network Operations', 'Monitor device health, interfaces, traffic and dependencies across your entire network from one platform.', ['Device & interface monitoring', 'Live topology & dependencies', 'Intelligent alerting', 'Dashboards & capacity insights']],
+  panoptix: ['Cyber Exposure Management', 'Discover assets, prioritise exposures and track remediation in one continuous exposure management environment.', ['Asset discovery', 'Vulnerability intelligence', 'Risk-based prioritisation', 'Remediation tracking']],
+  vapt: ['VAPT Platform', 'Run repeatable security assessments with structured evidence, consistent severity and clear remediation guidance.', ['Multi-technology assessment', 'Evidence-backed findings', 'Severity classification', 'Re-testing & closure']],
+  smms: ['Smart Monitoring', 'Bring infrastructure status, alerts, incidents and service levels into one operational view.', ['Unified monitoring', 'Alert & incident management', 'Escalation workflows', 'SLA reporting']],
+  'gyanshu-ai-office-assistance': ['Private Enterprise AI', 'Find organisational knowledge, understand documents and draft content with AI hosted inside your own infrastructure.', ['Private on-premises AI', 'Enterprise knowledge search', 'Document assistance', 'Drafting & summarisation']],
+}
+const enterpriseReality = [
+  [ShieldCheck, 'Security & Governance', 'Access controls, auditability, and governance-aligned workflows.'],
+  [Server, 'Deployment Control', 'Deployment choices suited to enterprise infrastructure requirements.'],
+  [Workflow, 'Operational Integration', 'Connect platform intelligence with existing infrastructure and operational workflows.'],
+  [ChartNoAxesColumnIncreasing, 'Actionable Intelligence', 'Translate operational data into meaningful insights and decisions.'],
+]
+
+function ShowcaseCard({item}) {
+  const id=idFor(item.to), name=getPage(item.to).title.trim()
+  const [category, tagline, features]=showcase[id]
+  return <article className="group flex h-full flex-col rounded-[24px] border border-white/[.09] bg-white/[.03] p-5 transition-colors duration-500 hover:border-brand-400/40 sm:p-6">
+    <div className="grid gap-5 sm:grid-cols-[1fr_1.05fr] sm:items-start">
+      <div>
+        <p className="font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-300">{category}</p>
+        <h3 className="mt-2 font-display text-2xl font-medium tracking-[-.025em] text-white">{name}</h3>
+        <p className="mt-3 text-[14.5px] leading-relaxed text-white/70">{tagline}</p>
+      </div>
+      <Link to={item.to} tabIndex={-1} aria-hidden="true" className="block aspect-[16/10] overflow-hidden rounded-[16px] border border-white/10 bg-ink-950"><img src={photo(catalogImage(id),900)} alt="" loading="lazy" className="h-full w-full object-cover object-left-top transition duration-[1.2s] ease-expo group-hover:scale-[1.04]"/></Link>
+    </div>
+    <ul className="mt-6 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">{features.map((f)=><li key={f} className="flex items-center gap-2.5 text-[14px] text-white/80"><Check size={15} className="shrink-0 text-brand-400"/>{f}</li>)}</ul>
+    <Link to={item.to} className="mt-6 inline-flex w-fit items-center gap-2 border-t border-white/[.08] pt-5 text-[15px] font-medium text-white transition-colors hover:text-brand-300">Explore {name} <ArrowUpRight size={16}/></Link>
+  </article>
 }
 
 export function ProductCatalog({page}) {
-  const [category,setCategory]=useState('All platforms')
-  const [query,setQuery]=useState('')
-  const filtered=useMemo(()=>productLinks.filter((p)=>{
-    const id=idFor(p.to), profile=profiles[id], title=getPage(p.to).title.toLowerCase()
-    return (category==='All platforms'||profile.category===category) && (!query||title.includes(query.toLowerCase())||profile.summary.toLowerCase().includes(query.toLowerCase()))
-  }),[category,query])
-  return <main className="product-experience min-h-screen bg-white text-[#0c1517]">
-    <HeroCentered eyebrow="Gyanshu / Products" title="Platforms built around the signal." muted={2} pill={productLinks.map((item)=>catalogImage(idFor(item.to)))} subtitle="Purpose-built tools for network operations, cybersecurity, infrastructure monitoring, and private enterprise AI." intro={page.intro} actions={<><a href="#catalog" className="btn btn-dark"><span>Browse platforms</span><span className="btn-chip"><ArrowRight size={15}/></span></a><Link to="/contact" className="btn btn-outline">Talk to our team</Link></>} images={productLinks.map((item)=>catalogImage(idFor(item.to)))} captions={productLinks.map((item)=>item.label.trim())} mediaLabel="Gyanshu product platforms" chips={categories.slice(1)}/>
-    <section className="mx-auto mt-8 max-w-[1360px] px-5 sm:px-8 lg:px-12"><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{categories.slice(1).map((c)=><button key={c} onClick={()=>{setCategory(c);document.getElementById('catalog')?.scrollIntoView({behavior:'smooth'})}} className="group flex items-center justify-between gap-4 rounded-[20px] border border-[#e1dfd8] bg-white px-6 py-5 text-left shadow-card transition duration-500 hover:-translate-y-1 hover:shadow-lift"><span className="flex items-center gap-4"><span className="font-mono text-[11px] text-[#8a9497]">◆</span><span className="font-display text-lg font-medium tracking-[-.02em]">{c}</span></span><ChevronRight size={16} className="text-[#0E8378] transition-transform group-hover:translate-x-1"/></button>)}</div></section>
-    <section id="catalog" className="mx-auto max-w-7xl px-5 py-12 md:px-12 md:py-14 lg:py-16"><div className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><span className="eyebrow">Product portfolio</span><h2 className="mt-3 font-display font-medium tracking-[-.035em] text-4xl md:text-5xl">Find the right platform.</h2></div><label className="flex w-full items-center gap-3 rounded-full border border-[#e1dfd8] bg-white px-5 py-3.5 shadow-card transition focus-within:border-[#0c1517] md:max-w-sm"><Search size={17} className="text-[#5d696c]"/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search products" className="w-full bg-transparent text-sm outline-none placeholder:text-[#8a9497]"/></label></div>
-      <div className="mt-8 flex flex-wrap gap-2">{categories.map(c=><button key={c} onClick={()=>setCategory(c)} className={`rounded-full border px-4 py-2 text-[13px] transition ${category===c?'border-[#0c1517] bg-[#0c1517] text-white':'border-[#e1dfd8] bg-white text-[#5d696c] hover:border-[#0c1517] hover:text-[#0c1517]'}`}>{c}</button>)}</div>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{filtered.map((item,i)=><ProductCard key={item.to} item={item} index={i}/>)}</div>
-      {filtered.length===0&&<p className="py-14 sm:py-16 text-center text-[#5d696c]">No products match that search. Try another name or category.</p>}
+  const images=productLinks.map((item)=>catalogImage(idFor(item.to)))
+  return <main className="product-experience min-h-screen bg-paper text-[#0c1517]">
+    <HeroCentered eyebrow="Gyanshu / Products" title="Platforms built around the signal." muted={2} pill={images}
+      subtitle="Purpose-built tools for network operations, cybersecurity, infrastructure monitoring, and private enterprise AI."
+      intro={page.intro}
+      actions={<><a href="#catalog" className="btn btn-dark"><span>Browse platforms</span><span className="btn-chip"><ArrowRight size={15}/></span></a><Link to="/contact" className="btn btn-outline">Talk to our team</Link></>}
+      images={images} captions={productLinks.map((item)=>item.label.trim())} mediaLabel="Gyanshu product platforms" chips={categories.slice(1)}/>
+
+    <section className="px-3 pt-6 sm:px-5">
+      <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11">
+        <div className="pointer-events-none absolute -left-32 -top-24 h-[24rem] w-[24rem] rounded-full bg-brand-500/15 blur-[120px]"/>
+        <div className="shell relative">
+          <h2 className="h-section text-white">Technology Built for <span className="text-brand-300">Mission-Critical Operations.</span></h2>
+          <p className="mt-4 max-w-4xl text-[15px] leading-relaxed text-white/70 md:text-base">Explore purpose-engineered platforms for network intelligence, cyber resilience, infrastructure visibility, and private enterprise AI—designed to help organizations operate with greater confidence and control.</p>
+          <div className="mt-6 flex flex-wrap gap-3"><a href="#catalog" className="btn btn-brand"><span>Explore Platforms</span><span className="btn-chip"><ArrowUpRight size={15}/></span></a><Link to="/contact" className="btn btn-outline-dark">Talk to Our Experts</Link></div>
+        </div>
+      </div>
     </section>
-    <CtaPhotos eyebrow="Need help choosing?" title="Let’s map your operational needs." muted={2} text="Talk with Gyanshu about your environment, integrations, and deployment requirements." cta="Talk to our team" images={productLinks.flatMap((item)=>ctaImagesOf(profiles[idFor(item.to)]).slice(0,1))}/>
+
+    <section className="px-3 py-6 sm:px-5">
+      <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_60%)]"/>
+        <div className="shell relative">
+          <h2 className="h-section text-white">Built for <span className="text-brand-300">Enterprise Reality.</span></h2>
+          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-white/65 md:text-base">Technology platforms designed around the security, visibility, deployment control, and integration needs of complex enterprise environments.</p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">{enterpriseReality.map(([Icon,title,text])=><div key={title} className="rounded-[22px] border border-white/[.09] bg-white/[.03] p-6 transition-colors duration-500 hover:border-brand-400/40">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[.05] text-brand-300"><Icon size={19} strokeWidth={1.7}/></span>
+            <h3 className="mt-5 font-display text-xl font-medium tracking-[-.02em] text-white">{title}</h3>
+            <p className="mt-2 text-[14.5px] leading-relaxed text-white/65">{text}</p>
+          </div>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" className="px-3 py-6 sm:px-5">
+      <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
+        <div className="pointer-events-none absolute -right-40 top-1/4 h-[30rem] w-[30rem] rounded-full bg-brand-500/15 blur-[140px]"/>
+        <div className="shell relative">
+          <p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">Product portfolio</p>
+          <h2 className="h-section mt-4 text-white">Our <span className="text-brand-300">Platforms</span></h2>
+          <div className="mt-8 grid gap-3 lg:grid-cols-2">{productLinks.map((item)=><ShowcaseCard key={item.to} item={item}/>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section className="px-3 pb-10 pt-6 sm:px-5">
+      <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[#0B3D3B] py-12 text-center text-white md:py-14">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[24rem] w-[40rem] -translate-x-1/2 rounded-full bg-brand-400/20 blur-[120px]"/>
+        <div className="shell relative">
+          <p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">Let’s solve what matters</p>
+          <h2 className="h-section mt-4 text-white">Your Challenges. <span className="text-brand-300">Our Intelligence.</span></h2>
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-white/75 md:text-base">Engage with our solutions team to identify the right platform for your security, network operations, infrastructure, and AI transformation requirements.</p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3"><Link to="/contact" className="btn btn-brand"><span>Talk to Our Experts</span><span className="btn-chip"><ArrowUpRight size={15}/></span></Link><Link to="/contact" className="btn btn-outline-dark">Request a Demo</Link></div>
+        </div>
+      </div>
+    </section>
   </main>
 }
 
