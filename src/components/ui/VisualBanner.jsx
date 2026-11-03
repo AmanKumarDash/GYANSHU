@@ -38,8 +38,8 @@ export default function VisualBanner({ page, className = '' }) {
       <div className="h-[78%] w-full max-w-[420px]"><SceneArt scene={scene} /></div>
     </motion.div>
     <div className="absolute inset-x-6 bottom-6 z-10 flex items-end justify-between gap-3 md:inset-x-9 md:bottom-8">
-      <span className="font-mono text-[10.5px] uppercase tracking-[.2em] text-white/50">{scene.subtitle}</span>
-      <span className="flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[.2em] text-brand-300"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />Signal active</span>
+      <span className="label-text text-white/50">{scene.subtitle}</span>
+      <span className="flex items-center gap-2 label-text text-brand-300"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />Signal active</span>
     </div>
   </div>
 }

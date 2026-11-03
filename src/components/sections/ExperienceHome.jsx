@@ -19,9 +19,9 @@ export default function ExperienceHome() {
     <EmergingTech />
     <Process />
     <WhyGyanshu />
+    <CoreStrengths />
     <Customers />
     <Industries />
-    <CoreStrengths />
     <Testimonials />
   </main>
 }

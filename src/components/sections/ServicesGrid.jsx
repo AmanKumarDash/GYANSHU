@@ -24,7 +24,7 @@ export default function ServicesGrid() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         <ScrollReveal delay={0.1}>
-          <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Our Capabilities</p>
+          <p className="label-text text-signal mb-4">Our Capabilities</p>
           <h2 className="font-display text-5xl md:text-7xl font-bold mb-16 tracking-tight">Technology capability.<br/>Operationally ready.</h2>
         </ScrollReveal>
 
@@ -51,7 +51,7 @@ export default function ServicesGrid() {
                 
                 <div className="relative z-10 mb-8">
                   <div className="flex justify-between items-start w-full mb-8">
-                    <span className="font-mono text-xs text-mist-900">{service.number}</span>
+                    <span className="label-text text-mist-900">{service.number}</span>
                     <div className="group-hover:scale-110 transition-all duration-300" style={{ color: accent }}>
                       <IconComponent size={28} strokeWidth={1.5} />
                     </div>
@@ -67,14 +67,14 @@ export default function ServicesGrid() {
 
                 <div className="relative z-10 flex flex-wrap gap-2 mt-auto">
                   {service.tags.map(tag => (
-                    <span key={tag} className="font-mono text-[10px] md:text-xs text-mist-700 bg-ink-900 border border-white/10 px-3 py-1.5 rounded-full">
+                    <span key={tag} className="label-text text-mist-700 bg-ink-900 border border-white/10 px-3 py-1.5 rounded-full">
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 {/* Hover arrow slide-in */}
-                <div className="absolute right-8 bottom-8 flex items-center gap-2 text-signal font-mono text-sm translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="absolute right-8 bottom-8 flex items-center gap-2 text-signal label-text translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
                   <span className="hidden sm:inline">Explore</span> &rarr;
                 </div>
               </motion.div>
@@ -103,8 +103,8 @@ export default function ServicesGrid() {
               <img src={heroImage} alt="" className="absolute right-0 top-0 h-full w-[42%] object-cover opacity-35" />
               <div className="absolute inset-0" style={{ background: `linear-gradient(90deg, #0b0b0d 36%, rgba(11,11,13,0.72) 64%, ${serviceAccents[activeService.id]}30 100%)` }} />
               <div className="relative z-10 flex items-start justify-between gap-8">
-                <span className="font-mono text-sm" style={{ color: serviceAccents[activeService.id] }}>{activeService.number}</span>
-                <span className="font-mono text-xs uppercase tracking-widest" style={{ color: '#a3a3a3' }}>Capability spotlight</span>
+                <span className="label-text" style={{ color: serviceAccents[activeService.id] }}>{activeService.number}</span>
+                <span className="label-text" style={{ color: '#a3a3a3' }}>Capability spotlight</span>
               </div>
 
               <div className="relative z-10 max-w-3xl">
@@ -114,7 +114,7 @@ export default function ServicesGrid() {
 
               <div className="relative z-10 flex flex-wrap gap-3">
                 {activeService.tags.map((tag) => (
-                  <span key={tag} className="font-mono text-sm border px-4 py-2 rounded-full" style={{ color: '#ffffff', borderColor: `${serviceAccents[activeService.id]}80`, backgroundColor: `${serviceAccents[activeService.id]}18` }}>{tag}</span>
+                  <span key={tag} className="label-text border px-4 py-2 rounded-full" style={{ color: '#ffffff', borderColor: `${serviceAccents[activeService.id]}80`, backgroundColor: `${serviceAccents[activeService.id]}18` }}>{tag}</span>
                 ))}
               </div>
             </motion.div>

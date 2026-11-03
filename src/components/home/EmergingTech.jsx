@@ -67,7 +67,7 @@ export default function EmergingTech() {
       <div className="pointer-events-none absolute -left-40 top-1/4 h-[30rem] w-[30rem] rounded-full bg-brand-500/15 blur-[140px]" />
       <div className="shell relative">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">Emerging Technology</p></Reveal>
+          <Reveal><p className="label-text text-brand-300">Emerging Technology</p></Reveal>
           <h2 className="h-section mt-4 text-white"><MaskLines lines={[<>Gyanshu – Emerging <span className="text-brand-300">Technology Services</span></>]} /></h2>
           <Reveal delay={0.15}><p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-white/60">Gyanshu delivers next-generation, secure, and enterprise-grade emerging technology solutions designed for government, critical infrastructure, ISPs, and large enterprises.</p></Reveal>
         </div>
@@ -79,8 +79,8 @@ export default function EmergingTech() {
               <div className="relative flex items-start gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={19} strokeWidth={1.7} /></span>
                 <div>
-                  <p className="font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-600 [text-align:left!important]">{eyebrow}</p>
-                  <h3 className="mt-1.5 font-display text-lg font-medium leading-snug tracking-[-.02em] text-ink">{title}</h3>
+                  <p className="label-text text-brand-600 [text-align:left!important]">{eyebrow}</p>
+                  <h3 className="card-heading mt-1.5 text-ink">{title}</h3>
                   <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted [hyphens:manual] [text-align:left!important]">{text}</p>
                 </div>
               </div>

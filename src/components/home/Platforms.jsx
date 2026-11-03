@@ -49,8 +49,8 @@ function PlatformCard({ item, index }) {
         <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
       </div>
       <div className="relative mt-4 sm:mt-5">
-        <h3 className="font-display text-2xl font-medium tracking-[-.025em] text-ink md:text-[1.7rem]">{item.label.trim()}</h3>
-        {category && <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-600 [text-align:left!important]">{category}</p>}
+        <h3 className="card-heading text-ink">{item.label.trim()}</h3>
+        {category && <p className="mt-1 label-text text-brand-600 [text-align:left!important]">{category}</p>}
         <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{line}</p>
         <div className="mt-4 flex items-center justify-between border-t border-line pt-3">
           <span className="text-sm font-medium text-ink/75 transition-colors group-hover:text-brand-600">Explore Platform</span>
@@ -69,7 +69,7 @@ export default function Platforms() {
       <div className="shell relative">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300 [text-align:left!important]">Gyanshu | Enterprise Technology Platforms</p></Reveal>
+            <Reveal><p className="label-text text-brand-300 [text-align:left!important]">Gyanshu | Enterprise Technology Platforms</p></Reveal>
             <h2 className="h-section mt-4 text-white"><MaskLines lines={['Engineered for Complexity.', <span className="text-brand-300">Built for Enterprise.</span>]} /></h2>
             <Reveal delay={0.15}><p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/60">Intelligent, secure, and scalable technology platforms designed to strengthen resilience, simplify operations, and accelerate digital transformation.</p></Reveal>
           </div>

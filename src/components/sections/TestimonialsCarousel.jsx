@@ -48,7 +48,7 @@ export default function TestimonialsCarousel() {
               </h3>
               
               <div>
-                <p className="font-mono text-signal uppercase tracking-widest text-sm mb-1">
+                <p className="label-text text-signal mb-1">
                   {testimonials[currentIndex].author}
                 </p>
                 <p className="font-body text-mist-700">

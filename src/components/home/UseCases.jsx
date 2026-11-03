@@ -23,7 +23,7 @@ function CaseCard({ c, i, progress }) {
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
           <span className="absolute bottom-4 right-4 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-brand-400 text-ink opacity-0 transition-all duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100"><ArrowUpRight size={18} /></span>
         </div>
-        <h3 className="mt-3 font-poster text-[1.9rem] uppercase leading-none tracking-[.01em] text-ink">{title}</h3>
+        <h3 className="card-heading mt-3 text-ink">{title}</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">{desc}</p>
         <span className="link-arrow mt-3 text-[13px]">Read more <ArrowUpRight size={14} /></span>
       </Link>
@@ -39,7 +39,7 @@ export default function UseCases() {
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
           <Reveal><Eyebrow>Technology in action</Eyebrow></Reveal>
-          <h2 className="h-poster mt-6 text-[clamp(3.2rem,8vw,7.5rem)] text-ink"><MaskLines lines={['A closer look at', <span className="text-muted-faint">what’s possible.</span>]} /></h2>
+          <h2 className="h-section mt-6 text-ink"><MaskLines lines={['A closer look at', <span className="text-muted-faint">what’s possible.</span>]} /></h2>
         </div>
         <Reveal delay={0.15}><Link to="/our-work" className="btn btn-outline">Explore our work</Link></Reveal>
       </div>

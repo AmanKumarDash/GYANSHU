@@ -14,7 +14,7 @@ export default function Testimonials() {
   return <section className="py-8 md:py-10 lg:py-12">
     <div className="shell">
       <div className="mx-auto max-w-3xl text-center">
-        <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-600">Testimonials</p></Reveal>
+        <Reveal><p className="label-text text-brand-600">Testimonials</p></Reveal>
         <h2 className="h-section mt-4"><MaskLines lines={[<>Trusted by <span className="text-brand-500">Visionaries</span></>]} /></h2>
       </div>
       <div className="mt-7 grid gap-2 sm:gap-3 md:grid-cols-3">

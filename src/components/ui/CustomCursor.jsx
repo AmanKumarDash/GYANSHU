@@ -107,7 +107,7 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none flex justify-center items-center text-ink-950 font-mono text-[10px] tracking-widest font-bold overflow-hidden"
+        className="fixed top-0 left-0 z-[9999] pointer-events-none flex justify-center items-center text-ink-950 label-text font-bold overflow-hidden"
         style={{
           x: springX,
           y: springY,

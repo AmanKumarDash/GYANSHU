@@ -30,7 +30,7 @@ function StrengthCard({ item, copy }) {
       <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:bg-brand-400 group-hover:text-ink group-focus-visible:bg-brand-400 group-focus-visible:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
     </div>
     <p className="relative mt-6 font-display text-[14px] font-semibold tracking-[-.005em] text-brand-600 transition-colors duration-500 group-hover:text-brand-300 group-focus-visible:text-brand-300 [text-align:left!important]">{item.label}</p>
-    <h3 className="relative mt-3 font-display text-xl font-medium leading-snug tracking-[-.02em] text-ink transition-colors duration-500 group-hover:text-white group-focus-visible:text-white">{item.title}</h3>
+    <h3 className="card-heading relative mt-3 text-ink transition-colors duration-500 group-hover:text-white group-focus-visible:text-white">{item.title}</h3>
     <p className="relative mt-3 text-[14px] leading-relaxed text-muted transition-colors duration-500 group-hover:text-white/70 group-focus-visible:text-white/70">{item.text}</p>
     <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-300 transition-transform duration-700 ease-expo group-hover:scale-x-100 group-focus-visible:scale-x-100" />
   </article>

@@ -38,7 +38,7 @@ export default function Capabilities() {
 
             {/* Collapsed label */}
             <div className={`pointer-events-none absolute inset-0 z-10 flex items-center justify-between gap-4 px-6 transition-opacity duration-300 lg:flex-col lg:items-start lg:justify-between lg:py-7 ${on ? 'opacity-0' : 'opacity-100 delay-200'}`}>
-              <span className="font-mono text-[11px] text-brand-300">◆</span>
+              <span className="label-text text-brand-300">◆</span>
               <span className="whitespace-nowrap font-display text-lg font-medium tracking-tight text-white lg:origin-bottom-left lg:translate-x-7 lg:-rotate-90 lg:text-xl">{item.title}</span>
             </div>
 

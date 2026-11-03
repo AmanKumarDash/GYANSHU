@@ -71,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative overflow-hidden bg-white/85 backdrop-blur-md border border-signal/25 text-ink-950 font-mono text-xs px-5 py-3 rounded-md mb-6 flex items-center gap-3 shadow-[0_8px_28px_rgba(54,68,75,0.08)]"
+          className="relative overflow-hidden bg-white/85 backdrop-blur-md border border-signal/25 text-ink-950 label-text px-5 py-3 rounded-md mb-6 flex items-center gap-3 shadow-[0_8px_28px_rgba(54,68,75,0.08)]"
         >
           <motion.div
             animate={{ x: ['-120%', '220%'] }}
@@ -127,7 +127,7 @@ export default function Hero() {
       >
         <svg viewBox="0 0 100 100" width="100" height="100">
           <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-          <text className="font-mono text-[9.5px] fill-white tracking-widest uppercase">
+          <text className="label-text fill-white">
             <textPath href="#circlePath">Cybersecurity · Infrastructure · AI · Cybersecurity · Infrastructure · AI · </textPath>
           </text>
         </svg>
@@ -136,7 +136,7 @@ export default function Hero() {
       <div className="absolute bottom-8 left-6 md:left-12 z-20 hidden sm:block">
         <div className="font-display flex flex-col gap-1 items-start text-white/80">
           <span className="text-3xl text-signal"><AnimatedCounter end={6} /></span>
-          <span className="font-mono text-xs text-mist-900 tracking-wider">Core Service Lines</span>
+          <span className="label-text text-mist-900">Core Service Lines</span>
         </div>
       </div>
 

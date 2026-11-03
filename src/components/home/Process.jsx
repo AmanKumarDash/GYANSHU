@@ -55,7 +55,7 @@ export default function Process() {
 
           {/* Floating status card, synced to the timeline */}
           <div className="absolute right-5 top-5 z-10 w-[min(20rem,calc(100%-2.5rem))] rounded-[20px] border border-white/10 bg-white/[.06] p-5 backdrop-blur-xl md:right-8 md:top-8">
-            <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[.16em] text-white/45"><span>Current phase</span><span className="flex items-center gap-2 text-brand-300"><span className="relative flex h-1.5 w-1.5">{!done && <span className="absolute inset-0 animate-ping rounded-full bg-brand-400" />}<span className="relative h-1.5 w-1.5 rounded-full bg-brand-400" /></span>{done ? 'Complete' : 'Live'}</span></div>
+            <div className="flex items-center justify-between label-text text-white/45"><span>Current phase</span><span className="flex items-center gap-2 text-brand-300"><span className="relative flex h-1.5 w-1.5">{!done && <span className="absolute inset-0 animate-ping rounded-full bg-brand-400" />}<span className="relative h-1.5 w-1.5 rounded-full bg-brand-400" /></span>{done ? 'Complete' : 'Live'}</span></div>
             <div className="mt-3 h-10 overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.p key={current} className="font-display text-3xl font-medium tracking-[-.03em]" initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: -40 }} transition={{ duration: 0.45, ease: EASE }}>{steps[current][0]}</motion.p>
@@ -80,7 +80,7 @@ export default function Process() {
               {steps.map(([t], i) => {
                 const p = phase(i)
                 return <div key={t} className="flex flex-col items-center text-center">
-                  <span className={`font-mono text-[11px] transition-colors duration-500 ${p === 'upcoming' ? 'text-white/35' : 'text-brand-300'}`}>◆</span>
+                  <span className={`label-text transition-colors duration-500 ${p === 'upcoming' ? 'text-white/35' : 'text-brand-300'}`}>◆</span>
                   <span className={`mt-2 font-display text-xl font-medium tracking-[-.02em] transition-colors duration-500 lg:text-3xl ${p === 'active' ? 'text-white' : p === 'complete' ? 'text-white/70' : 'text-white/30'}`}>{t}</span>
                   <span className="relative mt-6 flex h-[18px] w-[18px] items-center justify-center">
                     <span className={`absolute inset-0 rounded-full border transition-all duration-500 ${p === 'complete' ? 'border-brand-400 bg-brand-400' : p === 'active' ? 'border-brand-400 bg-ink' : 'border-white/30 bg-ink'}`} />

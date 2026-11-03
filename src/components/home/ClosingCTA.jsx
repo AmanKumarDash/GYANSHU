@@ -47,7 +47,7 @@ export default function ClosingCTA() {
       <div className="grain absolute inset-0 -z-10" />
       <div className="shell flex flex-col items-center">
         <Reveal><Eyebrow dark>Start a conversation</Eyebrow></Reveal>
-        <h2 className="h-poster mt-5 text-[clamp(3.4rem,9vw,9rem)]"><MaskLines lines={['Let’s build what', <span className="text-brand-300">comes next.</span>]} /></h2>
+        <h2 className="hero-heading mt-5"><MaskLines lines={['Let’s build what', <span className="text-brand-300">comes next.</span>]} /></h2>
         <Reveal delay={0.2}><p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">Bring us your cybersecurity, infrastructure, software, AI, or IoT requirement.</p></Reveal>
         <Reveal delay={0.3} className="mt-6 flex flex-wrap justify-center gap-3">
           <ArrowButton variant="brand" icon={Mail} onClick={() => setOpen(true)}>Send us a message</ArrowButton>

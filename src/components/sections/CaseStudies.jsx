@@ -52,13 +52,13 @@ const CaseStudyCard = ({ data }) => {
         {/* Normal State Front */}
         <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
           <div className="flex justify-between items-start">
-            <span className="inline-block border border-white/20 text-white/60 bg-black/20 font-mono text-xs px-3 py-1 rounded-full backdrop-blur-md">
+            <span className="inline-block border border-white/20 text-white/60 bg-black/20 label-text px-3 py-1 rounded-full backdrop-blur-md">
               {data.industry}
             </span>
           </div>
           <div>
             <h3 className="font-display font-medium text-4xl mb-2 tracking-tight" style={{ transform: "translateZ(30px)" }}>{data.company}</h3>
-            <p className="font-mono text-xl text-signal" style={{ transform: "translateZ(20px)" }}>{data.result}</p>
+            <p className="label-text text-xl text-signal" style={{ transform: "translateZ(20px)" }}>{data.result}</p>
           </div>
         </div>
 
@@ -70,13 +70,13 @@ const CaseStudyCard = ({ data }) => {
           
           <div className="flex flex-wrap gap-2 mb-8">
             {data.services.map(tag => (
-              <span key={tag} className="font-mono text-[10px] text-white/50 bg-white/5 px-2 py-1 rounded-sm border border-white/10">
+              <span key={tag} className="label-text text-white/50 bg-white/5 px-2 py-1 rounded-sm border border-white/10">
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="mt-auto flex items-center gap-2 text-signal font-mono text-sm group/btn cursor-pointer">
+          <div className="mt-auto flex items-center gap-2 text-signal label-text group/btn cursor-pointer">
             <span className="group-hover/btn:underline hover:underline-offset-4">View Case Study</span> &rarr;
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function CaseStudies() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <ScrollReveal className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Working Product Portfolio</p>
+            <p className="label-text text-signal mb-4">Working Product Portfolio</p>
             <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">Products built for operations.</h2>
           </div>
           <button className="text-mist-900 border border-white/10 hover:border-white/30 hover:text-white px-6 py-3 rounded-full text-sm transition-colors text-nowrap self-start md:self-auto" data-cursor="hover">

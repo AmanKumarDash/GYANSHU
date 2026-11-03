@@ -13,10 +13,10 @@ export default function BlogPreview() {
         
         <ScrollReveal className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
           <div>
-            <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Insights</p>
+            <p className="label-text text-signal mb-4">Insights</p>
             <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight">Practical technology insight.</h2>
           </div>
-          <a href="#" className="font-mono text-sm text-mist-900 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1 group" data-cursor="hover">
+          <a href="#" className="label-text text-mist-900 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1 group" data-cursor="hover">
             Explore Capability <span className="text-signal inline-block group-hover:translate-x-1 transition-transform">&rarr;</span>
           </a>
         </ScrollReveal>
@@ -28,7 +28,7 @@ export default function BlogPreview() {
                 <div className="absolute inset-0 bg-gradient-to-t from-signal/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <span className="inline-block border border-signal/30 text-signal font-mono text-xs px-3 py-1 rounded-full self-start mb-6 -ml-1">
+                  <span className="inline-block border border-signal/30 text-signal label-text px-3 py-1 rounded-full self-start mb-6 -ml-1">
                     {post.cat}
                   </span>
                   
@@ -36,7 +36,7 @@ export default function BlogPreview() {
                     {post.title}
                   </h3>
                   
-                  <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between font-mono text-xs text-mist-700">
+                  <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between label-text text-mist-700">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-mist-700"></div>
                       <span>{post.date}</span>

@@ -20,7 +20,7 @@ export default function Customers() {
   return <section className="overflow-hidden bg-white py-8 md:py-10 lg:py-12">
     <div className="shell">
       <div className="mx-auto max-w-3xl text-center">
-        <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-600">Trusted by</p></Reveal>
+        <Reveal><p className="label-text text-brand-600">Trusted by</p></Reveal>
         <h2 className="h-section mt-4"><MaskLines lines={[<>Our <span className="text-brand-500">Customers</span></>]} /></h2>
         <Reveal delay={0.15}><p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted md:text-base">Leading enterprises, government agencies, and critical infrastructure providers trust Gyanshu for their security and technology needs.</p></Reveal>
       </div>

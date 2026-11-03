@@ -15,7 +15,7 @@ function IndustryCard({ item, copy }) {
       <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ink">
         <img src={photo(item.image, 700)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
       </div>
-      <h3 className="mt-5 line-clamp-2 min-h-[2em] font-poster text-[1.75rem] uppercase leading-none tracking-[.01em] text-ink">{item.title}</h3>
+      <h3 className="card-heading mt-5 line-clamp-2 min-h-[2em] text-ink">{item.title}</h3>
       <p className="mt-2 line-clamp-4 min-h-[6.5em] text-sm leading-relaxed text-muted [hyphens:manual] [text-align:left!important]">{item.text}</p>
       <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
     </Link>
@@ -27,7 +27,7 @@ export default function Industries() {
     <div className="shell">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
-          <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-600">Expertise across sectors</p></Reveal>
+          <Reveal><p className="label-text text-brand-600">Expertise across sectors</p></Reveal>
           <h2 className="h-section mt-4"><MaskLines lines={[<>Industries We <span className="text-brand-500">Serve</span></>]} /></h2>
         </div>
         <Reveal delay={0.15} className="lg:justify-self-end">

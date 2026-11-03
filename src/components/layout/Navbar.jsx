@@ -67,11 +67,11 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
           {groups.map((g) => <div key={g.to} onMouseEnter={() => setOpen(g.label)} className="relative">
-            <NavLink to={g.to} onFocus={() => setOpen(g.label)} className={({ isActive }) => `inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[13.5px] transition-colors ${isActive || open === g.label ? 'text-ink' : 'text-ink/65 hover:text-ink'}`} aria-expanded={open === g.label}>
+            <NavLink to={g.to} onFocus={() => setOpen(g.label)} className={({ isActive }) => `navigation-link inline-flex items-center gap-1 rounded-full px-3 py-2 transition-colors ${isActive || open === g.label ? 'text-ink' : 'text-ink/65 hover:text-ink'}`} aria-expanded={open === g.label}>
               {g.label}<ChevronDown size={13} className={`transition-transform duration-300 ${open === g.label ? 'rotate-180' : ''}`} />
             </NavLink>
           </div>)}
-          {pages.map(([label, to]) => <NavLink key={to} to={to} onMouseEnter={() => setOpen(null)} className={({ isActive }) => `rounded-full px-3.5 py-2 text-[13.5px] transition-colors ${isActive ? 'text-ink' : 'text-ink/65 hover:text-ink'}`}>{label}</NavLink>)}
+          {pages.map(([label, to]) => <NavLink key={to} to={to} onMouseEnter={() => setOpen(null)} className={({ isActive }) => `navigation-link rounded-full px-3 py-2 transition-colors ${isActive ? 'text-ink' : 'text-ink/65 hover:text-ink'}`}>{label}</NavLink>)}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -95,7 +95,7 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-xl flex-col gap-9">
           {groups.map((g, gi) => <motion.div key={g.to} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 + gi * 0.07, duration: 0.6, ease: EASE }}>
             <Link to={g.to} className="font-display text-4xl font-medium tracking-tight">{g.label}</Link>
-            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">{g.links.map((l) => <Link key={l.to} to={l.to} className="text-sm text-white/50 hover:text-brand-300">{l.label.trim()}</Link>)}</div>
+            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">{g.links.map((l) => <Link key={l.to} to={l.to} className="navigation-link text-white/50 hover:text-brand-300">{l.label.trim()}</Link>)}</div>
           </motion.div>)}
           <motion.div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-8" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6, ease: EASE }}>
             {pages.map(([label, to]) => <Link key={to} to={to} className="font-display text-2xl tracking-tight">{label}</Link>)}
@@ -127,7 +127,7 @@ function MegaMenu({ group, onClose }) {
       </Link>
       <div className="grid grid-cols-2 content-start gap-1 p-2">
         {group.links.map((l, i) => <motion.div key={l.to} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.04 + i * 0.025, duration: 0.4, ease: EASE }}>
-          <Link to={l.to} onClick={onClose} className="group flex items-center justify-between gap-3 rounded-2xl px-4 py-3 text-[14px] text-ink/80 transition-colors hover:bg-paper hover:text-ink">
+          <Link to={l.to} onClick={onClose} className="navigation-link group flex items-center justify-between gap-3 rounded-2xl px-4 py-3 text-ink/80 transition-colors hover:bg-paper hover:text-ink">
             <span className="flex items-center gap-3"><span className="text-[8px] text-brand-500">◆</span>{l.label.trim()}</span>
             <ArrowUpRight size={14} className="text-brand-500 opacity-0 transition-all duration-300 group-hover:opacity-100" />
           </Link>

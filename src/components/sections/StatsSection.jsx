@@ -25,7 +25,7 @@ export default function StatsSection() {
                   decimals={stat.decimals} 
                 />
               </div>
-              <p className="font-mono text-xs md:text-sm uppercase tracking-widest mt-2 md:mt-4 opacity-80 font-semibold text-wrap">
+              <p className="label-text mt-2 md:mt-4 opacity-80 font-semibold text-wrap">
                 {stat.label}
               </p>
             </ScrollReveal>

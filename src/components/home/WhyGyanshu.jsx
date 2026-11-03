@@ -34,7 +34,7 @@ export default function WhyGyanshu() {
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-brand-300 transition-transform duration-500 group-hover:-rotate-6">
               {badge ? <span className="font-display text-lg font-semibold tracking-tight">{badge}</span> : <Icon size={22} strokeWidth={1.7} />}
             </span>
-            <h3 className="mt-5 font-display text-lg font-medium tracking-[-.02em] text-ink">{title}</h3>
+            <h3 className="card-heading mt-5 text-ink">{title}</h3>
             <p className="mt-2 text-[14px] leading-relaxed text-muted [text-align:center!important]">{text}</p>
           </div>
         </Reveal>)}

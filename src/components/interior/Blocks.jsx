@@ -36,7 +36,7 @@ export function PosterHeadline({ text, muted = 1, pill, pillAfter, onLoad = fals
   const play = onLoad ? { animate: ready ? 'show' : 'hidden' } : { whileInView: 'show', viewport: { once: true, margin: '0px 0px -10% 0px' } }
   return <Tag
     aria-label={text.trim()}
-    className={`h-poster flex flex-wrap items-center gap-x-[.2em] ${align === 'center' ? 'justify-center text-center' : 'justify-start text-left'} ${className}`}
+    className={`flex flex-wrap items-center gap-x-[.25em] ${align === 'center' ? 'justify-center text-center' : 'justify-start text-left'} ${className}`}
     initial="hidden" {...play}
     variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: onLoad ? 0.15 : 0 } } }}
   >
@@ -51,11 +51,12 @@ export function PosterHeadline({ text, muted = 1, pill, pillAfter, onLoad = fals
   </Tag>
 }
 
-function SectionIntro({ eyebrow, title, muted = 1, lede, dark = false, align = 'center', size = 'text-[clamp(2.8rem,6.4vw,6rem)]' }) {
+// Section titles use the shared section heading style; page titles and banners use .hero-heading.
+function SectionIntro({ eyebrow, title, muted = 1, lede, dark = false, align = 'center' }) {
   const center = align === 'center'
   return <div className={center ? 'mx-auto max-w-4xl text-center' : 'max-w-3xl'}>
     <Reveal><Eyebrow dark={dark}>{eyebrow}</Eyebrow></Reveal>
-    <PosterHeadline text={title} muted={muted} align={align} className={`mt-6 ${size} ${dark ? 'text-white' : 'text-ink'}`} />
+    <PosterHeadline text={title} muted={muted} align={align} className={`h-section mt-6 ${dark ? 'text-white' : 'text-ink'}`} />
     {lede && <Reveal delay={0.15}><p className={`mt-5 max-w-xl text-[15px] leading-relaxed md:text-base ${center ? 'mx-auto' : ''} ${dark ? 'text-white/55' : 'text-muted'}`}>{lede}</p></Reveal>}
   </div>
 }
@@ -96,7 +97,7 @@ function SpinBadge({ href = '#hero-end' }) {
   return <a href={href} aria-label="Scroll to details" className="group absolute bottom-6 right-8 z-10 hidden h-28 w-28 items-center justify-center rounded-full bg-brand-400 text-ink shadow-lift transition-transform duration-500 hover:scale-105 md:flex lg:right-16">
     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-spin-slow" aria-hidden="true">
       <defs><path id={id} d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0" /></defs>
-      <text className="fill-ink font-mono text-[8.6px] uppercase tracking-[.22em]"><textPath href={`#${id}`}>Scroll to explore · Gyanshu ·</textPath></text>
+      <text className="fill-ink label-text"><textPath href={`#${id}`}>Scroll to explore · Gyanshu ·</textPath></text>
     </svg>
     <ArrowDown size={20} className="transition-transform duration-500 group-hover:translate-y-1" />
   </a>
@@ -122,7 +123,7 @@ export function HeroCentered({ eyebrow, title, muted = 1, pill, pillAfter, subti
     <div className="dot-grid-light pointer-events-none absolute inset-x-0 top-0 h-[70vh] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
     <div className="shell relative flex flex-col items-center text-center">
       <motion.div {...show(0.05)}><Eyebrow>{eyebrow}</Eyebrow></motion.div>
-      <PosterHeadline as="h1" onLoad text={title} muted={muted} pill={pill} pillAfter={pillAfter} className="mt-5 max-w-6xl text-[clamp(3rem,7.4vw,7.6rem)] text-ink" />
+      <PosterHeadline as="h1" onLoad text={title} muted={muted} pill={pill} pillAfter={pillAfter} className="hero-heading mt-5 max-w-6xl text-ink" />
       {subtitle && <motion.p {...show(0.45)} className="mt-5 max-w-2xl font-display text-lg font-medium leading-snug tracking-[-.02em] text-ink md:text-xl">{subtitle}</motion.p>}
       {intro && <motion.p {...show(0.52)} className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted md:text-base">{intro}</motion.p>}
       {actions !== null && <motion.div {...show(0.6)} className="mt-6 flex flex-wrap justify-center gap-3">{actions || <>
@@ -175,7 +176,7 @@ export function KeyFeatures({ eyebrow, title, muted = 1, lede, items, cols = 3, 
         {items.map((item, i) => {
           return <Reveal key={item.title} delay={(i % cols) * 0.08} className={`group flex flex-col items-center px-6 py-10 text-center ${i % cols ? 'lg:border-l lg:border-line' : ''} ${i >= cols ? 'lg:border-t lg:border-line' : ''} border-line max-lg:border-b`}>
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-50 text-brand-600 ring-8 ring-brand-50/50 transition-all duration-500 group-hover:-rotate-6 group-hover:bg-ink group-hover:text-brand-300 group-hover:ring-brand-400/15"><ItemIcon title={item.title} icon={item.icon} size={24} strokeWidth={1.6} /></span>
-            <h3 className="mt-7 font-poster text-[1.7rem] uppercase leading-none tracking-[.01em] text-ink">{item.title}</h3>
+            <h3 className="card-heading mt-7 text-ink">{item.title}</h3>
             {item.text && <p className="mt-3 max-w-xs text-[14.5px] leading-relaxed text-muted">{item.text}</p>}
           </Reveal>
         })}
@@ -204,10 +205,10 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
           return <Reveal key={item.title} delay={(i % cols) * 0.06} className="h-full">
             <Wrap to={item.to} className="group relative flex h-full min-h-[150px] flex-col overflow-hidden rounded-[22px] border border-line bg-white p-4 shadow-card sm:min-h-[180px] sm:p-5 transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_20px_-8px_rgba(14,131,120,.6)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={item.title} icon={item.icon} size={19} strokeWidth={1.8} /></span>
-              <h3 className="mt-4 font-display text-[15px] font-medium leading-snug tracking-[-.02em] text-ink sm:mt-5 sm:text-lg md:text-xl">{item.title}</h3>
+              <h3 className="card-heading mt-4 text-ink sm:mt-5">{item.title}</h3>
               {item.text && <p className="mt-2 text-[13px] leading-relaxed text-muted sm:text-[13.5px]">{item.text}</p>}
               {item.tags && <div className="mt-auto flex flex-wrap gap-1.5 pt-5">{item.tags.map((t) => <span key={t} className="rounded-full bg-paper px-2.5 py-1 text-[11px] text-muted">{t}</span>)}</div>}
-              <span className="absolute right-5 top-5 font-mono text-[10.5px] text-muted-faint">◆</span>
+              <span className="absolute right-5 top-5 label-text text-muted-faint">◆</span>
             </Wrap>
           </Reveal>
         })}
@@ -246,7 +247,7 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100"><ArrowUpRight size={15} /></span>
             </div>
             <div className="relative">
-              <h3 className="font-display text-2xl font-medium tracking-[-.025em] md:text-[1.7rem]">{item.title}</h3>
+              <h3 className="card-heading">{item.title}</h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/75">{item.text}</p>
             </div>
           </Link>
@@ -281,8 +282,8 @@ function StepNode({ state, reduce }) {
 function StepCard({ title, text, state }) {
   const on = state === 'active'
   return <div className={`flex-1 rounded-2xl border p-5 backdrop-blur-xl transition-[background-color,border-color,box-shadow,color] duration-500 ${on ? 'border-brand-400 bg-brand-500 text-white shadow-glow' : 'border-white/60 bg-white/75 text-ink'}`}>
-    <span className={`font-mono text-[10.5px] ${on ? 'text-white/70' : state === 'complete' ? 'text-brand-600' : 'text-muted-soft'}`}>◆</span>
-    <h3 className="mt-2 font-display text-lg font-medium tracking-[-.02em]">{title}</h3>
+    <span className={`label-text ${on ? 'text-white/70' : state === 'complete' ? 'text-brand-600' : 'text-muted-soft'}`}>◆</span>
+    <h3 className="card-heading mt-2">{title}</h3>
     {text && <p className={`mt-1.5 text-[13px] leading-relaxed ${on ? 'text-white/85' : 'text-muted'}`}>{text}</p>}
   </div>
 }
@@ -504,7 +505,7 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
   return <section ref={top} className={`${tone === 'white' ? 'bg-white' : ''} section-space`}>
     <div className="shell">
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <SectionIntro eyebrow={eyebrow} title={title} muted={muted} align="left" size="text-[clamp(2.8rem,6.6vw,6.4rem)]" />
+        <SectionIntro eyebrow={eyebrow} title={title} muted={muted} align="left" />
         {link && <Reveal delay={0.15}><Link to={link.to} className="btn btn-outline">{link.label}</Link></Reveal>}
       </div>
       <AnimatePresence mode="wait">
@@ -513,10 +514,10 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
             <Link to={item.to} className="group flex h-full flex-col">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ink">
                 <img src={photo(item.image, 900)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
-                {item.tag && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[.14em] text-ink backdrop-blur">{item.tag}</span>}
+                {item.tag && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 label-text text-ink backdrop-blur">{item.tag}</span>}
               </div>
               {/* Room for a two-line title and four-line description keeps every card the same height. */}
-              <h3 className="mt-5 line-clamp-2 min-h-[2em] font-poster text-[1.75rem] uppercase leading-none tracking-[.01em] text-ink">{item.title}</h3>
+              <h3 className="card-heading mt-5 line-clamp-2 min-h-[2em] text-ink">{item.title}</h3>
               <p className="mt-2 line-clamp-4 min-h-[6.5em] max-w-sm text-sm leading-relaxed text-muted">{item.text}</p>
               <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
             </Link>
@@ -525,7 +526,7 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
       </AnimatePresence>
       {pages > 1 && <div className="mt-6 flex items-center justify-between border-t border-line pt-8">
         <button onClick={() => go(Math.max(0, page - 1))} disabled={page === 0} className="group inline-flex items-center gap-3 text-sm text-ink disabled:opacity-35"><span className="flex h-10 w-10 items-center justify-center rounded-full border border-line transition-colors group-enabled:group-hover:bg-ink group-enabled:group-hover:text-white"><ArrowLeft size={15} /></span>Previous</button>
-        <div className="flex gap-2">{Array.from({ length: pages }, (_, p) => <button key={p} onClick={() => go(p)} aria-current={p === page ? 'page' : undefined} className={`h-10 w-10 rounded-xl font-mono text-[12px] transition-colors ${p === page ? 'bg-brand-500 text-white' : 'border border-line text-muted hover:border-ink hover:text-ink'}`}>{String(p + 1).padStart(2, '0')}</button>)}</div>
+        <div className="flex gap-2">{Array.from({ length: pages }, (_, p) => <button key={p} onClick={() => go(p)} aria-current={p === page ? 'page': undefined} className={`h-10 w-10 rounded-xl label-text transition-colors ${p === page ?'bg-brand-500 text-white' : 'border border-line text-muted hover:border-ink hover:text-ink'}`}>{String(p + 1).padStart(2, '0')}</button>)}</div>
         <button onClick={() => go(Math.min(pages - 1, page + 1))} disabled={page === pages - 1} className="group inline-flex items-center gap-3 text-sm text-ink disabled:opacity-35">Next<span className="flex h-10 w-10 items-center justify-center rounded-full border border-line transition-colors group-enabled:group-hover:bg-ink group-enabled:group-hover:text-white"><ArrowRight size={15} /></span></button>
       </div>}
     </div>
@@ -547,7 +548,7 @@ export function Openings({ eyebrow = 'Current openings', title, lede, jobs }) {
             <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
               <div>
                 <span className="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-[12px] font-medium text-brand-600">{job.badge}</span>
-                <h3 className="mt-4 font-display text-2xl font-medium tracking-[-.025em] text-ink md:text-[2rem]">{job.title}</h3>
+                <h3 className="card-heading mt-4 text-ink">{job.title}</h3>
                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
                   <span className="inline-flex items-center gap-1.5"><MapPin size={15} className="text-brand-500" />{job.location}</span>
                   <span className="inline-flex items-center gap-1.5"><BriefcaseBusiness size={15} className="text-brand-500" />{job.type}</span>
@@ -559,7 +560,7 @@ export function Openings({ eyebrow = 'Current openings', title, lede, jobs }) {
             <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">{job.summary}</p>
             <div className="mt-7 grid gap-6 border-t border-line pt-7 md:grid-cols-2">
               {[["What you'll do", job.duties], ["What we're looking for", job.requirements]].map(([heading, list]) => <div key={heading}>
-                <h4 className="font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">{heading}</h4>
+                <h4 className="label-text text-muted-soft">{heading}</h4>
                 <ul className="mt-4 flex flex-col gap-2.5">
                   {list.map((line) => <li key={line} className="flex gap-3 text-[14px] leading-relaxed text-ink/80"><Check size={16} className="mt-[3px] shrink-0 text-brand-500" />{line}</li>)}
                 </ul>
@@ -604,7 +605,7 @@ export function TrainingPanel({ eyebrow = 'Training', title, lede, courses, cta 
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_24px_-8px_rgba(20,184,166,.55)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={course.title} icon={course.icon} size={21} strokeWidth={1.8} /></span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={15} /></span>
               </div>
-              <h3 className="relative mt-6 font-display text-xl font-medium tracking-[-.02em] md:text-2xl">{course.title}</h3>
+              <h3 className="card-heading relative mt-6">{course.title}</h3>
               <p className="relative mt-2 text-[13.5px] leading-relaxed text-white/60">{course.text}</p>
               <div className="relative mt-auto flex flex-wrap gap-1.5 pt-5">
                 {course.tags.map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/[.05] px-2.5 py-1 text-[11px] text-white/70">{tag}</span>)}
@@ -628,7 +629,7 @@ function TechTile({ name, role, logos }) {
     </span>
     <span>
       <span className="block font-display text-lg font-medium tracking-[-.02em] text-ink">{name}</span>
-      <span className="mt-0.5 block font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">{role}</span>
+      <span className="mt-0.5 block label-text text-muted-soft">{role}</span>
     </span>
   </div>
 }
@@ -682,7 +683,7 @@ export function Quotes({ eyebrow, title, accent, lede, items }) {
             <Quote size={30} className="text-brand-400" />
             <blockquote className="mt-5 flex-1 font-display text-xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[1.35rem]">“{it.quote}”</blockquote>
             <figcaption className="mt-8 flex items-center gap-3 border-t border-line pt-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-mono text-[12px] font-medium text-white" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0E8378'}, #14B8A6)` }}>{initials(it.name)}</span>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full label-text font-medium text-white" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0E8378'}, #14B8A6)` }}>{initials(it.name)}</span>
               <span><span className="block font-display text-[15px] font-medium text-ink">{it.name}</span><span className="block text-[13px] text-muted">{it.role}</span></span>
             </figcaption>
           </figure>
@@ -821,7 +822,7 @@ export function StatsBand({ eyebrow, title, accent, lede, stats }) {
 export function NeedsSplit({ eyebrow, title, items }) {
   return <section className="section-space">
     <div className="shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-      <SectionIntro eyebrow={eyebrow} title={title} muted={2} align="left" size="text-[clamp(2.8rem,5.6vw,5.4rem)]" />
+      <SectionIntro eyebrow={eyebrow} title={title} muted={2} align="left" />
       <div className="grid gap-3 sm:grid-cols-2">
         {items.map((item, i) => <Reveal key={item} delay={0.1 + i * 0.1} className="h-full">
           <div className="group relative flex h-full min-h-[260px] flex-col justify-between overflow-hidden rounded-[24px] border border-line bg-white p-7 shadow-card">
@@ -836,27 +837,21 @@ export function NeedsSplit({ eyebrow, title, items }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* CTA — Apex centered call to action with drifting photo strip         */
+/* CTA — Apex centered call to action (the photo strip was removed)    */
 /* ------------------------------------------------------------------ */
 
-const stripHeights = ['h-[220px]', 'h-[300px]', 'h-[250px]', 'h-[200px]', 'h-[280px]', 'h-[240px]']
-
-export function CtaPhotos({ eyebrow = 'Start a conversation', title = 'Ready to talk through your next challenge?', muted = 3, text = 'Let’s talk about what you need to make possible.', cta = 'Contact Gyanshu', to = '/contact', href, images }) {
-  const row = [...images, ...images]
+export function CtaPhotos({ eyebrow = 'Start a conversation', title = 'Ready to talk through your next challenge?', muted = 3, text = 'Let’s talk about what you need to make possible.', cta = 'Contact Gyanshu', to = '/contact', href }) {
   const Action = href ? 'a' : Link
   return <section className="overflow-hidden bg-white pb-14 pt-14 sm:pb-16 sm:pt-16 lg:pb-20 lg:pt-20">
     <div className="shell flex flex-col items-center text-center">
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
-      <PosterHeadline text={title} muted={muted} className="mt-5 max-w-5xl text-[clamp(2.8rem,6.4vw,6.2rem)] text-ink" />
+      <PosterHeadline text={title} muted={muted} className="hero-heading mt-5 max-w-5xl text-ink" />
       <Reveal delay={0.15}><p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted md:text-base">{text}</p></Reveal>
       <Reveal delay={0.22}>
         <Action {...(href ? { href } : { to })} className="group mt-8 inline-flex items-center gap-4 text-[15px] font-medium text-ink">
           {cta}<span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-400 text-ink shadow-glow transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110"><ArrowUpRight size={18} /></span>
         </Action>
       </Reveal>
-    </div>
-    <div className="mt-10 flex w-max animate-marquee items-start gap-3 [animation-duration:70s] hover:[animation-play-state:paused]" aria-hidden="true">
-      {row.map((id, i) => <div key={i} className={`w-[240px] shrink-0 overflow-hidden rounded-[22px] bg-ink md:w-[280px] ${stripHeights[i % stripHeights.length]}`}><img src={photo(id, 600)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" /></div>)}
     </div>
   </section>
 }

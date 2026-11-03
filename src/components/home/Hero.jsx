@@ -192,15 +192,16 @@ export default function Hero() {
             </h1>
           </motion.div>
 
-          <p className="mt-7 font-display text-[clamp(2.6rem,4.4vw,4.25rem)] font-bold uppercase leading-[.98] tracking-[-.03em] text-ink [hyphens:manual] [text-align:left!important] sm:whitespace-nowrap md:mt-9">
+          <p className="hero-heading mt-7 text-[clamp(2.5rem,4.6vw,4.5rem)] text-ink [hyphens:manual] [text-align:left!important] md:mt-9">
             <MaskLines onLoad delay={0.25} stagger={0.1} lines={[
               <>Intelligence.</>,
-              <><span className="text-brand-500">Trust.</span> Innovation.</>,
+              <span className="text-brand-500">Trust.</span>,
+              <>Innovation.</>,
             ]} />
           </p>
           <motion.span {...show(0.5)} className="mt-6 block h-px w-48 bg-gradient-to-r from-brand-500 via-brand-300 to-transparent" aria-hidden="true" />
 
-          <motion.p {...show(0.55)} className="mt-6 text-lg font-medium leading-snug text-ink [text-align:left!important] md:text-xl [hyphens:manual]">Secure critical systems. Connect complex operations. Build technology that moves your organization forward.</motion.p>
+          <motion.p {...show(0.55)} className="mt-6 max-w-[36rem] text-lg font-medium leading-snug text-ink [text-align:left!important] md:text-xl [hyphens:manual]">Secure critical systems. Connect complex operations. Build technology that moves your organization forward.</motion.p>
           <motion.p {...show(0.62)} className="mt-4 max-w-[34rem] text-[15px] leading-relaxed text-muted [hyphens:manual] [text-align:left!important] md:text-base">Empower your business with cybersecurity, intelligent infrastructure, AI-powered platforms, and digital engineering to reduce risks, streamline operations, and accelerate growth.</motion.p>
           <motion.div {...show(0.7)} className="mt-7 flex flex-wrap gap-3">
             <ArrowButton href="#capabilities" icon={ArrowDown}>Explore capabilities</ArrowButton>
@@ -222,7 +223,7 @@ export default function Hero() {
 
         <div className="absolute left-5 right-5 top-5 flex items-start justify-between gap-4 md:left-8 md:right-8 md:top-8">
           <span className="eyebrow-dark">Explore Gyanshu</span>
-          <a href="#stories" className="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[.2em] text-white/60 transition-colors hover:text-white md:flex">Scroll to explore <ArrowDown size={13} className="animate-bounce" /></a>
+          <a href="#stories" className="hidden items-center gap-2 label-text text-white/60 transition-colors hover:text-white md:flex">Scroll to explore <ArrowDown size={13} className="animate-bounce" /></a>
         </div>
 
         <div className="absolute inset-x-5 bottom-5 grid gap-6 md:inset-x-8 md:bottom-8 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -239,14 +240,14 @@ export default function Hero() {
               {explore.map(([label, to]) => <Link key={label} to={to} className="rounded-full border border-white/15 bg-white/[.07] px-4 py-2 text-[13px] text-white/85 backdrop-blur-md transition-colors hover:bg-white hover:text-ink">{label}</Link>)}
             </div>
             <div className="flex w-full items-center gap-3 lg:w-[22rem]">
-              <span className="font-mono text-[11px] text-white/70">{String(active + 1).padStart(2, '0')}</span>
+              <span className="label-text text-white/70">{String(active + 1).padStart(2, '0')}</span>
               {scenes.map((s, i) => <button key={s.label} onClick={() => setActive(i)} aria-label={`Show ${s.label}`} aria-current={i === active ? 'true' : undefined} className="group relative h-6 flex-1">
                 <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 overflow-hidden rounded-full bg-white/20 transition-colors group-hover:bg-white/40">
                   {i === active && <motion.span key={`p-${active}-${ready}`} className="absolute inset-0 origin-left bg-brand-400" initial={{ scaleX: 0 }} animate={{ scaleX: ready && !reduce ? 1 : 0 }} transition={{ duration: SCENE_SECONDS, ease: 'linear' }} />}
                   {i < active && <span className="absolute inset-0 bg-white/70" />}
                 </span>
               </button>)}
-              <span className="font-mono text-[11px] text-white/40">{String(scenes.length).padStart(2, '0')}</span>
+              <span className="label-text text-white/40">{String(scenes.length).padStart(2, '0')}</span>
             </div>
           </div>
         </div>

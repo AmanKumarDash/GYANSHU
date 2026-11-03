@@ -25,7 +25,7 @@ export default function TeamSection() {
     <section className="bg-ink-900 py-32" id="team">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <ScrollReveal className="mb-16 md:mb-24">
-          <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">The Capability Areas Behind The Outcome</p>
+          <p className="label-text text-signal mb-4">The Capability Areas Behind The Outcome</p>
           <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">Integrated expertise.</h2>
         </ScrollReveal>
 
@@ -39,7 +39,7 @@ export default function TeamSection() {
                   <div className="absolute inset-0 bg-ink-800 border border-white/5 p-6 md:p-8 flex flex-col [backface-visibility:hidden]">
                     <PixelAvatar colors={member.colors} />
                     <h3 className="font-display text-2xl font-semibold">{member.name}</h3>
-                    <p className="font-mono text-sm text-signal mt-1">{member.role}</p>
+                    <p className="label-text text-signal mt-1">{member.role}</p>
                   </div>
 
                   {/* Back Face */}

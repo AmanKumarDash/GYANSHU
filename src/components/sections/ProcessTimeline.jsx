@@ -35,7 +35,7 @@ export default function ProcessTimeline() {
               backgroundColor: inView ? '#0B4D49' : '#ffffff'
             }}
           />
-          <span className="absolute left-8 font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity text-mist-900">Scroll</span>
+          <span className="absolute left-8 label-text opacity-0 group-hover:opacity-100 transition-opacity text-mist-900">Scroll</span>
         </div>
 
         <motion.div
@@ -51,7 +51,7 @@ export default function ProcessTimeline() {
           </div>
 
           <div className="relative z-10">
-            <span className="inline-block border border-white/10 text-mist-900 bg-ink-950 font-mono text-xs px-3 py-1 rounded-full mb-6">
+            <span className="inline-block border border-white/10 text-mist-900 bg-ink-950 label-text px-3 py-1 rounded-full mb-6">
               {step.duration}
             </span>
             <h3 className={`font-display text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 tracking-tight transition-colors duration-500 ${inView ? 'text-white' : 'text-mist-500'}`}>
@@ -65,7 +65,7 @@ export default function ProcessTimeline() {
             </p>
             <div className="flex flex-wrap gap-2 mt-6">
               {step.outcomes.map((outcome) => (
-                <span key={outcome} className="font-mono text-[10px] md:text-xs text-mist-700 border border-white/10 bg-ink-800 px-3 py-1.5 rounded-full">
+                <span key={outcome} className="label-text text-mist-700 border border-white/10 bg-ink-800 px-3 py-1.5 rounded-full">
                   {outcome}
                 </span>
               ))}
@@ -80,7 +80,7 @@ export default function ProcessTimeline() {
     <section ref={containerRef} className="bg-ink-900 relative" id="process">
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-16">
         <ScrollReveal>
-          <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Process</p>
+          <p className="label-text text-signal mb-4">Process</p>
           <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">How we create value.</h2>
         </ScrollReveal>
       </div>

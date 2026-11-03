@@ -3,11 +3,24 @@ import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import Logo from '../ui/Logo'
 import { industryLinks, productLinks } from '../../data/sitePages'
 
+// Shorter industry names for the footer column only; menus and pages keep the full names.
+const industryShort = {
+  'Government & Law Enforcement': 'Government & Security',
+  'Telecom & ISPs': 'Telecom',
+  'Banking, NBFCs & FinTech': 'Banking & FinTech',
+  'Enterprises & Large Corporates': 'Enterprises',
+  'Data Centers & Cloud Providers': 'Data & Cloud',
+  'Healthcare & Hospitals': 'Healthcare',
+  'Education & Smart Campuses': 'Education',
+  'Manufacturing & Critical Infrastructure': 'Manufacturing',
+  'Startups & MSMEs': 'Startups & MSMEs',
+}
+
 const footerGroups = [
   { title: 'Products', links: [...productLinks.map((l) => [l.label.trim(), l.to]), ['All products', '/products']] },
   { title: 'Services', links: [['Cybersecurity', '/services/cybersecurity'], ['Network Infrastructure', '/services/network'], ['IoT Solutions', '/services/iot'], ['Application Development', '/services/application'], ['Regulatory Compliance', '/services/regulatory'], ['Training', '/training']] },
   { title: 'Company', links: [['About Gyanshu', '/about'], ['Why Choose Us', '/why-choose-us'], ['Our Mission', '/mission'], ['Core Values', '/core-values'], ['Careers', '/careers'], ['Contact', '/contact']] },
-  { title: 'Industries', links: industryLinks.map((l) => [l.label, l.to]) },
+  { title: 'Industries', links: industryLinks.map((l) => [industryShort[l.label] || l.label, l.to]) },
   { title: 'Explore', links: [['Our Work', '/our-work'], ['Blog & Updates', '/blog'], ['Support', '/support'], ['Help & FAQ', '/help']] },
 ]
 // Simple brand glyphs (the icon library ships no brand logos).
@@ -42,7 +55,7 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-2 gap-7 md:grid-cols-3 xl:grid-cols-5">
           {footerGroups.map((group) => <div key={group.title}>
-            <h2 className="font-mono text-[10.5px] uppercase tracking-[.2em] text-white/50">{group.title}</h2>
+            <h2 className="label-text text-white/50">{group.title}</h2>
             <ul className="mt-5 flex flex-col gap-3">
               {group.links.map(([label, to]) => <li key={to}><Link to={to} className="group relative inline-block text-[14.5px] text-white/70 transition-colors hover:text-white">{label}<span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-brand-400 transition-transform duration-500 ease-expo group-hover:scale-x-100" /></Link></li>)}
             </ul>

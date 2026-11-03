@@ -19,7 +19,7 @@ export default function LogoCloud() {
   return (
     <section className="bg-ink-900 py-24 pb-32 border-b border-white/5 relative overflow-hidden group">
       <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
-        <p className="text-center font-mono text-xs text-mist-900 uppercase tracking-widest">
+        <p className="text-center label-text text-mist-900">
           Integrated capability across the digital stack
         </p>
       </div>

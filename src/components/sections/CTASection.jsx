@@ -29,7 +29,7 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-mono text-xs text-mist-900 uppercase tracking-widest mb-8"
+          className="label-text text-mist-900 mb-8"
         >
           Ready to strengthen your technology environment?
         </motion.p>
@@ -71,7 +71,7 @@ export default function CTASection() {
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity z-0"></div>
           </MagneticButton>
 
-          <a href="mailto:Support.gyanshu@gmail.com" className="font-mono text-sm text-mist-700 hover:text-white transition-colors pb-1 border-b border-white/20 hover:border-white mt-4" data-cursor="text">
+          <a href="mailto:Support.gyanshu@gmail.com" className="label-text text-mist-700 hover:text-white transition-colors pb-1 border-b border-white/20 hover:border-white mt-4" data-cursor="text">
             Or email us at Support.gyanshu@gmail.com
           </a>
         </motion.div>
@@ -88,7 +88,7 @@ export default function CTASection() {
               <div key={i} className={`w-10 h-10 rounded-full border-2 border-ink-950 bg-gradient-to-br ${i%2===0 ? 'from-ink-700 to-ink-900' : 'from-signal/20 to-ink-800'}`}></div>
             ))}
           </div>
-          <p className="font-mono text-xs text-mist-900">Consult. Build. Run. Improve.</p>
+          <p className="label-text text-mist-900">Consult. Build. Run. Improve.</p>
         </motion.div>
 
       </div>

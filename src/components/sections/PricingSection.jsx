@@ -41,7 +41,7 @@ export default function PricingSection() {
     <section className="bg-ink-950 py-32" id="pricing">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <ScrollReveal className="text-center mb-20 md:mb-24">
-          <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">Engagement Models</p>
+          <p className="label-text text-signal mb-4">Engagement Models</p>
           <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6">Built around your<br/>business priorities.</h2>
           <p className="text-mist-900 max-w-lg mx-auto">Choose a focused assessment, a structured delivery project, or an ongoing managed operations partnership. Scope is defined around outcomes.</p>
         </ScrollReveal>
@@ -56,7 +56,7 @@ export default function PricingSection() {
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-signal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 {plan.popular && (
                   <div className="absolute top-0 right-8 -translate-y-1/2">
-                    <span className="bg-signal/10 text-signal border border-signal/30 font-mono text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
+                    <span className="bg-signal/10 text-signal border border-signal/30 label-text font-bold px-3 py-1 rounded-full">
                       Recommended
                     </span>
                   </div>
@@ -64,7 +64,7 @@ export default function PricingSection() {
                 
                 <h3 className="font-display text-2xl font-semibold mb-2 text-ink-950">{plan.name}</h3>
                 <div className="font-display text-5xl font-bold mb-4 text-ink-950">{plan.price}</div>
-                <p className="font-mono text-xs text-[#525252] mb-8 pb-8 border-b border-black/10">{plan.desc}</p>
+                <p className="label-text text-[#525252] mb-8 pb-8 border-b border-black/10">{plan.desc}</p>
                 
                 <ul className="flex flex-col gap-4 mb-10 flex-grow">
                   {plan.features.map(feat => (
@@ -74,8 +74,8 @@ export default function PricingSection() {
                     </li>
                   ))}
                   <li className="flex items-start gap-3 mt-4 pt-4 border-t border-black/10 border-dashed">
-                    <span className="text-signal mt-1 shrink-0 font-mono text-[10px]">&rarr;</span>
-                    <span className="text-xs font-mono text-[#525252]">Timeline: {plan.timeline}</span>
+                    <span className="text-signal mt-1 shrink-0 label-text">&rarr;</span>
+                    <span className="label-text text-[#525252]">Timeline: {plan.timeline}</span>
                   </li>
                 </ul>
 
@@ -83,7 +83,7 @@ export default function PricingSection() {
                   {plan.btnText}
                 </MagneticButton>
                 
-                <p className="font-mono text-[10px] text-[#737373] text-center mt-6">
+                <p className="label-text text-[#737373] text-center mt-6">
                   Clear scope. Measurable outcomes.
                 </p>
               </div>

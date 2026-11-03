@@ -296,8 +296,8 @@ function CybersecurityServiceContent() {
           {cyberServices.map(([title, text], i) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
             <img src={photo(media.services[i], 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
-            <span className="mb-auto font-mono text-xs text-white/70">◆</span>
-            <h3 className="font-display text-xl font-medium">{title}</h3>
+            <span className="mb-auto label-text text-white/70">◆</span>
+            <h3 className="card-heading">{title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-white/80">{text}</p>
           </article>)}
         </div>
@@ -313,7 +313,7 @@ function CybersecurityServiceContent() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {cyberStrengths.map(([title, text], i) => <article key={title} className="grid overflow-hidden rounded-[22px] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
             <img src={photo(media.strengths[i], 700)} alt="" loading="lazy" className="h-44 w-full object-cover md:h-full" />
-            <div className="p-5 sm:p-6"><h3 className="font-display text-xl font-medium">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
+            <div className="p-5 sm:p-6"><h3 className="card-heading">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
           </article>)}
         </div>
       </div>
@@ -330,7 +330,7 @@ function CybersecurityServiceContent() {
             ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/nested-va', productImages['/products/nested-va']],
           ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
             <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-            <div className="p-6"><span className="font-mono text-xs uppercase tracking-wider text-brand-600">{subtitle}</span><h3 className="mt-2 font-display text-2xl font-medium">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
+            <div className="p-6"><span className="label-text text-brand-600">{subtitle}</span><h3 className="card-heading mt-2">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
           </article>)}
         </div>
       </div>
@@ -706,14 +706,14 @@ function ContactBlock() {
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-400 text-ink"><Mail size={20} /></span>
             <div className="relative">
-              <p className="font-mono text-[10.5px] uppercase tracking-[.16em] text-white/45">Email the team</p>
+              <p className="label-text text-white/45">Email the team</p>
               <p className="mt-2 flex items-center gap-3 font-display text-[1.15rem] font-medium tracking-[-.02em] sm:text-2xl md:text-3xl">Support.gyanshu@gmail.com<ArrowUpRight size={22} className="shrink-0 text-brand-300 transition-transform duration-500 group-hover:rotate-45" /></p>
             </div>
           </a>
         </Reveal>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Reveal delay={0.08}><a href="tel:+919040961361" className="group flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90409 61361</span></span></a></Reveal>
-          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block font-mono text-[10.5px] uppercase tracking-[.16em] text-muted-soft">Location</span><span className="mt-1 block font-display text-lg font-medium">India</span></span></div></Reveal>
+          <Reveal delay={0.08}><a href="tel:+919040961361" className="group flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90409 61361</span></span></a></Reveal>
+          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Location</span><span className="mt-1 block font-display text-lg font-medium">India</span></span></div></Reveal>
         </div>
       </div>
       <Reveal delay={0.1}>
@@ -725,7 +725,7 @@ function ContactBlock() {
             <label className="block"><span className="sr-only">Organization</span><input className={field} placeholder="Organization" value={form.org} onChange={set('org')} /></label>
           </div>
           <fieldset className="mt-5">
-            <legend className="font-mono text-[10.5px] uppercase tracking-[.16em] text-muted">What can we help with?</legend>
+            <legend className="label-text text-muted">What can we help with?</legend>
             <div className="mt-3 flex flex-wrap gap-2">{topicsList.map((t) => <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, topic: t }))} aria-pressed={form.topic === t} className={`rounded-full border px-4 py-2 text-[13px] transition ${form.topic === t ? 'border-ink bg-ink text-white' : 'border-line bg-white text-muted hover:border-ink hover:text-ink'}`}>{t}</button>)}</div>
           </fieldset>
           <label className="mt-5 block"><span className="sr-only">Message</span><textarea required rows={5} className={`${field} resize-none`} placeholder="Your security priorities, infrastructure challenge, or project idea…" value={form.message} onChange={set('message')} /></label>
@@ -771,7 +771,7 @@ export function LegalPage({ page }) {
           {legal.map(([label, to]) => <Link key={to} to={to} className={`flex items-center justify-between rounded-2xl px-4 py-3 text-[14px] transition ${to === page.path ? 'bg-ink text-white' : 'text-muted hover:bg-paper hover:text-ink'}`}>{label}<ArrowUpRight size={14} className={to === page.path ? 'text-brand-300' : 'opacity-40'} /></Link>)}
         </Reveal>
         <Reveal delay={0.08} className="rounded-[28px] border border-line bg-white p-8 shadow-card md:p-14">
-          <span className="font-mono text-[10.5px] uppercase tracking-[.16em] text-brand-600">{page.title}</span>
+          <span className="label-text text-brand-600">{page.title}</span>
           <p className="mt-6 font-display text-2xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[2rem]">{page.intro}</p>
           <div className="mt-12 flex flex-col gap-4 rounded-[22px] bg-paper p-6 md:flex-row md:items-center md:justify-between">
             <p className="text-[15px] text-muted [overflow-wrap:anywhere]">Questions about this policy or your information? Write to Support.gyanshu@gmail.com.</p>
@@ -794,7 +794,7 @@ export function NotFound({ page }) {
         {[['Products', '/products', 'Platforms for network intelligence and security.'], ['Solutions', '/solutions', 'Cybersecurity, infrastructure, IoT, and more.'], ['Industries', '/industries', 'Secure technology for high-stakes environments.'], ['Contact', '/contact', 'Tell us what you need to make possible.']].map(([t, to, d], i) =>
           <motion.div key={to} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}>
             <Link to={to} className="group flex h-full min-h-[180px] flex-col justify-between rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
-              <span className="flex items-center justify-between font-mono text-[11px] text-brand-500">◆<ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
+              <span className="flex items-center justify-between label-text text-brand-500">◆<ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
               <span><span className="block font-display text-xl font-medium tracking-[-.02em]">{t}</span><span className="mt-1 block text-sm text-muted">{d}</span></span>
             </Link>
           </motion.div>)}

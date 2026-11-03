@@ -55,7 +55,7 @@ export default function StorySection() {
           <div className="absolute inset-6 border border-white/15 bg-ink-950/90 shadow-[0_20px_70px_rgba(0,0,0,0.6)]" style={{ transform: 'translateZ(10px)' }}>
             <div className="absolute inset-4 border border-white/10" />
             <div className="brand-contrast absolute left-1/2 top-1/2 w-24 h-24 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-signal text-ink-950 flex items-center justify-center font-display font-bold text-3xl shadow-[0_0_40px_rgba(0,85,100,0.25)]" style={{ transform: 'translate(-50%, -50%) translateZ(45px)' }}>G</div>
-            <div className="absolute top-7 left-7 font-mono text-[10px] tracking-[0.24em] text-mist-700" style={{ transform: 'translateZ(30px)' }}>SYSTEM CORE</div>
+            <div className="absolute top-7 left-7 label-text text-mist-700" style={{ transform: 'translateZ(30px)' }}>SYSTEM CORE</div>
             <div className="absolute bottom-7 left-7 flex gap-2" style={{ transform: 'translateZ(30px)' }}>
               {[0, 1, 2].map((node) => <span key={node} className="w-2 h-2 rounded-full bg-signal animate-pulse-slow" style={{ animationDelay: `${node * 0.35}s` }} />)}
             </div>
@@ -70,7 +70,7 @@ export default function StorySection() {
               key={label}
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3 + index, repeat: Infinity, ease: 'easeInOut', delay: index * 0.3 }}
-              className={`absolute ${position} px-3 py-2 border border-white/20 bg-ink-950/95 font-mono text-[9px] tracking-wider text-mist-100 shadow-xl`}
+              className={`absolute ${position} px-3 py-2 border border-white/20 bg-ink-950/95 label-text text-mist-100 shadow-xl`}
               style={{ transform: `translateZ(${70 + index * 14}px)` }}
             >
               <span className="inline-block w-1.5 h-1.5 bg-signal rounded-full mr-2" />{label}
@@ -121,7 +121,7 @@ export default function StorySection() {
 
                 {chapter.align === 'center' && (
                   <div className="mt-12">
-                    <a href="#team" className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-signal hover:text-white transition-colors" data-cursor="hover">
+                    <a href="#team" className="inline-flex items-center gap-2 label-text text-signal hover:text-white transition-colors" data-cursor="hover">
                       Explore our capability areas →
                     </a>
                   </div>
@@ -141,7 +141,7 @@ export default function StorySection() {
             {i < chapters.length - 1 && (
               <div className="my-24 md:my-48 relative flex justify-center items-center">
                 <hr className="w-full border-white/5 absolute" />
-                <span className="bg-ink-950 px-4 font-mono text-xs text-white/20 relative">Chapter {chapters[i+1].num}</span>
+                <span className="bg-ink-950 px-4 label-text text-white/20 relative">Chapter {chapters[i+1].num}</span>
               </div>
             )}
           </div>

@@ -20,8 +20,9 @@ module.exports = {
       },
       fontFamily: {
         display: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        body: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        nav: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         poster: ['"Bebas Neue"', 'Impact', 'sans-serif'],
       },
       fontSize: {

@@ -19,7 +19,7 @@ export default function FAQSection() {
                 FAQ
               </h2>
               <div className="relative -mt-16 md:-mt-20 ml-2">
-                <p className="font-mono text-xs text-signal uppercase tracking-widest mb-4">The details</p>
+                <p className="label-text text-signal mb-4">The details</p>
                 <h3 className="font-display text-4xl md:text-5xl font-bold mb-6">Technology, made practical.</h3>
                 <p className="text-mist-900 font-body text-lg leading-relaxed max-w-sm">
                   Understand our capabilities, products, delivery model, managed operations, and the way we build lasting operational capability.
