@@ -1,12 +1,29 @@
-import { ArrowUpRight, Banknote, Building2, HeartPulse, Landmark, RadioTower, Server } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { industryImages } from '../../data/pageMedia'
 import { getPage, industryLinks } from '../../data/sitePages'
+import { photo } from '../../utils/intro'
 import { ArrowButton, MaskLines, Reveal } from '../ui/Motion'
 
-const icons = [Landmark, RadioTower, Banknote, Building2, Server, HeartPulse]
+// Same cards as "See every industry we serve" on the Industries page.
+const industries = industryLinks.map((l) => ({ title: l.label, text: getPage(l.to).subtitle, image: industryImages[l.to], to: l.to }))
+
+// Spacing sits inside each card (pr-4) rather than as a flex gap, so the two copies join without a jump.
+function IndustryCard({ item, copy }) {
+  return <div className="w-[290px] shrink-0 pr-4 sm:w-[340px]" aria-hidden={copy || undefined}>
+    <Link to={item.to} tabIndex={copy ? -1 : undefined} className="group flex h-full flex-col">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ink">
+        <img src={photo(item.image, 700)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
+      </div>
+      <h3 className="mt-5 line-clamp-2 min-h-[2em] font-poster text-[1.75rem] uppercase leading-none tracking-[.01em] text-ink">{item.title}</h3>
+      <p className="mt-2 line-clamp-4 min-h-[6.5em] text-sm leading-relaxed text-muted [hyphens:manual] [text-align:left!important]">{item.text}</p>
+      <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
+    </Link>
+  </div>
+}
 
 export default function Industries() {
-  return <section className="pb-7 pt-8 md:pb-8 md:pt-9">
+  return <section className="overflow-hidden pb-7 pt-8 md:pb-8 md:pt-9">
     <div className="shell">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
@@ -18,26 +35,17 @@ export default function Industries() {
         </Reveal>
       </div>
 
-      <div className="mt-5 grid grid-cols-1 gap-2 min-[360px]:grid-cols-2 sm:gap-3 lg:grid-cols-3">
-        {industryLinks.slice(0, 6).map((item, i) => {
-          const Icon = icons[i]
-          return <Reveal key={item.to} delay={(i % 3) * 0.08} className="h-full">
-            <Link to={item.to} className="group relative flex h-full min-h-[140px] flex-col justify-between overflow-hidden rounded-[24px] border border-line bg-white p-4 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift sm:min-h-[155px] sm:p-5">
-              <div className="flex items-start justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:bg-ink group-hover:text-brand-300"><Icon size={21} strokeWidth={1.7} /></span>
-                <ArrowUpRight size={18} className="text-muted-faint transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-500" />
-              </div>
-              <div className="mt-3 sm:mt-4">
-                <h3 className="font-display text-xl font-medium tracking-[-.02em] text-ink md:text-[1.4rem]">{item.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{getPage(item.to).subtitle}</p>
-              </div>
-              <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-400 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
-            </Link>
-          </Reveal>
-        })}
+    </div>
+    {/* Infinite loop: the list is rendered twice and slides by half its width. Hover or keyboard focus pauses it;
+        with reduced motion it becomes a normal horizontally scrollable row. */}
+    <Reveal className="mask-fade-x mt-8 motion-reduce:overflow-x-auto motion-reduce:[mask-image:none]">
+      <div className="flex w-max animate-marquee py-2 [animation-duration:70s] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:animate-none">
+        {industries.map((item) => <IndustryCard key={item.to} item={item} />)}
+        {industries.map((item) => <IndustryCard key={`copy-${item.to}`} item={item} copy />)}
       </div>
-
-      <Reveal className="mt-5 flex justify-center"><ArrowButton to="/industries" variant="dark">Explore industry contexts</ArrowButton></Reveal>
+    </Reveal>
+    <div className="shell">
+      <Reveal className="mt-6 flex justify-center"><ArrowButton to="/industries" variant="dark">Explore industry contexts</ArrowButton></Reveal>
     </div>
   </section>
 }

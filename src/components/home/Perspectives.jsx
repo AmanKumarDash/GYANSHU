@@ -70,7 +70,7 @@ export default function Perspectives() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-6 p-6 md:p-10">
             <AnimatePresence mode="wait">
               <motion.div key={story.n} className="max-w-xl" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.7, delay: 0.25, ease: EASE }}>
-                <span className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">{story.n} / {kicker[story.n]}</span>
+                <span className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">{kicker[story.n]}</span>
                 <h3 className={`mt-3 font-display text-2xl font-medium leading-[1.08] tracking-[-.03em] text-white sm:text-3xl md:text-[2.4rem] ${story.textInImage ? 'md:sr-only' : ''}`}>{story.title}</h3>
                 <p className={`mt-3 hidden max-w-lg text-[14.5px] leading-relaxed text-white/75 sm:block ${story.textInImage ? 'md:sr-only' : ''}`}>{story.text}</p>
                 <span className="mt-5 flex w-fit items-center gap-2 text-sm font-medium text-brand-300">{story.cta} <ArrowUpRight size={15} /></span>

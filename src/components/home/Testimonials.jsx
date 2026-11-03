@@ -9,32 +9,28 @@ const testimonials = [
 ]
 const initials = (name) => name.split(' ').map((w) => w[0]).join('').slice(0, 2)
 
+// Cards follow the Why Gyanshu card style: white, centred, with a dark tile (initials or photo) on top.
 export default function Testimonials() {
-  return <section className="px-3 py-6 sm:px-5">
-    <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
-      <div className="pointer-events-none absolute -right-40 -top-20 h-[28rem] w-[28rem] rounded-full bg-brand-500/15 blur-[140px]" />
-      <div className="shell relative">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-300">Testimonials</p></Reveal>
-          <h2 className="h-section mt-4 text-white"><MaskLines lines={[<>Trusted by <span className="text-brand-300">Visionaries</span></>]} /></h2>
-        </div>
-        <div className="mt-8 grid gap-3 md:grid-cols-3">
-          {testimonials.map((t, i) => <Reveal key={t.name} delay={i * 0.08} className="h-full">
-            <figure className="relative flex h-full flex-col rounded-[22px] border border-white/[.09] bg-white/[.03] p-6 transition-colors duration-500 hover:border-brand-400/40">
-              <Quote size={34} className="absolute right-5 top-5 text-brand-400/25" aria-hidden="true" />
-              <blockquote className="pr-8 text-[15px] leading-relaxed text-white/85">“{t.quote}”</blockquote>
-              <figcaption className="mt-auto flex items-center gap-3 pt-6">
-                {t.photo
-                  ? <img src={t.photo} alt="" className="h-11 w-11 rounded-full object-cover" />
-                  : <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-400/15 font-display text-sm font-semibold text-brand-300">{initials(t.name)}</span>}
-                <span>
-                  <span className="block font-display text-[15px] font-medium text-white">{t.name}</span>
-                  <span className="block text-[13px] text-brand-300">{t.role}</span>
-                </span>
-              </figcaption>
-            </figure>
-          </Reveal>)}
-        </div>
+  return <section className="py-8 md:py-10 lg:py-12">
+    <div className="shell">
+      <div className="mx-auto max-w-3xl text-center">
+        <Reveal><p className="font-mono text-[11px] uppercase tracking-[.18em] text-brand-600">Testimonials</p></Reveal>
+        <h2 className="h-section mt-4"><MaskLines lines={[<>Trusted by <span className="text-brand-500">Visionaries</span></>]} /></h2>
+      </div>
+      <div className="mt-7 grid gap-2 sm:gap-3 md:grid-cols-3">
+        {testimonials.map((t, i) => <Reveal key={t.name} delay={i * 0.06} className="h-full">
+          <figure className="group flex h-full flex-col items-center rounded-[22px] border border-line bg-white px-5 py-7 text-center shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
+            {t.photo
+              ? <img src={t.photo} alt="" className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 group-hover:-rotate-6" />
+              : <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ink font-display text-lg font-semibold tracking-tight text-brand-300 transition-transform duration-500 group-hover:-rotate-6">{initials(t.name)}</span>}
+            <Quote size={20} className="mt-5 text-brand-400" aria-hidden="true" />
+            <blockquote className="mt-3 text-[14px] leading-relaxed text-muted [text-align:center!important]">“{t.quote}”</blockquote>
+            <figcaption className="mt-auto pt-5">
+              <span className="block font-display text-lg font-medium tracking-[-.02em] text-ink">{t.name}</span>
+              <span className="mt-0.5 block text-[13px] text-brand-600">{t.role}</span>
+            </figcaption>
+          </figure>
+        </Reveal>)}
       </div>
     </div>
   </section>
