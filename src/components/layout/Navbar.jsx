@@ -62,7 +62,7 @@ export default function Navbar() {
       onMouseLeave={closeSoon}
       onMouseEnter={() => window.clearTimeout(closeTimer.current)}
     >
-      <div className={`relative mx-auto flex max-w-[1360px] items-center justify-between gap-6 rounded-full py-2 pl-5 pr-2 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ${mobileOpen ? 'border border-white/10 bg-white/[.04]' : scrolled || open ? 'border border-line/80 bg-white/80 shadow-[0_10px_40px_-18px_rgba(11,61,59,.25)] backdrop-blur-xl' : 'border border-transparent bg-transparent'}`}>
+      <div className={`relative mx-auto flex max-w-[85rem] items-center justify-between gap-6 rounded-full py-2 pl-5 pr-2 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ${mobileOpen ? 'border border-white/10 bg-white/[.04]' : scrolled || open ? 'border border-line/80 bg-white/80 shadow-[0_10px_40px_-18px_rgba(11,61,59,.25)] backdrop-blur-xl' : 'border border-transparent bg-transparent'}`}>
         <Link to="/" className="shrink-0" aria-label="Gyanshu Technologies home"><Logo tone={mobileOpen ? 'light' : 'dark'} className="h-9 w-auto sm:h-10" /></Link>
 
         <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
@@ -110,25 +110,25 @@ export default function Navbar() {
 function MegaMenu({ group, onClose }) {
   // The 10px gap under the bar is padding on this wrapper, so the pointer never "leaves" while moving into the panel.
   return <motion.div
-    className="absolute left-0 right-0 top-full pt-[10px]"
+    className="absolute left-0 right-0 top-full pt-[0.625rem]"
     initial={{ opacity: 0, y: -8, scale: 0.985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -6, scale: 0.99 }} transition={{ duration: 0.35, ease: EASE }}
   >
-    <div className="overflow-hidden rounded-[28px] border border-line bg-white/95 p-2 shadow-[0_40px_80px_-30px_rgba(11,61,59,.35)] backdrop-blur-xl">
+    <div className="overflow-hidden rounded-[1.75rem] border border-line bg-white/95 p-2 shadow-[0_40px_80px_-30px_rgba(11,61,59,.35)] backdrop-blur-xl">
     <div className="grid grid-cols-[1fr_2fr] gap-2">
-      <Link to={group.to} onClick={onClose} className="group relative flex min-h-[220px] flex-col justify-end overflow-hidden rounded-[22px] bg-ink p-6 text-white">
+      <Link to={group.to} onClick={onClose} className="group relative flex min-h-[13.75rem] flex-col justify-end overflow-hidden rounded-[1.375rem] bg-ink p-6 text-white">
         <img src={photo(group.image, 900)} alt="" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.06]" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/55 to-ink-950/10" />
         <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
         <span className="eyebrow-dark relative w-fit">{group.label}</span>
         <div className="relative">
-          <p className="max-w-xs text-[15px] leading-snug text-white/80">{group.blurb}</p>
+          <p className="max-w-xs text-[0.9375rem] leading-snug text-white/80">{group.blurb}</p>
           <span className="mt-4 inline-flex items-center gap-2 text-sm text-brand-300">View all <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
         </div>
       </Link>
       <div className="grid grid-cols-2 content-start gap-1 p-2">
         {group.links.map((l, i) => <motion.div key={l.to} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.04 + i * 0.025, duration: 0.4, ease: EASE }}>
           <Link to={l.to} onClick={onClose} className="navigation-link group flex items-center justify-between gap-3 rounded-2xl px-4 py-3 text-ink/80 transition-colors hover:bg-paper hover:text-ink">
-            <span className="flex items-center gap-3"><span className="text-[8px] text-brand-500">◆</span>{l.label.trim()}</span>
+            <span className="flex items-center gap-3"><span className="text-[0.5rem] text-brand-500">◆</span>{l.label.trim()}</span>
             <ArrowUpRight size={14} className="text-brand-500 opacity-0 transition-all duration-300 group-hover:opacity-100" />
           </Link>
         </motion.div>)}

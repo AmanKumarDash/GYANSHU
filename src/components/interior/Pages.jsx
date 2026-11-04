@@ -294,7 +294,7 @@ function CybersecurityServiceContent() {
           <p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p>
         </div>
         <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {cyberServices.map(([title, text], i) => <article key={title} className="group relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[24px] bg-ink p-5 text-white shadow-card">
+          {cyberServices.map(([title, text], i) => <article key={title} className="group relative isolate flex min-h-[17.5rem] flex-col justify-end overflow-hidden rounded-[1.5rem] bg-ink p-5 text-white shadow-card">
             <img src={photo(media.services[i], 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
             <span className="mb-auto label-text text-white/70">◆</span>
@@ -309,10 +309,10 @@ function CybersecurityServiceContent() {
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
           <div><Eyebrow>Why Gyanshu Cybersecurity</Eyebrow><h2 className="h-section mt-5">Advanced Protection for Modern Businesses</h2></div>
-          <img src={photo(media.monitoring, 1400)} alt="Cybersecurity professionals monitoring digital threats" loading="lazy" className="h-64 w-full rounded-[24px] object-cover md:h-80" />
+          <img src={photo(media.monitoring, 1400)} alt="Cybersecurity professionals monitoring digital threats" loading="lazy" className="h-64 w-full rounded-[1.5rem] object-cover md:h-80" />
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {cyberStrengths.map(([title, text], i) => <article key={title} className="grid overflow-hidden rounded-[22px] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
+          {cyberStrengths.map(([title, text], i) => <article key={title} className="grid overflow-hidden rounded-[1.375rem] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
             <img src={photo(media.strengths[i], 700)} alt="" loading="lazy" className="h-44 w-full object-cover md:h-full" />
             <div className="p-5 sm:p-6"><h3 className="card-heading">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
           </article>)}
@@ -324,12 +324,12 @@ function CybersecurityServiceContent() {
 
     <section className="bg-paper section-space">
       <div className="shell">
-        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(media.products, 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[22px] object-cover md:w-[38%]" /></div>
+        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(media.products, 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[1.375rem] object-cover md:w-[38%]" /></div>
         <div className="grid gap-4 md:grid-cols-2">
           {[
             ['Flowbits Nexora', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/flowbits-nexora', productImages['/products/flowbits-nexora']],
             ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/nested-va', productImages['/products/nested-va']],
-          ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[24px] border border-line bg-white shadow-card">
+          ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[1.5rem] border border-line bg-white shadow-card">
             <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
             <div className="p-6"><span className="label-text text-brand-600">{subtitle}</span><h3 className="card-heading mt-2">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
           </article>)}
@@ -340,7 +340,7 @@ function CybersecurityServiceContent() {
     <section className="section-space">
       <div className="shell grid gap-8 lg:grid-cols-2 lg:items-center">
         <div><Eyebrow>Security Training</Eyebrow><h2 className="h-section mt-5">Security Training</h2><div className="mt-6 flex flex-wrap gap-2">{['Cyber Security', 'Ethical Hacking', 'VAPT', 'SOC'].map((item) => <span key={item} className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium">{item}</span>)}</div></div>
-        <img src={photo(media.training, 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[24px] object-cover md:h-96" />
+        <img src={photo(media.training, 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[1.5rem] object-cover md:h-96" />
       </div>
     </section>
 
@@ -697,12 +697,12 @@ function ContactBlock() {
     const subject = `[${form.topic}] Enquiry${form.name ? ` from ${form.name}` : ''}${form.org ? ` (${form.org})` : ''}`
     window.location.href = `mailto:operations@gyanshu.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(form.message)}`
   }
-  const field = 'w-full rounded-2xl border border-line bg-paper px-4 py-3.5 text-[15px] text-ink outline-none transition placeholder:text-muted-soft focus:border-ink focus:bg-white'
+  const field = 'w-full rounded-2xl border border-line bg-paper px-4 py-3.5 text-[0.9375rem] text-ink outline-none transition placeholder:text-muted-soft focus:border-ink focus:bg-white'
   return <section id="details" className="section-space-bottom">
     <div className="shell grid gap-4 lg:grid-cols-[1fr_1.3fr]">
       <div className="flex flex-col gap-3">
         <Reveal>
-          <a href="mailto:operations@gyanshu.tech" className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[28px] bg-ink-950 p-8 text-white">
+          <a href="mailto:operations@gyanshu.tech" className="group relative flex min-h-[16.25rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-ink-950 p-8 text-white">
             <div className="dot-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]" />
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-400 text-ink"><Mail size={20} /></span>
@@ -713,12 +713,12 @@ function ContactBlock() {
           </a>
         </Reveal>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Reveal delay={0.08}><a href="tel:+919090009301" className="group flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90900 09301</span></span></a></Reveal>
-          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Address</span><span className="mt-1 block font-display text-lg font-medium leading-snug">{COMPANY_ADDRESS}</span></span></div></Reveal>
+          <Reveal delay={0.08}><a href="tel:+919090009301" className="group flex h-full flex-col gap-6 rounded-[1.5rem] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90900 09301</span></span></a></Reveal>
+          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[1.5rem] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Address</span><span className="mt-1 block font-display text-lg font-medium leading-snug">{COMPANY_ADDRESS}</span></span></div></Reveal>
         </div>
       </div>
       <Reveal delay={0.1}>
-        <form onSubmit={submit} className="rounded-[28px] border border-line bg-white p-6 shadow-card md:p-9">
+        <form onSubmit={submit} className="rounded-[1.75rem] border border-line bg-white p-6 shadow-card md:p-9">
           <Eyebrow>Write to us</Eyebrow>
           <h2 className="mt-5 font-display text-3xl font-medium tracking-[-.03em] md:text-4xl">Tell us about your project.</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -727,7 +727,7 @@ function ContactBlock() {
           </div>
           <fieldset className="mt-5">
             <legend className="label-text text-muted">What can we help with?</legend>
-            <div className="mt-3 flex flex-wrap gap-2">{topicsList.map((t) => <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, topic: t }))} aria-pressed={form.topic === t} className={`rounded-full border px-4 py-2 text-[13px] transition ${form.topic === t ? 'border-ink bg-ink text-white' : 'border-line bg-white text-muted hover:border-ink hover:text-ink'}`}>{t}</button>)}</div>
+            <div className="mt-3 flex flex-wrap gap-2">{topicsList.map((t) => <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, topic: t }))} aria-pressed={form.topic === t} className={`rounded-full border px-4 py-2 text-[0.8125rem] transition ${form.topic === t ? 'border-ink bg-ink text-white' : 'border-line bg-white text-muted hover:border-ink hover:text-ink'}`}>{t}</button>)}</div>
           </fieldset>
           <label className="mt-5 block"><span className="sr-only">Message</span><textarea required rows={5} className={`${field} resize-none`} placeholder="Your security priorities, infrastructure challenge, or project idea…" value={form.message} onChange={set('message')} /></label>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
@@ -767,15 +767,15 @@ export function LegalPage({ page }) {
   return <main>
     <HeroCentered eyebrow="Legal" title={page.title} subtitle={page.subtitle} actions={null} compact />
     <section id="details" className="section-space-bottom">
-      <div className="shell grid gap-6 lg:grid-cols-[260px_1fr]">
-        <Reveal as="nav" aria-label="Legal pages" className="h-fit rounded-[24px] border border-line bg-white p-3 shadow-card lg:sticky lg:top-28">
-          {legal.map(([label, to]) => <Link key={to} to={to} className={`flex items-center justify-between rounded-2xl px-4 py-3 text-[14px] transition ${to === page.path ? 'bg-ink text-white' : 'text-muted hover:bg-paper hover:text-ink'}`}>{label}<ArrowUpRight size={14} className={to === page.path ? 'text-brand-300' : 'opacity-40'} /></Link>)}
+      <div className="shell grid gap-6 lg:grid-cols-[16.25rem_1fr]">
+        <Reveal as="nav" aria-label="Legal pages" className="h-fit rounded-[1.5rem] border border-line bg-white p-3 shadow-card lg:sticky lg:top-28">
+          {legal.map(([label, to]) => <Link key={to} to={to} className={`flex items-center justify-between rounded-2xl px-4 py-3 text-[0.875rem] transition ${to === page.path ? 'bg-ink text-white' : 'text-muted hover:bg-paper hover:text-ink'}`}>{label}<ArrowUpRight size={14} className={to === page.path ? 'text-brand-300' : 'opacity-40'} /></Link>)}
         </Reveal>
-        <Reveal delay={0.08} className="rounded-[28px] border border-line bg-white p-8 shadow-card md:p-14">
+        <Reveal delay={0.08} className="rounded-[1.75rem] border border-line bg-white p-8 shadow-card md:p-14">
           <span className="label-text text-brand-600">{page.title}</span>
           <p className="mt-6 font-display text-2xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[2rem]">{page.intro}</p>
-          <div className="mt-12 flex flex-col gap-4 rounded-[22px] bg-paper p-6 md:flex-row md:items-center md:justify-between">
-            <p className="text-[15px] text-muted [overflow-wrap:anywhere]">Questions about this policy or your information? Write to operations@gyanshu.tech.</p>
+          <div className="mt-12 flex flex-col gap-4 rounded-[1.375rem] bg-paper p-6 md:flex-row md:items-center md:justify-between">
+            <p className="text-[0.9375rem] text-muted [overflow-wrap:anywhere]">Questions about this policy or your information? Write to operations@gyanshu.tech.</p>
             <ArrowButton href="mailto:operations@gyanshu.tech" icon={Mail} className="shrink-0 self-start md:self-auto">Email our team</ArrowButton>
           </div>
         </Reveal>
@@ -794,7 +794,7 @@ export function NotFound({ page }) {
       <div className="shell grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {[['Products', '/products', 'Platforms for network intelligence and security.'], ['Solutions', '/solutions', 'Cybersecurity, infrastructure, IoT, and more.'], ['Industries', '/industries', 'Secure technology for high-stakes environments.'], ['Contact', '/contact', 'Tell us what you need to make possible.']].map(([t, to, d], i) =>
           <motion.div key={to} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}>
-            <Link to={to} className="group flex h-full min-h-[180px] flex-col justify-between rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
+            <Link to={to} className="group flex h-full min-h-[11.25rem] flex-col justify-between rounded-[1.5rem] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
               <span className="flex items-center justify-between label-text text-brand-500">◆<ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
               <span><span className="block font-display text-xl font-medium tracking-[-.02em]">{t}</span><span className="mt-1 block text-sm text-muted">{d}</span></span>
             </Link>

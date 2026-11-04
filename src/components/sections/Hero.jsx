@@ -58,7 +58,7 @@ export default function Hero() {
       {/* Dynamic Backgrounds */}
       <div 
         ref={blobRef} 
-        className="absolute top-0 left-0 w-[800px] h-[800px] bg-signal/10 rounded-full blur-[120px] pointer-events-none transition-transform duration-1000 ease-out z-0"
+        className="absolute top-0 left-0 w-[50rem] h-[50rem] bg-signal/10 rounded-full blur-[120px] pointer-events-none transition-transform duration-1000 ease-out z-0"
       />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,85,100,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,85,100,0.035)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"></div>
       <div className="grain absolute inset-0 z-[1]"></div>

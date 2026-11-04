@@ -32,7 +32,7 @@ export default function TeamSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {team.map((member, i) => (
             <ScrollReveal key={member.name} delay={i * 0.1}>
-              <div className="group h-[380px] w-full [perspective:1000px] cursor-pointer">
+              <div className="group h-[23.75rem] w-full [perspective:1000px] cursor-pointer">
                 <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                   
                   {/* Front Face */}

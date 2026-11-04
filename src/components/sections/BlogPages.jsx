@@ -20,7 +20,7 @@ export function BlogIndex() {
       </div>
       {publishedBlogPosts.length ? visiblePosts.length ? <div className="mt-7 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {visiblePosts.map((post, index) => <Reveal key={post.slug} delay={index * 0.06}>
-          <Link to={`/blog/${post.slug}`} className="group flex h-full min-h-56 flex-col rounded-[24px] border border-line bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-card">
+          <Link to={`/blog/${post.slug}`} className="group flex h-full min-h-56 flex-col rounded-[1.5rem] border border-line bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-card">
             <span className="eyebrow w-fit">{post.category}</span>
             <h2 className="mt-5 font-display text-2xl font-medium leading-tight tracking-tight group-hover:text-brand-600">{post.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">{post.excerpt}</p>

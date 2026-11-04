@@ -35,7 +35,7 @@ export default function VisualBanner({ page, className = '' }) {
       <p className="mt-4 font-display text-2xl font-medium tracking-[-.02em] text-white md:text-3xl">{scene.label}</p>
     </div>
     <motion.div className="absolute bottom-0 right-0 top-0 hidden w-[46%] items-center justify-center md:flex" initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: 'easeOut' }}>
-      <div className="h-[78%] w-full max-w-[420px]"><SceneArt scene={scene} /></div>
+      <div className="h-[78%] w-full max-w-[26.25rem]"><SceneArt scene={scene} /></div>
     </motion.div>
     <div className="absolute inset-x-6 bottom-6 z-10 flex items-end justify-between gap-3 md:inset-x-9 md:bottom-8">
       <span className="label-text text-white/50">{scene.subtitle}</span>

@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="grid gap-10 lg:grid-cols-[1.25fr_2fr]">
         <div>
           <Link to="/" aria-label="Gyanshu Technologies home"><Logo tone="light" full className="h-20 w-auto sm:h-24" /></Link>
-          <address className="mt-6 flex flex-col gap-3 text-[15px] not-italic text-white/70">
+          <address className="mt-6 flex flex-col gap-3 text-[0.9375rem] not-italic text-white/70">
             {contactLinks.map(([href, label, Icon]) => <a key={href} href={href} className="group flex w-fit items-center gap-3 transition-colors hover:text-white"><span className={`${contactChip} group-hover:border-brand-400`}><Icon size={16} aria-hidden="true" /></span>{label}</a>)}
             <p className="flex max-w-sm items-center gap-3 [hyphens:manual] [text-align:left!important]"><span className={contactChip}><MapPin size={16} aria-hidden="true" /></span>{COMPANY_ADDRESS}</p>
           </address>
@@ -49,7 +49,7 @@ export default function Footer() {
           {footerGroups.map((group) => <div key={group.title}>
             <h2 className="label-text text-white/50">{group.title}</h2>
             <ul className="mt-5 flex flex-col gap-3">
-              {group.links.map(([label, to]) => <li key={to}><Link to={to} className="group relative inline-block text-[14.5px] text-white/70 transition-colors hover:text-white">{label}<span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-brand-400 transition-transform duration-500 ease-expo group-hover:scale-x-100" /></Link></li>)}
+              {group.links.map(([label, to]) => <li key={to}><Link to={to} className="group relative inline-block text-[0.9063rem] text-white/70 transition-colors hover:text-white">{label}<span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-brand-400 transition-transform duration-500 ease-expo group-hover:scale-x-100" /></Link></li>)}
             </ul>
           </div>)}
         </div>

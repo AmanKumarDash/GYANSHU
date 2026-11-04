@@ -185,24 +185,22 @@ export default function Hero() {
       <div className="shell relative">
         <div className="max-w-[40rem] lg:max-w-[46rem] lg:pb-16">
           <motion.div {...show(0.15)} className="flex items-start gap-4">
-            <span className="mt-[.8em] h-[2px] w-8 shrink-0 bg-brand-500 md:w-10" aria-hidden="true" />
-            <h1 className="text-[15px] font-medium leading-snug text-ink md:text-lg">
+            <h1 className="text-[0.9375rem] font-medium leading-snug text-ink md:text-lg">
               AI-Powered Enterprise Engineering Intelligence{' '}
               <span className="mt-1 block text-brand-600">Driving Resilience, Efficiency &amp; Growth</span>
             </h1>
           </motion.div>
 
-          <p className="hero-heading mt-7 text-[clamp(2.5rem,4.6vw,4.5rem)] text-ink [hyphens:manual] [text-align:left!important] md:mt-9">
+          <p className="hero-heading mt-7 text-[clamp(min(2.5rem,10.5vw),4.6vw,4.5rem)] text-ink [hyphens:manual] [text-align:left!important] md:mt-9">
             <MaskLines onLoad delay={0.25} stagger={0.1} lines={[
-              <>Intelligence.</>,
-              <span className="text-brand-500">Trust.</span>,
+              <>Intelligence. <span className="text-brand-500">Trust.</span></>,
               <>Innovation.</>,
             ]} />
           </p>
           <motion.span {...show(0.5)} className="mt-6 block h-px w-48 bg-gradient-to-r from-brand-500 via-brand-300 to-transparent" aria-hidden="true" />
 
           <motion.p {...show(0.55)} className="mt-6 max-w-[36rem] text-lg font-medium leading-snug text-ink [text-align:left!important] md:text-xl [hyphens:manual]">Secure critical systems. Connect complex operations. Build technology that moves your organization forward.</motion.p>
-          <motion.p {...show(0.62)} className="mt-4 max-w-[34rem] text-[15px] leading-relaxed text-muted [hyphens:manual] [text-align:left!important] md:text-base">Empower your business with cybersecurity, intelligent infrastructure, AI-powered platforms, and digital engineering to reduce risks, streamline operations, and accelerate growth.</motion.p>
+          <motion.p {...show(0.62)} className="mt-4 max-w-[34rem] text-[0.9375rem] leading-relaxed text-muted [hyphens:manual] [text-align:left!important] md:text-base">Empower your business with cybersecurity, intelligent infrastructure, AI-powered platforms, and digital engineering to reduce risks, streamline operations, and accelerate growth.</motion.p>
           <motion.div {...show(0.7)} className="mt-7 flex flex-wrap gap-3">
             <ArrowButton href="#capabilities" icon={ArrowDown}>Explore capabilities</ArrowButton>
             <Link to="/contact" className="btn btn-outline">Talk to our team</Link>
@@ -212,7 +210,7 @@ export default function Hero() {
     </div>
 
     <motion.div ref={panel} className="relative mt-8 px-3 sm:px-5 md:mt-10" initial={{ opacity: 0, y: 80 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.3, delay: 0.5, ease: EASE }}>
-      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: radius }} className="relative mx-auto h-[52svh] min-h-[320px] max-h-[500px] origin-top overflow-hidden bg-ink md:h-[min(56.25vw,calc(100svh-2.5rem))] md:min-h-[440px] md:max-h-none">
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: radius }} className="relative mx-auto h-[52svh] min-h-[20rem] max-h-[31.25rem] origin-top overflow-hidden bg-ink md:h-[min(56.25vw,calc(100svh-2.5rem))] md:min-h-[27.5rem] md:max-h-none">
         {/* Sized exactly to the panel (no parallax overscan) so the artwork's text is not trimmed. */}
         <div className="absolute inset-0"><SceneStack active={active} width={2200} zoom={1.02} /></div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 from-0% via-ink-950/60 via-15% to-ink-950/0 to-30%" />
@@ -237,7 +235,7 @@ export default function Hero() {
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
             <div className="flex flex-wrap gap-2">
-              {explore.map(([label, to]) => <Link key={label} to={to} className="rounded-full border border-white/15 bg-white/[.07] px-4 py-2 text-[13px] text-white/85 backdrop-blur-md transition-colors hover:bg-white hover:text-ink">{label}</Link>)}
+              {explore.map(([label, to]) => <Link key={label} to={to} className="rounded-full border border-white/15 bg-white/[.07] px-4 py-2 text-[0.8125rem] text-white/85 backdrop-blur-md transition-colors hover:bg-white hover:text-ink">{label}</Link>)}
             </div>
             <div className="flex w-full items-center gap-3 lg:w-[22rem]">
               <span className="label-text text-white/70">{String(active + 1).padStart(2, '0')}</span>

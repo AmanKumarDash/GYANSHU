@@ -79,6 +79,6 @@ export function SectionHead({ eyebrow, title, lede, dark = false, align = 'cente
   return <div className={`${center ? 'mx-auto max-w-3xl text-center' : 'max-w-2xl'} ${className}`}>
     <Reveal><Eyebrow dark={dark}>{eyebrow}</Eyebrow></Reveal>
     <h2 className={`h-section mt-5 ${dark ? 'text-white' : 'text-ink'}`}><MaskLines lines={Array.isArray(title) ? title : [title]} /></h2>
-    {lede && <Reveal delay={0.15}><p className={`mt-5 ${center ? 'mx-auto' : ''} max-w-xl text-[15px] leading-relaxed md:text-base ${dark ? 'text-white/55' : 'text-muted'}`}>{lede}</p></Reveal>}
+    {lede && <Reveal delay={0.15}><p className={`mt-5 ${center ? 'mx-auto' : ''} max-w-xl text-[0.9375rem] leading-relaxed md:text-base ${dark ? 'text-white/55' : 'text-muted'}`}>{lede}</p></Reveal>}
   </div>
 }

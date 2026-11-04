@@ -20,15 +20,18 @@ export default function Capabilities() {
         title={[<>Key <span className="text-brand-500">Capabilities</span></>]}
         lede="Explore our core strengths across cybersecurity, infrastructure, software, AI, and connected operations."
       />
+    </div>
 
-      <Reveal className="mt-6 flex flex-col gap-2 md:mt-8 lg:h-[min(48svh,390px)] lg:min-h-[340px] lg:flex-row">
+    {/* Same outer width as the Emerging Technology box. The height formula equals the featured story panel's 16:9 height. */}
+    <div className="mx-auto max-w-[100rem] px-3 [container-type:inline-size] sm:px-5">
+      <Reveal className="mt-6 flex flex-col gap-2 md:mt-8 lg:h-[27.3rem] lg:flex-row xl:h-[calc((100cqw-1rem)*.3502)]">
         {items.map((item, i) => {
           const on = i === active
           return <div
             key={item.id}
             onMouseEnter={() => setActive(i)}
             onFocus={() => setActive(i)}
-            className={`group relative isolate cursor-pointer overflow-hidden rounded-[24px] bg-ink transition-[flex-grow,height] duration-700 ease-expo ${on ? 'h-[280px] sm:h-[320px] lg:h-auto lg:flex-[5]' : 'h-[52px] lg:h-auto lg:flex-[1]'}`}
+            className={`group relative isolate cursor-pointer overflow-hidden rounded-[1.5rem] bg-ink transition-[flex-grow,height] duration-700 ease-expo ${on ? 'h-[17.5rem] sm:h-[20rem] lg:h-auto lg:flex-[5]' : 'h-[3.25rem] lg:h-auto lg:flex-[1]'}`}
             onClick={() => setActive(i)}
           >
             <img src={photo(images[i], 1400)} alt="" loading="lazy" className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-expo ${on ? 'scale-100 opacity-100' : 'scale-110 opacity-45 grayscale'}`} />
@@ -51,7 +54,7 @@ export default function Capabilities() {
                 </div>
                 <div className="max-w-xl">
                   <motion.h3 className="font-display text-3xl font-medium tracking-[-.03em] text-white md:text-5xl" initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.3, ease: EASE }}>{item.title}</motion.h3>
-                  <motion.p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/70" initial={{ y: 18, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.38, ease: EASE }}>{item.desc}</motion.p>
+                  <motion.p className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-white/70" initial={{ y: 18, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.38, ease: EASE }}>{item.desc}</motion.p>
                   <motion.div className="mt-5 flex flex-wrap gap-2" initial={{ y: 14, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.45, ease: EASE }}>
                     {item.tags.map((t) => <span key={t} className="rounded-full border border-white/15 bg-white/[.06] px-3 py-1 text-xs text-white/75 backdrop-blur">{t}</span>)}
                   </motion.div>
@@ -64,10 +67,10 @@ export default function Capabilities() {
           </div>
         })}
       </Reveal>
+    </div>
 
-      <div className="mt-5 flex justify-center">
-        <Link to="/solutions" className="link-arrow">View all capabilities <ArrowUpRight size={16} /></Link>
-      </div>
+    <div className="mt-5 flex justify-center">
+      <Link to="/solutions" className="link-arrow">View all capabilities <ArrowUpRight size={16} /></Link>
     </div>
   </section>
 }

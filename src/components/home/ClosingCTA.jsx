@@ -15,7 +15,7 @@ function ContactModal({ onClose }) {
   }, [onClose])
 
   return <motion.div className="fixed inset-0 z-[150] flex items-center justify-center bg-ink-950/60 p-5 backdrop-blur-md" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={(e) => { if (e.target === e.currentTarget) onClose() }} data-lenis-prevent>
-    <motion.div role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" className="relative w-full max-w-lg overflow-hidden rounded-[28px] bg-paper p-7 text-ink shadow-[0_40px_120px_-20px_rgba(0,0,0,.5)] md:p-10" initial={{ opacity: 0, y: 40, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.97 }} transition={{ duration: reduce ? 0.01 : 0.5, ease: EASE }}>
+    <motion.div role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" className="relative w-full max-w-lg overflow-hidden rounded-[1.75rem] bg-paper p-7 text-ink shadow-[0_40px_120px_-20px_rgba(0,0,0,.5)] md:p-10" initial={{ opacity: 0, y: 40, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.97 }} transition={{ duration: reduce ? 0.01 : 0.5, ease: EASE }}>
       <div className="dot-grid-light pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_60%)]" />
       <button type="button" onClick={onClose} aria-label="Close contact dialog" className="absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-muted transition hover:rotate-90 hover:text-ink"><X size={18} /></button>
       <div className="relative">
@@ -41,7 +41,7 @@ export default function ClosingCTA() {
   const scale = useTransform(scrollYProgress, [0, 1], [1.25, 1])
 
   return <section className="bg-white px-3 pb-3 sm:px-5 sm:pb-5">
-    <div ref={ref} className="relative isolate mx-auto flex min-h-[76svh] max-w-[1600px] items-center justify-center overflow-hidden rounded-[2.5rem] bg-ink-950 py-14 text-center text-white sm:min-h-[82svh] sm:py-16 lg:min-h-[min(86svh,760px)] lg:py-20">
+    <div ref={ref} className="relative isolate mx-auto flex min-h-[76svh] max-w-[100rem] items-center justify-center overflow-hidden rounded-[2.5rem] bg-ink-950 py-14 text-center text-white sm:min-h-[82svh] sm:py-16 lg:min-h-[min(86svh,47.5rem)] lg:py-20">
       <motion.img src={photo('photo-1446776811953-b23d57bd21aa', 2200)} alt="" loading="lazy" style={{ scale: reduce ? 1 : scale }} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-70" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(6,43,42,.35),rgba(6,43,42,.9)_75%)]" />
       <div className="grain absolute inset-0 -z-10" />

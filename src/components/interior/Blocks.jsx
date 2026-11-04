@@ -57,7 +57,7 @@ function SectionIntro({ eyebrow, title, muted = 1, lede, dark = false, align = '
   return <div className={center ? 'mx-auto max-w-4xl text-center' : 'max-w-3xl'}>
     <Reveal><Eyebrow dark={dark}>{eyebrow}</Eyebrow></Reveal>
     <PosterHeadline text={title} muted={muted} align={align} className={`h-section mt-6 ${dark ? 'text-white' : 'text-ink'}`} />
-    {lede && <Reveal delay={0.15}><p className={`mt-5 max-w-xl text-[15px] leading-relaxed md:text-base ${center ? 'mx-auto' : ''} ${dark ? 'text-white/55' : 'text-muted'}`}>{lede}</p></Reveal>}
+    {lede && <Reveal delay={0.15}><p className={`mt-5 max-w-xl text-[0.9375rem] leading-relaxed md:text-base ${center ? 'mx-auto' : ''} ${dark ? 'text-white/55' : 'text-muted'}`}>{lede}</p></Reveal>}
   </div>
 }
 
@@ -125,7 +125,7 @@ export function HeroCentered({ eyebrow, title, muted = 1, pill, pillAfter, subti
       <motion.div {...show(0.05)}><Eyebrow>{eyebrow}</Eyebrow></motion.div>
       <PosterHeadline as="h1" onLoad text={title} muted={muted} pill={pill} pillAfter={pillAfter} className="hero-heading mt-5 max-w-6xl text-ink" />
       {subtitle && <motion.p {...show(0.45)} className="mt-5 max-w-2xl font-display text-lg font-medium leading-snug tracking-[-.02em] text-ink md:text-xl">{subtitle}</motion.p>}
-      {intro && <motion.p {...show(0.52)} className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted md:text-base">{intro}</motion.p>}
+      {intro && <motion.p {...show(0.52)} className="mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-muted md:text-base">{intro}</motion.p>}
       {actions !== null && <motion.div {...show(0.6)} className="mt-6 flex flex-wrap justify-center gap-3">{actions || <>
         <ArrowButton to="/contact">Talk to our team</ArrowButton>
         <a href="#hero-end" className="btn btn-outline">Explore <ArrowDown size={15} /></a>
@@ -133,10 +133,10 @@ export function HeroCentered({ eyebrow, title, muted = 1, pill, pillAfter, subti
     </div>
 
     {hasMedia && <div ref={panel} className="relative mx-auto mt-7 px-3 pb-10 sm:px-5 md:mt-9 md:pb-20">
-      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[52svh] min-h-[320px] max-h-[500px] origin-top overflow-hidden bg-ink shadow-lift md:h-[min(56.25vw,calc(100svh-2.5rem))] md:min-h-[440px] md:max-h-none">
+      <motion.div style={{ scale: reduce ? 1 : scale, borderRadius: reduce ? 28 : radius }} initial={{ opacity: 0, y: 60 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 1.2, delay: 0.45, ease: EASE }} className="relative h-[52svh] min-h-[20rem] max-h-[31.25rem] origin-top overflow-hidden bg-ink shadow-lift md:h-[min(56.25vw,calc(100svh-2.5rem))] md:min-h-[27.5rem] md:max-h-none">
         {media || <Slideshow images={images} label={mediaLabel} captions={captions} imageY={reduce ? 0 : imageY} />}
         {chips.length > 0 && <div className="absolute left-5 top-5 z-10 hidden max-w-[60%] flex-wrap gap-2 md:flex">
-          {chips.map((c, i) => <motion.span key={c} initial={{ opacity: 0, y: -8 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ delay: 1 + i * 0.1, duration: 0.6, ease: EASE }} className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/45 px-3.5 py-2 text-[12.5px] text-white/90 backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{c}</motion.span>)}
+          {chips.map((c, i) => <motion.span key={c} initial={{ opacity: 0, y: -8 }} animate={ready ? { opacity: 1, y: 0 } : undefined} transition={{ delay: 1 + i * 0.1, duration: 0.6, ease: EASE }} className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/45 px-3.5 py-2 text-[0.7813rem] text-white/90 backdrop-blur-md"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{c}</motion.span>)}
         </div>}
       </motion.div>
       <SpinBadge />
@@ -157,7 +157,7 @@ export function Statement({ eyebrow, text, id = 'details' }) {
   const stop = end || words.length - 1
   const accent = [stop - 2, stop - 1, stop].filter((n) => n >= 0)
   return <section id={id} className="section-space">
-    <div className="shell grid gap-8 lg:grid-cols-[220px_1fr]">
+    <div className="shell grid gap-8 lg:grid-cols-[13.75rem_1fr]">
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
       <ScrollWords text={text} accent={accent} className="font-display text-[1.75rem] font-medium leading-[1.14] tracking-[-.035em] text-ink sm:text-[2.4rem] lg:text-[3.1rem]" />
     </div>
@@ -177,7 +177,7 @@ export function KeyFeatures({ eyebrow, title, muted = 1, lede, items, cols = 3, 
           return <Reveal key={item.title} delay={(i % cols) * 0.08} className={`group flex flex-col items-center px-6 py-10 text-center ${i % cols ? 'lg:border-l lg:border-line' : ''} ${i >= cols ? 'lg:border-t lg:border-line' : ''} border-line max-lg:border-b`}>
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-50 text-brand-600 ring-8 ring-brand-50/50 transition-all duration-500 group-hover:-rotate-6 group-hover:bg-ink group-hover:text-brand-300 group-hover:ring-brand-400/15"><ItemIcon title={item.title} icon={item.icon} size={24} strokeWidth={1.6} /></span>
             <h3 className="card-heading mt-7 text-ink">{item.title}</h3>
-            {item.text && <p className="mt-3 max-w-xs text-[14.5px] leading-relaxed text-muted">{item.text}</p>}
+            {item.text && <p className="mt-3 max-w-xs text-[0.9063rem] leading-relaxed text-muted">{item.text}</p>}
           </Reveal>
         })}
       </div>
@@ -203,11 +203,11 @@ export function FeatureCards({ eyebrow, title, accent, lede, items, cols = 4 }) 
         {items.map((item, i) => {
           const Wrap = item.to ? Link : 'div'
           return <Reveal key={item.title} delay={(i % cols) * 0.06} className="h-full">
-            <Wrap to={item.to} className="group relative flex h-full min-h-[150px] flex-col overflow-hidden rounded-[22px] border border-line bg-white p-4 shadow-card sm:min-h-[180px] sm:p-5 transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
+            <Wrap to={item.to} className="group relative flex h-full min-h-[9.375rem] flex-col overflow-hidden rounded-[1.375rem] border border-line bg-white p-4 shadow-card sm:min-h-[11.25rem] sm:p-5 transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_20px_-8px_rgba(14,131,120,.6)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={item.title} icon={item.icon} size={19} strokeWidth={1.8} /></span>
               <h3 className="card-heading mt-4 text-ink sm:mt-5">{item.title}</h3>
-              {item.text && <p className="mt-2 text-[13px] leading-relaxed text-muted sm:text-[13.5px]">{item.text}</p>}
-              {item.tags && <div className="mt-auto flex flex-wrap gap-1.5 pt-5">{item.tags.map((t) => <span key={t} className="rounded-full bg-paper px-2.5 py-1 text-[11px] text-muted">{t}</span>)}</div>}
+              {item.text && <p className="mt-2 text-[0.8125rem] leading-relaxed text-muted sm:text-[0.8438rem]">{item.text}</p>}
+              {item.tags && <div className="mt-auto flex flex-wrap gap-1.5 pt-5">{item.tags.map((t) => <span key={t} className="rounded-full bg-paper px-2.5 py-1 text-[0.6875rem] text-muted">{t}</span>)}</div>}
               <span className="absolute right-5 top-5 label-text text-muted-faint">◆</span>
             </Wrap>
           </Reveal>
@@ -239,7 +239,7 @@ export function Bento({ eyebrow, title, accent, lede, items }) {
       </div>
       <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-4 lg:grid-cols-6">
         {items.map((item, i) => <Reveal key={item.to} delay={0.06 + (i % 3) * 0.08} className={`sm:col-span-2 ${bentoStart(i, items.length)}`}>
-          <Link to={item.to} className="group relative flex h-[300px] flex-col justify-between overflow-hidden rounded-[26px] bg-ink p-6 text-white shadow-card sm:h-[340px] lg:h-[360px]">
+          <Link to={item.to} className="group relative flex h-[18.75rem] flex-col justify-between overflow-hidden rounded-[1.625rem] bg-ink p-6 text-white shadow-card sm:h-[21.25rem] lg:h-[22.5rem]">
             <img src={photo(item.image, 1000)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/40 to-ink-950/10" />
             <div className="relative flex items-start justify-between">
@@ -273,7 +273,7 @@ const clamp01 = (v) => Math.min(1, Math.max(0, v))
 const STEP_TRAVEL = 0.88
 
 function StepNode({ state, reduce }) {
-  return <span className="relative z-10 flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-full border border-white/70 bg-ink-950/80 backdrop-blur">
+  return <span className="relative z-10 flex h-[1.1875rem] w-[1.1875rem] shrink-0 items-center justify-center rounded-full border border-white/70 bg-ink-950/80 backdrop-blur">
     <span className={`h-2 w-2 rounded-full transition-colors duration-500 ${state === 'upcoming' ? 'bg-white/70' : 'bg-brand-400'}`} />
     {state === 'active' && !reduce && <span className="absolute inset-0 animate-ping2 rounded-full bg-brand-400/50" />}
   </span>
@@ -284,7 +284,7 @@ function StepCard({ title, text, state }) {
   return <div className={`flex-1 rounded-2xl border p-5 backdrop-blur-xl transition-[background-color,border-color,box-shadow,color] duration-500 ${on ? 'border-brand-400 bg-brand-500 text-white shadow-glow' : 'border-white/60 bg-white/75 text-ink'}`}>
     <span className={`label-text ${on ? 'text-white/70' : state === 'complete' ? 'text-brand-600' : 'text-muted-soft'}`}>◆</span>
     <h3 className="card-heading mt-2">{title}</h3>
-    {text && <p className={`mt-1.5 text-[13px] leading-relaxed ${on ? 'text-white/85' : 'text-muted'}`}>{text}</p>}
+    {text && <p className={`mt-1.5 text-[0.8125rem] leading-relaxed ${on ? 'text-white/85' : 'text-muted'}`}>{text}</p>}
   </div>
 }
 
@@ -295,7 +295,7 @@ function StepRow({ row, per, steps, stateOf, progress, reduce }) {
   // Node-to-node width: (columns spanned) × column width + the gaps between them.
   const span = `calc((100% - ${per - 1}rem) / ${per} * ${row.length - 1} + ${row.length - 1}rem)`
   return <div className="relative grid gap-x-4" style={{ gridTemplateColumns: `repeat(${per}, minmax(0, 1fr))` }}>
-    {row.length > 1 && <div className="pointer-events-none absolute bottom-[9px] h-px bg-white/40" style={{ left: NODE_X, width: span }}>
+    {row.length > 1 && <div className="pointer-events-none absolute bottom-[0.5625rem] h-px bg-white/40" style={{ left: NODE_X, width: span }}>
       <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_10px_#14B8A6]" style={{ scaleX: reduce ? 1 : fill }} />
     </div>}
     {row.map((i) => {
@@ -384,14 +384,14 @@ export function StepsBanner({ eyebrow, title, accent, lede, steps, image, note, 
               {steps.map(([t, d], i) => {
                 const s = stateOf(i)
                 return <li key={t} className="relative flex gap-4 pb-3 last:pb-0">
-                  {i < n - 1 && <span className={`absolute -bottom-[10px] left-[9px] top-[29px] w-px transition-colors duration-500 ${i < current ? 'bg-brand-400' : 'bg-white/50'}`} />}
-                  <span className="pt-[10px]"><StepNode state={s} reduce={reduce} /></span>
+                  {i < n - 1 && <span className={`absolute -bottom-[10px] left-[0.5625rem] top-[1.8125rem] w-px transition-colors duration-500 ${i < current ? 'bg-brand-400' : 'bg-white/50'}`} />}
+                  <span className="pt-[0.625rem]"><StepNode state={s} reduce={reduce} /></span>
                   <StepCard title={t} text={d} state={s} />
                 </li>
               })}
             </ol>
 
-            {(note || lede) && <Reveal className="mt-6 flex md:mt-8 md:justify-end"><p className="max-w-md text-[15px] leading-relaxed text-white/90 md:text-right md:text-lg">{note || lede}</p></Reveal>}
+            {(note || lede) && <Reveal className="mt-6 flex md:mt-8 md:justify-end"><p className="max-w-md text-[0.9375rem] leading-relaxed text-white/90 md:text-right md:text-lg">{note || lede}</p></Reveal>}
           </div>
         </div>
       </div>
@@ -452,7 +452,7 @@ function OrbitArc({ items }) {
           {/* Label grows upward from just above the node, so its length never moves the node off the curve. */}
           <Link to={item.to} style={{ width: labelW(i) }} className="group absolute bottom-5 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-center">
             {Icon && <Icon size={16} strokeWidth={1.6} className={`transition-colors ${mid ? 'text-brand-600' : 'text-ink/50 group-hover:text-brand-600'}`} />}
-            <span className={`text-[12px] leading-tight transition-colors ${mid ? 'font-medium text-ink' : 'text-ink/65 group-hover:text-ink'}`}>{item.label}</span>
+            <span className={`text-[0.75rem] leading-tight transition-colors ${mid ? 'font-medium text-ink' : 'text-ink/65 group-hover:text-ink'}`}>{item.label}</span>
           </Link>
           <span className={`absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full ${mid ? 'h-6 w-6 border border-brand-500/40 bg-white' : 'h-3 w-3 bg-white shadow'}`}>{mid && <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />}</span>
         </motion.div>
@@ -463,28 +463,28 @@ function OrbitArc({ items }) {
 
 export function Orbit({ eyebrow = 'Industries', title, text, cta, image, items }) {
   return <section className="px-3 py-4 sm:px-5 sm:py-5">
-    <div className="relative mx-auto min-h-[min(560px,calc(100svh-6rem))] max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0B3D3B_100%)] md:min-h-[min(700px,calc(100svh-6rem))]">
+    <div className="relative mx-auto min-h-[min(35rem,calc(100svh-6rem))] max-w-[100rem] overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,#ecebe6_0%,#d3d6d4_38%,#6b7678_66%,#0B3D3B_100%)] md:min-h-[min(43.75rem,calc(100svh-6rem))]">
       <div className="grain absolute inset-0" />
       {/* Arc + nodes (laptop and up; smaller screens get the sector links below) */}
       <OrbitArc items={items} />
 
       {/* Monolith */}
-      <motion.div className="absolute left-1/2 top-[230px] hidden w-[210px] -translate-x-1/2 lg:block" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: EASE }}>
-        <div className="relative h-[300px] overflow-hidden rounded-[22px] bg-ink shadow-[0_40px_80px_-20px_rgba(0,0,0,.6)]">
+      <motion.div className="absolute left-1/2 top-[14.375rem] hidden w-[13.125rem] -translate-x-1/2 lg:block" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: EASE }}>
+        <div className="relative h-[18.75rem] overflow-hidden rounded-[1.375rem] bg-ink shadow-[0_40px_80px_-20px_rgba(0,0,0,.6)]">
           <img src={photo(image, 600)} alt="" className="h-full w-full object-cover opacity-80 grayscale" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 to-ink-950/70" />
         </div>
-        <div className="h-24 overflow-hidden opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]"><img src={photo(image, 600)} alt="" className="h-[300px] w-full -scale-y-100 rounded-[22px] object-cover blur-[2px] grayscale" /></div>
+        <div className="h-24 overflow-hidden opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]"><img src={photo(image, 600)} alt="" className="h-[18.75rem] w-full -scale-y-100 rounded-[1.375rem] object-cover blur-[2px] grayscale" /></div>
       </motion.div>
 
-      <div className="relative flex min-h-[min(560px,calc(100svh-6rem))] flex-col justify-end gap-6 p-6 md:min-h-[min(700px,calc(100svh-6rem))] md:flex-row md:items-end md:justify-between md:gap-8 md:p-10">
+      <div className="relative flex min-h-[min(35rem,calc(100svh-6rem))] flex-col justify-end gap-6 p-6 md:min-h-[min(43.75rem,calc(100svh-6rem))] md:flex-row md:items-end md:justify-between md:gap-8 md:p-10">
         <div className="lg:hidden">
           <span className="eyebrow">{eyebrow}</span>
-          <div className="mt-6 flex flex-wrap gap-2">{items.map((item) => <Link key={item.label} to={item.to} className="rounded-full border border-ink/10 bg-white/70 px-3.5 py-2 text-[13px] text-ink backdrop-blur">{item.label}</Link>)}</div>
+          <div className="mt-6 flex flex-wrap gap-2">{items.map((item) => <Link key={item.label} to={item.to} className="rounded-full border border-ink/10 bg-white/70 px-3.5 py-2 text-[0.8125rem] text-ink backdrop-blur">{item.label}</Link>)}</div>
         </div>
         <Reveal className="max-w-md"><h2 className="font-display text-4xl font-medium leading-[1.05] tracking-[-.035em] text-white md:text-[3.4rem]">{title}</h2></Reveal>
         <Reveal delay={0.12} className="max-w-xs">
-          <p className="text-[15px] leading-relaxed text-white/75">{text}</p>
+          <p className="text-[0.9375rem] leading-relaxed text-white/75">{text}</p>
           {cta && <ArrowButton to={cta.to} variant="brand" className="mt-6">{cta.label}</ArrowButton>}
         </Reveal>
       </div>
@@ -512,14 +512,14 @@ export function CaseGrid({ eyebrow, title, muted = 1, items, pageSize = 6, link,
         <motion.div key={page} className="mt-10 grid gap-x-4 gap-y-10 min-[480px]:grid-cols-2 lg:grid-cols-3" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.5, ease: EASE }}>
           {shown.map((item, i) => <Reveal key={item.title} delay={(i % 3) * 0.08} className="h-full">
             <Link to={item.to} className="group flex h-full flex-col">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ink">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-ink">
                 <img src={photo(item.image, 900)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
                 {item.tag && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 label-text text-ink backdrop-blur">{item.tag}</span>}
               </div>
               {/* Room for a two-line title and four-line description keeps every card the same height. */}
               <h3 className="card-heading mt-5 line-clamp-2 min-h-[2em] text-ink">{item.title}</h3>
               <p className="mt-2 line-clamp-4 min-h-[6.5em] max-w-sm text-sm leading-relaxed text-muted">{item.text}</p>
-              <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
+              <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[0.8125rem] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
             </Link>
           </Reveal>)}
         </motion.div>
@@ -543,11 +543,11 @@ export function Openings({ eyebrow = 'Current openings', title, lede, jobs }) {
       <SectionIntro eyebrow={eyebrow} title={title} muted={1} lede={lede} />
       <div className="mx-auto mt-8 flex max-w-5xl flex-col gap-4">
         {jobs.map((job) => <Reveal key={job.title}>
-          <article className="group relative overflow-hidden rounded-[28px] border border-line bg-white p-6 shadow-card transition-all duration-500 ease-expo hover:border-brand-400/50 hover:shadow-lift md:p-9">
+          <article className="group relative overflow-hidden rounded-[1.75rem] border border-line bg-white p-6 shadow-card transition-all duration-500 ease-expo hover:border-brand-400/50 hover:shadow-lift md:p-9">
             <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-brand-500 to-brand-400" />
             <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
               <div>
-                <span className="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-[12px] font-medium text-brand-600">{job.badge}</span>
+                <span className="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-[0.75rem] font-medium text-brand-600">{job.badge}</span>
                 <h3 className="card-heading mt-4 text-ink">{job.title}</h3>
                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
                   <span className="inline-flex items-center gap-1.5"><MapPin size={15} className="text-brand-500" />{job.location}</span>
@@ -557,17 +557,17 @@ export function Openings({ eyebrow = 'Current openings', title, lede, jobs }) {
               </div>
               <ArrowButton href={job.apply} variant="brand" className="shrink-0 self-start">Apply now</ArrowButton>
             </div>
-            <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">{job.summary}</p>
+            <p className="mt-6 max-w-3xl text-[0.9375rem] leading-relaxed text-muted">{job.summary}</p>
             <div className="mt-7 grid gap-6 border-t border-line pt-7 md:grid-cols-2">
               {[["What you'll do", job.duties], ["What we're looking for", job.requirements]].map(([heading, list]) => <div key={heading}>
                 <h4 className="label-text text-muted-soft">{heading}</h4>
                 <ul className="mt-4 flex flex-col gap-2.5">
-                  {list.map((line) => <li key={line} className="flex gap-3 text-[14px] leading-relaxed text-ink/80"><Check size={16} className="mt-[3px] shrink-0 text-brand-500" />{line}</li>)}
+                  {list.map((line) => <li key={line} className="flex gap-3 text-[0.875rem] leading-relaxed text-ink/80"><Check size={16} className="mt-[3px] shrink-0 text-brand-500" />{line}</li>)}
                 </ul>
               </div>)}
             </div>
             <div className="mt-7 flex flex-wrap gap-2">
-              {job.skills.map((skill) => <span key={skill} className="rounded-full border border-line bg-paper px-3 py-1.5 text-[12px] text-ink/75">{skill}</span>)}
+              {job.skills.map((skill) => <span key={skill} className="rounded-full border border-line bg-paper px-3 py-1.5 text-[0.75rem] text-ink/75">{skill}</span>)}
             </div>
           </article>
         </Reveal>)}
@@ -582,14 +582,14 @@ export function Openings({ eyebrow = 'Current openings', title, lede, jobs }) {
 
 export function TrainingPanel({ eyebrow = 'Training', title, lede, courses, cta = { label: 'View training programs', to: '/training' } }) {
   return <section className="px-3 py-6 sm:px-5 md:py-8">
-    <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 text-white">
+    <div className="grain relative isolate mx-auto max-w-[100rem] overflow-hidden rounded-[2.5rem] bg-ink-950 text-white">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_65%)]" />
       <div className="pointer-events-none absolute -left-32 -top-32 h-[26rem] w-[26rem] rounded-full bg-brand-500/25 blur-[120px]" />
       <div className="shell relative grid gap-10 py-12 md:py-16 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-14">
         <div>
           <Reveal><Eyebrow dark>{eyebrow}</Eyebrow></Reveal>
           <Reveal delay={0.05}><h2 className="h-section text-white">{title}</h2></Reveal>
-          <Reveal delay={0.12}><p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/60 md:text-base">{lede}</p></Reveal>
+          <Reveal delay={0.12}><p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-white/60 md:text-base">{lede}</p></Reveal>
           <Reveal delay={0.18}>
             <ul className="mt-7 flex flex-col gap-2.5 text-sm text-white/75">
               {['Instructor-led sessions', 'Hands-on labs with real tools', 'Practical, job-ready skills'].map((point) => <li key={point} className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-brand-400" />{point}</li>)}
@@ -599,16 +599,16 @@ export function TrainingPanel({ eyebrow = 'Training', title, lede, courses, cta 
         </div>
         <div className={`grid gap-3 ${courses.length > 1 ? 'sm:grid-cols-2' : ''}`}>
           {courses.map((course, i) => <Reveal key={course.title} delay={0.08 + i * 0.08} className="h-full">
-            <Link to={cta.to} className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/[.04] p-6 backdrop-blur transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/60 hover:bg-white/[.07]">
+            <Link to={cta.to} className="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[.04] p-6 backdrop-blur transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/60 hover:bg-white/[.07]">
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-400/0 blur-3xl transition-colors duration-700 group-hover:bg-brand-400/20" />
               <div className="relative flex items-start justify-between">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_10px_24px_-8px_rgba(20,184,166,.55)] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"><ItemIcon title={course.title} icon={course.icon} size={21} strokeWidth={1.8} /></span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400 group-hover:text-ink"><ArrowUpRight size={15} /></span>
               </div>
               <h3 className="card-heading relative mt-6">{course.title}</h3>
-              <p className="relative mt-2 text-[13.5px] leading-relaxed text-white/60">{course.text}</p>
+              <p className="relative mt-2 text-[0.8438rem] leading-relaxed text-white/60">{course.text}</p>
               <div className="relative mt-auto flex flex-wrap gap-1.5 pt-5">
-                {course.tags.map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/[.05] px-2.5 py-1 text-[11px] text-white/70">{tag}</span>)}
+                {course.tags.map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/[.05] px-2.5 py-1 text-[0.6875rem] text-white/70">{tag}</span>)}
               </div>
             </Link>
           </Reveal>)}
@@ -623,7 +623,7 @@ export function TrainingPanel({ eyebrow = 'Training', title, lede, courses, cta 
 /* ------------------------------------------------------------------ */
 
 function TechTile({ name, role, logos }) {
-  return <div className="flex shrink-0 items-center gap-4 rounded-[22px] border border-line bg-white py-4 pl-4 pr-7 shadow-card transition-colors duration-300 hover:border-brand-400">
+  return <div className="flex shrink-0 items-center gap-4 rounded-[1.375rem] border border-line bg-white py-4 pl-4 pr-7 shadow-card transition-colors duration-300 hover:border-brand-400">
     <span className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-paper px-3">
       {logos.map((src) => <img key={src} src={src} alt="" className="h-9 w-9 object-contain" />)}
     </span>
@@ -678,13 +678,13 @@ export function Quotes({ eyebrow, title, accent, lede, items }) {
       </div>
       <div className={`mx-auto mt-8 grid max-w-6xl gap-4 sm:grid-cols-2 ${cols}`}>
         {items.map((it, i) => <Reveal key={it.name} delay={(i % 3) * 0.08} className="h-full">
-          <figure className="group relative flex h-full flex-col overflow-hidden rounded-[26px] border border-line bg-white p-7 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-lift">
+          <figure className="group relative flex h-full flex-col overflow-hidden rounded-[1.625rem] border border-line bg-white p-7 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-lift">
             <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-400 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
             <Quote size={30} className="text-brand-400" />
             <blockquote className="mt-5 flex-1 font-display text-xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[1.35rem]">“{it.quote}”</blockquote>
             <figcaption className="mt-8 flex items-center gap-3 border-t border-line pt-5">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full label-text font-medium text-white" style={{ background: `linear-gradient(135deg, ${it.colors?.[0] || '#0E8378'}, #14B8A6)` }}>{initials(it.name)}</span>
-              <span><span className="block font-display text-[15px] font-medium text-ink">{it.name}</span><span className="block text-[13px] text-muted">{it.role}</span></span>
+              <span><span className="block font-display text-[0.9375rem] font-medium text-ink">{it.name}</span><span className="block text-[0.8125rem] text-muted">{it.role}</span></span>
             </figcaption>
           </figure>
         </Reveal>)}
@@ -706,9 +706,9 @@ function Shield3D() {
     setTilt([((e.clientX - r.left) / r.width - 0.5) * 16, ((e.clientY - r.top) / r.height - 0.5) * -16])
   }
   const shield = 'M150 20 L262 62 Q270 66 270 74 L270 150 Q270 238 150 292 Q30 238 30 150 L30 74 Q30 66 38 62 Z'
-  return <div ref={ref} onMouseMove={onMove} onMouseLeave={() => setTilt([0, 0])} className="relative flex h-full min-h-[340px] items-center justify-center [perspective:900px]">
+  return <div ref={ref} onMouseMove={onMove} onMouseLeave={() => setTilt([0, 0])} className="relative flex h-full min-h-[21.25rem] items-center justify-center [perspective:900px]">
     <div className="absolute bottom-10 h-10 w-64 rounded-[50%] bg-brand-400/30 blur-2xl" />
-    <motion.div animate={reduce ? {} : { y: [0, -14, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} style={{ rotateY: tilt[0], rotateX: tilt[1] }} className="w-[min(78%,340px)] transition-transform duration-300 ease-out">
+    <motion.div animate={reduce ? {} : { y: [0, -14, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} style={{ rotateY: tilt[0], rotateX: tilt[1] }} className="w-[min(78%,21.25rem)] transition-transform duration-300 ease-out">
       <svg viewBox="0 0 300 340" className="w-full overflow-visible drop-shadow-[0_40px_60px_rgba(20,184,166,.25)]" aria-hidden="true">
         <defs>
           <linearGradient id="shield-front" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#7EE3D9" /><stop offset=".55" stopColor="#14a89f" /><stop offset="1" stopColor="#0a7f86" /></linearGradient>
@@ -730,12 +730,12 @@ function Shield3D() {
 function FaqRow({ item, open, onToggle }) {
   return <div className={`rounded-2xl transition-colors duration-300 ${open ? 'bg-white/[.06]' : ''}`}>
     <button onClick={onToggle} aria-expanded={open} className="flex w-full items-center justify-between gap-6 px-5 py-4 text-left">
-      <span className={`text-[15px] leading-snug transition-colors ${open ? 'text-white' : 'text-white/80 hover:text-white'}`}>{item.q}</span>
+      <span className={`text-[0.9375rem] leading-snug transition-colors ${open ? 'text-white' : 'text-white/80 hover:text-white'}`}>{item.q}</span>
       <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${open ? 'rotate-45 border-brand-400 bg-brand-400 text-ink' : 'border-white/15 text-white/70'}`}><Plus size={15} /></span>
     </button>
     <AnimatePresence initial={false}>
       {open && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.45, ease: EASE }} className="overflow-hidden">
-        <p className="px-5 pb-5 text-[14px] leading-relaxed text-white/55">{item.a}</p>
+        <p className="px-5 pb-5 text-[0.875rem] leading-relaxed text-white/55">{item.a}</p>
       </motion.div>}
     </AnimatePresence>
   </div>
@@ -744,14 +744,14 @@ function FaqRow({ item, open, onToggle }) {
 export function FaqDark({ eyebrow = 'FAQ', title = 'Questions, answered.', lede, items, id, image, imageAlt = '' }) {
   const [open, setOpen] = useState(0)
   return <section id={id} className="px-3 py-6 sm:px-5">
-    <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
+    <div className="grain relative mx-auto max-w-[100rem] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_left,black,transparent_60%)]" />
       <div className="shell relative grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-center">
         <Reveal>{image?<div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-white/10 shadow-lift"><img src={photo(image,1200)} alt={imageAlt} loading="lazy" className="h-full w-full object-cover"/></div>:<Shield3D />}</Reveal>
         <div>
           <Reveal><Eyebrow dark>{eyebrow}</Eyebrow></Reveal>
           <Reveal delay={0.05}><h2 className="h-section mt-5 text-white">{title}</h2></Reveal>
-          {lede && <Reveal delay={0.1}><p className="mt-4 max-w-md text-[15px] text-white/50">{lede}</p></Reveal>}
+          {lede && <Reveal delay={0.1}><p className="mt-4 max-w-md text-[0.9375rem] text-white/50">{lede}</p></Reveal>}
           <Reveal delay={0.15} className="mt-8 flex flex-col gap-1 border-t border-white/10 pt-4">
             {items.map((item, i) => <FaqRow key={item.q} item={item} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />)}
           </Reveal>
@@ -784,10 +784,10 @@ const arcs = [[0, 1], [1, 2], [2, 3], [4, 5], [1, 7], [6, 4], [3, 8]]
 export function StatsBand({ eyebrow, title, accent, lede, stats }) {
   const reduce = useReducedMotion()
   return <section className="px-3 py-4 sm:px-5 sm:py-5">
-    <div className="grain relative mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
+    <div className="grain relative mx-auto max-w-[100rem] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
       {/* Tilted network plane */}
-      <div className="pointer-events-none absolute inset-x-0 top-[24%] h-[420px] overflow-hidden [perspective:700px] [perspective-origin:50%_0%]" aria-hidden="true">
-        <div className="absolute bottom-0 left-1/2 h-[1100px] w-[2200px] origin-bottom [transform:translateX(-50%)_rotateX(68deg)] [mask-image:radial-gradient(ellipse_50%_55%_at_50%_70%,black_25%,transparent_75%)]">
+      <div className="pointer-events-none absolute inset-x-0 top-[24%] h-[26.25rem] overflow-hidden [perspective:700px] [perspective-origin:50%_0%]" aria-hidden="true">
+        <div className="absolute bottom-0 left-1/2 h-[68.75rem] w-[137.5rem] origin-bottom [transform:translateX(-50%)_rotateX(68deg)] [mask-image:radial-gradient(ellipse_50%_55%_at_50%_70%,black_25%,transparent_75%)]">
           <div className={`dot-grid h-full w-full ${reduce ? '' : 'grid-drift'}`} />
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
             {arcs.map(([a, b], i) => <motion.path key={i} d={`M ${markers[a][0]} ${markers[a][1]} Q ${(markers[a][0] + markers[b][0]) / 2} ${Math.min(markers[a][1], markers[b][1]) - 14} ${markers[b][0]} ${markers[b][1]}`} fill="none" stroke="#14B8A6" strokeOpacity=".7" strokeWidth=".18" strokeDasharray=".8 .6" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3 + i * 0.12 }} />)}
@@ -802,7 +802,7 @@ export function StatsBand({ eyebrow, title, accent, lede, stats }) {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow dark>{eyebrow}</Eyebrow></Reveal>
           <Reveal delay={0.05}><h2 className="h-section mt-5 text-white">{title} <span className="text-brand-300">{accent}</span></h2></Reveal>
-          {lede && <Reveal delay={0.1}><p className="mx-auto mt-5 max-w-lg text-[15px] text-white/50">{lede}</p></Reveal>}
+          {lede && <Reveal delay={0.1}><p className="mx-auto mt-5 max-w-lg text-[0.9375rem] text-white/50">{lede}</p></Reveal>}
         </div>
         <div className="mt-32 grid grid-cols-2 gap-y-6 md:mt-36 md:grid-cols-4">
           {stats.map(([value, suffix, label], i) => <Reveal key={label} delay={i * 0.08} className={`text-center ${i ? 'md:border-l md:border-white/10' : ''}`}>
@@ -825,7 +825,7 @@ export function NeedsSplit({ eyebrow, title, items }) {
       <SectionIntro eyebrow={eyebrow} title={title} muted={2} align="left" />
       <div className="grid gap-3 sm:grid-cols-2">
         {items.map((item, i) => <Reveal key={item} delay={0.1 + i * 0.1} className="h-full">
-          <div className="group relative flex h-full min-h-[260px] flex-col justify-between overflow-hidden rounded-[24px] border border-line bg-white p-7 shadow-card">
+          <div className="group relative flex h-full min-h-[16.25rem] flex-col justify-between overflow-hidden rounded-[1.5rem] border border-line bg-white p-7 shadow-card">
             <span className="text-[2.75rem] leading-none text-brand-500/90 transition-transform duration-700 ease-expo group-hover:-translate-y-1">✦</span>
             <p className="mt-8 font-display text-lg font-medium leading-snug tracking-[-.015em] text-ink">{item}</p>
             <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-400 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
@@ -846,9 +846,9 @@ export function CtaPhotos({ eyebrow = 'Start a conversation', title = 'Ready to 
     <div className="shell flex flex-col items-center text-center">
       <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
       <PosterHeadline text={title} muted={muted} className="hero-heading mt-5 max-w-5xl text-ink" />
-      <Reveal delay={0.15}><p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted md:text-base">{text}</p></Reveal>
+      <Reveal delay={0.15}><p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-muted md:text-base">{text}</p></Reveal>
       <Reveal delay={0.22}>
-        <Action {...(href ? { href } : { to })} className="group mt-8 inline-flex items-center gap-4 text-[15px] font-medium text-ink">
+        <Action {...(href ? { href } : { to })} className="group mt-8 inline-flex items-center gap-4 text-[0.9375rem] font-medium text-ink">
           {cta}<span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-400 text-ink shadow-glow transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110"><ArrowUpRight size={18} /></span>
         </Action>
       </Reveal>

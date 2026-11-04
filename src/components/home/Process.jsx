@@ -48,13 +48,13 @@ export default function Process() {
       </div>
 
       <div className="mt-6 flex min-h-0 flex-1 px-3 sm:px-5 md:mt-7">
-        <div className="relative mx-auto min-h-[360px] w-full max-w-[1600px] flex-1 overflow-hidden rounded-[2.5rem] bg-ink text-white md:max-h-[620px]">
+        <div className="relative mx-auto min-h-[22.5rem] w-full max-w-[100rem] flex-1 overflow-hidden rounded-[2.5rem] bg-ink text-white md:max-h-[38.75rem]">
           <motion.img src={photo('px-8000525', 2200)} alt="" loading="lazy" style={{ y: reduce ? 0 : imageY }} className="absolute inset-[-8%_0] h-[116%] w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/50 to-ink-950/90" />
           <div className="grain absolute inset-0" />
 
           {/* Floating status card, synced to the timeline */}
-          <div className="absolute right-5 top-5 z-10 w-[min(20rem,calc(100%-2.5rem))] rounded-[20px] border border-white/10 bg-white/[.06] p-5 backdrop-blur-xl md:right-8 md:top-8">
+          <div className="absolute right-5 top-5 z-10 w-[min(20rem,calc(100%-2.5rem))] rounded-[1.25rem] border border-white/10 bg-white/[.06] p-5 backdrop-blur-xl md:right-8 md:top-8">
             <div className="flex items-center justify-between label-text text-white/45"><span>Current phase</span><span className="flex items-center gap-2 text-brand-300"><span className="relative flex h-1.5 w-1.5">{!done && <span className="absolute inset-0 animate-ping rounded-full bg-brand-400" />}<span className="relative h-1.5 w-1.5 rounded-full bg-brand-400" /></span>{done ? 'Complete' : 'Live'}</span></div>
             <div className="mt-3 h-10 overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
@@ -63,7 +63,7 @@ export default function Process() {
             </div>
             <div className="mt-2 hidden min-h-[2.75rem] overflow-hidden md:block">
               <AnimatePresence mode="wait" initial={false}>
-                <motion.p key={current} className="text-[13px] leading-relaxed text-white/55" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>{steps[current][1]}</motion.p>
+                <motion.p key={current} className="text-[0.8125rem] leading-relaxed text-white/55" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>{steps[current][1]}</motion.p>
               </AnimatePresence>
             </div>
             <div className="mt-4 hidden h-[2px] overflow-hidden rounded-full bg-white/10 md:block">
@@ -74,7 +74,7 @@ export default function Process() {
           {/* Horizontal track (desktop) */}
           <div className="absolute inset-x-8 bottom-12 hidden md:block lg:inset-x-14 lg:bottom-16">
             <div className="relative grid grid-cols-5">
-              <div className="absolute left-[10%] right-[10%] top-[calc(100%-9px)] h-px bg-white/20">
+              <div className="absolute left-[10%] right-[10%] top-[calc(100%-0.5625rem)] h-px bg-white/20">
                 <motion.div className="absolute inset-0 origin-left bg-brand-400 shadow-[0_0_12px_#14B8A6]" style={{ scaleX: reduce ? 1 : lineSmooth }} />
               </div>
               {steps.map(([t], i) => {
@@ -82,7 +82,7 @@ export default function Process() {
                 return <div key={t} className="flex flex-col items-center text-center">
                   <span className={`label-text transition-colors duration-500 ${p === 'upcoming' ? 'text-white/35' : 'text-brand-300'}`}>◆</span>
                   <span className={`mt-2 font-display text-xl font-medium tracking-[-.02em] transition-colors duration-500 lg:text-3xl ${p === 'active' ? 'text-white' : p === 'complete' ? 'text-white/70' : 'text-white/30'}`}>{t}</span>
-                  <span className="relative mt-6 flex h-[18px] w-[18px] items-center justify-center">
+                  <span className="relative mt-6 flex h-[1.125rem] w-[1.125rem] items-center justify-center">
                     <span className={`absolute inset-0 rounded-full border transition-all duration-500 ${p === 'complete' ? 'border-brand-400 bg-brand-400' : p === 'active' ? 'border-brand-400 bg-ink' : 'border-white/30 bg-ink'}`} />
                     <span className={`relative h-2 w-2 rounded-full transition-all duration-500 ${p === 'complete' ? 'scale-100 bg-ink' : p === 'active' ? 'scale-100 bg-brand-400' : 'scale-50 bg-white/40'}`} />
                     {p === 'active' && !reduce && <span className="absolute inset-0 animate-ping2 rounded-full bg-brand-400/50" />}

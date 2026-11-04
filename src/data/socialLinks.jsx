@@ -1,5 +1,5 @@
 // Simple brand glyphs (the icon library ships no brand logos).
-const glyph = (d) => function Glyph() { return <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d={d} /></svg> }
+const glyph = (d) => function Glyph() { return <svg viewBox="0 0 24 24" width="1.0625rem" height="1.0625rem" fill="currentColor" aria-hidden="true"><path d={d} /></svg> }
 const Linkedin = glyph('M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z')
 const Facebook = glyph('M13.5 21v-7.5h2.5l.4-3H13.5V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.45c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.2H7.8v3h2.6V21z')
 const XLogo = glyph('M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.17h1.7L7.4 4.74H5.58z')
@@ -10,7 +10,7 @@ const Instagram = glyph('M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.75
 export const socials = [['LinkedIn', '', Linkedin], ['Facebook', '', Facebook], ['X', '', XLogo], ['YouTube', '', Youtube], ['Instagram', '', Instagram]]
 
 // Full-colour logos for the side rail. Keyed by the labels in `socials` above.
-const logoProps = { viewBox: '0 0 24 24', width: 22, height: 22, 'aria-hidden': true }
+const logoProps = { viewBox: '0 0 24 24', width: '1.25rem', height: '1.25rem', 'aria-hidden': true }
 export const brandLogos = {
   LinkedIn: () => <svg {...logoProps}><rect x="1" y="1" width="22" height="22" rx="3.5" fill="#0A66C2" /><path transform="translate(3.6 3.6) scale(.7)" fill="#fff" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z" /></svg>,
   Facebook: () => <svg {...logoProps}><circle cx="12" cy="12" r="11" fill="#1877F2" /><path transform="translate(-1.4 -.6) scale(1.1)" fill="#fff" d="M13.5 21v-7.5h2.5l.4-3H13.5V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.45c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.2H7.8v3h2.6V21z" /></svg>,

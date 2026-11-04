@@ -26,7 +26,7 @@ export default function TestimonialsCarousel() {
 
   return (
     <section className="bg-ink-950 py-32 overflow-hidden relative">
-      <div className="max-w-5xl mx-auto px-6 md:px-12 relative min-h-[400px] flex flex-col justify-center">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative min-h-[25rem] flex flex-col justify-center">
         
         {/* Giant decorative quote */}
         <div className="absolute top-0 left-4 font-display text-[15rem] md:text-[25rem] text-signal/5 leading-none pointer-events-none select-none -translate-y-12">

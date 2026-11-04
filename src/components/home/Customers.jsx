@@ -22,7 +22,7 @@ export default function Customers() {
       <div className="mx-auto max-w-3xl text-center">
         <Reveal><p className="label-text text-brand-600">Trusted by</p></Reveal>
         <h2 className="h-section mt-4"><MaskLines lines={[<>Our <span className="text-brand-500">Customers</span></>]} /></h2>
-        <Reveal delay={0.15}><p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted md:text-base">Leading enterprises, government agencies, and critical infrastructure providers trust Gyanshu for their security and technology needs.</p></Reveal>
+        <Reveal delay={0.15}><p className="mx-auto mt-4 max-w-2xl text-[0.9375rem] leading-relaxed text-muted md:text-base">Leading enterprises, government agencies, and critical infrastructure providers trust Gyanshu for their security and technology needs.</p></Reveal>
       </div>
     </div>
     <div className="mask-fade-x mt-8">

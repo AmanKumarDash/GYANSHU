@@ -46,7 +46,7 @@ export default function Perspectives() {
     {/* The visible eyebrow is hidden sitewide; this keeps the story titles (h3) under a section heading. */}
     <h2 className="sr-only">Featured perspectives</h2>
     <div className="shell">
-      <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
+      <div className="grid gap-5 lg:grid-cols-[13.75rem_1fr]">
         <Reveal><Eyebrow>Featured perspectives</Eyebrow></Reveal>
         <ScrollWords
           className="font-display text-[1.9rem] font-medium leading-[1.12] tracking-[-.035em] text-ink sm:text-[2.6rem] lg:text-[3.4rem]"
@@ -57,9 +57,9 @@ export default function Perspectives() {
     </div>
     <Marquee />
 
-    <div className="shell mt-5 md:mt-6">
-      <div className="grid gap-4 lg:grid-cols-[1.65fr_1fr]" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <Reveal className="relative isolate h-[300px] overflow-hidden rounded-[28px] bg-ink sm:h-[360px] md:h-[min(52svh,430px)]" aria-roledescription="carousel" aria-label="Featured perspectives">
+    <div className="mx-auto mt-5 max-w-[100rem] px-3 sm:px-5 md:mt-6">
+      <div className="grid gap-4 xl:grid-cols-[1.65fr_1fr]" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <Reveal className="relative isolate h-[18.75rem] overflow-hidden rounded-[1.75rem] bg-ink sm:h-[22.5rem] md:h-[min(52svh,26.875rem)] lg:aspect-video lg:h-auto" aria-roledescription="carousel" aria-label="Featured perspectives">
           <AnimatePresence initial={false}>
             <motion.div key={story.n} className="absolute inset-0" initial={{ clipPath: 'inset(0 0 0 100%)' }} animate={{ clipPath: 'inset(0 0 0 0%)' }} exit={{ opacity: 0.4 }} transition={{ duration: reduce ? 0.01 : 1.1, ease: [0.76, 0, 0.24, 1] }}>
               <motion.img src={photo(story.image, 1800)} alt="" className="absolute inset-0 h-full w-full object-cover" initial={{ scale: reduce ? 1 : story.textInImage ? 1.05 : 1.18 }} animate={{ scale: 1.02 }} transition={{ duration: STORY_SECONDS + 1.5, ease: 'linear' }} />
@@ -72,7 +72,7 @@ export default function Perspectives() {
               <motion.div key={story.n} className="max-w-xl" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.7, delay: 0.25, ease: EASE }}>
                 <span className="label-text text-brand-300">{kicker[story.n]}</span>
                 <h3 className={`mt-3 font-display text-2xl font-medium leading-[1.08] tracking-[-.03em] text-white sm:text-3xl md:text-[2.4rem] ${story.textInImage ? 'md:sr-only' : ''}`}>{story.title}</h3>
-                <p className={`mt-3 hidden max-w-lg text-[14.5px] leading-relaxed text-white/75 sm:block ${story.textInImage ? 'md:sr-only' : ''}`}>{story.text}</p>
+                <p className={`mt-3 hidden max-w-lg text-[0.9063rem] leading-relaxed text-white/75 sm:block ${story.textInImage ? 'md:sr-only' : ''}`}>{story.text}</p>
                 <span className="mt-5 flex w-fit items-center gap-2 text-sm font-medium text-brand-300">{story.cta} <ArrowUpRight size={15} /></span>
               </motion.div>
             </AnimatePresence>
@@ -84,9 +84,9 @@ export default function Perspectives() {
           </div>
         </Reveal>
 
-        <div className="flex flex-row gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-3">
+        <div className="flex flex-row gap-2 overflow-x-auto pb-1 xl:flex-col xl:gap-3 xl:overflow-visible xl:pb-0">
           {storyCards.map((item, i) => <Reveal key={item.n} delay={0.1 + i * 0.08} className="flex-none lg:flex-1">
-            <button onClick={() => setActive(i)} aria-label={`Show featured story ${i + 1}: ${item.tag}`} aria-current={active === i ? 'true' : undefined} className={`group relative flex h-full min-h-[108px] w-[13rem] flex-col justify-between overflow-hidden rounded-[18px] border p-4 text-left transition-all duration-500 sm:w-[15rem] sm:p-5 lg:min-h-0 lg:w-full lg:rounded-[22px] lg:p-4 ${active === i ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink hover:border-ink/25'}`}>
+            <button onClick={() => setActive(i)} aria-label={`Show featured story ${i + 1}: ${item.tag}`} aria-current={active === i ? 'true' : undefined} className={`group relative flex h-full min-h-[6.75rem] w-[13rem] flex-col justify-between overflow-hidden rounded-[1.125rem] border p-4 text-left transition-all duration-500 sm:w-[15rem] sm:p-5 lg:w-full xl:min-h-0 lg:rounded-[1.375rem] lg:p-4 ${active === i ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink hover:border-ink/25'}`}>
               <div className="flex items-center justify-between">
                 <span className={`label-text ${active === i ? 'text-brand-300' : 'text-muted-soft'}`}>◆ {item.tag}</span>
                 <ArrowUpRight size={16} className={`transition-transform duration-500 ${active === i ? 'rotate-45 text-brand-300' : 'text-muted-soft group-hover:-translate-y-0.5 group-hover:translate-x-0.5'}`} />

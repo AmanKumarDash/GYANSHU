@@ -23,15 +23,15 @@ function StrengthCard({ item, copy }) {
     tabIndex={copy ? -1 : 0}
     aria-hidden={copy || undefined}
     onMouseMove={onMove}
-    className="group relative flex w-[19rem] shrink-0 flex-col overflow-hidden rounded-[24px] border border-line bg-white p-6 shadow-card outline-none transition-all duration-500 ease-expo hover:-translate-y-2 hover:border-ink hover:bg-ink hover:shadow-lift focus-visible:-translate-y-2 focus-visible:border-ink focus-visible:bg-ink sm:w-[22rem] sm:p-7"
+    className="group relative flex w-[19rem] shrink-0 flex-col overflow-hidden rounded-[1.5rem] border border-line bg-white p-6 shadow-card outline-none transition-all duration-500 ease-expo hover:-translate-y-2 hover:border-ink hover:bg-ink hover:shadow-lift focus-visible:-translate-y-2 focus-visible:border-ink focus-visible:bg-ink sm:w-[22rem] sm:p-7"
   >
     <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(360px circle at var(--mx) var(--my), rgba(20,184,166,.22), transparent 45%)' }} />
     <div className="relative flex items-start">
       <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:bg-brand-400 group-hover:text-ink group-focus-visible:bg-brand-400 group-focus-visible:text-ink"><Icon size={21} strokeWidth={1.7} /></span>
     </div>
-    <p className="relative mt-6 font-display text-[14px] font-semibold tracking-[-.005em] text-brand-600 transition-colors duration-500 group-hover:text-brand-300 group-focus-visible:text-brand-300 [text-align:left!important]">{item.label}</p>
+    <p className="relative mt-6 font-display text-[0.875rem] font-semibold tracking-[-.005em] text-brand-600 transition-colors duration-500 group-hover:text-brand-300 group-focus-visible:text-brand-300 [text-align:left!important]">{item.label}</p>
     <h3 className="card-heading relative mt-3 text-ink transition-colors duration-500 group-hover:text-white group-focus-visible:text-white">{item.title}</h3>
-    <p className="relative mt-3 text-[14px] leading-relaxed text-muted transition-colors duration-500 group-hover:text-white/70 group-focus-visible:text-white/70">{item.text}</p>
+    <p className="relative mt-3 text-[0.875rem] leading-relaxed text-muted transition-colors duration-500 group-hover:text-white/70 group-focus-visible:text-white/70">{item.text}</p>
     <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-300 transition-transform duration-700 ease-expo group-hover:scale-x-100 group-focus-visible:scale-x-100" />
   </article>
 }

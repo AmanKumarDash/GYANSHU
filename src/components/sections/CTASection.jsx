@@ -9,18 +9,18 @@ export default function CTASection() {
       <div className="grain absolute inset-0 z-0 mix-blend-overlay opacity-30"></div>
       
       {/* Spotlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(0,85,100,0.06),transparent)] z-0 rounded-full blur-[50px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[50rem] max-h-[50rem] bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(0,85,100,0.06),transparent)] z-0 rounded-full blur-[50px] pointer-events-none"></div>
 
       {/* Very large slow floating shapes */}
       <motion.div 
         animate={{ y: [0, -100, 0], x: [0, 50, 0] }} 
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }} 
-        className="absolute -top-20 left-[10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-signal rounded-full opacity-[0.02] blur-3xl z-0"
+        className="absolute -top-20 left-[10%] w-[40vw] h-[40vw] max-w-[37.5rem] max-h-[37.5rem] bg-signal rounded-full opacity-[0.02] blur-3xl z-0"
       />
       <motion.div 
         animate={{ y: [0, 100, 0], x: [0, -50, 0] }} 
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }} 
-        className="absolute -bottom-40 right-[10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-ember rounded-full opacity-[0.02] blur-3xl z-0"
+        className="absolute -bottom-40 right-[10%] w-[50vw] h-[50vw] max-w-[50rem] max-h-[50rem] bg-ember rounded-full opacity-[0.02] blur-3xl z-0"
       />
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center">

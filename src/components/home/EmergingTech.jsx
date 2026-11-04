@@ -70,18 +70,18 @@ const onMove = (e) => {
 
 export default function EmergingTech() {
   return <section className="px-3 py-6 sm:px-5">
-    <div className="grain relative isolate mx-auto max-w-[1600px] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
+    <div className="grain relative isolate mx-auto max-w-[100rem] overflow-hidden rounded-[2.5rem] bg-ink-950 py-9 text-white md:py-11 lg:py-12">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_top,black,transparent_65%)]" />
       <div className="pointer-events-none absolute -left-40 top-1/4 h-[30rem] w-[30rem] rounded-full bg-brand-500/15 blur-[140px]" />
       <div className="shell relative">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><p className="label-text text-brand-300">Emerging Technology</p></Reveal>
           <h2 className="h-section mt-4 text-white"><MaskLines lines={[<>Gyanshu – Emerging <span className="text-brand-300">Technology Services</span></>]} /></h2>
-          <Reveal delay={0.15}><p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-white/60">Gyanshu delivers next-generation, secure, and enterprise-grade emerging technology solutions designed for government, critical infrastructure, ISPs, and large enterprises.</p></Reveal>
+          <Reveal delay={0.15}><p className="mx-auto mt-4 max-w-2xl text-[0.9375rem] leading-relaxed text-white/60">Gyanshu delivers next-generation, secure, and enterprise-grade emerging technology solutions designed for government, critical infrastructure, ISPs, and large enterprises.</p></Reveal>
         </div>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
           {services.map(({ icon: Icon, eyebrow, title, text, points, value, related }, i) => <Reveal key={title} delay={(i % 3) * 0.08} className="w-full md:w-[calc(50%-.375rem)] lg:w-[calc(33.333%-.5rem)]">
-            <article onMouseMove={onMove} className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-white bg-white p-5 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift sm:p-6">
+            <article onMouseMove={onMove} className="group relative flex h-full flex-col overflow-hidden rounded-[1.375rem] border border-white bg-white p-5 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift sm:p-6">
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(380px circle at var(--mx) var(--my), rgba(20,184,166,.12), transparent 45%)' }} />
               <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-300 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
               <div className="relative flex items-start gap-3">
@@ -89,14 +89,14 @@ export default function EmergingTech() {
                 <div>
                   <p className="label-text text-brand-600 [text-align:left!important]">{eyebrow}</p>
                   <h3 className="card-heading mt-1.5 text-ink">{title}</h3>
-                  <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted [hyphens:manual] [text-align:left!important]">{text}</p>
+                  <p className="mt-1.5 text-[0.8438rem] leading-relaxed text-muted [hyphens:manual] [text-align:left!important]">{text}</p>
                 </div>
               </div>
-              <p className="relative mt-5 text-[12px] font-semibold uppercase tracking-[.12em] text-ink/60">Core capabilities</p>
+              <p className="relative mt-5 text-[0.75rem] font-semibold uppercase tracking-[.12em] text-ink/60">Core capabilities</p>
               <ul className="relative mb-5 mt-3 flex flex-col gap-2.5">
-                {points.map((pt) => <li key={pt} className="flex gap-2.5 text-[13.5px] leading-snug text-ink/85"><Check size={15} className="mt-0.5 shrink-0 text-brand-500 transition-transform duration-500 group-hover:scale-110" />{pt}</li>)}
+                {points.map((pt) => <li key={pt} className="flex gap-2.5 text-[0.8438rem] leading-snug text-ink/85"><Check size={15} className="mt-0.5 shrink-0 text-brand-500 transition-transform duration-500 group-hover:scale-110" />{pt}</li>)}
               </ul>
-              {(value || related) && <div className="relative mt-auto flex flex-col gap-2 border-t border-line pt-4 text-[13px] leading-relaxed text-muted [hyphens:manual] [&_p]:[text-align:left!important]">
+              {(value || related) && <div className="relative mt-auto flex flex-col gap-2 border-t border-line pt-4 text-[0.8125rem] leading-relaxed text-muted [hyphens:manual] [&_p]:[text-align:left!important]">
                 {value && <p><span className="font-semibold text-brand-600">Business value: </span>{value}</p>}
                 {related && <p><span className="font-semibold text-brand-600">Related solutions: </span>{related.map(([label, to], k) => <span key={label}>{k > 0 && ', '}{to ? <Link to={to} className="font-medium text-ink underline decoration-brand-400/60 underline-offset-2 transition-colors hover:text-brand-600">{label}</Link> : <span className="font-medium text-ink">{label}</span>}</span>)}</p>}
               </div>}

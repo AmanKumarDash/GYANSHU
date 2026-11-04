@@ -19,15 +19,15 @@ export default function Testimonials() {
       </div>
       <div className="mt-7 grid gap-2 sm:gap-3 md:grid-cols-3">
         {testimonials.map((t, i) => <Reveal key={t.name} delay={i * 0.06} className="h-full">
-          <figure className="group flex h-full flex-col items-center rounded-[22px] border border-line bg-white px-5 py-7 text-center shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
+          <figure className="group flex h-full flex-col items-center rounded-[1.375rem] border border-line bg-white px-5 py-7 text-center shadow-card transition-all duration-500 ease-expo hover:-translate-y-1 hover:shadow-lift">
             {t.photo
               ? <img src={t.photo} alt="" className="h-14 w-14 rounded-2xl object-cover transition-transform duration-500 group-hover:-rotate-6" />
               : <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ink font-display text-lg font-semibold tracking-tight text-brand-300 transition-transform duration-500 group-hover:-rotate-6">{initials(t.name)}</span>}
             <Quote size={20} className="mt-5 text-brand-400" aria-hidden="true" />
-            <blockquote className="mt-3 text-[14px] leading-relaxed text-muted [text-align:center!important]">“{t.quote}”</blockquote>
+            <blockquote className="mt-3 text-[0.875rem] leading-relaxed text-muted [text-align:center!important]">“{t.quote}”</blockquote>
             <figcaption className="mt-auto pt-5">
               <span className="block font-display text-lg font-medium tracking-[-.02em] text-ink">{t.name}</span>
-              <span className="mt-0.5 block text-[13px] text-brand-600">{t.role}</span>
+              <span className="mt-0.5 block text-[0.8125rem] text-brand-600">{t.role}</span>
             </figcaption>
           </figure>
         </Reveal>)}

@@ -18,14 +18,14 @@ function CaseCard({ c, i, progress }) {
   return <motion.article style={{ y: reduce ? 0 : y }} className={i === 1 ? 'md:mt-10' : i === 2 ? 'md:mt-4' : ''}>
     <Reveal delay={i * 0.1}>
       <Link to="/our-work" className="group block">
-        <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] bg-ink">
+        <div className="relative aspect-[4/4.4] overflow-hidden rounded-[1.375rem] bg-ink">
           <img src={photo(img, 1000)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.06]" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
           <span className="absolute bottom-4 right-4 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-brand-400 text-ink opacity-0 transition-all duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100"><ArrowUpRight size={18} /></span>
         </div>
         <h3 className="card-heading mt-3 text-ink">{title}</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">{desc}</p>
-        <span className="link-arrow mt-3 text-[13px]">Read more <ArrowUpRight size={14} /></span>
+        <span className="link-arrow mt-3 text-[0.8125rem]">Read more <ArrowUpRight size={14} /></span>
       </Link>
     </Reveal>
   </motion.article>

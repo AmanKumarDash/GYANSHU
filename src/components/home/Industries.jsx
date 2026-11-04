@@ -10,14 +10,14 @@ const industries = industryLinks.map((l) => ({ title: l.label, text: getPage(l.t
 
 // Spacing sits inside each card (pr-4) rather than as a flex gap, so the two copies join without a jump.
 function IndustryCard({ item, copy }) {
-  return <div className="w-[290px] shrink-0 pr-4 sm:w-[340px]" aria-hidden={copy || undefined}>
+  return <div className="w-[18.125rem] shrink-0 pr-4 sm:w-[21.25rem]" aria-hidden={copy || undefined}>
     <Link to={item.to} tabIndex={copy ? -1 : undefined} className="group flex h-full flex-col">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ink">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-ink">
         <img src={photo(item.image, 700)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]" />
       </div>
       <h3 className="card-heading mt-5 line-clamp-2 min-h-[2em] text-ink">{item.title}</h3>
       <p className="mt-2 line-clamp-4 min-h-[6.5em] text-sm leading-relaxed text-muted [hyphens:manual] [text-align:left!important]">{item.text}</p>
-      <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[13px] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
+      <span className="mt-auto inline-flex items-center gap-3 pt-4 text-[0.8125rem] font-medium text-ink">Read more<span className="flex h-8 w-8 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:border-brand-400 group-hover:bg-brand-400"><ArrowUpRight size={14} /></span></span>
     </Link>
   </div>
 }

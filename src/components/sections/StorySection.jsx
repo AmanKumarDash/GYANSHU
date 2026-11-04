@@ -45,7 +45,7 @@ export default function StorySection() {
         <div className="absolute inset-0 border border-white/10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '42px 42px' }} />
         <div className="absolute w-64 h-64 bg-signal rounded-full blur-3xl opacity-20 animate-pulse-slow" />
 
-        <motion.div style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }} className="relative w-[290px] h-[240px] md:w-[350px] md:h-[290px]">
+        <motion.div style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }} className="relative w-[18.125rem] h-[15rem] md:w-[21.875rem] md:h-[18.125rem]">
           <motion.div
             animate={{ rotateZ: [0, 2, 0, -2, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}

@@ -43,7 +43,7 @@ export default function ServicesGrid() {
                 onHoverStart={() => setActiveService(service)}
                 onHoverEnd={() => setActiveService(null)}
                 style={{ '--service-accent': accent }}
-                className="min-h-[320px] bg-ink-800 border border-white/5 p-8 relative overflow-hidden group hover:border-[var(--service-accent)] hover:scale-[1.01] transition-all duration-500 hover:bg-ink-800/80 flex flex-col justify-between"
+                className="min-h-[20rem] bg-ink-800 border border-white/5 p-8 relative overflow-hidden group hover:border-[var(--service-accent)] hover:scale-[1.01] transition-all duration-500 hover:bg-ink-800/80 flex flex-col justify-between"
                 data-cursor="hover"
               >
                 {/* Background glow effect on hover */}
@@ -97,7 +97,7 @@ export default function ServicesGrid() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-              className="w-full max-w-5xl min-h-[460px] mx-8 p-12 rounded-sm bg-[#0b0b0d] shadow-[0_32px_100px_rgba(0,0,0,0.55)] relative overflow-hidden flex flex-col justify-between"
+              className="w-full max-w-5xl min-h-[28.75rem] mx-8 p-12 rounded-sm bg-[#0b0b0d] shadow-[0_32px_100px_rgba(0,0,0,0.55)] relative overflow-hidden flex flex-col justify-between"
               style={{ borderColor: serviceAccents[activeService.id] }}
             >
               <img src={heroImage} alt="" className="absolute right-0 top-0 h-full w-[42%] object-cover opacity-35" />
