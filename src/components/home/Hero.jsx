@@ -172,7 +172,7 @@ export default function Hero() {
 
   return <section className="relative overflow-hidden pb-5 md:pb-6">
     {/* Intro: globe artwork on the right (below the text on smaller screens), text on the left. */}
-    <div className="relative flex flex-col pt-24 md:pt-28 lg:block lg:min-h-[calc(39.4vw+5rem)]">
+    <div className="relative flex flex-col pt-24 lg:block lg:min-h-[calc(39.4vw+5rem)]">
       <motion.div
         className="pointer-events-none relative order-last mx-auto mt-2 w-full max-w-3xl select-none lg:absolute lg:bottom-0 lg:right-0 lg:mt-0 lg:w-[70%] lg:max-w-none"
         initial={{ opacity: 0, x: 40 }}
@@ -183,7 +183,7 @@ export default function Hero() {
         <RotatingEarth />
       </motion.div>
       <div className="shell relative">
-        <div className="max-w-[40rem] lg:max-w-[46rem] lg:pb-16 lg:pt-6">
+        <div className="max-w-[40rem] lg:max-w-[46rem] lg:pb-16">
           <motion.div {...show(0.15)} className="flex items-start gap-4">
             <span className="mt-[.8em] h-[2px] w-8 shrink-0 bg-brand-500 md:w-10" aria-hidden="true" />
             <h1 className="text-[15px] font-medium leading-snug text-ink md:text-lg">
