@@ -55,8 +55,7 @@ export default function Process() {
 
           {/* Floating status card, synced to the timeline */}
           <div className="absolute right-5 top-5 z-10 w-[min(20rem,calc(100%-2.5rem))] rounded-[1.25rem] border border-white/10 bg-white/[.06] p-5 backdrop-blur-xl md:right-8 md:top-8">
-            <div className="flex items-center justify-between label-text text-white/45"><span>Current phase</span><span className="flex items-center gap-2 text-brand-300"><span className="relative flex h-1.5 w-1.5">{!done && <span className="absolute inset-0 animate-ping rounded-full bg-brand-400" />}<span className="relative h-1.5 w-1.5 rounded-full bg-brand-400" /></span>{done ? 'Complete' : 'Live'}</span></div>
-            <div className="mt-3 h-10 overflow-hidden">
+            <div className="h-10 overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.p key={current} className="font-display text-3xl font-medium tracking-[-.03em]" initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: -40 }} transition={{ duration: 0.45, ease: EASE }}>{steps[current][0]}</motion.p>
               </AnimatePresence>
