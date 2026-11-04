@@ -35,5 +35,5 @@ export const faqs = [
   { q: 'Can solutions be deployed on-premise?', a: 'Yes. Where data sovereignty, performance, integration, or security requirements call for it, we support secure on-premise and hybrid deployment approaches.' },
   { q: 'How do you support compliance reporting?', a: 'We design assessment, evidence capture, reporting, audit trails, and operational controls around your applicable security and compliance requirements.' },
   { q: 'How do you manage delivery governance?', a: 'We use weekly reviews, risk and issue registers, change control, acceptance criteria, documentation, knowledge transfer, and executive progress reporting.' },
-  { q: 'How can we start an engagement?', a: 'We can begin with an assessment, solution design, pilot execution, or phased deployment based on your business priorities. Contact Support.gyanshu@gmail.com.' },
+  { q: 'How can we start an engagement?', a: 'We can begin with an assessment, solution design, pilot execution, or phased deployment based on your business priorities. Contact operations@gyanshu.tech.' },
 ]

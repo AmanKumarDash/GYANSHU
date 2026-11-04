@@ -71,8 +71,8 @@ export default function CTASection() {
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity z-0"></div>
           </MagneticButton>
 
-          <a href="mailto:Support.gyanshu@gmail.com" className="label-text text-mist-700 hover:text-white transition-colors pb-1 border-b border-white/20 hover:border-white mt-4" data-cursor="text">
-            Or email us at Support.gyanshu@gmail.com
+          <a href="mailto:operations@gyanshu.tech" className="label-text text-mist-700 hover:text-white transition-colors pb-1 border-b border-white/20 hover:border-white mt-4" data-cursor="text">
+            Or email us at operations@gyanshu.tech
           </a>
         </motion.div>
 

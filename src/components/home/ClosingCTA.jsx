@@ -23,8 +23,8 @@ function ContactModal({ onClose }) {
         <Eyebrow className="mt-7">Get in touch</Eyebrow>
         <h2 id="contact-modal-title" className="mt-4 font-display text-3xl font-medium tracking-[-.03em] md:text-4xl">We’d love to hear from you.</h2>
         <p className="mt-3 leading-relaxed text-muted">For enquiries about our services, products, or a project, email the Gyanshu team.</p>
-        <a href="mailto:Support.gyanshu@gmail.com" className="group mt-7 flex items-center gap-3 rounded-2xl border border-line bg-white p-4 font-medium text-ink shadow-card transition hover:border-brand-400">
-          <Mail size={18} className="shrink-0 text-brand-500" /><span className="min-w-0 flex-1 break-all">Support.gyanshu@gmail.com</span>
+        <a href="mailto:operations@gyanshu.tech" className="group mt-7 flex items-center gap-3 rounded-2xl border border-line bg-white p-4 font-medium text-ink shadow-card transition hover:border-brand-400">
+          <Mail size={18} className="shrink-0 text-brand-500" /><span className="min-w-0 flex-1 break-all">operations@gyanshu.tech</span>
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white transition-transform duration-500 group-hover:rotate-45"><ArrowUpRight size={15} /></span>
         </a>
         <p className="mt-4 text-xs text-muted-soft">Select the email address to open your email app.</p>
@@ -51,7 +51,7 @@ export default function ClosingCTA() {
         <Reveal delay={0.2}><p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">Bring us your cybersecurity, infrastructure, software, AI, or IoT requirement.</p></Reveal>
         <Reveal delay={0.3} className="mt-6 flex flex-wrap justify-center gap-3">
           <ArrowButton variant="brand" icon={Mail} onClick={() => setOpen(true)}>Send us a message</ArrowButton>
-          <a href="mailto:Support.gyanshu@gmail.com" className="btn btn-outline-dark">Support.gyanshu@gmail.com</a>
+          <a href="mailto:operations@gyanshu.tech" className="btn btn-outline-dark">operations@gyanshu.tech</a>
         </Reveal>
       </div>
     </div>

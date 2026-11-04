@@ -42,8 +42,8 @@ export default function Footer() {
           <Link to="/" aria-label="Gyanshu Technologies home"><Logo tone="light" full className="h-20 w-auto sm:h-24" /></Link>
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/55">Secure, automate, monitor, and operate critical technology environments with confidence.</p>
           <div className="mt-6 flex flex-col gap-2">
-            <a href="mailto:Support.gyanshu@gmail.com" className="group inline-flex w-fit items-center gap-2 font-display text-xl tracking-tight text-white transition-colors hover:text-brand-300 md:text-2xl">Support.gyanshu@gmail.com<ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
-            <a href="tel:+919040961361" className="w-fit text-white/55 transition-colors hover:text-white">+91 90409 61361</a>
+            <a href="mailto:operations@gyanshu.tech" className="group inline-flex w-fit items-center gap-2 font-display text-xl tracking-tight text-white transition-colors hover:text-brand-300 md:text-2xl">operations@gyanshu.tech<ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
+            <a href="tel:+919090009301" className="w-fit text-white/55 transition-colors hover:text-white">+91 90900 09301</a>
             <p className="text-white/50">India</p>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-2">

@@ -243,9 +243,9 @@ export function ServiceDetail({ page }) {
     {!isNetwork && !isIot && !isApplication && !isRegulatory && <FaqDark lede={`Common questions about ${page.title.toLowerCase()}.`} items={pickFaqs(page.path, 4)} />}
     {!isApplication && !isRegulatory && <CaseGrid eyebrow={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Related services'} title={isIot ? 'Related Solutions' : isNetwork ? 'Network Solutions' : 'Explore related services'} muted={isNetwork || isIot ? 0 : 2} items={related} pageSize={isNetwork ? 2 : isIot ? 1 : 6} link={{ label: 'All solutions', to: '/solutions' }} />}
     <CtaPhotos eyebrow={isRegulatory ? 'Compliance & Auditing' : isApplication ? 'Application Development' : isIot ? 'IoT' : isNetwork ? 'Network Infrastructure' : undefined} title={isRegulatory ? 'Ensure Compliance, Protect Your Business' : isApplication ? 'Transform Your Business with Custom Applications' : isIot ? 'Transform Your Business with IoT' : isNetwork ? 'Secure Your Network Infrastructure' : undefined}
-      text={isRegulatory ? "Let's discuss your compliance requirements and build a comprehensive regulatory strategy." : isApplication ? "Let's discuss your project requirements and build the perfect solution for your business needs. Call: +91 9938883028" : isIot ? "Unlock the power of connected devices and real-time data insights. Let’s build your IoT solution today." : isNetwork ? "Don't let network issues slow down your business. Contact us for a comprehensive network assessment." : undefined}
+      text={isRegulatory ? "Let's discuss your compliance requirements and build a comprehensive regulatory strategy." : isApplication ? "Let's discuss your project requirements and build the perfect solution for your business needs. Call: +91 90900 09301" : isIot ? "Unlock the power of connected devices and real-time data insights. Let’s build your IoT solution today." : isNetwork ? "Don't let network issues slow down your business. Contact us for a comprehensive network assessment." : undefined}
       cta={isRegulatory ? 'Compliance Assessment' : isApplication ? 'Start Your Project' : isIot ? 'Start IoT Project' : isNetwork ? 'Get Network Assessment' : undefined} images={media.cta} />
-    {isNetwork && <section className="bg-ink px-5 py-4 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919938883028">+91 9938883028</a></section>}
+    {isNetwork && <section className="bg-ink px-5 py-4 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919090009301">+91 90900 09301</a></section>}
   </main>
 }
 
@@ -344,7 +344,7 @@ function CybersecurityServiceContent() {
     </section>
 
     <CtaPhotos eyebrow="Cybersecurity" title="Secure Your Business Today" text="Let’s discuss your security requirements and build a comprehensive protection strategy." cta="Get Security Assessment" images={media.cta} />
-    <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919938883028">+91 9938883028</a></section>
+    <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919090009301">+91 90900 09301</a></section>
   </main>
 }
 
@@ -578,7 +578,7 @@ const companyConfig = {
   '/why-choose-us': { eyebrow: 'Why Gyanshu', sections: ['features', 'steps', 'quotes'] },
   '/mission': { eyebrow: 'Our mission', sections: ['features', 'stats', 'bento'] },
   '/core-values': { eyebrow: 'Core values', sections: ['values', 'quotes', 'steps'] },
-  '/careers': { eyebrow: 'Careers', sections: ['openings', 'reasons', 'hiring'], cta: { title: 'Ready to join our team?', muted: 2, text: 'Do not see a role that fits? Send us your resume anyway. We are always glad to meet talented people.', cta: 'Send your resume', href: 'mailto:Support.gyanshu@gmail.com?subject=Careers%20at%20Gyanshu' } },
+  '/careers': { eyebrow: 'Careers', sections: ['openings', 'reasons', 'hiring'], cta: { title: 'Ready to join our team?', muted: 2, text: 'Do not see a role that fits? Send us your resume anyway. We are always glad to meet talented people.', cta: 'Send your resume', href: 'mailto:operations@gyanshu.tech?subject=Careers%20at%20Gyanshu' } },
   '/training': { eyebrow: 'Training & development', sections: ['highlights', 'courses', 'formats', 'learning', 'students'], cta: { title: 'Start your journey with Gyanshu.', muted: 2, text: 'Tell us what you want to learn and we will help you choose the right course.', cta: 'Ask about training' } },
   '/our-work': { eyebrow: 'Our work', sections: ['cases', 'steps', 'stats'] },
 }
@@ -589,7 +589,7 @@ const values = [
   { title: 'Lasting partnerships', text: 'We stay with you beyond launch, through operations and improvement.', icon: Building2 },
 ]
 // Careers page content.
-const careersMail = (subject) => `mailto:Support.gyanshu@gmail.com?subject=${encodeURIComponent(subject)}`
+const careersMail = (subject) => `mailto:operations@gyanshu.tech?subject=${encodeURIComponent(subject)}`
 const openings = [
   {
     title: 'Python Full Stack Intern',
@@ -694,25 +694,25 @@ function ContactBlock() {
   const submit = (e) => {
     e.preventDefault()
     const subject = `[${form.topic}] Enquiry${form.name ? ` from ${form.name}` : ''}${form.org ? ` (${form.org})` : ''}`
-    window.location.href = `mailto:Support.gyanshu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(form.message)}`
+    window.location.href = `mailto:operations@gyanshu.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(form.message)}`
   }
   const field = 'w-full rounded-2xl border border-line bg-paper px-4 py-3.5 text-[15px] text-ink outline-none transition placeholder:text-muted-soft focus:border-ink focus:bg-white'
   return <section id="details" className="section-space-bottom">
     <div className="shell grid gap-4 lg:grid-cols-[1fr_1.3fr]">
       <div className="flex flex-col gap-3">
         <Reveal>
-          <a href="mailto:Support.gyanshu@gmail.com" className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[28px] bg-ink-950 p-8 text-white">
+          <a href="mailto:operations@gyanshu.tech" className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[28px] bg-ink-950 p-8 text-white">
             <div className="dot-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]" />
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-400 text-ink"><Mail size={20} /></span>
             <div className="relative">
               <p className="label-text text-white/45">Email the team</p>
-              <p className="mt-2 flex items-center gap-3 font-display text-[1.15rem] font-medium tracking-[-.02em] sm:text-2xl md:text-3xl">Support.gyanshu@gmail.com<ArrowUpRight size={22} className="shrink-0 text-brand-300 transition-transform duration-500 group-hover:rotate-45" /></p>
+              <p className="mt-2 flex items-center gap-3 font-display text-[1.15rem] font-medium tracking-[-.02em] sm:text-2xl md:text-3xl">operations@gyanshu.tech<ArrowUpRight size={22} className="shrink-0 text-brand-300 transition-transform duration-500 group-hover:rotate-45" /></p>
             </div>
           </a>
         </Reveal>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Reveal delay={0.08}><a href="tel:+919040961361" className="group flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90409 61361</span></span></a></Reveal>
+          <Reveal delay={0.08}><a href="tel:+919090009301" className="group flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90900 09301</span></span></a></Reveal>
           <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Location</span><span className="mt-1 block font-display text-lg font-medium">India</span></span></div></Reveal>
         </div>
       </div>
@@ -774,8 +774,8 @@ export function LegalPage({ page }) {
           <span className="label-text text-brand-600">{page.title}</span>
           <p className="mt-6 font-display text-2xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[2rem]">{page.intro}</p>
           <div className="mt-12 flex flex-col gap-4 rounded-[22px] bg-paper p-6 md:flex-row md:items-center md:justify-between">
-            <p className="text-[15px] text-muted [overflow-wrap:anywhere]">Questions about this policy or your information? Write to Support.gyanshu@gmail.com.</p>
-            <ArrowButton href="mailto:Support.gyanshu@gmail.com" icon={Mail} className="shrink-0 self-start md:self-auto">Email our team</ArrowButton>
+            <p className="text-[15px] text-muted [overflow-wrap:anywhere]">Questions about this policy or your information? Write to operations@gyanshu.tech.</p>
+            <ArrowButton href="mailto:operations@gyanshu.tech" icon={Mail} className="shrink-0 self-start md:self-auto">Email our team</ArrowButton>
           </div>
         </Reveal>
       </div>

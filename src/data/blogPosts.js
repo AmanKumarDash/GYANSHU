@@ -11,7 +11,7 @@ export const blogPosts = [
     published: true,
     body: [
       { heading: 'What you will find here', paragraphs: ['We will use this space to share updates about Gyanshu products and services, newly available documentation, upcoming offers and events, and moments worth celebrating with our community.'] },
-      { heading: 'Stay in the loop', paragraphs: ['Check back for new posts. For product or service questions, contact Support.gyanshu@gmail.com.'] },
+      { heading: 'Stay in the loop', paragraphs: ['Check back for new posts. For product or service questions, contact operations@gyanshu.tech.'] },
     ],
   },
 ]
