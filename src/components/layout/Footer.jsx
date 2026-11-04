@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowUp, ArrowUpRight } from 'lucide-react'
+import { ArrowUp, Mail, MapPin, Phone } from 'lucide-react'
 import Logo from '../ui/Logo'
 import { industryLinks, productLinks } from '../../data/sitePages'
+import { COMPANY_ADDRESS } from '../../data/siteConfig'
+import { socials } from '../../data/socialLinks'
 
 // Shorter industry names for the footer column only; menus and pages keep the full names.
 const industryShort = {
@@ -23,16 +25,9 @@ const footerGroups = [
   { title: 'Industries', links: industryLinks.map((l) => [industryShort[l.label] || l.label, l.to]) },
   { title: 'Explore', links: [['Our Work', '/our-work'], ['Blog & Updates', '/blog'], ['Support', '/support'], ['Help & FAQ', '/help']] },
 ]
-// Simple brand glyphs (the icon library ships no brand logos).
-const glyph = (d) => function Glyph() { return <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d={d} /></svg> }
-const Linkedin = glyph('M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z')
-const Facebook = glyph('M13.5 21v-7.5h2.5l.4-3H13.5V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.45c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 3.98v2.2H7.8v3h2.6V21z')
-const XLogo = glyph('M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.17h1.7L7.4 4.74H5.58z')
-const Youtube = glyph('M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z')
-const Instagram = glyph('M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.75a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1zM17 5.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 2c-2.7 0-3.05.01-4.1.06-1.07.05-1.8.22-2.43.47a4.9 4.9 0 0 0-1.77 1.15A4.9 4.9 0 0 0 2.53 5.45c-.25.64-.42 1.36-.47 2.43C2.01 8.95 2 9.3 2 12s.01 3.05.06 4.12c.05 1.06.22 1.79.47 2.42.26.66.6 1.22 1.15 1.77.55.56 1.11.9 1.77 1.16.64.24 1.36.41 2.43.46 1.06.05 1.4.07 4.12.07s3.06-.02 4.12-.07c1.06-.05 1.79-.22 2.42-.46a4.9 4.9 0 0 0 1.77-1.16c.56-.55.9-1.11 1.16-1.77.24-.63.41-1.36.46-2.42.05-1.07.07-1.4.07-4.12s-.02-3.05-.07-4.12c-.05-1.07-.22-1.79-.46-2.43a4.9 4.9 0 0 0-1.16-1.77A4.9 4.9 0 0 0 18.54 2.53c-.63-.25-1.36-.42-2.42-.47C15.05 2.01 14.7 2 12 2zm0 1.8c2.67 0 2.99.01 4.04.06.98.04 1.5.2 1.86.34.47.18.8.4 1.15.75.35.35.57.68.75 1.15.14.35.3.88.34 1.86.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.2 1.5-.34 1.86-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.35.14-.88.3-1.86.34-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.2-1.86-.34a3.1 3.1 0 0 1-1.15-.75 3.1 3.1 0 0 1-.75-1.15c-.14-.35-.3-.88-.34-1.86-.05-1.05-.06-1.37-.06-4.04s.01-2.99.06-4.04c.04-.98.2-1.5.34-1.86.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.35-.14.88-.3 1.86-.34C9.01 3.81 9.33 3.8 12 3.8z')
-// Add the company's profile URLs here (e.g. https://www.linkedin.com/company/<handle>).
-// Icons without a URL still show, but are not clickable until one is added.
-const socials = [['LinkedIn', '', Linkedin], ['Facebook', '', Facebook], ['X', '', XLogo], ['YouTube', '', Youtube], ['Instagram', '', Instagram]]
+
+const contactChip = 'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-brand-300 transition-colors duration-300'
+const contactLinks = [['mailto:operations@gyanshu.tech', 'operations@gyanshu.tech', Mail], ['tel:+919090009301', '+91 90900 09301', Phone]]
 
 export default function Footer() {
   return <footer className="relative overflow-hidden bg-ink-950 text-white">
@@ -40,14 +35,11 @@ export default function Footer() {
       <div className="grid gap-10 lg:grid-cols-[1.25fr_2fr]">
         <div>
           <Link to="/" aria-label="Gyanshu Technologies home"><Logo tone="light" full className="h-20 w-auto sm:h-24" /></Link>
-          <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/55">Secure, automate, monitor, and operate critical technology environments with confidence.</p>
-          <div className="mt-6 flex flex-col gap-2">
-            <a href="mailto:operations@gyanshu.tech" className="group inline-flex w-fit items-center gap-2 font-display text-xl tracking-tight text-white transition-colors hover:text-brand-300 md:text-2xl">operations@gyanshu.tech<ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
-            <a href="tel:+919090009301" className="w-fit text-white/55 transition-colors hover:text-white">+91 90900 09301</a>
-            <p className="text-white/50">India</p>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-2">
-            <span className="mr-2 text-[15px] text-white/70">Connect with us</span>
+          <address className="mt-6 flex flex-col gap-3 text-[15px] not-italic text-white/70">
+            {contactLinks.map(([href, label, Icon]) => <a key={href} href={href} className="group flex w-fit items-center gap-3 transition-colors hover:text-white"><span className={`${contactChip} group-hover:border-brand-400`}><Icon size={16} aria-hidden="true" /></span>{label}</a>)}
+            <p className="flex max-w-sm items-center gap-3 [hyphens:manual] [text-align:left!important]"><span className={contactChip}><MapPin size={16} aria-hidden="true" /></span>{COMPANY_ADDRESS}</p>
+          </address>
+          <div className="mt-8 flex flex-wrap items-center gap-2 xl:hidden">
             {socials.map(([label, href, Icon]) => href
               ? <a key={label} aria-label={`Gyanshu on ${label}`} href={href} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:border-brand-400 hover:bg-brand-400 hover:text-ink"><Icon /></a>
               : <span key={label} role="img" aria-label={`${label} (link coming soon)`} title={`${label}: coming soon`} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60"><Icon /></span>)}

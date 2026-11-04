@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import ScrollProgressBar from './components/ui/ScrollProgressBar'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import SocialRail from './components/layout/SocialRail'
 import ExperienceHome from './components/sections/ExperienceHome'
 import SplashScreen from './components/ui/SplashScreen'
 import { IntroContext } from './utils/intro'
@@ -105,6 +106,7 @@ function SiteShell() {
         <AnimatePresence>{showSplash && <SplashScreen key="splash" />}</AnimatePresence>
         <ScrollProgressBar />
         <Navbar />
+        <SocialRail />
         <div id="main-content" tabIndex={-1} className="outline-none">
           <Suspense fallback={<div className="min-h-screen" />}>
             <Routes>

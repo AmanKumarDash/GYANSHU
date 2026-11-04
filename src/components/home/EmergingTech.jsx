@@ -3,14 +3,16 @@ import { Bot, Check, Cpu, Network, Radar, ScanSearch, Wifi } from 'lucide-react'
 import { MaskLines, Reveal } from '../ui/Motion'
 
 // `value` and `related` are optional; a card without them leaves that line out.
+// A `related` entry without an address shows as plain text (no product page yet).
 const services = [
   {
     icon: Cpu,
     eyebrow: 'Private AI Infrastructure',
     title: 'Private AI & Enterprise LLM Solutions',
-    text: 'Deploy intelligence within your infrastructure. Maintain control over enterprise data, AI models, and knowledge.',
+    text: 'Deploy enterprise intelligence inside your own controlled environment, keeping full ownership of data, models, workflows, and institutional knowledge.',
     points: ['On-premises and private-cloud LLM deployment', 'Enterprise knowledge assistants with RAG and semantic search', 'Secure document intelligence and contextual knowledge retrieval', 'CPU-optimized inference and scalable AI deployment architectures', 'Role-based access, auditability, and data governance'],
     value: 'Data sovereignty, controlled AI adoption, enhanced productivity, and reduced dependency on public AI services.',
+    related: [['AI Office Assistant', '/products/ai-office-assistant']],
   },
   {
     icon: Bot,
@@ -19,14 +21,16 @@ const services = [
     text: 'Transform complex enterprise workflows into intelligent, coordinated, and policy-governed operations.',
     points: ['AI-assisted SOC investigation and incident triage', 'Intelligent NOC event correlation and root-cause analysis', 'Multi-step workflow orchestration and task execution', 'Automated document processing, reporting, and knowledge workflows', 'Human-in-the-loop approvals, escalation, and execution controls'],
     value: 'Faster decision-making, reduced manual effort, consistent operations, and improved service efficiency.',
+    related: [['AI Office Assistant', '/products/ai-office-assistant'], ['NetSight360 Enterprise', '/products/netsight360']],
   },
   {
     icon: Radar,
     eyebrow: 'Proactive Cyber Defense',
     title: 'Attack Surface & Cyber Exposure Management',
     text: 'Gain continuous visibility into your digital exposure, prioritize critical risks, and strengthen security posture across enterprise environments.',
-    points: ['External and internal attack surface discovery', 'Asset inventory, classification, and exposure intelligence', 'Vulnerability correlation and risk-based prioritization', 'Misconfiguration and security posture assessment', 'Remediation tracking and executive risk reporting'],
+    points: ['External and internal attack surface discovery', 'Asset inventory, classification, and exposure intelligence', 'Vulnerability correlation and risk-based prioritization', 'Misconfiguration detection and security posture assessment', 'Remediation tracking and executive risk reporting'],
     value: 'Reduced cyber exposure, better remediation priorities, stronger security governance, and improved operational resilience.',
+    related: [['Panoptix', '/products/panoptix']],
   },
   {
     icon: ScanSearch,
@@ -34,6 +38,8 @@ const services = [
     title: 'AI-Assisted Vulnerability Assessment & Penetration Testing',
     text: 'Identify exploitable weaknesses, validate security controls, and improve remediation effectiveness through structured, intelligence-assisted security assessments.',
     points: ['Automated vulnerability discovery and assessment', 'AI-assisted analysis, prioritization, and reporting', 'Web application, API, network, and infrastructure security testing', 'MITRE ATT&CK and OWASP-aligned assessment methodologies', 'Evidence-based findings and actionable remediation guidance'],
+    value: 'Improved security assurance, faster remediation, and stronger audit readiness.',
+    related: [['Nested VA', '/products/nested-va']],
   },
   {
     icon: Wifi,
@@ -41,6 +47,8 @@ const services = [
     title: 'IoT, Industrial IoT & OT Security Intelligence',
     text: 'Connect physical operations with intelligent monitoring, asset visibility, and security analytics across industrial and operational technology environments.',
     points: ['IoT/IIoT device discovery and asset classification', 'Industrial protocol-aware monitoring and telemetry integration', 'OT asset visibility and security posture assessment', 'AI-assisted anomaly detection and operational intelligence', 'Converged IT/OT monitoring and centralized reporting'],
+    value: 'Improved operational visibility, stronger industrial resilience, and reduced downtime risk.',
+    related: [['NeerIQ'], ['MineIQ'], ['SMMS', '/products/smms']],
   },
   {
     icon: Network,
@@ -90,7 +98,7 @@ export default function EmergingTech() {
               </ul>
               {(value || related) && <div className="relative mt-auto flex flex-col gap-2 border-t border-line pt-4 text-[13px] leading-relaxed text-muted [hyphens:manual] [&_p]:[text-align:left!important]">
                 {value && <p><span className="font-semibold text-brand-600">Business value: </span>{value}</p>}
-                {related && <p><span className="font-semibold text-brand-600">Related solutions: </span>{related.map(([label, to], k) => <span key={to}>{k > 0 && ' and '}<Link to={to} className="font-medium text-ink underline decoration-brand-400/60 underline-offset-2 transition-colors hover:text-brand-600">{label}</Link></span>)}</p>}
+                {related && <p><span className="font-semibold text-brand-600">Related solutions: </span>{related.map(([label, to], k) => <span key={label}>{k > 0 && ', '}{to ? <Link to={to} className="font-medium text-ink underline decoration-brand-400/60 underline-offset-2 transition-colors hover:text-brand-600">{label}</Link> : <span className="font-medium text-ink">{label}</span>}</span>)}</p>}
               </div>}
             </article>
           </Reveal>)}

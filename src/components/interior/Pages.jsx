@@ -4,6 +4,7 @@ import { Activity, ArrowUpRight, BadgeCheck, Boxes, Building2, Compass, Eye, Lay
 import { Link } from 'react-router-dom'
 import { caseStudies, faqs, services, team } from '../../data/content'
 import { getPage, industryLinks, productLinks, serviceLinks } from '../../data/sitePages'
+import { COMPANY_ADDRESS } from '../../data/siteConfig'
 import { getScene } from '../../data/visualScenes'
 import { defaultNeeds, faqPicks, industryIcons, industryImages, mediaFor, pageImages, productImages, operatingNeeds, serviceImages } from '../../data/pageMedia'
 import { ArrowButton, Eyebrow, Reveal } from '../ui/Motion'
@@ -245,7 +246,7 @@ export function ServiceDetail({ page }) {
     <CtaPhotos eyebrow={isRegulatory ? 'Compliance & Auditing' : isApplication ? 'Application Development' : isIot ? 'IoT' : isNetwork ? 'Network Infrastructure' : undefined} title={isRegulatory ? 'Ensure Compliance, Protect Your Business' : isApplication ? 'Transform Your Business with Custom Applications' : isIot ? 'Transform Your Business with IoT' : isNetwork ? 'Secure Your Network Infrastructure' : undefined}
       text={isRegulatory ? "Let's discuss your compliance requirements and build a comprehensive regulatory strategy." : isApplication ? "Let's discuss your project requirements and build the perfect solution for your business needs. Call: +91 90900 09301" : isIot ? "Unlock the power of connected devices and real-time data insights. Let’s build your IoT solution today." : isNetwork ? "Don't let network issues slow down your business. Contact us for a comprehensive network assessment." : undefined}
       cta={isRegulatory ? 'Compliance Assessment' : isApplication ? 'Start Your Project' : isIot ? 'Start IoT Project' : isNetwork ? 'Get Network Assessment' : undefined} images={media.cta} />
-    {isNetwork && <section className="bg-ink px-5 py-4 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919090009301">+91 90900 09301</a></section>}
+    {isNetwork && <section className="bg-ink px-5 py-4 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="inline-flex items-center gap-1.5 underline underline-offset-4" href="tel:+919090009301"><Phone size={14} aria-hidden="true" />+91 90900 09301</a></section>}
   </main>
 }
 
@@ -344,7 +345,7 @@ function CybersecurityServiceContent() {
     </section>
 
     <CtaPhotos eyebrow="Cybersecurity" title="Secure Your Business Today" text="Let’s discuss your security requirements and build a comprehensive protection strategy." cta="Get Security Assessment" images={media.cta} />
-    <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="underline underline-offset-4" href="tel:+919090009301">+91 90900 09301</a></section>
+    <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="inline-flex items-center gap-1.5 underline underline-offset-4" href="tel:+919090009301"><Phone size={14} aria-hidden="true" />+91 90900 09301</a></section>
   </main>
 }
 
@@ -713,7 +714,7 @@ function ContactBlock() {
         </Reveal>
         <div className="grid gap-3 sm:grid-cols-2">
           <Reveal delay={0.08}><a href="tel:+919090009301" className="group flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90900 09301</span></span></a></Reveal>
-          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Location</span><span className="mt-1 block font-display text-lg font-medium">India</span></span></div></Reveal>
+          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Address</span><span className="mt-1 block font-display text-lg font-medium leading-snug">{COMPANY_ADDRESS}</span></span></div></Reveal>
         </div>
       </div>
       <Reveal delay={0.1}>
