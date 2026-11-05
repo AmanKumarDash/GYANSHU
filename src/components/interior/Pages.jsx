@@ -9,7 +9,10 @@ import { getScene } from '../../data/visualScenes'
 import { defaultNeeds, faqPicks, industryIcons, industryImages, mediaFor, pageImages, productImages, operatingNeeds, serviceImages } from '../../data/pageMedia'
 import { ArrowButton, Eyebrow, Reveal } from '../ui/Motion'
 import { Bento, CaseGrid, Openings, TechMarquee, TrainingPanel, CtaPhotos, FaqDark, FeatureCards, HeroCentered, KeyFeatures, NeedsSplit, Orbit, Quotes, Statement, StatsBand, StepsBanner } from './Blocks'
-import { EASE, photo } from '../../utils/intro'
+import { EASE } from '../../utils/intro'
+import { CardFx } from './Blocks'
+import { spot } from './cardFx'
+import { DarkBand, Media } from './Blocks'
 
 /* ---------- shared copy & helpers ---------- */
 
@@ -56,6 +59,8 @@ const courses = (titles) => titles.map((title) => ({ title, ...trainingCourses[t
 const pickFaqs = (key, n) => (faqPicks[key] || faqs.map((_, i) => i)).slice(0, n).map((i) => faqs[i])
 
 /* ---------- listings ---------- */
+
+const SECTION = 'py-8 md:py-10 lg:py-12'
 
 export function ServicesListing({ page }) {
   return <main>
@@ -226,9 +231,9 @@ export function ServiceDetail({ page }) {
     <FeatureCards eyebrow={isRegulatory ? 'GRC Services' : isApplication ? 'Application Development Services' : isNetwork ? 'Network Services' : 'What we bring'} title={isRegulatory ? 'Comprehensive GRC Solutions' : isApplication ? 'Comprehensive Application Development Services' : isNetwork ? 'Complete Network Infrastructure Solutions' : 'Expertise that moves'} accent={isNetwork || isApplication || isRegulatory ? '' : 'work forward.'}
       lede={isApplication || isRegulatory ? undefined : isNetwork ? 'Gyanshu delivers end-to-end network services from design and implementation to ongoing management and support.' : 'A focused team helps you make progress from the first assessment through implementation and continuous improvement.'}
       items={isRegulatory ? regulatoryServices.map(([title, text]) => ({ title, text })) : isApplication ? applicationServices.map(([title, text]) => ({ title, text })) : isIot ? iotOfferings.map(([title, text]) => ({ title, text })) : isNetwork ? networkOfferings.map(([title, text]) => ({ title, text })) : page.features.map((f) => ({ title: f }))} />
-    {isRegulatory && <FeatureCards eyebrow="Compliance Standards" title="Industry Compliance Frameworks" lede="We help organizations navigate complex compliance frameworks and industry standards across various sectors." items={complianceStandards.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
+    {isRegulatory && <FeatureCards dark eyebrow="Compliance Standards" title="Industry Compliance Frameworks" lede="We help organizations navigate complex compliance frameworks and industry standards across various sectors." items={complianceStandards.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
     {isRegulatory && <FeatureCards eyebrow="Compliance Process" title="Structured Approach to Regulatory Compliance" items={complianceProcess.map(([title, text]) => ({ title, text }))} />}
-    {isApplication && <FeatureCards eyebrow="Our Development Approach" title="Agile Development Methodology" items={applicationApproach.map(([title, text]) => ({ title, text }))} />}
+    {isApplication && <FeatureCards dark eyebrow="Our Development Approach" title="Agile Development Methodology" items={applicationApproach.map(([title, text]) => ({ title, text }))} />}
     {isApplication && <TechMarquee eyebrow="Technology Stack" title="Technology Stack" lede="We leverage cutting-edge technologies to build robust, scalable applications." items={applicationStack} />}
     {isApplication && <FeatureCards eyebrow="Software Solutions" title="Software Solutions" items={applicationSolutions} cols={2} />}
     {isApplication && <TrainingPanel eyebrow="Development Training" title="Development Training" lede="Practical courses that help your developers build, review and run secure applications, taught by the people who deliver them." courses={courses(['Web App Audit', 'Cloud'])} />}
@@ -236,7 +241,7 @@ export function ServiceDetail({ page }) {
     {isRegulatory && <FeatureCards eyebrow="Benefits of Compliance" title="Benefits of Compliance" lede="Regulatory compliance isn't just about avoiding penalties—it's about building trust and competitive advantage." items={complianceBenefits.map(([title, text]) => ({ title, text }))} />}
     {isRegulatory && <FeatureCards eyebrow="Compliance & Auditing Tools" title="Compliance & Auditing Tools" items={complianceTools} cols={2} />}
     {isRegulatory && <TrainingPanel eyebrow="Compliance Training" title="Compliance Training" lede="Give your team the skills to test, evidence and maintain the controls that compliance frameworks expect." courses={courses(['VAPT', 'Web App Audit'])} />}
-    {isIot && <FeatureCards eyebrow="IOT APPLICATIONS" title="Industry Solutions" lede="Our IoT solutions are tailored for specific industries, delivering measurable results and competitive advantages." items={iotApplications.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
+    {isIot && <FeatureCards dark eyebrow="IOT APPLICATIONS" title="Industry Solutions" lede="Our IoT solutions are tailored for specific industries, delivering measurable results and competitive advantages." items={iotApplications.map(([title, text, tags]) => ({ title, text, tags }))} cols={3} />}
     {isIot && <FeatureCards eyebrow="IMPLEMENTATION PROCESS" title="End-to-End IoT Solution Development" items={iotImplementation.map(([title, text]) => ({ title, text }))} />}
     {isNetwork && <TrainingPanel eyebrow="Network Certification Training" title="Network Certification Training" lede="Structured preparation for widely recognised networking skills, with labs that mirror real enterprise environments." courses={courses(['CCNA', 'CCNP', 'Firewall', 'Linux'])} />}
     {isIot && <TrainingPanel eyebrow="IoT Training" title="IoT Training" lede="Hands-on learning for teams designing, deploying and securing connected devices and the data they produce." courses={courses(['Cyber Security', 'IoT'])} />}
@@ -286,63 +291,72 @@ function CybersecurityServiceContent() {
       captions={['Cybersecurity operations', 'Security monitoring', 'Threat analysis', 'Incident response']}
       mediaLabel="Cybersecurity services" chips={['VAPT Services', 'Threat Management', 'Incident Management']} />
 
-    <section id="cybersecurity-solutions" className="bg-paper section-space">
+    <section id="cybersecurity-solutions" className={SECTION}>
       <div className="shell">
         <div className="mx-auto max-w-3xl text-center">
-          <Eyebrow>Cybersecurity Solutions</Eyebrow>
-          <h2 className="h-section mt-5">Comprehensive Cybersecurity Solutions</h2>
-          <p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p>
+          <Reveal><Eyebrow>Cybersecurity Solutions</Eyebrow></Reveal>
+          <Reveal delay={0.05}><h2 className="h-section mt-5">Comprehensive <span className="text-brand-500">Cybersecurity Solutions</span></h2></Reveal>
+          <Reveal delay={0.12}><p className="lede mx-auto mt-5 max-w-2xl">Gyanshu offers cutting-edge cybersecurity services to safeguard your digital assets and ensure business continuity.</p></Reveal>
         </div>
-        <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {cyberServices.map(([title, text], i) => <article key={title} className="group relative isolate flex min-h-[17.5rem] flex-col justify-end overflow-hidden rounded-[1.5rem] bg-ink p-5 text-white shadow-card">
-            <img src={photo(media.services[i], 900)} alt="" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
-            <span className="mb-auto label-text text-white/70">◆</span>
-            <h3 className="card-heading">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/80">{text}</p>
-          </article>)}
+        <div className="mt-7 grid grid-cols-1 gap-2 min-[480px]:grid-cols-2 sm:gap-3 lg:grid-cols-4">
+          {cyberServices.map(([title, text], i) => <Reveal key={title} delay={(i % 4) * 0.06} className="h-full">
+            <article className="group relative isolate flex h-full min-h-[17.5rem] flex-col justify-end overflow-hidden rounded-[1.375rem] bg-ink-950 p-5 text-white shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:shadow-lift">
+              <div className="absolute inset-0 -z-10 transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.07]"><Media src={media.services[i]} kind="card" width={900} /></div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950/95 via-ink-950/45 to-ink-950/10" />
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-brand-500 to-brand-300 transition-transform duration-700 ease-expo group-hover:scale-x-100" />
+              <span className="mb-auto label-text text-white/70">◆</span>
+              <h3 className="card-heading">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/80">{text}</p>
+            </article>
+          </Reveal>)}
         </div>
       </div>
     </section>
 
-    <section className="section-space">
+    <section className={SECTION}>
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
-          <div><Eyebrow>Why Gyanshu Cybersecurity</Eyebrow><h2 className="h-section mt-5">Advanced Protection for Modern Businesses</h2></div>
-          <img src={photo(media.monitoring, 1400)} alt="Cybersecurity professionals monitoring digital threats" loading="lazy" className="h-64 w-full rounded-[1.5rem] object-cover md:h-80" />
+          <div><Reveal><Eyebrow>Why Gyanshu Cybersecurity</Eyebrow></Reveal><Reveal delay={0.05}><h2 className="h-section mt-5">Advanced Protection for <span className="text-brand-500">Modern Businesses</span></h2></Reveal></div>
+          <Reveal delay={0.1}><div className="relative h-52 overflow-hidden rounded-[1.5rem] bg-ink-950 md:h-72"><Media src={media.monitoring} kind="hub" live alt="Cybersecurity professionals monitoring digital threats" width={1400} /></div></Reveal>
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {cyberStrengths.map(([title, text], i) => <article key={title} className="grid overflow-hidden rounded-[1.375rem] border border-line bg-white shadow-card md:grid-cols-[.65fr_1fr]">
-            <img src={photo(media.strengths[i], 700)} alt="" loading="lazy" className="h-44 w-full object-cover md:h-full" />
-            <div className="p-5 sm:p-6"><h3 className="card-heading">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
-          </article>)}
+        <div className="mt-7 grid gap-2 sm:grid-cols-2 sm:gap-3">
+          {cyberStrengths.map(([title, text], i) => <Reveal key={title} delay={(i % 2) * 0.06} className="h-full">
+            <article onMouseMove={spot} className="group relative grid h-full overflow-hidden rounded-[1.375rem] border border-line bg-white shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift md:grid-cols-[.65fr_1fr]">
+              <CardFx />
+              <div className="relative h-44 w-full overflow-hidden bg-ink-950 md:h-full"><Media src={media.strengths[i]} kind="card" width={700} /></div>
+              <div className="relative p-5 sm:p-6"><h3 className="card-heading">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted">{text}</p></div>
+            </article>
+          </Reveal>)}
         </div>
       </div>
     </section>
 
     <StepsBanner eyebrow="Assessment" title="Security Assessment Process" accent="" steps={steps} image={media.steps} />
 
-    <section className="bg-paper section-space">
+    <section className={SECTION}>
       <div className="shell">
-        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow>Security Products</Eyebrow><h2 className="h-section mt-5">Security Products</h2></div><img src={photo(media.products, 900)} alt="Security operations team reviewing network intelligence" loading="lazy" className="h-40 w-full rounded-[1.375rem] object-cover md:w-[38%]" /></div>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mb-7 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Reveal><Eyebrow>Security Products</Eyebrow></Reveal><Reveal delay={0.05}><h2 className="h-section mt-5">Security <span className="text-brand-500">Products</span></h2></Reveal></div><Reveal delay={0.1} className="md:w-[38%]"><div className="relative h-40 w-full overflow-hidden rounded-[1.375rem] bg-ink-950"><Media src={media.products} kind="hub" live alt="Security operations team reviewing network intelligence" width={900} /></div></Reveal></div>
+        <div className="grid gap-3 md:grid-cols-2">
           {[
             ['Flowbits Nexora', 'Internet Protocol Detail Record System', 'Advanced IPDR and NAT logging platform designed for ISPs and telecom operators to achieve complete visibility, traceability, and compliance in network data flows.', '/products/flowbits-nexora', productImages['/products/flowbits-nexora']],
             ['Nested VA', 'Vulnerability Assessment & Pen-Testing', 'Automated platform to simulate attacks and secure your infrastructure against sophisticated threats with detailed reporting and compliance checks.', '/products/nested-va', productImages['/products/nested-va']],
-          ].map(([title, subtitle, text, to, image]) => <article key={title} className="group overflow-hidden rounded-[1.5rem] border border-line bg-white shadow-card">
-            <img src={photo(image, 1100)} alt="" loading="lazy" className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-            <div className="p-6"><span className="label-text text-brand-600">{subtitle}</span><h3 className="card-heading mt-2">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
-          </article>)}
+          ].map(([title, subtitle, text, to, image], i) => <Reveal key={title} delay={i * 0.08} className="h-full">
+            <article onMouseMove={spot} className="group relative h-full overflow-hidden rounded-[1.375rem] border border-line bg-white shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift">
+              <CardFx />
+              <div className="relative h-56 w-full overflow-hidden bg-ink-950"><div className="absolute inset-0 transition-transform duration-[1.4s] ease-expo group-hover:scale-[1.04]"><Media src={image} kind="card" width={1100} /></div></div>
+              <div className="relative p-6"><span className="label-text text-brand-600">{subtitle}</span><h3 className="card-heading mt-2">{title}</h3><p className="mt-3 leading-relaxed text-muted">{text}</p><Link to={to} className="btn btn-brand mt-5 !pr-1.5"><span>View Details</span><span className="btn-chip"><ArrowUpRight size={15} /></span></Link></div>
+            </article>
+          </Reveal>)}
         </div>
       </div>
     </section>
 
-    <section className="section-space">
-      <div className="shell grid gap-8 lg:grid-cols-2 lg:items-center">
-        <div><Eyebrow>Security Training</Eyebrow><h2 className="h-section mt-5">Security Training</h2><div className="mt-6 flex flex-wrap gap-2">{['Cyber Security', 'Ethical Hacking', 'VAPT', 'SOC'].map((item) => <span key={item} className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium">{item}</span>)}</div></div>
-        <img src={photo(media.training, 1400)} alt="Cybersecurity training in a classroom" loading="lazy" className="h-72 w-full rounded-[1.5rem] object-cover md:h-96" />
+    <DarkBand seed={4}>
+      <div className="shell relative grid gap-8 lg:grid-cols-2 lg:items-center">
+        <div><Reveal><Eyebrow dark>Security Training</Eyebrow></Reveal><Reveal delay={0.05}><h2 className="h-section mt-5 text-white">Security <span className="text-brand-300">Training</span></h2></Reveal><div className="mt-6 flex flex-wrap gap-2">{['Cyber Security', 'Ethical Hacking', 'VAPT', 'SOC'].map((item) => <span key={item} className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur">{item}</span>)}</div></div>
+        <Reveal delay={0.1}><div className="relative h-60 overflow-hidden rounded-[1.5rem] border border-white/15 bg-ink-950 md:h-80"><Media src={media.training} kind="hub" live alt="Cybersecurity training in a classroom" width={1400} /></div></Reveal>
       </div>
-    </section>
+    </DarkBand>
 
     <CtaPhotos eyebrow="Cybersecurity" title="Secure Your Business Today" text="Let’s discuss your security requirements and build a comprehensive protection strategy." cta="Get Security Assessment" images={media.cta} />
     <section className="bg-ink px-5 py-7 text-center text-sm text-white/80"><span className="font-medium text-white">Emergency Support:</span> <a className="inline-flex items-center gap-1.5 underline underline-offset-4" href="tel:+919090009301"><Phone size={14} aria-hidden="true" />+91 90900 09301</a></section>
@@ -373,7 +387,7 @@ export function IndustryDetail({ page }) {
       { title: 'Evidence-Ready', text: 'Reporting', icon: BadgeCheck },
       { title: 'National Grade Security', icon: Layers },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Government & Law Enforcement." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Government & Law Enforcement." items={[
       { title: 'Cybercrime Investigation Delays', text: 'Time-consuming digital forensics processes slowing down case resolution.' },
       { title: 'IP Attribution & Subscriber Tracing', text: 'Difficulty correlating IP addresses with real subscribers across multiple data sources.' },
       { title: 'Multiple Data Sources', text: 'CGNAT, DHCP, and NetFlow data not correlated effectively.' },
@@ -394,7 +408,7 @@ export function IndustryDetail({ page }) {
       { title: 'DoT/TRAI', text: 'Aligned Reporting', icon: BadgeCheck },
       { title: 'High-Speed', text: 'Processing', icon: Zap },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Telecom Operators & ISPs." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Telecom Operators & ISPs." items={[
       { title: 'Lawful Interception Compliance', text: 'Meeting regulatory requirements for lawful interception of communications.' },
       { title: 'Massive CGNAT Data Volumes', text: 'Handling billions of sessions from carrier-grade NAT implementations.' },
       { title: 'Latency & Packet Visibility', text: 'Gaps in network visibility affecting performance and security monitoring.' },
@@ -416,7 +430,7 @@ export function IndustryDetail({ page }) {
       { title: 'RBI', text: 'Aligned Controls', icon: BadgeCheck },
       { title: '24/7', text: 'SOC Coverage', icon: ShieldCheck },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Banking, NBFCs & FinTech." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Banking, NBFCs & FinTech." items={[
       { title: 'Fraud & Mule Accounts', text: 'Sophisticated fraud schemes and money mule account detection.' },
       { title: 'Account Takeover & Phishing', text: 'Increasing attacks targeting customer accounts and credentials.' },
       { title: 'Regulatory Compliance', text: 'RBI guidelines, ISO 27001, and PCI-DSS requirements.' },
@@ -437,7 +451,7 @@ export function IndustryDetail({ page }) {
       { title: 'Compliance', text: 'Support', icon: BadgeCheck },
       { title: '24/7', text: 'Monitoring', icon: Activity },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Enterprises & Large Corporates." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Enterprises & Large Corporates." items={[
       { title: 'Complex Hybrid Networks', text: 'Managing security across on-prem, cloud, and hybrid environments.' },
       { title: 'Internal Threat Visibility', text: 'Detecting insider threats and lateral movement within the network.' },
       { title: 'Compliance Fatigue', text: 'Meeting multiple regulatory and industry compliance requirements.' },
@@ -457,7 +471,7 @@ export function IndustryDetail({ page }) {
       { title: 'Breach', text: 'Prevention', icon: ShieldCheck },
       { title: 'Tenant', text: 'Isolation', icon: BadgeCheck },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Data Centers & Cloud Providers." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Data Centers & Cloud Providers." items={[
       { title: 'East-West Traffic Blind Spots', text: 'Limited visibility into traffic between virtual machines and containers.' },
       { title: 'SLA Violations', text: 'Network performance issues affecting service level commitments.' },
       { title: 'Customer Isolation', text: 'Ensuring proper isolation between multi-tenant environments.' },
@@ -478,7 +492,7 @@ export function IndustryDetail({ page }) {
       { title: 'HIPAA', text: 'Aligned Controls', icon: BadgeCheck },
       { title: '24/7', text: 'Protection', icon: Activity },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Healthcare & Hospitals." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Healthcare & Hospitals." items={[
       { title: 'Ransomware Risk', text: 'Critical systems targeted by sophisticated ransomware attacks.' },
       { title: 'Patient Data Leakage', text: 'Protecting sensitive health information from breaches.' },
       { title: 'Legacy Medical Devices', text: 'Securing unpatchable and outdated medical IoT devices.' },
@@ -499,7 +513,7 @@ export function IndustryDetail({ page }) {
       { title: 'Policy', text: 'Enforcement', icon: ShieldCheck },
       { title: 'Campus Wide', text: 'Security', icon: Activity },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Education & Smart Campuses." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Education & Smart Campuses." items={[
       { title: 'Student Misuse & Cyber Abuse', text: 'Addressing inappropriate use of campus network resources.' },
       { title: 'Bandwidth Abuse', text: 'Managing limited bandwidth across thousands of concurrent users.' },
       { title: 'IT Policy Compliance', text: 'Ensuring students and staff adhere to acceptable use policies.' },
@@ -520,7 +534,7 @@ export function IndustryDetail({ page }) {
       { title: 'Non-Disruptive', text: 'Monitoring', icon: ShieldCheck },
       { title: 'OT/IT', text: 'Secured', icon: BadgeCheck },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Manufacturing & Critical Infrastructure." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Manufacturing & Critical Infrastructure." items={[
       { title: 'OT/IT Convergence Risks', text: 'Security gaps between operational technology and enterprise IT.' },
       { title: 'Legacy PLC Exposure', text: 'Unpatchable programmable logic controllers and industrial equipment.' },
       { title: 'Downtime Impact', text: 'Production halts due to cyber incidents affecting operations.' },
@@ -541,7 +555,7 @@ export function IndustryDetail({ page }) {
       { title: 'Startup', text: 'Friendly Pricing', icon: BadgeCheck },
       { title: 'No Added', text: 'Headcount', icon: Activity },
     ]} />
-    <FeatureCards eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Startups & MSMEs." items={[
+    <FeatureCards dark eyebrow="Industry Challenges" title="Navigating the complex threat landscape of Startups & MSMEs." items={[
       { title: 'Limited Cybersecurity Budget', text: 'Lack of resources for enterprise-grade security solutions.' },
       { title: 'Lack of In-House Expertise', text: 'No dedicated security team or specialists on staff.' },
     ]} />
@@ -667,7 +681,7 @@ export function CompanyPage({ page }) {
     reasons: <KeyFeatures key="wr" eyebrow="Why join us" title="Why work with Gyanshu" muted={1} lede="Join a team that is passionate about technology and committed to doing it well." items={careerReasons} cols={3} />,
     hiring: <StepsBanner key="hp" eyebrow="Hiring process" title="Our hiring" accent="process." steps={hiringSteps} image={media.steps} note="A clear, straightforward process to find the right people for our team." />,
     highlights: <KeyFeatures key="h" eyebrow="Why train with us" title="Why train with Gyanshu" muted={1} lede="Practical skills, taught by people who use them every day." items={trainingHighlights} cols={3} />,
-    courses: <FeatureCards key="cc" eyebrow="Course categories" title="Course categories" lede="Twelve practical courses across security, networking, cloud and connected technologies." items={courses(courseCatalog)} cols={4} />,
+    courses: <FeatureCards key="cc" eyebrow="Course categories" title="Course categories" lede="Twelve practical courses across security, networking, cloud and connected technologies." items={courses(courseCatalog)} cols={4} dark />,
     formats: <FeatureCards key="fm" eyebrow="Learn your way" title="Classroom or online" lede="Choose the format that suits you. Both are led by our instructors." items={trainingFormats} cols={2} />,
     students: <Quotes key="sv" eyebrow="Testimonials" title="What our students" accent="say." lede="Learners on how our training helped them." items={studentVoices} />,
     stats: <StatsBand key="s" eyebrow="At a glance" title="Built for" accent="critical operations." lede="Platforms, practices, and delivery discipline under one roof." stats={stats} />,
@@ -678,7 +692,7 @@ export function CompanyPage({ page }) {
     cases: <CaseGrid key="c" eyebrow="Case studies" title="See all our work" muted={2} items={workItems} pageSize={6} />,
   }
   return <main>
-    <HeroCentered eyebrow={cfg.eyebrow} title={page.title} pill={images} subtitle={page.subtitle} images={images} mediaLabel={getScene(page).label} />
+    <HeroCentered eyebrow={cfg.eyebrow} title={page.title} subtitle={page.subtitle} images={images} mediaLabel={getScene(page).label} />
     <Statement eyebrow="Overview" text={page.intro} />
     {cfg.sections.map((s) => blocks[s])}
     <CtaPhotos images={media.cta.length ? media.cta : images} {...(cfg.cta || {})} />
@@ -698,11 +712,11 @@ function ContactBlock() {
     window.location.href = `mailto:operations@gyanshu.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(form.message)}`
   }
   const field = 'w-full rounded-2xl border border-line bg-paper px-4 py-3.5 text-[0.9375rem] text-ink outline-none transition placeholder:text-muted-soft focus:border-ink focus:bg-white'
-  return <section id="details" className="section-space-bottom">
+  return <section id="details" className="py-8 md:py-10 lg:py-12">
     <div className="shell grid gap-4 lg:grid-cols-[1fr_1.3fr]">
       <div className="flex flex-col gap-3">
         <Reveal>
-          <a href="mailto:operations@gyanshu.tech" className="group relative flex min-h-[16.25rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-ink-950 p-8 text-white">
+          <a href="mailto:operations@gyanshu.tech" className="group relative flex min-h-[16.25rem] flex-col justify-between overflow-hidden rounded-[1.375rem] bg-ink-950 p-8 text-white">
             <div className="dot-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]" />
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-400 text-ink"><Mail size={20} /></span>
@@ -713,12 +727,12 @@ function ContactBlock() {
           </a>
         </Reveal>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Reveal delay={0.08}><a href="tel:+919090009301" className="group flex h-full flex-col gap-6 rounded-[1.5rem] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><Phone size={17} /></span><span><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90900 09301</span></span></a></Reveal>
-          <Reveal delay={0.14}><div className="flex h-full flex-col gap-6 rounded-[1.5rem] border border-line bg-white p-6 shadow-card"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600"><MapPin size={17} /></span><span><span className="block label-text text-muted-soft">Address</span><span className="mt-1 block font-display text-lg font-medium leading-snug">{COMPANY_ADDRESS}</span></span></div></Reveal>
+          <Reveal delay={0.08} className="h-full"><a href="tel:+919090009301" onMouseMove={spot} className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[1.375rem] border border-line bg-white p-6 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift"><CardFx /><span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink"><Phone size={18} /></span><span className="relative"><span className="block label-text text-muted-soft">Call</span><span className="mt-1 block font-display text-lg font-medium">+91 90900 09301</span></span></a></Reveal>
+          <Reveal delay={0.14} className="h-full"><div onMouseMove={spot} className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[1.375rem] border border-line bg-white p-6 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift"><CardFx /><span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink"><MapPin size={18} /></span><span className="relative"><span className="block label-text text-muted-soft">Address</span><span className="mt-1 block font-display text-lg font-medium leading-snug">{COMPANY_ADDRESS}</span></span></div></Reveal>
         </div>
       </div>
       <Reveal delay={0.1}>
-        <form onSubmit={submit} className="rounded-[1.75rem] border border-line bg-white p-6 shadow-card md:p-9">
+        <form onSubmit={submit} className="rounded-[1.375rem] border border-line bg-white p-6 shadow-card md:p-9">
           <Eyebrow>Write to us</Eyebrow>
           <h2 className="mt-5 font-display text-3xl font-medium tracking-[-.03em] md:text-4xl">Tell us about your project.</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -743,16 +757,15 @@ function ContactBlock() {
 export function ContactPage({ page }) {
   const support = page.path === '/support'
   return <main>
-    <HeroCentered eyebrow={support ? 'Support' : 'Contact'} title={page.title} pill={pageImages[support ? '/support' : '/contact'].hero} subtitle={page.subtitle} intro={page.intro} actions={null} compact />
+    <HeroCentered eyebrow={support ? 'Support' : 'Contact'} title={page.title} subtitle={page.subtitle} intro={page.intro} actions={null} compact />
     <ContactBlock />
     <FaqDark lede="Quick answers before you get in touch." items={support ? faqs.slice(0, 6) : pickFaqs('/contact', 4)} />
-    <div className="h-6" />
   </main>
 }
 
 export function HelpPage({ page }) {
   return <main>
-    <HeroCentered eyebrow="Help & FAQ" title={page.title} pill={pageImages['/help'].hero} subtitle={page.subtitle} intro={page.intro} compact
+    <HeroCentered eyebrow="Help & FAQ" title={page.title} subtitle={page.subtitle} intro={page.intro} compact
       actions={<><a href="#faq" className="btn btn-dark"><span>Browse answers</span><span className="btn-chip"><Search size={14} /></span></a><Link to="/contact" className="btn btn-outline">Contact us</Link></>} />
     <FaqDark id="faq" title="Everything you might ask." lede="Twelve answers covering services, platforms, deployment, and how to start." items={faqs} />
     <CtaPhotos title="Still have a question?" muted={2} text="Our team will help you find a clear next step." images={pageImages['/help'].cta} />
@@ -766,17 +779,20 @@ const legal = [['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], [
 export function LegalPage({ page }) {
   return <main>
     <HeroCentered eyebrow="Legal" title={page.title} subtitle={page.subtitle} actions={null} compact />
-    <section id="details" className="section-space-bottom">
+    <section id="details" className="py-8 md:py-10 lg:py-12">
       <div className="shell grid gap-6 lg:grid-cols-[16.25rem_1fr]">
-        <Reveal as="nav" aria-label="Legal pages" className="h-fit rounded-[1.5rem] border border-line bg-white p-3 shadow-card lg:sticky lg:top-28">
+        <Reveal as="nav" aria-label="Legal pages" className="h-fit rounded-[1.375rem] border border-line bg-white p-3 shadow-card lg:sticky lg:top-28">
           {legal.map(([label, to]) => <Link key={to} to={to} className={`flex items-center justify-between rounded-2xl px-4 py-3 text-[0.875rem] transition ${to === page.path ? 'bg-ink text-white' : 'text-muted hover:bg-paper hover:text-ink'}`}>{label}<ArrowUpRight size={14} className={to === page.path ? 'text-brand-300' : 'opacity-40'} /></Link>)}
         </Reveal>
-        <Reveal delay={0.08} className="rounded-[1.75rem] border border-line bg-white p-8 shadow-card md:p-14">
+        <Reveal delay={0.08} className="relative overflow-hidden rounded-[1.375rem] border border-line bg-white p-8 shadow-card md:p-14">
+          <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-brand-500 to-brand-300" />
           <span className="label-text text-brand-600">{page.title}</span>
           <p className="mt-6 font-display text-2xl font-medium leading-[1.35] tracking-[-.02em] text-ink md:text-[2rem]">{page.intro}</p>
-          <div className="mt-12 flex flex-col gap-4 rounded-[1.375rem] bg-paper p-6 md:flex-row md:items-center md:justify-between">
-            <p className="text-[0.9375rem] text-muted [overflow-wrap:anywhere]">Questions about this policy or your information? Write to operations@gyanshu.tech.</p>
-            <ArrowButton href="mailto:operations@gyanshu.tech" icon={Mail} className="shrink-0 self-start md:self-auto">Email our team</ArrowButton>
+          <div className="grain relative isolate mt-12 flex flex-col gap-4 overflow-hidden rounded-[1.375rem] bg-ink-950 p-6 text-white md:flex-row md:items-center md:justify-between">
+            <div className="dot-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]" />
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-500/20 blur-3xl" />
+            <p className="relative text-[0.9375rem] text-white/75 [overflow-wrap:anywhere]">Questions about this policy or your information? Write to operations@gyanshu.tech.</p>
+            <ArrowButton href="mailto:operations@gyanshu.tech" icon={Mail} variant="brand" className="relative shrink-0 self-start md:self-auto">Email our team</ArrowButton>
           </div>
         </Reveal>
       </div>
@@ -788,15 +804,16 @@ export function LegalPage({ page }) {
 
 export function NotFound({ page }) {
   return <main>
-    <HeroCentered eyebrow="Error 404" title={page.title} pill={pageImages.notFound.hero} subtitle={page.subtitle} intro={page.intro} compact
+    <HeroCentered eyebrow="Error 404" title={page.title} subtitle={page.subtitle} intro={page.intro} compact
       actions={<><ArrowButton to="/">Back to home</ArrowButton><Link to="/contact" className="btn btn-outline">Contact us</Link></>} />
-    <section className="section-space-bottom">
+    <section className="py-8 md:py-10 lg:py-12">
       <div className="shell grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {[['Products', '/products', 'Platforms for network intelligence and security.'], ['Solutions', '/solutions', 'Cybersecurity, infrastructure, IoT, and more.'], ['Industries', '/industries', 'Secure technology for high-stakes environments.'], ['Contact', '/contact', 'Tell us what you need to make possible.']].map(([t, to, d], i) =>
           <motion.div key={to} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.08, duration: 0.7, ease: EASE }}>
-            <Link to={to} className="group flex h-full min-h-[11.25rem] flex-col justify-between rounded-[1.5rem] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
-              <span className="flex items-center justify-between label-text text-brand-500">◆<ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
-              <span><span className="block font-display text-xl font-medium tracking-[-.02em]">{t}</span><span className="mt-1 block text-sm text-muted">{d}</span></span>
+            <Link to={to} onMouseMove={spot} className="group relative flex h-full min-h-[11.25rem] flex-col justify-between overflow-hidden rounded-[1.375rem] border border-line bg-white p-6 shadow-card transition-all duration-500 ease-expo hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-lift">
+              <CardFx />
+              <span className="relative flex items-center justify-between"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-brand-400 group-hover:text-ink">◆</span><ArrowUpRight size={16} className="text-ink transition-transform duration-500 group-hover:rotate-45" /></span>
+              <span className="relative"><span className="block font-display text-xl font-medium tracking-[-.02em]">{t}</span><span className="mt-1 block text-sm text-muted">{d}</span></span>
             </Link>
           </motion.div>)}
       </div>

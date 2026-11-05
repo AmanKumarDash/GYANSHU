@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { industryImages } from '../../data/pageMedia'
+import { homeIndustryImages as industryImages } from '../../data/pageMedia'
 import { getPage, industryLinks } from '../../data/sitePages'
 import { photo } from '../../utils/intro'
 import { ArrowButton, MaskLines, Reveal } from '../ui/Motion'

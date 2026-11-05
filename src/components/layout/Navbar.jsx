@@ -3,13 +3,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { productLinks, serviceLinks, industryLinks } from '../../data/sitePages'
-import { EASE, photo, useIntroReady } from '../../utils/intro'
+import { EASE, useIntroReady } from '../../utils/intro'
 import Logo from '../ui/Logo'
+import SceneArt from '../art/SceneArt'
 
 const groups = [
-  { label: 'Products', to: '/products', links: productLinks, image: 'photo-1634176866089-b633f4aec882', blurb: 'Platforms for network intelligence, cyber exposure, and connected operations.' },
-  { label: 'Services', to: '/solutions', links: serviceLinks, image: 'photo-1581091212911-f4efc3f71c48', blurb: 'Cybersecurity, infrastructure, IoT, applications, and compliance expertise.' },
-  { label: 'Industries', to: '/industries', links: industryLinks, image: 'px-5414582', blurb: 'Secure technology shaped for high-stakes environments.' },
+  { label: 'Products', to: '/products', links: productLinks, art: 'products', blurb: 'Platforms for network intelligence, cyber exposure, and connected operations.' },
+  { label: 'Services', to: '/solutions', links: serviceLinks, art: 'solutions', blurb: 'Cybersecurity, infrastructure, IoT, applications, and compliance expertise.' },
+  { label: 'Industries', to: '/industries', links: industryLinks, art: 'industries', blurb: 'Secure technology shaped for high-stakes environments.' },
 ]
 const pages = [['About', '/about'], ['Our Work', '/our-work'], ['Training', '/training'], ['Blog', '/blog'], ['Careers', '/careers']]
 
@@ -116,7 +117,7 @@ function MegaMenu({ group, onClose }) {
     <div className="overflow-hidden rounded-[1.75rem] border border-line bg-white/95 p-2 shadow-[0_40px_80px_-30px_rgba(11,61,59,.35)] backdrop-blur-xl">
     <div className="grid grid-cols-[1fr_2fr] gap-2">
       <Link to={group.to} onClick={onClose} className="group relative flex min-h-[13.75rem] flex-col justify-end overflow-hidden rounded-[1.375rem] bg-ink p-6 text-white">
-        <img src={photo(group.image, 900)} alt="" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.06]" />
+        <div className="absolute inset-0 transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.06]"><SceneArt name={group.art} kind="card" live={false} /></div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/55 to-ink-950/10" />
         <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-400/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
         <span className="eyebrow-dark relative w-fit">{group.label}</span>
