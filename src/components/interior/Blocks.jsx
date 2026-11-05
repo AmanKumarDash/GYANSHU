@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { ArrowButton, Eyebrow, Reveal, ScrollWords } from '../ui/Motion'
 import { EASE, photo, useIntroReady } from '../../utils/intro'
 import { iconFor } from '../../data/pageMedia'
-import { artKeyFor } from '../../data/artManifest'
+import { artKeyFor, panelSlides } from '../../data/artManifest'
 import { parseArt, spot } from './cardFx'
 import HeroArt from '../art/HeroArt'
 import SceneArt from '../art/SceneArt'
@@ -156,7 +156,7 @@ export function HeroCentered({ title, muted = 1, subtitle, intro, actions, media
   const radius = useTransform(scrollYProgress, [0, 1], [48, 28])
   const imageY = useTransform(scrollYProgress, [0, 1], ['-3%', '0%'])
   const show = (delay) => ({ initial: { opacity: 0, y: 24 }, animate: ready ? { opacity: 1, y: 0 } : undefined, transition: { duration: 1, delay, ease: EASE } })
-  const slides = images?.length ? images : [`/images/art/${artKey}-flow.webp`, `/images/art/${artKey}-hub.webp`]
+  const slides = images?.length ? images : panelSlides(artKey)
 
   return <><section className={`relative overflow-hidden ${compact ? 'pb-4 md:pb-6' : 'pb-5 md:pb-6'}`}>
     <div className="relative flex flex-col pt-24 lg:block lg:min-h-[calc(39.4vw+5rem)]">

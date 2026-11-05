@@ -1,4 +1,6 @@
-import { art } from '../../data/artManifest'
+import { art, resolveArt } from '../../data/artManifest'
+import { heroMotion, detailView, FULL_VIEW } from '../../data/heroMotion/index.js'
+import { drawMotion } from './motionDraw'
 import { useCanvasLoop, comet } from './useCanvasLoop'
 import { bez, CARD, FLOW, FLOW_HUB, FLOW_PLATFORM, flowFibres, flowLinks, HUB, hubNodes } from './geometry'
 
@@ -9,7 +11,7 @@ const SPOKES = hubNodes().map(([x, y]) => {
   const q = [(HUB.cx + x) / 2, HUB.cy]
   return [HUB.cx, HUB.cy, HUB.cx + (2 / 3) * (q[0] - HUB.cx), HUB.cy + (2 / 3) * (q[1] - HUB.cy), x + (2 / 3) * (q[0] - x), y + (2 / 3) * (q[1] - y), x, y]
 })
-const SIZE = { flow: FLOW, hub: HUB, card: CARD }
+const SIZE = { flow: FLOW, hub: HUB, card: CARD, panel: { W: 2000, H: 1125 }, detail: { W: 2000, H: 1125 } }
 
 const ring = (ctx, x, y, rx, ry, a, width = 1.5) => {
   ctx.strokeStyle = `rgba(127,220,255,${a})`; ctx.lineWidth = width
@@ -43,10 +45,12 @@ const drawers = { flow: drawFlow, hub: drawHub, card: drawCard }
 
 /**
  * A generated dark scene with live light running along its painted fibres. Fills its parent (give the parent a size and `relative`).
- * name: a key of artManifest. kind: 'flow' | 'hub' | 'card'. live={false} renders the still only, for small repeated thumbnails.
+ * name: a key of artManifest. kind: 'panel' | 'detail' (painted per scene, with its motion data; flow and hub until the scene is painted) | 'flow' | 'hub' | 'card'. live={false} renders the still only, for small repeated thumbnails.
  * The image is decorative by default; pass alt if it carries meaning.
  */
-export default function SceneArt({ name, kind = 'flow', alt = '', live = true, loading = 'lazy', position = 'center', className = '' }) {
+export default function SceneArt({ name, kind: wanted = 'flow', alt = '', live = true, loading = 'lazy', position = 'center', className = '' }) {
+  const { key, kind } = resolveArt(name, wanted)
+  const motion = kind === 'panel' || kind === 'detail' ? heroMotion[key] : null
   const canvas = useCanvasLoop((ctx, { w, h, t }) => {
     const { W, H } = SIZE[kind]
     // Same mapping as object-fit: cover, so the overlay stays locked to the painted lines at any crop.
@@ -54,12 +58,15 @@ export default function SceneArt({ name, kind = 'flow', alt = '', live = true, l
     ctx.save()
     ctx.translate((w - W * s) / 2, (h - H * s) / 2)
     ctx.scale(s, s)
-    ctx.globalCompositeOperation = 'lighter'
-    drawers[kind](ctx, t, s)
+    if (motion) drawMotion(ctx, motion, t, { W, H, theme: 'dark', view: kind === 'detail' && motion.focus ? detailView(motion.focus) : FULL_VIEW })
+    else {
+      ctx.globalCompositeOperation = 'lighter'
+      drawers[kind](ctx, t, s)
+    }
     ctx.restore()
-  }, [kind])
+  }, [kind, key])
   return <div className={`absolute inset-0 overflow-hidden ${className}`} aria-hidden={alt ? undefined : 'true'}>
-    <img src={art(name, kind)} alt={alt} loading={loading} decoding="async" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: position }} />
+    <img src={art(name, wanted)} alt={alt} loading={loading} decoding="async" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: position }} />
     {live && position === 'center' && <canvas ref={canvas} className="pointer-events-none absolute inset-0 h-full w-full" />}
   </div>
 }

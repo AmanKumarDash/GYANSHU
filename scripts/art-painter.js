@@ -1,4 +1,4 @@
-// Runs inside headless Chrome (see generate-art.mjs). Every scene shares one palette and one set of glass, glow and fibre helpers,
+// Runs inside headless Chrome (see generate-art.mjs). Paints the older flow, hub and card kinds (hero, panel and detail live in scripts/scenes). Every scene shares one palette and one set of glass, glow and fibre helpers,
 // taken from the home page artwork.
 (() => {
   const C = { deep: '#020c22', navy: '#04193a', mid: '#07305f', blue: '#0b6fb8', sky: '#38bdf8', cyan: '#22d3ee', ice: '#d9f7ff', teal: '#14B8A6', mint: '#7EE3D9', amber: '#ffb347' }
@@ -167,66 +167,14 @@
     vignette(W, H)
   }
 
-  function hero({ g, entry, icons, globe }) {
-    const { W, H } = g.HERO
-    ctx.clearRect(0, 0, W, H)
-    // Pale sky wash behind the globe that dissolves into the page. Plain alpha blending: additive blends turn grey on a transparent canvas.
-    { const w = ctx.createRadialGradient(1068, 400, 120, 1068, 400, 700); w.addColorStop(0, 'rgba(120,215,255,.34)'); w.addColorStop(1, 'rgba(120,215,255,0)'); ctx.fillStyle = w; ctx.fillRect(0, 0, W, H) }
-    // Skyline
-    const horizon = 712
-    const skyline = (x0, x1) => {
-      let x = x0
-      while (x < x1) {
-        const edge = Math.min(x - x0, x1 - x) / ((x1 - x0) * 0.5), w = R(16, 38), h = R(24, 150) * (0.3 + edge)
-        const g2 = ctx.createLinearGradient(0, horizon - h, 0, horizon); g2.addColorStop(0, `rgba(30,120,200,${0.2 + edge * 0.5})`); g2.addColorStop(1, 'rgba(130,210,255,.12)')
-        ctx.fillStyle = g2; ctx.fillRect(x, horizon - h, w, h)
-        if (h > 80) { ctx.fillRect(x + w / 2 - 1, horizon - h - 16, 2, 16); for (let wy = horizon - h + 8; wy < horizon - 8; wy += 9) { ctx.fillStyle = 'rgba(225,248,255,.55)'; ctx.fillRect(x + 4, wy, w - 8, 2) } }
-        x += w + R(1, 10)
-      }
-    }
-    skyline(220, 625); skyline(1170, 1660)
-    // Water, dissolving at both ends so it has no visible edge
-    const smooth = (t) => { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t) }
-    const water = ctx.createLinearGradient(0, horizon, 0, H); water.addColorStop(0, 'rgba(70,170,235,.40)'); water.addColorStop(0.45, 'rgba(120,205,250,.14)'); water.addColorStop(1, 'rgba(160,225,255,0)')
-    ctx.fillStyle = water
-    for (let x = 0; x < W; x += 4) { ctx.globalAlpha = smooth((x - 60) / 520) * smooth((W - x) / 110); ctx.fillRect(x, horizon, 4, H - horizon) }
-    ctx.globalAlpha = 1
-    { const l = ctx.createLinearGradient(80, 0, W, 0); l.addColorStop(0, 'rgba(120,220,255,0)'); l.addColorStop(0.3, 'rgba(120,220,255,.85)'); l.addColorStop(0.95, 'rgba(120,220,255,.85)'); l.addColorStop(1, 'rgba(120,220,255,0)'); ctx.save(); ctx.shadowColor = 'rgba(120,220,255,.8)'; ctx.shadowBlur = 10; ctx.strokeStyle = l; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(80, horizon); ctx.lineTo(W, horizon); ctx.stroke(); ctx.restore() }
-
-    // Globe (the live canvas overlay rotates the same land on top of this still)
-    const G = g.HERO_GLOBE
-    // The globe sets behind the tiles and the road, so it stops above the waterline.
-    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, 672); ctx.clip()
-    ctx.save(); ctx.shadowColor = 'rgba(60,170,255,.65)'; ctx.shadowBlur = 50; ctx.fillStyle = '#04244f'; ctx.beginPath(); ctx.arc(G.cx, G.cy, G.r, 0, Math.PI * 2); ctx.fill(); ctx.restore()
-    ctx.save(); ctx.beginPath(); ctx.arc(G.cx, G.cy, G.r, 0, Math.PI * 2); ctx.clip(); ctx.translate(G.cx - G.r, G.cy - G.r)
-    const sea = ctx.createRadialGradient(G.r * 0.78, G.r * 0.62, G.r * 0.05, G.r, G.r, G.r); sea.addColorStop(0, '#08528f'); sea.addColorStop(0.55, '#032f60'); sea.addColorStop(1, '#011a3c'); ctx.fillStyle = sea; ctx.fillRect(0, 0, G.r * 2, G.r * 2)
-    const land = new Path2D(globe); ctx.fillStyle = 'rgba(38,152,228,.8)'; ctx.fill(land); ctx.shadowColor = 'rgba(90,200,255,.9)'; ctx.shadowBlur = 8; ctx.strokeStyle = 'rgba(185,236,255,.95)'; ctx.lineWidth = 1.4; ctx.stroke(land)
-    // Sunrise only on the right rim, like the home globe
-    ctx.shadowColor = 'rgba(255,150,70,.95)'; ctx.shadowBlur = 46; ctx.strokeStyle = 'rgba(255,214,170,.85)'; ctx.lineWidth = 5; ctx.beginPath(); ctx.arc(G.r, G.r, G.r - 1, -Math.PI * 0.4, Math.PI * 0.26); ctx.stroke(); ctx.shadowBlur = 0
-    ctx.restore()
-    ctx.restore()
-
-    // Orbit rings
-    g.HERO_RINGS.forEach((r) => { const l = ctx.createLinearGradient(r.cx - r.rx, 0, r.cx + r.rx, 0); l.addColorStop(0, r.colors[0]); l.addColorStop(0.65, r.colors[1]); l.addColorStop(1, C.amber); ctx.beginPath(); ctx.ellipse(r.cx, r.cy, r.rx, r.ry, (r.rot * Math.PI) / 180, 0, Math.PI * 2); ctx.save(); ctx.shadowColor = C.cyan; ctx.shadowBlur = 16; ctx.strokeStyle = l; ctx.lineWidth = 3.5; ctx.stroke(); ctx.restore() })
-
-    // Road of light: a soft ribbon under the light lines, opaque at the tiles and gone by the page edge
-    const road = ctx.createLinearGradient(0, 668, 0, H); road.addColorStop(0, 'rgba(10,95,175,.78)'); road.addColorStop(0.55, 'rgba(60,165,235,.26)'); road.addColorStop(1, 'rgba(120,205,250,0)')
-    ctx.beginPath(); ctx.moveTo(700, 690); ctx.bezierCurveTo(1000, 650, 1120, 690, 1040, 748); ctx.bezierCurveTo(900, 830, 520, 870, 120, 941); ctx.lineTo(1620, 941); ctx.bezierCurveTo(1590, 790, 1400, 690, 1000, 672); ctx.bezierCurveTo(880, 668, 770, 676, 700, 690); ctx.closePath(); ctx.fillStyle = road; ctx.fill()
-    g.HERO_ROAD.forEach((b, i) => { bezPath(b); glowLine(i % 2 ? '#7fe6ff' : C.cyan, i < 4 ? 8 : 5, 26) })
-
-    // Tiles on the arc
-    g.HERO_TILES.forEach(([x, y, w, h], i) => tile(x, y, w, h, icons[entry.panels[i]], { r: 16, iconScale: 0.5, blur: 26 }))
-    ctx.beginPath(); ctx.moveTo(626, 474); g.HERO_TILES.forEach(([x, y, w]) => ctx.lineTo(x + w / 2, y - 3)); ctx.lineTo(1590, 400); glowLine('rgba(120,235,255,.95)', 2.2, 14)
-  }
-
   window.paintArt = async ({ kind, entry, icons: raw, worldPath, globe, geo: g }) => {
-    const size = { hero: g.HERO, flow: g.FLOW, hub: g.HUB, card: g.CARD }[kind]
+    const size = { flow: g.FLOW, hub: g.HUB, card: g.CARD }[kind]
     const canvas = document.getElementById('c'); canvas.width = size.W; canvas.height = size.H
     ctx = canvas.getContext('2d'); rand = seeded(entry.seed * 7919 + kind.length * 101)
     const icons = {}
     for (const [n, v] of Object.entries(raw)) icons[n] = await loadIcon(v.light)
     ctx.clearRect(0, 0, size.W, size.H)
-    ;({ flow, hub, card, hero })[kind]({ g, entry, icons, worldPath, globe })
-    return canvas.toDataURL('image/webp', kind === 'hero' ? 0.86 : 0.8)
+    ;({ flow, hub, card })[kind]({ g, entry, icons, worldPath, globe })
+    return canvas.toDataURL('image/webp', 0.8)
   }
 })()

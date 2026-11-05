@@ -6,7 +6,7 @@ import { COMPANY_ADDRESS } from '../../data/siteConfig'
 import { CardFx, CtaPhotos, DarkBand, FaqDark, HeroCentered, Media, PosterHeadline, StepsBanner } from '../interior/Blocks'
 import { faqs } from '../../data/content'
 import { faqPicks, iconFor } from '../../data/pageMedia'
-import { art } from '../../data/artManifest'
+import { art, panelSlides } from '../../data/artManifest'
 import { spot } from '../interior/cardFx'
 import { MaskLines, Reveal } from '../ui/Motion'
 import flowbitsProfile from '../../data/flowbitsProfile'
@@ -510,7 +510,7 @@ const heroScenes = {
   vapt: { art: 'nestedva', captions: ['Findings with evidence', 'Reports & remediation tracking', 'Hands-on security assessment', 'Re-test and verify every fix'] },
   smms: { art: 'smms', captions: ['Service health across locations', 'Incidents & escalation', 'Infrastructure under watch', 'IT teams resolving faster'] },
 }
-for (const [id, shots] of Object.entries(productShots)) profiles[id] = { ...profiles[id], productShots: shots, heroImages: [...shots, art(heroScenes[id].art, 'flow'), art(heroScenes[id].art, 'hub')], heroCaptions: heroScenes[id].captions }
+for (const [id, shots] of Object.entries(productShots)) profiles[id] = { ...profiles[id], productShots: shots, heroImages: [...shots, ...panelSlides(heroScenes[id].art)], heroCaptions: heroScenes[id].captions }
 
 // Artwork topic for each product page's hero globe.
 const artKeyOf = { ipdr: 'nexora', 'argos-enms': 'netsight', panoptix: 'panoptix', vapt: 'nestedva', smms: 'smms', 'gyanshu-ai-office-assistance': 'aiassistant' }

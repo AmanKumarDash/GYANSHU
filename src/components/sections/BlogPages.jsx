@@ -48,11 +48,11 @@ export function BlogArticle() {
   const { slug } = useParams()
   const post = publishedBlogPosts.find((entry) => entry.slug === slug)
   if (!post) return <main>
-    <HeroCentered title="Post not found." art="blog" actions={<ArrowButton to="/blog">Back to the blog</ArrowButton>} compact />
+    <HeroCentered title="Post not found." art="blogpost" actions={<ArrowButton to="/blog">Back to the blog</ArrowButton>} compact />
   </main>
 
   return <main>
-    <HeroCentered title={post.title} muted={2} subtitle={post.excerpt} art="blog" actions={null} compact />
+    <HeroCentered title={post.title} muted={2} subtitle={post.excerpt} art="blogpost" actions={null} compact />
     <section className="py-8 md:py-10 lg:py-12">
       <article className="shell max-w-4xl">
         <div className="rounded-[1.375rem] border border-line bg-white p-6 shadow-card md:p-10">

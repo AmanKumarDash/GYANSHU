@@ -1,3 +1,5 @@
+import { isPainted } from './heroMotion/index.js'
+
 // Generated artwork, one set per topic. scripts/generate-art.mjs paints these into public/images/art/<key>-<kind>.webp
 // and components/art/* animates them. Icon names are lucide-react exports.
 // `motif` floats on the hero globe; `panels` are the six hero tiles; `sources` feed the flow scene; `outputs` end it.
@@ -47,8 +49,29 @@ export const artManifest = {
   aiassistant: set('Bot', ['Bot', 'FileText', 'Search', 'Lock', 'PenLine', 'BookOpen'], ['FileText', 'Mail', 'Database', 'BookOpen', 'Users', 'Search'], ['Bot', 'PenLine', 'Lock'], 66),
 }
 
-// Kinds: hero (light, transparent, for the split page hero), flow and hub (dark 16:9 panels), card (dark 4:3 thumbnails).
-export const art = (key, kind = 'flow') => `/images/art/${key}-${kind}.webp`
+// Newer keys that share their older flow, hub and card thumbnails with another key (the legal pages and blog posts).
+const alias = (of, seed) => ({ ...artManifest[of], alias: of, seed })
+Object.assign(artManifest, {
+  privacy: alias('legal', 54), terms: alias('legal', 55), compliance: alias('legal', 56), cookies: alias('legal', 57), blogpost: alias('blog', 58),
+})
+
+// Kinds: hero (light landing art), panel and detail (dark 16:9 panel slides, painted per scene), flow and hub (older dark 16:9 panels), card (dark 4:3 thumbnails).
+// hero, panel and detail exist per scene only once the scene is painted (it has an entry in data/heroMotion); until then they fall back to the key's older files.
+const FALLBACK = { panel: 'flow', detail: 'hub' }
+export function resolveArt(key, kind = 'flow') {
+  const entry = artManifest[key]
+  const legacy = entry?.alias || key
+  if (kind === 'hero' || kind === 'panel' || kind === 'detail') {
+    if (isPainted(key)) return { key, kind }
+    if (kind === 'hero') return entry ? { key: legacy, kind: 'hero' } : null
+    return { key: legacy, kind: FALLBACK[kind] }
+  }
+  return { key: legacy, kind }
+}
+// URL of an image, or null when there is none (an unknown key's hero). Never points at a file that does not exist for a known key.
+export const art = (key, kind = 'flow') => { const r = resolveArt(key, kind); return r ? `/images/art/${r.key}-${r.kind}.webp` : null }
+// The two dark panel slides for a hero: the painted full view then close view, or the older flow and hub until the scene is painted.
+export const panelSlides = (key) => [art(key, 'panel'), art(key, 'detail')]
 export const artKeys = Object.keys(artManifest)
 
 // Route → artwork topic. Exact paths first, then prefixes (blog posts, new industries and so on); anything else is the 404 art.
@@ -59,10 +82,10 @@ const routeKeys = {
   '/industries/healthcare': 'healthcare', '/industries/education': 'education', '/industries/manufacturing': 'manufacturing', '/industries/startup': 'startup',
   '/about': 'about', '/why-choose-us': 'whychoose', '/mission': 'mission', '/core-values': 'values', '/careers': 'careers', '/training': 'training', '/our-work': 'work',
   '/contact': 'contact', '/support': 'support', '/help': 'help', '/blog': 'blog',
-  '/privacy': 'legal', '/terms': 'legal', '/compliance': 'legal', '/cookies': 'legal',
+  '/privacy': 'privacy', '/terms': 'terms', '/compliance': 'compliance', '/cookies': 'cookies',
   '/products/flowbits-nexora': 'nexora', '/products/netsight360': 'netsight', '/products/panoptix': 'panoptix', '/products/nested-va': 'nestedva', '/products/smms': 'smms', '/products/ai-office-assistant': 'aiassistant',
 }
-const routePrefixes = [['/blog/', 'blog'], ['/services/', 'solutions'], ['/industries/', 'industries'], ['/products/', 'products']]
+const routePrefixes = [['/blog/', 'blogpost'], ['/services/', 'solutions'], ['/industries/', 'industries'], ['/products/', 'products']]
 export const artKeyFor = (pathname = '/') => {
   const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname
   return routeKeys[path] || routePrefixes.find(([p]) => path.startsWith(p))?.[1] || 'notfound'

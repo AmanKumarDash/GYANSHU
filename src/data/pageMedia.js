@@ -3,13 +3,13 @@ import {
   GraduationCap, HeartHandshake, Layers, Lightbulb, LineChart, Lock, MonitorSmartphone, Network, Palette, Radar, RefreshCw,
   Route, Scale, Search, Server, ShieldAlert, ShieldCheck, Siren, Smartphone, Sparkles, Target, Users, Workflow, Wrench, Zap,
 } from 'lucide-react'
-import { art, artKeyFor } from './artManifest'
+import { art, artKeyFor, panelSlides } from './artManifest'
 
 // Every interior image is generated artwork (public/images/art). Topic keys come from artManifest.
 const card = (key) => art(key, 'card')
 const hub = (key) => art(key, 'hub')
 // A page's standard set: hero slides, the process backdrop and the closing-band images.
-const pageSet = (key, extra = {}) => ({ hero: [art(key, 'flow'), hub(key)], steps: hub(key), cta: [card(key), hub(key)], ...extra })
+const pageSet = (key, extra = {}) => ({ hero: panelSlides(key), steps: hub(key), cta: [card(key), hub(key)], ...extra })
 
 // Card thumbnails: used wherever a service, industry or product is linked from another page.
 export const serviceImages = {
